@@ -1,4 +1,4 @@
-package Charactere;
+package Character;
 
 public class Knight extends WhoFight{
     
