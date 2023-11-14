@@ -9,6 +9,10 @@ public class Exit {
         this.EXIT_LOCATION = exit;
     }
 
+    /**
+     * @param location
+     * @return a boolean wch
+     */
     public boolean go(Location location){
         return location == EXIT_LOCATION;
     }

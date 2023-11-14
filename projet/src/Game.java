@@ -9,11 +9,11 @@ public class Game {
     private List<Location> locations;
 
     public Game(){
-        this.HERO = new Hero();
         this.locations = new ArrayList<Location>();
 
         Location start = new Location(LocationName.GARDEN);
         this.locations.add(start);
+        this.HERO = new Hero(locations.get(0));
     }
     public static void main(String[] args) throws Exception {
         Game game = new Game();
