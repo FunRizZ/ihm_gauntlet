@@ -29,6 +29,23 @@ public class Location {
         return this.neighbor;
     }
 
+    public List<Exit> getExits() {
+        return exits;
+    }
+    /**
+     * @param location to go to
+     * @return null if no exit found else exit found
+     */
+    public Exit getExit(Location location){
+        Exit res = null;
+        for (Exit exit : this.exits) {
+            if(exit.EXIT_LOCATION == location){
+                res = exit;
+            }
+        }
+        return res;
+    }
+
     public void addCharacter(Character character){
         if (this.characters == null){
             this.characters = new ArrayList<Character>();

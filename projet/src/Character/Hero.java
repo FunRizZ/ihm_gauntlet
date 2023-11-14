@@ -1,5 +1,6 @@
 package Character;
 
+import Location.Exit;
 import Location.Location;
 
 public class Hero extends WhoFight{
@@ -14,9 +15,23 @@ public class Hero extends WhoFight{
         this.location = location;
     }
 
+    public Location getLocation() {
+        return location;
+    }
+
     @Override
     public void fight(WhoFight enemy){
         enemy.reduceHp(this.getDamage());
-    } 
+    }
+
+    public boolean goLocation(Location location) {
+        Exit exit = this.location.getExit(location);
+        if( exit != null && exit.go(location)){
+            System.out.println(location);
+            this.location = location;
+            return true;
+        }
+        return false;
+    }
 
 }
