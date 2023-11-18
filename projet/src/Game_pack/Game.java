@@ -1,7 +1,10 @@
+package Game_pack;
 import java.util.ArrayList;
 import java.util.List;
 
-import Character.*;
+import Character.Character;
+import Character.Hero;
+import Character.Dragon;
 import Location.*;
 
 public class Game {
@@ -21,13 +24,18 @@ public class Game {
         this.locations.add(location);
         return location;
     }
+
+
     public static void main(String[] args) throws Exception {
         Game game = new Game();
-        System.out.println(game.HERO.getLocation());
 
         Location l = game.locations.get(0);
         Location l_out = game.creatLocation(LocationName.ROOM_WITH_TREASURE);
-        l.addExit(new Exit(l, l_out));
+        l.addNeighbor(l_out, new Exit(l_out));
+        Character Drag = new Dragon();
+        l.addCharacter(Drag);
+        
+        System.out.println(game.HERO.getLocation());
 
         game.HERO.goLocation(l_out);
 

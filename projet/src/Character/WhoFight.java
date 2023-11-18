@@ -17,6 +17,7 @@ public abstract class WhoFight extends Character{
     private Shield shield;
 
     public WhoFight(int hp, int armor_start, int damage_start, Weapon weapon, Armor armor, Shield shield){
+        super();
         this.hp = hp;
         this.armor_total = armor_start;
         this.damage = damage_start;

@@ -1,17 +1,15 @@
 package Location;
 
 public class Exit {
-    public final Location START_LOCATION;
     public final Location EXIT_LOCATION;
 
-    public Exit(Location start, Location exit){
-        this.START_LOCATION = start;
+    public Exit(Location exit){
         this.EXIT_LOCATION = exit;
     }
 
     /**
-     * @param location
-     * @return a boolean wch
+     * @param location : destination
+     * @return a boolean wich said if it possible or not
      */
     public boolean go(Location location){
         return location == EXIT_LOCATION;

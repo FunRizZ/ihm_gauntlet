@@ -25,12 +25,18 @@ public class Hero extends WhoFight{
     }
 
     public boolean goLocation(Location location) {
+        //recupération de l'exit
         Exit exit = this.location.getExit(location);
-        if( exit != null && exit.go(location)){
-            System.out.println(location);
-            this.location = location;
-            return true;
+
+        if( exit != null){
+            if (exit.go(location)){
+                System.out.println("you go in " + location.NAME + "\n");
+                System.out.println(location);
+                this.location = location;
+                return true;
+            }
         }
+        System.out.println("you stay in the room \n");
         return false;
     }
 
