@@ -48,10 +48,18 @@ public abstract class WhoFight extends Character{
      * @param damage is the damage of the character who attack
      */
     public void reduceHp(int damage){
-        this.hp = damage - this.armor_total;
+        this.hp -= damage - this.armor_total;
     }
     public int getDamage() {
         return this.damage;
+    }
+
+     public int getHp() {
+        return this.hp;
+    }
+
+    public int getArmor() {
+        return this.armor_total;
     }
 
 }
