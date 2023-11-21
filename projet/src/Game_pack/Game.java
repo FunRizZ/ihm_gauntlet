@@ -8,7 +8,7 @@ import Character.Dragon;
 import Location.*;
 
 public class Game {
-    private final Hero HERO;
+    public final Hero HERO;
     private List<Location> locations;
 
     public Game(){
@@ -40,16 +40,10 @@ public class Game {
 
     public static void main(String[] args) throws Exception {
         Game game = new Game();
-
-        Location l = game.locations.get(0);
-        Location l_out = l.getNeighbor().get(0); //donne un voisin 
         
         System.out.println(game.HERO.getLocation());
 
-        game.HERO.goLocation(l_out);
-
         Command cmd = new Command(game);
         cmd.read();
-
     }
 }

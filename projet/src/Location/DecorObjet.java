@@ -1,5 +1,7 @@
 package Location;
 
-public abstract class DecorObjet {
+import Game_pack.Lookable;
+
+public abstract class DecorObjet implements Lookable{
     
 }

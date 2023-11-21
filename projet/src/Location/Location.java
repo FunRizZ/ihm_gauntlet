@@ -8,8 +8,9 @@ import java.util.Map;
 import java.util.Set;
 
 import Character.Character;
+import Game_pack.Lookable;
 
-public class Location {
+public class Location implements Lookable{
     public final LocationName NAME;
     private Map<Location,Exit> neighbor;
     private List<Character> characters;
@@ -38,6 +39,21 @@ public class Location {
         }
         return locations;
     }
+        /**
+     * @param location the name of the location we want
+     * @return null if no neighbor found else neighbor
+     */
+    public Location getNeighbor(LocationName location) {
+        if (this.neighbor == null) {return null;}
+        else {
+            List<Location> locations = getNeighbor();
+            for (Location loc : locations){
+                if(loc.NAME == location){return loc;}
+            }
+            return null;
+        }
+    }
+
  
     public List<Exit> getExits() {
     	if (this.neighbor == null) {return null;}
@@ -50,6 +66,20 @@ public class Location {
         return exits;
     }
     /**
+     * @param location to go to
+     * @return null if no exit found else exit found
+     */
+    public Exit getExit(LocationName location){
+        if (this.neighbor == null) return null;
+        else {
+            List<Location> locations = getNeighbor();
+            for (Location loc : locations){
+                if(loc.NAME == location){return this.neighbor.get(loc);}
+            }
+            return null;
+        }
+    }
+        /**
      * @param location to go to
      * @return null if no exit found else exit found
      */
@@ -98,6 +128,10 @@ public class Location {
         }
 
         return description + strExits + strCharacters + strDecorObjets;
+    }
+
+    public void look(){
+        System.out.println(this);
     }
 
 }
