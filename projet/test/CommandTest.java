@@ -16,11 +16,11 @@ public class CommandTest {
 
         k.fight(d);
 
-        assertEquals(d.getHp(), (Dragon.DEFAULT_HP + d.getArmor()) + - k.getDamage());
+        assertEquals(d.getHp(), (Dragon.DEFAULT_HP + d.getArmor()) - k.getDamage());
     }
 
     @Test
-    public void test
+    public void testGoLocation() {
 
 
 }
