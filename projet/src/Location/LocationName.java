@@ -14,5 +14,15 @@ public enum LocationName{
     ROOM_WITH_TREASURE,
     CHAPEL,
     GUARD_ROOM,
-    TOWER
+    TOWER;
+    
+    public static LocationName stringToLocationName(String str) throws NullPointerException{
+        switch(str) {
+    		case "GARDEN" :
+    			return GARDEN;
+    		default:
+                Location loc = null;
+                return loc.NAME;
+        }
+    }
 }

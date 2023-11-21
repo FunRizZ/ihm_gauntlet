@@ -10,20 +10,29 @@ public class Command {
 		this.GAME = game;
 	}
    
-	public void Scanner() {
+	public void read() throws NullPointerException{
 
         try ( Scanner scanner = new Scanner( System.in ) ) {
             
             System.out.print( " put your command: " );
-            String function = scanner.next("GO|HELP|LOOK|ATTACK|TAKE|USE|QUIT|");
+            String command = scanner.next("GO|HELP|LOOK|ATTACK|TAKE|USE|QUIT|");
             
-            switch(function) {
+            switch(command) {
             	case "GO" :
-            		String fuction = scanner.next(LocationNume);
-            
-            }
-            
+            		String arg = scanner.next();
+            		LocationName location = LocationName.stringToLocationName(arg); 
+					this.go(location);   
+				default:
+					this.help();
+			}
         }
         
     }
+	
+	public void go(LocationName location) {
+		System.out.println("Command go ok to " + location);
+	}
+	public void help() {
+		System.out.println("Command :\n\tGO location\n\tLOOK");
+	}
 }

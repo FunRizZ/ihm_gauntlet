@@ -38,7 +38,7 @@ public class Location {
         }
         return locations;
     }
-
+ 
     public List<Exit> getExits() {
     	if (this.neighbor == null) {return null;}
         List<Exit> exits = new ArrayList<Exit>();
@@ -76,7 +76,7 @@ public class Location {
         String description = "you are in the "+ this.NAME +" \n\n";
         String strExits = "They have no issue";
         List<Exit> exits = this.getExits();
-        if ( exits!= null){
+        if ( exits != null){
             strExits  = "In this room you have those exits :\n";
             for(Exit exit : exits){
                 strExits += "\t" + exit + "\n";
