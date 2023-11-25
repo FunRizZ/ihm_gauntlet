@@ -1,5 +1,6 @@
 package Character;
 
+import Game_pack.OwnException;
 import Location.Exit;
 import Location.Location;
 
@@ -22,6 +23,7 @@ public class Hero extends WhoFight{
     @Override
     public void fight(WhoFight enemy){
         enemy.reduceHp(this.getDamage());
+        System.out.println("HERO hit the " + enemy);
     }
 
     public boolean goLocation(Location location) {
@@ -39,5 +41,15 @@ public class Hero extends WhoFight{
         System.out.println("you stay in the room \n");
         return false;
     }
+    @Override
+    public WhoFight itMe(String st) throws OwnException{
+    	switch(st) {
+    	case "Hero": 
+    		return (WhoFight)this;
+    	default : 
+    		throw new OwnException("itMe",st +" not reconized, class Hero");
+    	}
+    }
+
 
 }

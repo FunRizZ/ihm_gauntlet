@@ -1,19 +1,22 @@
 package Game_pack;
 import java.util.ArrayList;
+
 import java.util.List;
+import java.util.Scanner;
 
 import Character.Character;
-import Character.Hero;
-import Character.Dragon;
+import Character.*;
 import Location.*;
 
 public class Game {
     public final Hero HERO;
     private List<Location> locations;
+    private final Command cmd;
 
     public Game(){
         generateMap();
         this.HERO = new Hero(locations.get(0));
+        this.cmd = new Command(this);
     }
 
     public Location creatLocation(LocationName locationName){
@@ -35,6 +38,8 @@ public class Game {
         start.addNeighbor(l_out, new Exit(l_out));
         Character Drag = new Dragon();
         start.addCharacter(Drag);
+        Character knight = new Knight();
+        start.addCharacter(knight);
     }
 
 
@@ -42,8 +47,12 @@ public class Game {
         Game game = new Game();
         
         System.out.println(game.HERO.getLocation());
-
-        Command cmd = new Command(game);
-        cmd.read();
+		
+        Scanner scanner = new Scanner( System.in ); 
+        boolean res = true;
+        while(res) {
+            res = game.cmd.read(scanner);
+        }
+        scanner.close();
     }
 }

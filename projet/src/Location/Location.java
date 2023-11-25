@@ -57,6 +57,7 @@ public class Location implements Lookable{
  
     public List<Exit> getExits() {
     	if (this.neighbor == null) {return null;}
+    	
         List<Exit> exits = new ArrayList<Exit>();
         Collection<Exit> val = this.neighbor.values();
         Object[] tab = val.toArray();
@@ -64,6 +65,9 @@ public class Location implements Lookable{
             exits.add((Exit)tab[i]);
         }
         return exits;
+    }
+    public List<Character> getCharacters() {
+        return this.characters;
     }
     /**
      * @param location to go to
