@@ -1,6 +1,6 @@
 package Character;
 
-import Game_pack.OwnException;
+
 import Location.Exit;
 import Location.Location;
 
@@ -42,12 +42,12 @@ public class Hero extends WhoFight{
         return false;
     }
     @Override
-    public WhoFight itMe(String st) throws OwnException{
+    public boolean itMe(String st){
     	switch(st) {
     	case "Hero": 
-    		return (WhoFight)this;
+    		return true;
     	default : 
-    		throw new OwnException("itMe",st +" not reconized, class Hero");
+    		return false;
     	}
     }
 

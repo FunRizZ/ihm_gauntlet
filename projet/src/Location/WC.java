@@ -1,6 +1,5 @@
 package Location;
 
-import Game_pack.OwnException;
 import Item.Item;
 import Item.Basilic;
 
@@ -12,12 +11,12 @@ public class WC extends DecorObjet{
         System.out.println("i'm a wc");
     }
     @Override
-    public DecorObjet itMe(String s) throws OwnException {
+    public boolean itMe(String s){
     	switch(s) {
     	case "Wc": 
-    		return (DecorObjet)this;
+    		return true;
     	default : 
-    		throw new OwnException("itMe",s +" not reconized, class Wc");
+    		return false;
     	}
     }
 }

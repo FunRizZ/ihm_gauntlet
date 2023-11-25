@@ -1,7 +1,5 @@
 package Location;
 
-
-import Game_pack.OwnException;
 import Item.Item;
 import Item.Map;
 
@@ -15,12 +13,12 @@ public class Book extends DecorObjet{
         System.out.println("i'm a book");
     }
     @Override
-    public DecorObjet itMe(String s) throws OwnException {
+    public boolean itMe(String s){
     	switch(s) {
     	case "Book": 
-    		return (DecorObjet)this;
+    		return true;
     	default : 
-    		throw new OwnException("itMe",s +" not reconized, class Book");
+    		return false;
     	}
     }
 }

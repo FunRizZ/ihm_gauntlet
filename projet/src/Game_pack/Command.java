@@ -1,12 +1,15 @@
 package Game_pack;
 
 import java.util.ArrayList;
+import java.lang.NullPointerException;
 
 import java.util.List;
 import java.util.Scanner;
 
 import Location.Location;
 import Location.LocationName;
+import Location.DecorObjet;
+
 import Character.Character;
 import Character.WhoFight;
 
@@ -22,7 +25,7 @@ public class Command {
 		List<String> argv = new ArrayList<String>();
         try{
             
-            System.out.println( "put your command: " );
+            System.out.print( "put your command: " );
             if (scanner.hasNext()) {command = scanner.next("GO|HELP|LOOK|ATTACK|TAKE|USE|QUIT|");}            
             
             switch(command) {
@@ -35,7 +38,7 @@ public class Command {
 					this.help();
 					break;
 				case "LOOK":
-					if(scanner.hasNext()){argv.add(scanner.next());}
+					argv.add(scanner.nextLine());
 					this.look(argv.get(0));
 					break;
 				case "ATTACK":
@@ -50,8 +53,9 @@ public class Command {
 					return false;
 			}
         }catch(Exception e){
-			System.out.println("List of command\n" + e);
+			System.out.println("List of command\n");
 			this.help();
+			if(scanner.hasNext())scanner.next();
 		}
         return true;
     }
@@ -66,23 +70,49 @@ public class Command {
 		System.out.println("Command :\n\tGO location\n\tLOOK \n\tATTACK  \n\tTAKE  \n\tUSE  \n\tQUIT");
 	}
 	public void look(String s){
-		
-		
+		if (s == "") {this.look();}
+		String[]argv = s.split("\\s+"); //delete whitespace character
+		s = argv[0];
+		Location locationH = this.GAME.HERO.getLocation();
+		try {
+			List<DecorObjet> decorObjects = locationH.getDecorObject();
+			for(DecorObjet obj : decorObjects) {
+				System.out.println(obj);
+				if (obj.itMe(s)) {
+					obj.look();
+				}
+			}
+		}catch(NullPointerException e) {}
+		try {
+			List<Character> characters = locationH.getCharacters();
+			for(Character c : characters) {
+				if (c instanceof Lookable) {
+					if ( c.itMe(s)) {
+						((Lookable) c).look();
+					}
+				}
+			}
+		}catch(NullPointerException e) {}
+	}
+	public void look(){
+		Location locationH = this.GAME.HERO.getLocation();
+		locationH.look();
 	}
 	
 	public void attack(String s) {
 		Location locationH = this.GAME.HERO.getLocation();
 		List<Character> characters = locationH.getCharacters();
-		for(Character c : characters) {
-			if (c instanceof WhoFight) {
-				try {
-					WhoFight enemy = ((WhoFight) c).itMe(s);
-					System.out.println(c);
-					this.GAME.HERO.fight(enemy);
+		try {
+			for(Character c : characters) {
+				if ( c.itMe(s)) {
+					if (c instanceof WhoFight) {
+						System.out.println(c);
+						this.GAME.HERO.fight((WhoFight)c);
+					}
 				}
-				catch(OwnException e) { e.printMsg();}
-			}	
+			}
 		}
+		catch(NullPointerException e) {}
 	}
 	public void take(String s) {
 		

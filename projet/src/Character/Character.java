@@ -3,6 +3,7 @@ package Character;
 import java.util.ArrayList;
 import java.util.List;
 
+import Game_pack.OwnException;
 import Item.Item;
 
 public abstract class Character {
@@ -44,5 +45,5 @@ public abstract class Character {
         }
         System.out.println(description);
     }
-
+    public abstract boolean itMe(String st);
 }

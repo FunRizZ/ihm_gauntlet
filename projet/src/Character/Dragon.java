@@ -1,7 +1,5 @@
 package Character;
 
-import Game_pack.OwnException;
-
 public class Dragon extends WhoFight{
     public final static int DEFAULT_HP = 100;
     public final static int DEFAULT_ARMOR = 10;
@@ -16,12 +14,12 @@ public class Dragon extends WhoFight{
         enemy.reduceHp(this.getDamage());
     }
     @Override
-    public WhoFight itMe(String st) throws OwnException{
+    public boolean itMe(String st){
     	switch(st) {
     	case "Dragon": 
-    		return (WhoFight)this;
+    		return true;
     	default : 
-    		throw new OwnException("itMe",st +" not reconized, class Dragon");
+    		return false;
     	}
     }
 

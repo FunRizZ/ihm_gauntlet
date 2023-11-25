@@ -1,6 +1,6 @@
 package Location;
 
-import Game_pack.OwnException;
+
 import Item.Item;
 import Item.key;
 
@@ -12,12 +12,12 @@ public class Cupboard extends DecorObjet{
         System.out.println("i'm a cupboard");
     }
     @Override
-    public DecorObjet itMe(String s) throws OwnException {
+    public boolean itMe(String s){
     	switch(s) {
     	case "Cupboard": 
-    		return (DecorObjet)this;
+    		return true;
     	default : 
-    		throw new OwnException("itMe",s +" not reconized, class Cupboard");
+    		return false;
     	}
     }
 }

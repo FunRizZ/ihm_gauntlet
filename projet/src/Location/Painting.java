@@ -1,6 +1,5 @@
 package Location;
 
-import Game_pack.OwnException;
 
 public class Painting extends DecorObjet{
 	public Painting() {
@@ -11,12 +10,12 @@ public class Painting extends DecorObjet{
         System.out.println("i'm a painting");
     }
     @Override
-    public DecorObjet itMe(String s) throws OwnException {
+    public boolean itMe(String s){
     	switch(s) {
     	case "Painting": 
-    		return (DecorObjet)this;
+    		return true;
     	default : 
-    		throw new OwnException("itMe",s +" not reconized, class Painting");
+    		return false;
     	}
     }
 }

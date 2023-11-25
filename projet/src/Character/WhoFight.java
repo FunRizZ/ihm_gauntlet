@@ -62,6 +62,5 @@ public abstract class WhoFight extends Character{
     public int getArmor() {
         return this.armor_total;
     }
-    public abstract WhoFight itMe(String st) throws OwnException;
 
 }

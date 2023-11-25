@@ -40,6 +40,8 @@ public class Game {
         start.addCharacter(Drag);
         Character knight = new Knight();
         start.addCharacter(knight);
+        DecorObjet vase = new Vase();
+        start.addDecorObjet(vase);
     }
 
 

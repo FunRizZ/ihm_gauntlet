@@ -69,6 +69,9 @@ public class Location implements Lookable{
     public List<Character> getCharacters() {
         return this.characters;
     }
+    public List<DecorObjet> getDecorObject() {
+        return this.decorObjets;
+    }
     /**
      * @param location to go to
      * @return null if no exit found else exit found
@@ -97,6 +100,12 @@ public class Location implements Lookable{
             this.characters = new ArrayList<Character>();
         }
         this.characters.add(character);
+    }
+    public void addDecorObjet(DecorObjet obj){
+        if (this.decorObjets == null){
+            this.decorObjets = new ArrayList<DecorObjet>();
+        }
+        this.decorObjets.add(obj);
     }
     public void addNeighbor(Location location,Exit exit){
         if (this.neighbor == null){
@@ -127,7 +136,7 @@ public class Location implements Lookable{
         if (this.decorObjets != null){
             strDecorObjets  = "in this room you can see:\n";
             for(DecorObjet decorObjet : this.decorObjets){
-                strCharacters += "\t" + decorObjet + "\n";
+            	strDecorObjets += "\t" + decorObjet + "\n";
             }
         }
 

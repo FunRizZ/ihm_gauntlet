@@ -13,5 +13,5 @@ public abstract class DecorObjet implements Lookable{
     public DecorObjet() {
     	this(null);
     }
-    public abstract DecorObjet itMe(String s) throws OwnException;
+    public abstract boolean itMe(String s);
 }

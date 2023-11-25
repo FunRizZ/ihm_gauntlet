@@ -1,6 +1,5 @@
 package Character;
 
-import Game_pack.OwnException;
 
 public class Knight extends WhoFight{
     public final static int DEFAULT_HP = 100;
@@ -16,12 +15,12 @@ public class Knight extends WhoFight{
         enemy.reduceHp(this.getDamage());
     }
     @Override
-    public WhoFight itMe(String st) throws OwnException{
+    public boolean itMe(String st){
     	switch(st) {
     	case "Knight": 
-    		return (WhoFight)this;
+    		return true;
     	default : 
-    		throw new OwnException("itMe",st +" not reconized, class Knight");
+    		return false;
     	}
     }
 
