@@ -77,7 +77,7 @@ public abstract class WhoFight extends Character{
     	dest += "armor : " + this.getArmor() + "\n\t";
     	dest += "damage : " + this.getDamage() + "\n\t";
     	System.out.println(dest);
-    	this.afficheItems();
+    	this.printItems();
     	
     }
 

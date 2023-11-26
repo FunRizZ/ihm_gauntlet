@@ -63,17 +63,8 @@ public class Hero extends WhoFight{
         return false;
     }
     @Override
-    public boolean isMe(String st){
-    	switch(st) {
-    	case "Hero": 
-    		return true;
-    	default : 
-    		return false;
-    	}
-    }
-    @Override
     public String getDescription() {
-    	return "The Hero is in "+ this.location.NAME + "in travel to found the longlost treasure hidden in this castel.";
+    	return "The Hero is in "+ this.location.NAME + ". His in travel to found the long-lost treasure hidden in this castel.";
     }
     public String toString() {
     	return "HERO";

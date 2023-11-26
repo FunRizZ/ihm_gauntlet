@@ -33,7 +33,7 @@ public abstract class Character implements Lookable{
         this.items.add(item);
     }
 
-    public void afficheItems(){
+    public void printItems(){
         String description = "the "+ this +" have : \n";
         if (this.items == null){
             description += "\tno item";
@@ -45,7 +45,17 @@ public abstract class Character implements Lookable{
         }
         System.out.println(description);
     }
-    public abstract boolean isMe(String st);
+    public boolean isMe(String st) {
+    	return st.equals(this.toString());
+    }
     public abstract String toString();
     public abstract String getDescription();
+    @Override
+    public void look() {
+        String dest = this.getDescription() + "\n\t";
+        if (this.items != null) {
+        	for (Item i : this.items) {dest += "with "+ i+ "\n\t";}
+        }
+        System.out.println(dest);
+    }
 }

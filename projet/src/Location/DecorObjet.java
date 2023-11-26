@@ -22,7 +22,9 @@ public abstract class DecorObjet implements Lookable{
         if (this.item != null) {dest += "with "+ this.item;}
         System.out.println(dest);
     }
-    public abstract boolean isMe(String s);
+    public boolean isMe(String st) {
+    	return st.equals(this.toString());
+    }
     public abstract String toString();
     public abstract String getDescription();
 }

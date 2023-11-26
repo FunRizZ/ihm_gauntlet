@@ -19,16 +19,6 @@ public class Dragon extends WhoFight{
     	lst.add((Item)new Treasure());
     	return lst;
     }
-    
-    @Override
-    public boolean isMe(String st){
-    	switch(st) {
-    	case "Dragon": 
-    		return true;
-    	default : 
-    		return false;
-    	}
-    }
     @Override
     public String getDescription() {
     	return "A dragon, with scales of molten gold and eyes gleaming with ancient wisdom.";

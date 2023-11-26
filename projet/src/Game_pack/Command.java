@@ -76,6 +76,7 @@ public class Command {
 		if (s == "") {this.look();}
 		String[]argv = s.split("\\s+"); //delete whitespace character
 		s = argv[1];
+		if(s.equals("HERO")) {this.GAME.HERO.look();}
 		Location locationH = this.GAME.HERO.getLocation();
 		try {
 			List<DecorObjet> decorObjects = locationH.getDecorObject();

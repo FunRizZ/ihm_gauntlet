@@ -10,15 +10,6 @@ public class Gargolyle extends WhoFight{
     }
     
     @Override
-    public boolean isMe(String st){
-    	switch(st) {
-    	case "Gargolyle": 
-    		return true;
-    	default : 
-    		return false;
-    	}
-    }
-    @Override
     public String getDescription() {
     	return "A gargoyle, stoically perched, exudes an ominous presence with its chiseled features and eternal watchfulness.";
     }

@@ -10,15 +10,6 @@ public class Carcass extends DecorObjet{
 		this(null);
 	}
 	
-    @Override
-    public boolean isMe(String s){
-    	switch(s) {
-    	case "Carcass": 
-    		return true;
-    	default : 
-    		return false;
-    	}
-    }
     public String getDescription() {
     	return "A carcass, lying in stark stillness, bore the weight of mortality.";
     }
