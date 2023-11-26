@@ -1,26 +1,28 @@
 package Location;
 
-
 import Item.Item;
-import Item.key;
 
-public class Cupboard extends DecorObjet{
-	public Cupboard() {
-		super((Item)new key());
+public class Carcass extends DecorObjet{
+	public Carcass(Item i) {
+		super(i);
 	}
+	public Carcass() {
+		this(null);
+	}
+	
     @Override
     public boolean isMe(String s){
     	switch(s) {
-    	case "Cupboard": 
+    	case "Carcass": 
     		return true;
     	default : 
     		return false;
     	}
     }
     public String getDescription() {
-    	return "A dusty cupboard, nestled in the corner, bore the weight of time.";
+    	return "A carcass, lying in stark stillness, bore the weight of mortality.";
     }
     public String toString() {
-    	return "Cupboard";
+    	return "Carcass";
     }
 }

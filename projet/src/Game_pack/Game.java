@@ -52,9 +52,10 @@ public class Game {
 		
         Scanner scanner = new Scanner( System.in ); 
         boolean res = true;
-        while(res) {
+        while(res && !game.HERO.isDead()) {
             res = game.cmd.read(scanner);
         }
         scanner.close();
+        System.out.println("You quit the game");
     }
 }

@@ -4,6 +4,12 @@ package Character;
 import Location.Exit;
 import Location.Location;
 
+import java.util.List;
+
+import Item.Item;
+import Location.Carcass;
+import Location.DecorObjet;
+
 public class Hero extends WhoFight{
     public final static int DEFAULT_HP = 100;
     public final static int DEFAULT_ARMOR = 10;
@@ -12,7 +18,7 @@ public class Hero extends WhoFight{
     private Location location;
 
     public Hero(Location location){
-        super(DEFAULT_HP, DEFAULT_DAMAGE, DEFAULT_ARMOR);
+        super(DEFAULT_HP, DEFAULT_ARMOR, DEFAULT_DAMAGE);
         this.location = location;
     }
 
@@ -22,8 +28,23 @@ public class Hero extends WhoFight{
 
     @Override
     public void fight(WhoFight enemy){
+    	System.out.println("HERO hit with " + this.getDamage() + "damage");
         enemy.reduceHp(this.getDamage());
         System.out.println("HERO hit the " + enemy);
+        System.out.println(enemy + " have : "+ enemy.getHp() +" hp");
+        if (enemy.isDead()) {
+        	System.out.println("HERO kill the "+ enemy);
+        	List<Item> items = enemy.getItems();
+        	if (items != null) {
+        		DecorObjet obj = new Carcass(items.get(0));
+        		this.location.addDecorObjet(obj);
+        	}
+        	else {
+        		DecorObjet obj = new Carcass();
+        		this.location.addDecorObjet(obj);
+        	}
+        this.location.removeCharacter(enemy);	
+        }
     }
 
     public boolean goLocation(Location location) {
@@ -42,7 +63,7 @@ public class Hero extends WhoFight{
         return false;
     }
     @Override
-    public boolean itMe(String st){
+    public boolean isMe(String st){
     	switch(st) {
     	case "Hero": 
     		return true;
@@ -50,6 +71,11 @@ public class Hero extends WhoFight{
     		return false;
     	}
     }
-
-
+    @Override
+    public String getDescription() {
+    	return "The Hero is in "+ this.location.NAME + "in travel to found the longlost treasure hidden in this castel.";
+    }
+    public String toString() {
+    	return "HERO";
+    }
 }

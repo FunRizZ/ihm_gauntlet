@@ -113,7 +113,14 @@ public class Location implements Lookable{
         }
         this.neighbor.put(location,exit);
     }
-
+    public void removeCharacter(Character character){
+        if (this.characters == null){return;}
+        this.characters.remove(character);
+    }
+    public void removeDecorObjet(DecorObjet obj){
+        if (this.decorObjets == null){return;}
+        this.decorObjets.remove(obj);
+    }
     @Override
     public String toString(){
         String description = "you are in the "+ this.NAME +" \n\n";

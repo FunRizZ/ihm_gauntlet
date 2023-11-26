@@ -3,10 +3,10 @@ package Character;
 import java.util.ArrayList;
 import java.util.List;
 
-import Game_pack.OwnException;
+import Game_pack.Lookable;
 import Item.Item;
 
-public abstract class Character {
+public abstract class Character implements Lookable{
     private List<Item> items;
     
     /**
@@ -34,7 +34,7 @@ public abstract class Character {
     }
 
     public void afficheItems(){
-        String description = "the "+ getClass().getSimpleName() +" have : \n";
+        String description = "the "+ this +" have : \n";
         if (this.items == null){
             description += "\tno item";
         }
@@ -45,5 +45,7 @@ public abstract class Character {
         }
         System.out.println(description);
     }
-    public abstract boolean itMe(String st);
+    public abstract boolean isMe(String st);
+    public abstract String toString();
+    public abstract String getDescription();
 }

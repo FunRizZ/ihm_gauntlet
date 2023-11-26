@@ -2,20 +2,16 @@ package Character;
 
 
 public class Knight extends WhoFight{
-    public final static int DEFAULT_HP = 100;
-    public final static int DEFAULT_ARMOR = 10;
-    public final static int DEFAULT_DAMAGE = 200;
+    public final static int DEFAULT_HP = 600;
+    public final static int DEFAULT_ARMOR = 150;
+    public final static int DEFAULT_DAMAGE = 150;
 
     public Knight(){
-        super(DEFAULT_HP, DEFAULT_DAMAGE, DEFAULT_ARMOR);
+        super(DEFAULT_HP, DEFAULT_ARMOR, DEFAULT_DAMAGE);
     }
     
     @Override
-    public void fight(WhoFight enemy){
-        enemy.reduceHp(this.getDamage());
-    }
-    @Override
-    public boolean itMe(String st){
+    public boolean isMe(String st){
     	switch(st) {
     	case "Knight": 
     		return true;
@@ -23,5 +19,11 @@ public class Knight extends WhoFight{
     		return false;
     	}
     }
-
+    @Override
+    public String getDescription() {
+    	return "A mythical knight, with a sword at his side and a shield bearing his family crest.";
+    }
+    public String toString() {
+    	return "Knight";
+    }
 }

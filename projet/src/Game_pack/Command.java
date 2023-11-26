@@ -12,6 +12,7 @@ import Location.DecorObjet;
 
 import Character.Character;
 import Character.WhoFight;
+import Item.Item;
 
 public class Command {
 	public final Game GAME;
@@ -46,6 +47,8 @@ public class Command {
 					this.attack(argv.get(0));
 					break;
 				case "TAKE":
+					if(scanner.hasNext()){argv.add(scanner.next());}
+					this.take(argv.get(0));
 					break;
 				case "USE":
 					break;
@@ -55,7 +58,7 @@ public class Command {
         }catch(Exception e){
 			System.out.println("List of command\n");
 			this.help();
-			if(scanner.hasNext())scanner.next();
+			if(scanner.hasNext())scanner.next(); //avoid infinity loop
 		}
         return true;
     }
@@ -72,13 +75,12 @@ public class Command {
 	public void look(String s){
 		if (s == "") {this.look();}
 		String[]argv = s.split("\\s+"); //delete whitespace character
-		s = argv[0];
+		s = argv[1];
 		Location locationH = this.GAME.HERO.getLocation();
 		try {
 			List<DecorObjet> decorObjects = locationH.getDecorObject();
 			for(DecorObjet obj : decorObjects) {
-				System.out.println(obj);
-				if (obj.itMe(s)) {
+				if (obj.isMe(s)) {
 					obj.look();
 				}
 			}
@@ -87,7 +89,7 @@ public class Command {
 			List<Character> characters = locationH.getCharacters();
 			for(Character c : characters) {
 				if (c instanceof Lookable) {
-					if ( c.itMe(s)) {
+					if ( c.isMe(s)) {
 						((Lookable) c).look();
 					}
 				}
@@ -104,9 +106,8 @@ public class Command {
 		List<Character> characters = locationH.getCharacters();
 		try {
 			for(Character c : characters) {
-				if ( c.itMe(s)) {
+				if ( c.isMe(s)) {
 					if (c instanceof WhoFight) {
-						System.out.println(c);
 						this.GAME.HERO.fight((WhoFight)c);
 					}
 				}
@@ -115,6 +116,17 @@ public class Command {
 		catch(NullPointerException e) {}
 	}
 	public void take(String s) {
-		
+		Location locationH = this.GAME.HERO.getLocation();
+		try {
+			List<DecorObjet> decorObjects = locationH.getDecorObject();
+			for(DecorObjet obj : decorObjects) {
+				if (obj.isMe(s)) {
+					Item i = obj.take();
+					this.GAME.HERO.addItem(i);
+					System.out.println("The HERO take the "+ i);
+					locationH.removeDecorObjet(obj);
+				}
+			}
+		}catch(NullPointerException e) {}
 	}
 }

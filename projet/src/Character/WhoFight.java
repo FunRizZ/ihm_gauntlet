@@ -1,7 +1,9 @@
 package Character;
 
-import Game_pack.OwnException;
+import java.util.List;
+
 import Item.Armor;
+import Item.Item;
 import Item.Shield;
 import Item.Weapon;
 
@@ -17,8 +19,8 @@ public abstract class WhoFight extends Character{
     private Armor armor;
     private Shield shield;
 
-    public WhoFight(int hp, int armor_start, int damage_start, Weapon weapon, Armor armor, Shield shield){
-        super();
+    public WhoFight(int hp, int armor_start, int damage_start, Weapon weapon, Armor armor, Shield shield, List<Item> items){
+        super(items);
         this.hp = hp;
         this.armor_total = armor_start;
         this.damage = damage_start;
@@ -36,20 +38,26 @@ public abstract class WhoFight extends Character{
         }
     }
     public WhoFight(int hp, int armor_start, int damage_start){
-        this(hp, armor_start, damage_start, null, null, null);
+        this(hp, armor_start, damage_start, null, null, null,null);
     }
+    public WhoFight(int hp, int armor_start, int damage_start,List<Item> items){
+        this(hp, armor_start, damage_start, null, null, null,items);
+    }
+
 
     public boolean isDead(){
         return this.hp <= 0;
     }
-    public abstract void fight(WhoFight enemy);
+    public void fight(WhoFight enemy) {
+    	enemy.reduceHp(this.getDamage());
+    }
 
     /**
      * this will reduce hp by damage - enemy.armor_total
      * @param damage is the damage of the character who attack
      */
     public void reduceHp(int damage){
-        this.hp -= damage - this.armor_total;
+        this.hp +=  -damage + this.armor_total;
     }
     public int getDamage() {
         return this.damage;
@@ -61,6 +69,16 @@ public abstract class WhoFight extends Character{
 
     public int getArmor() {
         return this.armor_total;
+    }
+    @Override
+    public void look() {
+    	String dest = this.getDescription()+"\n\t";
+    	dest += "hp : " + this.getHp() + "\n\t";
+    	dest += "armor : " + this.getArmor() + "\n\t";
+    	dest += "damage : " + this.getDamage() + "\n\t";
+    	System.out.println(dest);
+    	this.afficheItems();
+    	
     }
 
 }

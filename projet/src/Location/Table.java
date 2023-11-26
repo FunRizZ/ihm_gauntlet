@@ -1,17 +1,22 @@
 package Location;
 
 public class Table extends DecorObjet{
-	
-    public void look(){
-        System.out.println("i'm a table");
-    }
+	public Table() {
+		super();
+	}
     @Override
-    public boolean itMe(String s){
+    public boolean isMe(String s){
     	switch(s) {
     	case "Table": 
     		return true;
     	default : 
     		return false;
     	}
+    }
+    public String getDescription() {
+    	return "An Table in a wondeful oak wood probably dated about four hundred years ago.";
+    }
+    public String toString() {
+    	return "Table";
     }
 }

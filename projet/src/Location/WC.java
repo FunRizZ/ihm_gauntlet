@@ -7,16 +7,19 @@ public class WC extends DecorObjet{
 	public WC() {
 		super((Item)new Basilic());
 	}
-    public void look(){
-        System.out.println("i'm a wc");
-    }
     @Override
-    public boolean itMe(String s){
+    public boolean isMe(String s){
     	switch(s) {
-    	case "Wc": 
+    	case "WC": 
     		return true;
     	default : 
     		return false;
     	}
+    }
+    public String getDescription() {
+    	return "A toilet where you can hear the voice of a young girl ";
+    }
+    public String toString() {
+    	return "WC";
     }
 }

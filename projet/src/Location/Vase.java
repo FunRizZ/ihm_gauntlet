@@ -7,17 +7,20 @@ public class Vase extends DecorObjet{
 	public Vase() {
 		super((Item)new BeastlyShield());
 	}
-    public void look(){
-        System.out.println("i'm a vase");
-    }
+
     @Override
-    public boolean itMe(String s){
-    	System.out.println(s);
+    public boolean isMe(String s){
     	switch(s) {
     	case "Vase": 
     		return true;
     	default : 
     		return false;
     	}
+    }
+    public String getDescription() {
+    	return "An old vase with a magnificent design which represents all the wealth of the castle";
+    }
+    public String toString() {
+    	return "Vase";
     }
 }
