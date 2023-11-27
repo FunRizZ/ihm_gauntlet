@@ -1,12 +1,12 @@
 package Item;
 
-public class Mouflon extends Armor{
+public class DraconicWard extends Armor{
 	public final static int DEFAULT_ARMOR = 50;
-	public Mouflon() {
+	public DraconicWard() {
 		super(DEFAULT_ARMOR);
 	}
 	@Override
 	public String toString() {
-		return "Mouflon";
+		return "Draconic_Ward";
 	}
 }

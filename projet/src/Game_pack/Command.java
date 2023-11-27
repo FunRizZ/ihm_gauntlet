@@ -51,6 +51,8 @@ public class Command {
 					this.take(argv.get(0));
 					break;
 				case "USE":
+					if(scanner.hasNext()){argv.add(scanner.next());}
+					this.use(argv.get(0));
 					break;
 				case "QUIT":
 					return false;
@@ -129,5 +131,12 @@ public class Command {
 				}
 			}
 		}catch(NullPointerException e) {}
+	}
+	public void use(String s) {
+		for (Item i : this.GAME.HERO.getItems()) {
+			if (i.isMe(s) && i instanceof Useable) {
+					i.use(this.GAME.HERO);
+			}
+		}
 	}
 }

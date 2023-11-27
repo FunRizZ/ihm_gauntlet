@@ -28,13 +28,13 @@ public abstract class WhoFight extends Character{
         this.armor = armor;
         this.shield = shield;
         if(this.armor != null){
-            this.armor_total += this.armor.ARMOR;
+            this.armor_total += this.armor.getArmor();
         }
         if(this.shield != null){
-            this.armor_total += this.shield.ARMOR;
+            this.armor_total += this.shield.getProtection();
         }
         if(this.weapon != null){
-            this.damage += this.weapon.DAMAGE;
+            this.damage += this.weapon.getDamage();
         }
     }
     public WhoFight(int hp, int armor_start, int damage_start){
@@ -66,16 +66,40 @@ public abstract class WhoFight extends Character{
      public int getHp() {
         return this.hp;
     }
-
     public int getArmor() {
         return this.armor_total;
+    }
+    public void setArmor(Armor armor) {
+    	this.armor_total -= this.armor.getArmor();
+    	this.armor_total += armor.getArmor();
+    	this.armor = armor;
+    }
+    public void setShield(Shield shield) {
+    	this.armor_total -= this.shield.getProtection();
+    	this.armor_total += shield.getProtection();
+    	this.shield = shield;
+    }
+    public void setWeapon(Weapon weapon) {
+    	this.damage -= this.weapon.getDamage();
+    	this.damage += weapon.getDamage();
+    	this.weapon = weapon;
     }
     @Override
     public void look() {
     	String dest = this.getDescription()+"\n\t";
     	dest += "hp : " + this.getHp() + "\n\t";
     	dest += "armor : " + this.getArmor() + "\n\t";
-    	dest += "damage : " + this.getDamage() + "\n\t";
+    	dest += "damage : " + this.getDamage() + "\n";
+    	dest += "the "+ this.toString() + " have equip :\n\t";
+    	if (this.armor != null) {
+    		dest += this.armor + "\n\t";
+    	}
+    	if (this.shield != null) {
+    		dest += this.shield + "\n\t";
+    	}
+    	if (this.weapon != null) {
+    		dest += this.weapon + "\n\t";
+    	}
     	System.out.println(dest);
     	this.printItems();
     	

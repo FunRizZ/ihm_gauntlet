@@ -1,12 +1,12 @@
 package Item;
 
-public class NoctaflameSword extends Weapon{
+public class RisingSunAx extends Weapon{
     public final static int DEFAULT_DAMAGE = 200;
-    public NoctaflameSword() {
+    public RisingSunAx() {
     	super(DEFAULT_DAMAGE);
     }
     @Override
     public String toString() {
-    	return "Noctaflame_Sword";
+    	return "Rising_Sun_Ax";
     }
 }

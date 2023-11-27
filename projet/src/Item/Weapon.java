@@ -1,10 +1,20 @@
 package Item;
 
+import Character.Hero;
+
 public abstract class Weapon extends Item{
-    public final int DAMAGE;
+	private final int DAMAGE;
+    
     public Weapon(int dmg) {
     	this.DAMAGE = dmg;
     }
-    @Override
-    public abstract String toString();
+    public int getDamage() {
+    	return this.DAMAGE;
+    }
+	@Override
+	public void use(Hero h) {
+		System.out.println("the hero equip " + this + "\n");
+		h.setWeapon(this);
+		h.remove(this);
+	}
 }

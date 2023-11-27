@@ -3,10 +3,11 @@ package Character;
 import java.util.ArrayList;
 import java.util.List;
 
+import Game_pack.IsMe;
 import Game_pack.Lookable;
 import Item.Item;
 
-public abstract class Character implements Lookable{
+public abstract class Character implements Lookable, IsMe{
     private List<Item> items;
     
     /**
@@ -32,6 +33,15 @@ public abstract class Character implements Lookable{
         }
         this.items.add(item);
     }
+    public void remove(Item item) {
+    	if (this.items == null) {return;}
+    	this.items.remove(item);
+    }
+    public boolean haveItem(Item i) {
+    	int pos = this.items.indexOf(i);
+    	if(pos == -1) {return false;}
+    	else {return true;}
+    }
 
     public void printItems(){
         String description = "the "+ this +" have : \n";
@@ -45,10 +55,6 @@ public abstract class Character implements Lookable{
         }
         System.out.println(description);
     }
-    public boolean isMe(String st) {
-    	return st.equals(this.toString());
-    }
-    public abstract String toString();
     public abstract String getDescription();
     @Override
     public void look() {
