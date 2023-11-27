@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.lang.NullPointerException;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 import Location.Location;
@@ -57,11 +58,12 @@ public class Command {
 				case "QUIT":
 					return false;
 			}
-        }catch(Exception e){
-			System.out.println("List of command\n");
+        }catch(NoSuchElementException e){
+			System.out.println("List of command");
 			this.help();
 			if(scanner.hasNext())scanner.next(); //avoid infinity loop
 		}
+		catch(Exception e){System.out.println("An error was occured : " + e);}
         return true;
     }
 	
@@ -72,10 +74,10 @@ public class Command {
 	}
 
 	public void help() {
-		System.out.println("Command :\n\tGO location\n\tLOOK \n\tATTACK  \n\tTAKE  \n\tUSE  \n\tQUIT");
+		System.out.println("Command :\n\tGO arg1\n\tLOOK [arg1]\n\tATTACK arg1\n\tTAKE arg1 \n\tUSE arg1 \n\tQUIT");
 	}
 	public void look(String s){
-		if (s == "") {this.look();}
+		if (s.equals("")) {this.look(); return;}
 		String[]argv = s.split("\\s+"); //delete whitespace character
 		s = argv[1];
 		if(s.equals("HERO")) {this.GAME.HERO.look();}

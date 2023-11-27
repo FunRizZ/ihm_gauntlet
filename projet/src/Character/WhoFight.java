@@ -70,17 +70,20 @@ public abstract class WhoFight extends Character{
         return this.armor_total;
     }
     public void setArmor(Armor armor) {
-    	this.armor_total -= this.armor.getArmor();
+        try{this.armor_total -= this.armor.getArmor();}
+        catch(NullPointerException e){}
     	this.armor_total += armor.getArmor();
     	this.armor = armor;
     }
     public void setShield(Shield shield) {
-    	this.armor_total -= this.shield.getProtection();
+        try{this.armor_total -= this.shield.getProtection();}
+        catch(NullPointerException e){}
     	this.armor_total += shield.getProtection();
     	this.shield = shield;
     }
     public void setWeapon(Weapon weapon) {
-    	this.damage -= this.weapon.getDamage();
+        try{this.damage -= this.weapon.getDamage();}
+        catch(NullPointerException e){}
     	this.damage += weapon.getDamage();
     	this.weapon = weapon;
     }

@@ -21,6 +21,5 @@ public class CommandTest {
 
     @Test
     public void testGoLocation() {
-
-
+    }
 }
