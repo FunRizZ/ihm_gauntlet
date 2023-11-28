@@ -36,12 +36,16 @@ public class Game {
         
         Location l_out = this.creatLocation(LocationName.ROOM_WITH_TREASURE);
         start.addNeighbor(l_out, new Exit(l_out));
+        Location l_out2 = this.creatLocation(LocationName.KITCHEN);
+    //    l_out.addNeighbor(l_out2, new Exit(l_out2));
         Character Drag = new Dragon();
         start.addCharacter(Drag);
         Character knight = new Knight();
         start.addCharacter(knight);
         DecorObjet vase = new Vase();
         start.addDecorObjet(vase);
+        DecorObjet book = new Book();
+        start.addDecorObjet(book);
     }
 
 

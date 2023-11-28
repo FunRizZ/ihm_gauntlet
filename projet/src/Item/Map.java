@@ -13,17 +13,14 @@ public class Map extends Item{
 		Location locationH = h.getLocation();
 		String dest = "you are in "+ locationH.NAME.toString() + "\n";
 		try {
-			for(Location l : locationH.getNeighbor()) {
-				if (l != null) {
+			for(Location l : locationH.getNeighbor()) { // location 1 degree
+				if( !l.getNeighbor().isEmpty()){ //location 2 degree
 					dest += "after "+ l.NAME.toString() +", you have\n\t";
-					if(l.getNeighbor() != null){
-						for(Location l2 : l.getNeighbor()) { //location in 2 degree
-							dest += l2.NAME.toString()+ "\n\t";
-						}
-						dest +="\n";
-					}else {
-					dest += "after "+ l.NAME.toString() +", you don't have room\n";
+					for(Location l2 : l.getNeighbor()) { 
+						dest += l2.NAME.toString()+ "\n\t";
 					}
+				}else {
+					dest += "after "+ l.NAME.toString() +", you don't have other room\n";
 				}
 			}
 		}

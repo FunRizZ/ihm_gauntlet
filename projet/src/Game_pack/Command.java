@@ -63,7 +63,7 @@ public class Command {
 			this.help();
 			if(scanner.hasNext())scanner.next(); //avoid infinity loop
 		}
-		catch(Exception e){System.out.println("An error was occured : " + e);}
+		catch(Exception e){System.out.println("An error was occured : " + e+ "\n\t"+ e.getMessage());}
         return true;
     }
 	
@@ -124,14 +124,16 @@ public class Command {
 		Location locationH = this.GAME.HERO.getLocation();
 		try {
 			List<DecorObjet> decorObjects = locationH.getDecorObject();
+			DecorObjet objFound = null;
 			for(DecorObjet obj : decorObjects) {
 				if (obj.isMe(s)) {
 					Item i = obj.take();
 					this.GAME.HERO.addItem(i);
 					System.out.println("The HERO take the "+ i);
-					locationH.removeDecorObjet(obj);
+					objFound = obj;
 				}
 			}
+			locationH.removeDecorObjet(objFound);
 		}catch(NullPointerException e) {}
 	}
 	public void use(String s) {
