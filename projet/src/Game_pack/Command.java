@@ -22,6 +22,10 @@ public class Command {
 		this.GAME = game;
 	}
    
+	/**
+	 * read the line and after lunch the command associate
+	 * @return coorepond if the command QUIT is not call
+	 */
 	public boolean read(Scanner scanner){
 		String command = "";
 		List<String> argv = new ArrayList<String>();
@@ -67,15 +71,26 @@ public class Command {
         return true;
     }
 	
+	/**
+	 * @param location where you want to go
+	 * move the hero to the location if it's possible
+	 */
 	public void go(LocationName location) {
 		Location locationH = this.GAME.HERO.getLocation();
 		Location lOut = locationH.getNeighbor(location);
 		this.GAME.HERO.goLocation(lOut);
 	}
 
+	/**
+	 * print the command available
+	 */
 	public void help() {
 		System.out.println("Command :\n\tGO arg1\n\tLOOK [arg1]\n\tATTACK arg1\n\tTAKE arg1 \n\tUSE arg1 \n\tQUIT");
 	}
+	/**
+	 * if s = "" look the location of the hero else try to look the element correspondent 
+	 * @param s  = "" or the name(toString) of something witch is lookable 
+	 */
 	public void look(String s){
 		if (s.equals("")) {this.look(); return;}
 		String[]argv = s.split("\\s+"); //delete whitespace character
@@ -101,6 +116,9 @@ public class Command {
 			}
 		}catch(NullPointerException e) {}
 	}
+	/**
+	 * look the location of the hero
+	 */
 	public void look(){
 		Location locationH = this.GAME.HERO.getLocation();
 		locationH.look();
@@ -120,6 +138,10 @@ public class Command {
 		}
 		catch(NullPointerException e) {}
 	}
+	/**
+	 *  try to take the element correspondent, if it take the hero take the item, after the element is delete
+	 * @param s the name(toString) of a DecorObject
+	 */
 	public void take(String s) {
 		Location locationH = this.GAME.HERO.getLocation();
 		try {
@@ -136,6 +158,10 @@ public class Command {
 			locationH.removeDecorObjet(objFound);
 		}catch(NullPointerException e) {}
 	}
+	/**
+	 * use the Item if it's in hero inventory
+	 * @param s the name(toString) of a Item
+	 */
 	public void use(String s) {
 		for (Item i : this.GAME.HERO.getItems()) {
 			if (i.isMe(s) && i instanceof Useable) {

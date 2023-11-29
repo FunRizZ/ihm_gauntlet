@@ -11,8 +11,8 @@ import Location.Carcass;
 import Location.DecorObjet;
 
 public class Hero extends WhoFight{
-    public final static int DEFAULT_HP = 100;
-    public final static int DEFAULT_ARMOR = 10;
+    public final static int DEFAULT_HP = 1000;
+    public final static int DEFAULT_ARMOR = 50;
     public final static int DEFAULT_DAMAGE = 200;
 
     private Location location;

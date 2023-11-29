@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Scanner;
 
 import Character.Character;
+import Item.Item;
 import Character.*;
 import Location.*;
 
@@ -48,16 +49,45 @@ public class Game {
         start.addDecorObjet(book);
     }
 
+    /**
+     * all the character fight againt the HERO. the HERO don't attack him self
+     */
+    public void attackHero(){
+        Location locationH = this.HERO.getLocation();
+        try{
+            for (Character c : locationH.getCharacters()) {
+                if (c instanceof WhoFight){
+                    ((WhoFight)c).fight(this.HERO);
+                    System.out.println(c + " hit the hero");
+                }
+            }
+        }catch(NullPointerException e){}
+    }
+    /**
+     * @return true if the hero have the treasure else false
+     */
+    public boolean treasureIsGet(){
+        boolean res = false;
+        try{
+            for (Item i : this.HERO.getItems()) {
+                if(i.isMe("Treasure")){res = true;}
+            }
+        }catch(NullPointerException e){}
+        return res;
+    }
+
 
     public static void main(String[] args) throws Exception {
         Game game = new Game();
-        
+        System.out.println("You are the hero who live in a small town and you heared that a abandoned castel was found.\nA old man in the town said to you 'if you get the treasure, i can give you my daughter'\nIn this word the hero go to find the treasure");
         System.out.println(game.HERO.getLocation());
 		
         Scanner scanner = new Scanner( System.in ); 
         boolean res = true;
-        while(res && !game.HERO.isDead()) {
+        while(res && !game.HERO.isDead() && !game.treasureIsGet()) {
             res = game.cmd.read(scanner);
+            game.attackHero();
+            System.out.println("Hero have "+ game.HERO.getHp() + " hp");
         }
         scanner.close();
         System.out.println("You quit the game");
