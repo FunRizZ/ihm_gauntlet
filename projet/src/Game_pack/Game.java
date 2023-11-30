@@ -37,7 +37,7 @@ public class Game {
 
         //Creation of locations rooms
         Location sitting_room = this.createLocation(LocationName.SITING_ROOM);
-        Location kitchen = this.createLocation(LocationName.SITING_ROOM);
+        Location kitchen = this.createLocation(LocationName.KITCHEN);
         Location reception_room = this.createLocation(LocationName.RECPTION_ROOM);
         Location hallway = this.createLocation(LocationName.HALLWAY);
         Location bedroom = this.createLocation(LocationName.BEDROOM);
