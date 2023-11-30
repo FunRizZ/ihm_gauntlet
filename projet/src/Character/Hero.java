@@ -28,7 +28,7 @@ public class Hero extends WhoFight{
 
     @Override
     public void fight(WhoFight enemy){
-    	System.out.println("HERO hit with " + this.getDamage() + "damage");
+    	System.out.println("HERO hit with " + this.getDamage() + " damage");
         enemy.reduceHp(this.getDamage());
         System.out.println("HERO hit the " + enemy);
         System.out.println(enemy + " have : "+ enemy.getHp() +" hp");
