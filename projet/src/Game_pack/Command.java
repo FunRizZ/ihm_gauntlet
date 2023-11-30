@@ -23,8 +23,8 @@ public class Command {
 	}
    
 	/**
-	 * read the line and after lunch the command associate
-	 * @return coorepond if the command QUIT is not call
+	 * read the line and then launch the associated command
+	 * @return coresponds if the command QUIT is not call
 	 */
 	public boolean read(Scanner scanner){
 		String command = "";
@@ -85,13 +85,13 @@ public class Command {
 	}
 
 	/**
-	 * print the command available
+	 * prints the command available
 	 */
 	public void help() {
 		System.out.println("Command :\n\tGO arg1\n\tLOOK [arg1]\n\tATTACK arg1\n\tTAKE arg1 \n\tUSE arg1 \n\tQUIT");
 	}
 	/**
-	 * if s = "" look the location of the hero else try to look the element correspondent 
+	 * if s = "" then look the location of the hero else try to look the corresponding element 
 	 * @param s  = "" or the name(toString) of something witch is lookable 
 	 */
 	public void look(String s){
@@ -120,7 +120,7 @@ public class Command {
 		}catch(NullPointerException e) {}
 	}
 	/**
-	 * look the location of the hero
+	 * looks the location of the hero
 	 */
 	public void look(){
 		Location locationH = this.GAME.HERO.getLocation();
@@ -142,7 +142,7 @@ public class Command {
 		catch(NullPointerException e) {}
 	}
 	/**
-	 *  try to take the element correspondent, if it take the hero take the item, after the element is delete
+	 *  try to take the corresponding element, if it succeeded, the hero takes the item in his inventory, then the element is delete of the room
 	 * @param s the name(toString) of a DecorObject
 	 */
 	public void take(String s) {
@@ -162,7 +162,7 @@ public class Command {
 		}catch(NullPointerException e) {}
 	}
 	/**
-	 * use the Item if it's in hero inventory
+	 * It uses the Item if it's in hero's inventory
 	 * @param s the name(toString) of a Item
 	 */
 	public void use(String s) {

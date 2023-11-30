@@ -9,6 +9,6 @@ public class Treasure extends Item{
 	}
 	@Override
 	public void use(Hero h) {
-		System.out.println("you look the beautiful treasure");
+		System.out.println("You look a beautiful treasure and take it.");
 	}
 }

@@ -24,7 +24,7 @@ public class Location implements Lookable{
     }
 
     /**
-     * creat a empty Location with name : name
+     * creates a empty Location with name : name
      */
     public Location(LocationName name){
         this(null,null,null,name);

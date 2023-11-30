@@ -11,7 +11,7 @@ public class Carcass extends DecorObjet{
 	}
 	
     public String getDescription() {
-    	return "A carcass, lying in stark stillness, bore the weight of mortality.";
+    	return "A carcass, lying in stark stillness, bores the weight of mortality.";
     }
     public String toString() {
     	return "Carcass";

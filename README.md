@@ -6,5 +6,5 @@ Start the game :
     - move to the source of the project
     - launch the following command: java -jar ./Maitrehenry_Dartigues_Vessella.jar 
 
-When the game is started you can write "help" to see all the commande avalable
+When the game is started, you can write "help" to see all the commands available
 

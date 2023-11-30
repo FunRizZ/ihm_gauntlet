@@ -14,7 +14,7 @@ public class ExitKey extends Exit{
 
     /**
      * @param location : destination
-     * @return a boolean wich said if it possible or not
+     * @return a boolean which says if it's possible or not
      */
     public boolean go(Location location){
         Item k;

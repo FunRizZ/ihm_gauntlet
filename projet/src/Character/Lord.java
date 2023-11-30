@@ -8,6 +8,6 @@ public class Lord extends Character{
 
     @Override
     public String getDescription() {
-        return "They are mefiant, they can be yours enemies.";
+        return "He is mefiant, he can become your enemy.";
     }
 }

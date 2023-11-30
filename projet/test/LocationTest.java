@@ -57,7 +57,7 @@ public class LocationTest {
      //test exits
     @Test
     public void testGoExit(){
-        // create an exit
+        // creates an exit
         Location guard_room = new Location(LocationName.GUARD_ROOM);
         Exit exit_to_guard_room = new Exit(guard_room);
 
@@ -66,7 +66,7 @@ public class LocationTest {
     
     @Test
     public void testGoKeyExit(){
-        // create an exit
+        // creates an exit
         Location guard_room = new Location(LocationName.GUARD_ROOM);
         Hero h = new Hero(guard_room);
         Exit exit_to_guard_room = new ExitKey(guard_room,h);
@@ -81,7 +81,7 @@ public class LocationTest {
      
     @Test
     public void testgetExits(){
-        // compare exits with exist created in setup
+        // compares exits with exist created in setup
         int i = 0;
         for(Map.Entry<Location, Exit> exit : neighbor.entrySet()) {
             assertEquals(exit.getValue(), l.getExits().get(i));
@@ -98,16 +98,16 @@ public class LocationTest {
 
     @Test
     public void testAddCharacter(){
-        // create a character
+        // creates a character
         Character c = new Guard();
 
-        // compare size 
+        // compares size 
         int size_before_add = l.getCharacters().size();
         l.addCharacter(c);
         int size_after_add = l.getCharacters().size();
         assertEquals(size_before_add + 1, size_after_add);
 
-        // compare character 
+        // compares character 
         Character last_character = l.getCharacters().get(size_after_add-1);
         assertEquals(last_character, c);
 
@@ -118,7 +118,7 @@ public class LocationTest {
         int size_before_remove= l.getCharacters().size();
         Character character_to_delete = l.getCharacters().get(size_before_remove-1);
 
-        // compare size
+        // compares size
         l.removeCharacter(character_to_delete);
         int size_after_remove = l.getCharacters().size();
         assertEquals(size_before_remove-1, size_after_remove);
@@ -140,13 +140,13 @@ public class LocationTest {
     public void testAddDecorObject() {
         Painting painting = new Painting();
 
-        // compare size
+        // compares size
         int size_before_add = l.getDecorObject().size();
         l.addDecorObjet(painting);
         int size_after_add = l.getDecorObject().size();
         assertEquals(size_before_add+1, size_after_add);
 
-        // compare character 
+        // compares character 
         DecorObjet last_obj = l.getDecorObject().get(size_after_add-1);
         assertEquals(last_obj, painting);
 
@@ -157,7 +157,7 @@ public class LocationTest {
         int size_before_remove = l.getDecorObject().size();
         DecorObjet obj_delete = l.getDecorObject().get(size_before_remove-1);
 
-        // compare size
+        // compares size
         l.removeDecorObjet(obj_delete);
         int size_after_remove = l.getDecorObject().size();
         assertEquals(size_before_remove-1, size_after_remove);
