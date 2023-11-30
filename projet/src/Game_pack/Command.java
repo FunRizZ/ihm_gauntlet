@@ -60,6 +60,7 @@ public class Command {
 					this.use(argv.get(0));
 					break;
 				case "QUIT":
+					System.out.println("You quit the game");
 					return false;
 			}
         }catch(NoSuchElementException e){
@@ -67,7 +68,9 @@ public class Command {
 			this.help();
 			if(scanner.hasNext())scanner.next(); //avoid infinity loop
 		}
-		catch(Exception e){System.out.println("An error was occured : " + e+ "\n\t"+ e.getMessage());}
+		catch(Exception e){
+			//System.out.println("An error was occured : " + e+ "\n\t"+ e.getMessage());
+		}
         return true;
     }
 	

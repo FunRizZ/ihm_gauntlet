@@ -38,7 +38,7 @@ public class Game {
         Location l_out = this.creatLocation(LocationName.ROOM_WITH_TREASURE);
         start.addNeighbor(l_out, new Exit(l_out));
         Location l_out2 = this.creatLocation(LocationName.KITCHEN);
-    //    l_out.addNeighbor(l_out2, new Exit(l_out2));
+        l_out.addNeighbor(l_out2, new Exit(l_out2));
         Character Drag = new Dragon();
         start.addCharacter(Drag);
         Character knight = new Knight();
@@ -90,6 +90,8 @@ public class Game {
             System.out.println("Hero have "+ game.HERO.getHp() + " hp");
         }
         scanner.close();
-        System.out.println("You quit the game");
+        if(game.HERO.isDead()){ System.out.println("Game over, try again");}
+        else if(game.treasureIsGet()){System.out.println("you show the treasure to the old man.\n after that the hero and his wife live happily");}
+        
     }
 }

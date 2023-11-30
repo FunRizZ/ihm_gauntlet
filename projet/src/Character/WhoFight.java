@@ -107,5 +107,6 @@ public abstract class WhoFight extends Character{
     	this.printItems();
     	
     }
+    public void addHp(int i){this.hp += i;}
 
 }
