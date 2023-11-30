@@ -134,7 +134,7 @@ public class Location implements Lookable{
         }
         String strCharacters = "";
         if (this.characters != null){
-            strCharacters  = "in this room you have :\n";
+            strCharacters  = "In this room you have :\n";
             for(Character character : this.characters){
                 strCharacters += "\t" + character + "\n";
             }

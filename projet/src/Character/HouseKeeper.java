@@ -9,7 +9,7 @@ public class HouseKeeper extends Character{
 
     @Override
     public String getDescription() {
-        return "the housekeeper look calm and nice.";
+        return "The housekeeper look calm and nice.";
     }
     
 }

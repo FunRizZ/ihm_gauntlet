@@ -78,8 +78,7 @@ public class Game {
         
         office.addNeighbor(hallway, new Exit(hallway));
         
-        //Special exit
-        secret_passage.addNeighbor(office, new Exit(office));
+        secret_passage.addNeighbor(office, (Exit)new ExitKey(office,this.HERO));  //Special exit
         
         wc.addNeighbor(secret_passage, new Exit(secret_passage));
         wc.addNeighbor(hallway, new Exit(hallway));
@@ -95,7 +94,7 @@ public class Game {
         armory.addNeighbor(guard_room, new Exit(guard_room));
         
         tower.addNeighbor(hallway, new Exit(hallway));
-        tower.addNeighbor(room_treasure, new Exit(room_treasure));
+        tower.addNeighbor(room_treasure, (Exit)new ExitKey(room_treasure,this.HERO)); //Special exit
         
         
         // -----------------Add items and characters in each room-------------------------
