@@ -11,13 +11,13 @@ public abstract class Character implements Lookable, IsMe{
     private List<Item> items;
     
     /**
-     * creat a character with items
+     * create a character with items
      */
     public Character(List<Item> items){
         this.items = items;
     }
     /**
-     * creat a character with no item
+     * create a character with no item
      */
     public Character(){
         this(null);

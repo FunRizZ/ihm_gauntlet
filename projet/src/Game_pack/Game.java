@@ -179,7 +179,7 @@ public class Game {
 
     public static void main(String[] args) throws Exception {
         Game game = new Game();
-        System.out.println("You are the hero who live in a small town and you heared that a abandoned castel was found.\nA old man in the town said to you ``if you get the treasure, i can give you my daughter``\nOn his word the hero go to find the treasure");
+        System.out.println("You are the hero who lived in a small town and you heared that a abandoned castel was found.\nA old man in the town said to you \n``If you get the treasure, i can give you my daughter``\nOn his word the hero go to find the treasure");
         System.out.println(game.HERO.getLocation());
 		
         Scanner scanner = new Scanner( System.in ); 
@@ -190,8 +190,8 @@ public class Game {
             System.out.println("Hero have "+ game.HERO.getHp() + " hp");
         }
         scanner.close();
-        if(game.HERO.isDead()){ System.out.println("Game over, try again");}
-        else if(game.treasureIsGet()){System.out.println("you show the treasure to the old man.\n after that the hero and his wife live happily");}
+        if(game.HERO.isDead()){ System.out.println("Game over, try again !");}
+        else if(game.treasureIsGet()){System.out.println("You show the treasure to the old man,\n after that the hero and his wife live happily.");}
         
     }
 }

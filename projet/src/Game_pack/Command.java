@@ -32,7 +32,7 @@ public class Command {
         try{
             
             System.out.print( "put your command: " );
-            if (scanner.hasNext()) {command = scanner.next("GO|HELP|LOOK|ATTACK|TAKE|USE|QUIT|");}            
+            if (scanner.hasNext()) {command = scanner.next("GO|HELP|LOOK|ATTACK|TAKE|USE|QUIT");}            
             
             switch(command) {
             	case "GO" :

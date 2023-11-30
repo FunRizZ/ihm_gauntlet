@@ -9,7 +9,7 @@ public class WC extends DecorObjet{
 	}
 
     public String getDescription() {
-    	return "A toilet where you can hear the voice of a young girl ";
+    	return "A toilet where you can hear the voice of a young girl.";
     }
     public String toString() {
     	return "WC";

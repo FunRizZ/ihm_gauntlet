@@ -17,7 +17,7 @@ public class Exit {
     
     @Override
     public String toString(){
-        String description = "this exit leads to "+ EXIT_LOCATION.NAME +"\n";
+        String description = "This exit leads to "+ EXIT_LOCATION.NAME +"\n";
         return description;
     }
 }

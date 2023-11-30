@@ -53,7 +53,7 @@ public class Hero extends WhoFight{
 
         if( exit != null){
             if (exit.go(location)){
-                System.out.println("you go in " + location.NAME + "\n");
+                System.out.println("You go in " + location.NAME + "\n");
                 System.out.println(location);
                 this.location = location;
                 return true;

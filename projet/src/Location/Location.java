@@ -123,7 +123,7 @@ public class Location implements Lookable{
     }
     @Override
     public String toString(){
-        String description = "you are in the "+ this.NAME +" \n\n";
+        String description = "You are in the "+ this.NAME +" \n\n";
         String strExits = "They have no issue";
         List<Exit> exits = this.getExits();
         if ( exits != null){
@@ -141,7 +141,7 @@ public class Location implements Lookable{
         }
         String strDecorObjets = "";
         if (this.decorObjets != null){
-            strDecorObjets  = "in this room you can see:\n";
+            strDecorObjets  = "In this room you can see:\n";
             for(DecorObjet decorObjet : this.decorObjets){
             	strDecorObjets += "\t" + decorObjet + "\n";
             }

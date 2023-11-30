@@ -10,7 +10,7 @@ public class Vase extends DecorObjet{
 
 
     public String getDescription() {
-    	return "An old vase with a magnificent design which represents all the wealth of the castle";
+    	return "An old vase with a magnificent design which represents all the wealth of the castle.";
     }
     public String toString() {
     	return "Vase";

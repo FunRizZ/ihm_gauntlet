@@ -8,6 +8,6 @@ public class Prisoner extends Character{
 
     @Override
     public String getDescription() {
-        return "They are prisoners. They have do some terrible crimes";
+        return "They are prisoners. They have done some terrible crimes.";
     }
 }
