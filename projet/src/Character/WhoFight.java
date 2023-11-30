@@ -8,9 +8,10 @@ import Item.Shield;
 import Item.Weapon;
 
 public abstract class WhoFight extends Character{
+    private static final int MAX_HP = 15000;
     private int hp;
     /**
-     * somme of shield and armor
+     * somme of shield and armor and start_armor
      */
     private int armor_total;
     private int damage;
@@ -45,9 +46,16 @@ public abstract class WhoFight extends Character{
     }
 
 
+    /**
+     * @return if the character is dead or not
+     */
     public boolean isDead(){
         return this.hp <= 0;
     }
+    /**
+     * reduce the hp of the enemy in function of the damage
+     * @param enemy
+     */
     public void fight(WhoFight enemy) {
     	enemy.reduceHp(this.getDamage());
     }
@@ -107,6 +115,13 @@ public abstract class WhoFight extends Character{
     	this.printItems();
     	
     }
-    public void addHp(int i){this.hp += i;}
+    /**
+     * increases hp from WhoFight by i up to MAX_HP
+     * @param i nombre of the hp restore
+     */
+    public void addHp(int i){
+        this.hp += i;
+        if (this.hp > WhoFight.MAX_HP){this.hp = WhoFight.MAX_HP;}
+    }
 
 }

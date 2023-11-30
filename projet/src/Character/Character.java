@@ -26,6 +26,14 @@ public abstract class Character implements Lookable, IsMe{
     public List<Item> getItems() {
         return items;
     }
+    public Item getItem(String s) throws NullPointerException{
+        for (Item i : this.getItems()) {
+            if (i.isMe(s)){
+                return i;
+            }
+        }
+        throw new NullPointerException();
+    }
 
     public void addItem(Item item){
         if (this.items == null){

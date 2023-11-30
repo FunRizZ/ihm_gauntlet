@@ -3,7 +3,7 @@ package Item;
 import Character.Hero;
 
 public class Potion extends Item{
-    public static final int HEAL = 200;
+    public static final int HEAL = 500;
     
     @Override
 	public String toString() {

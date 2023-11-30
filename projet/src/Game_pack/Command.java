@@ -166,10 +166,12 @@ public class Command {
 	 * @param s the name(toString) of a Item
 	 */
 	public void use(String s) {
-		for (Item i : this.GAME.HERO.getItems()) {
-			if (i.isMe(s) && i instanceof Useable) {
-					i.use(this.GAME.HERO);
+		try{
+			for (Item i : this.GAME.HERO.getItems()) {
+				if (i.isMe(s) && i instanceof Useable) {
+						i.use(this.GAME.HERO);
+				}
 			}
-		}
+		}catch(NullPointerException e){System.out.println(s+" not in the inventory.");}
 	}
 }

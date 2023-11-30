@@ -20,7 +20,7 @@ public class Game {
         this.cmd = new Command(this);
     }
 
-    public Location creatLocation(LocationName locationName){
+    public Location createLocation(LocationName locationName){
         Location location = new Location(locationName);
         this.locations.add(location);
         return location;
@@ -35,9 +35,9 @@ public class Game {
         Location start = new Location(LocationName.GARDEN);
         this.locations.add(start);
         
-        Location l_out = this.creatLocation(LocationName.ROOM_WITH_TREASURE);
+        Location l_out = this.createLocation(LocationName.ROOM_WITH_TREASURE);
         start.addNeighbor(l_out, new Exit(l_out));
-        Location l_out2 = this.creatLocation(LocationName.KITCHEN);
+        Location l_out2 = this.createLocation(LocationName.KITCHEN);
         l_out.addNeighbor(l_out2, new Exit(l_out2));
         Character Drag = new Dragon();
         start.addCharacter(Drag);
@@ -79,7 +79,7 @@ public class Game {
 
     public static void main(String[] args) throws Exception {
         Game game = new Game();
-        System.out.println("You are the hero who live in a small town and you heared that a abandoned castel was found.\nA old man in the town said to you 'if you get the treasure, i can give you my daughter'\nIn this word the hero go to find the treasure");
+        System.out.println("You are the hero who live in a small town and you heared that a abandoned castel was found.\nA old man in the town said to you ``if you get the treasure, i can give you my daughter``\nOn his word the hero go to find the treasure");
         System.out.println(game.HERO.getLocation());
 		
         Scanner scanner = new Scanner( System.in ); 
