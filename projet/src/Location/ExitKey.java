@@ -17,6 +17,10 @@ public class ExitKey extends Exit{
      * @return a boolean wich said if it possible or not
      */
     public boolean go(Location location){
-        return location == EXIT_LOCATION && this.HERO.getItem("key").equals((Item)new key());
+        Item k;
+        try{
+            k = this.HERO.getItem("key");
+        }catch(NullPointerException e){return false;}
+        return location == EXIT_LOCATION && (k instanceof key);
     }
 }

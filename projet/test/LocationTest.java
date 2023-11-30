@@ -4,7 +4,10 @@ import org.junit.Test;
 import Character.Character;
 import Character.Dragon;
 import Character.Guard;
+import Character.Hero;
 import Character.Knight;
+import Item.Item;
+import Item.key;
 import Location.LocationName;
 import Location.Painting;
 import Location.Table;
@@ -12,6 +15,7 @@ import Location.Location;
 import Location.Book;
 import Location.DecorObjet;
 import Location.Exit;
+import Location.ExitKey;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -50,18 +54,27 @@ public class LocationTest {
         l = new Location(neighbor, characters, decorObjets, LocationName.GARDEN);
     }
 
-     
+     //test exits
     @Test
-    public void testaddNeighbor(){
+    public void testGoExit(){
         // create an exit
         Location guard_room = new Location(LocationName.GUARD_ROOM);
-        int nb_exit = l.getExits().size();
         Exit exit_to_guard_room = new Exit(guard_room);
-        
-        // compare size
-        l.addNeighbor(guard_room, exit_to_guard_room);
-        int new_size = l.getExits().size();
-        assertEquals(nb_exit+1, new_size);
+
+        assertTrue(exit_to_guard_room.go(guard_room));
+    }
+    
+    @Test
+    public void testGoKeyExit(){
+        // create an exit
+        Location guard_room = new Location(LocationName.GUARD_ROOM);
+        Hero h = new Hero(guard_room);
+        Exit exit_to_guard_room = new ExitKey(guard_room,h);
+
+        assertFalse(exit_to_guard_room.go(guard_room));
+
+        h.addItem((Item) new key());
+        assertTrue(exit_to_guard_room.go(guard_room));
     }
     
 
