@@ -8,11 +8,11 @@ public class Gargolyle extends WhoFight{
     public Gargolyle(){
         super(DEFAULT_HP, DEFAULT_ARMOR, DEFAULT_DAMAGE);
     }
-    
     @Override
     public String getDescription() {
     	return "A gargoyle, stoically perched, exudes an ominous presence with its chiseled features and eternal watchfulness.";
     }
+    @Override
     public String toString() {
     	return "Gargoyle";
     }

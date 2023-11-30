@@ -1,8 +1,11 @@
 package Location;
 
+import Item.DeadraHammer;
+import Item.Item;
+
 public class Table extends DecorObjet{
 	public Table() {
-		super();
+		super((Item)new DeadraHammer());
 	}
 
     public String getDescription() {

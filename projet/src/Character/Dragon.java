@@ -12,9 +12,9 @@ public class Dragon extends WhoFight{
     public final static int DEFAULT_DAMAGE = 200;
 
     public Dragon(){
-        super(DEFAULT_HP, DEFAULT_ARMOR, DEFAULT_DAMAGE,creatItem());
+        super(DEFAULT_HP, DEFAULT_ARMOR, DEFAULT_DAMAGE,createItem());
     }
-    private static List<Item> creatItem(){
+    private static List<Item> createItem(){
     	List<Item> lst = new ArrayList<Item>();
     	lst.add((Item)new Treasure());
     	return lst;
@@ -23,6 +23,7 @@ public class Dragon extends WhoFight{
     public String getDescription() {
     	return "A dragon, with scales of molten gold and eyes gleaming with ancient wisdom.";
     }
+    @Override
     public String toString() {
     	return "Dragon";
     }
