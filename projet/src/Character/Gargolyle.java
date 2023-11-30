@@ -1,12 +1,23 @@
 package Character;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import Item.Item;
+import Item.Potion;
+
 public class Gargolyle extends WhoFight{
     public final static int DEFAULT_HP = 250;
     public final static int DEFAULT_ARMOR = 10;
     public final static int DEFAULT_DAMAGE = 200;
 
     public Gargolyle(){
-        super(DEFAULT_HP, DEFAULT_ARMOR, DEFAULT_DAMAGE);
+        super(DEFAULT_HP, DEFAULT_ARMOR, DEFAULT_DAMAGE,createItem());
+    }
+    private static List<Item> createItem(){
+    	List<Item> lst = new ArrayList<Item>();
+    	lst.add((Item)new Potion());
+    	return lst;
     }
     @Override
     public String getDescription() {

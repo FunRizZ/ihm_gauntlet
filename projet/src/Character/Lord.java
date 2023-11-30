@@ -1,13 +1,13 @@
 package Character;
 
-public class Lordly extends Character{
+public class Lord extends Character{
     @Override
     public String toString() {
-        return "Lordly";
+        return "Lord";
     }
 
     @Override
     public String getDescription() {
-        return "they mefiant, they can be yours enemies.";
+        return "They mefiant, they can be yours enemies.";
     }
 }

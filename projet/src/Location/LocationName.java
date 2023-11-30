@@ -16,7 +16,8 @@ public enum LocationName{
     ROOM_WITH_TREASURE,
     CHAPEL,
     GUARD_ROOM,
-    TOWER;
+    TOWER,
+    OFFICE;
     
     public static LocationName stringToLocationName(String str) throws OwnException{
         switch(str) {
@@ -48,6 +49,8 @@ public enum LocationName{
                 return GUARD_ROOM;
             case "TOWER":
                 return TOWER;
+            case "OFFICE":
+                return OFFICE;
     		default:
                 throw new OwnException("stringToLocationName","String not reconized");
         }
