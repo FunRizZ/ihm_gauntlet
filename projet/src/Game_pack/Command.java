@@ -15,6 +15,8 @@ import Character.Character;
 import Character.WhoFight;
 import Item.Item;
 
+//To add a command you have to add the name of the command in commandRecognized and in the switch
+
 public class Command {
 	public final Game GAME;
 	
@@ -28,11 +30,12 @@ public class Command {
 	 */
 	public boolean read(Scanner scanner){
 		String command = "";
+		String commandRecognized = "GO|HELP|LOOK|ATTACK|TAKE|USE|QUIT"; //add name to recognized the command 
 		List<String> argv = new ArrayList<String>();
         try{
             
             System.out.print( "put your command: " );
-            if (scanner.hasNext()) {command = scanner.next("GO|HELP|LOOK|ATTACK|TAKE|USE|QUIT");}            
+            if (scanner.hasNext()) {command = scanner.next(commandRecognized);}           
             
             switch(command) {
             	case "GO" :
