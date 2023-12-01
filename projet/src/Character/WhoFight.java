@@ -11,7 +11,7 @@ public abstract class WhoFight extends Character{
     private static final int MAX_HP = 15000;
     private int hp;
     /**
-     * somme of shield and armor and start_armor
+     * some of shield, armor and start_armor
      */
     private int armor_total;
     private int damage;
@@ -53,7 +53,7 @@ public abstract class WhoFight extends Character{
         return this.hp <= 0;
     }
     /**
-     * reduce the hp of the enemy in function of the damage
+     * reduces the hp of the enemy in function of the damage
      * @param enemy
      */
     public void fight(WhoFight enemy) {
@@ -61,7 +61,7 @@ public abstract class WhoFight extends Character{
     }
 
     /**
-     * this will reduce hp by damage - enemy.armor_total
+     * this will reduces hp by damage - enemy.armor_total
      * @param damage is the damage of the character who attack
      */
     public void reduceHp(int damage){
@@ -117,7 +117,7 @@ public abstract class WhoFight extends Character{
     }
     /**
      * increases hp from WhoFight by i up to MAX_HP
-     * @param i nombre of the hp restore
+     * @param i number of hp restores
      */
     public void addHp(int i){
         this.hp += i;

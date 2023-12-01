@@ -27,7 +27,7 @@ public class Game {
     }
 
     /**
-     * genere the map, store in this.locations. The first Location is GARDEN
+     * Generates the map, store in 'this.locations'. The first Location is GARDEN
      */
     public void generateMap(){
         this.locations = new ArrayList<Location>();
@@ -100,7 +100,8 @@ public class Game {
         // -----------------Add items and characters in each room-------------------------
                 
         // In this game, there is two keys : one for the secret passage and one for access to the room with treasure
-        // You can use one of this keys to the secret passage or for access to the room with treasure
+        // You can use one of those keys to the secret passage or for access to the room with treasure
+        // It doesn't matters
         // But if you use it, the key will be destroy
         
         // Garden
@@ -116,7 +117,7 @@ public class Game {
         hallway.addCharacter((Character)new Gargolyle());
         hallway.addCharacter((Character)new HouseKeeper());
         
-        // Bedroom (with a key)
+        // Bedroom (with a key in a cupboard)
         bedroom.addCharacter((Character)new Gargolyle());
         bedroom.addDecorObjet((DecorObjet)new Cupboard());
         
@@ -129,7 +130,7 @@ public class Game {
         // WC
         wc.addDecorObjet((DecorObjet)new WC());
         
-        // Chapel (with a key)
+        // Chapel (with a key in a cupboard)
         chapel.addDecorObjet((DecorObjet)new Cupboard());
         
         // Guard_room
@@ -150,7 +151,7 @@ public class Game {
     }
 
     /**
-     * all the character fight againt the HERO. the HERO don't attack him self
+     * all the characters fight againt the HERO. The HERO don't attacks himself
      */
     public void attackHero(){
         Location locationH = this.HERO.getLocation();
@@ -164,7 +165,7 @@ public class Game {
         }catch(NullPointerException e){}
     }
     /**
-     * @return true if the hero have the treasure else false
+     * @return true if the hero has the treasure else false
      */
     public boolean treasureIsGet(){
         boolean res = false;
@@ -179,7 +180,7 @@ public class Game {
 
     public static void main(String[] args) throws Exception {
         Game game = new Game();
-        System.out.println("You are the hero who lived in a small town and you heared that a abandoned castel was found.\nA old man in the town said to you \n``If you get the treasure, i can give you my daughter``\nOn his word the hero go to find the treasure");
+        System.out.println("You are the hero who lived in a small town and you heared that a abandoned castel was found.\nA old man in the town said to you \n``If you get the treasure, I can give you my daughter``\nOn his word the hero go to find the treasure");
         System.out.println(game.HERO.getLocation());
 		
         Scanner scanner = new Scanner( System.in ); 

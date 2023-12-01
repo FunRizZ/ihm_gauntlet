@@ -13,7 +13,7 @@ public abstract class Weapon extends Item{
     }
 	@Override
 	public void use(Hero h) {
-		System.out.println("the hero equip " + this + "\n");
+		System.out.println("The hero equips " + this + "\n");
 		h.setWeapon(this);
 		h.remove(this);
 	}

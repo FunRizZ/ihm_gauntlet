@@ -11,7 +11,7 @@ public class Potion extends Item{
 	}
 	@Override
 	public void use(Hero h) {
-		System.out.println("potion used in "+ h.getLocation().NAME + "\n");
+		System.out.println("Potion used in "+ h.getLocation().NAME + "\n");
         h.addHp(HEAL);
 	}
 }

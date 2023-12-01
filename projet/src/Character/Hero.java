@@ -48,7 +48,7 @@ public class Hero extends WhoFight{
     }
 
     public boolean goLocation(Location location) {
-        //recupération de l'exit
+        // exit recovery
         Exit exit = this.location.getExit(location);
 
         if( exit != null){
@@ -59,12 +59,12 @@ public class Hero extends WhoFight{
                 return true;
             }
         }
-        System.out.println("you stay in the room \n");
+        System.out.println("You stay in the room \n");
         return false;
     }
     @Override
     public String getDescription() {
-    	return "The Hero is in "+ this.location.NAME + ". His in travel to found the long-lost treasure hidden in this castel.";
+    	return "The Hero is in "+ this.location.NAME + ". He is in travel to found the long-lost treasure hidden in this castel.";
     }
     public String toString() {
     	return "HERO";

@@ -10,7 +10,7 @@ public class Cupboard extends DecorObjet{
 	}
 
     public String getDescription() {
-    	return "A dusty cupboard, nestled in the corner, bore the weight of time.";
+    	return "A dusty cupboard, nestled in the corner, bores the weight of time.";
     }
     public String toString() {
     	return "Cupboard";
