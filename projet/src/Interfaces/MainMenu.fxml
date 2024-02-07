@@ -5,7 +5,7 @@
 
 <BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="Interfaces.MainMenu">
     <center>
-        <VBox alignment="CENTER">
+        <VBox alignment="CENTER" spacing="10" scaleX="2" scaleY="2">
             <Button text="New Game"></Button>
             <Button text="Load Game"></Button>
             <Button text="Map Creator"></Button>
