@@ -3,15 +3,14 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="Interfaces.MainMenu">
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="Interfaces.MapCreatorMenu">
     <center>
         <VBox alignment="CENTER" spacing="10" scaleX="2" scaleY="2">
-            <Button text="New Game"></Button>
-            <Button text="Load Game"></Button>
-            <Button text="Map Creator"></Button>
-            <Button text="Scoreboard"></Button>
+            <Button text="New Map"></Button>
+            <Button text="Load Map"></Button>
             <Button text="Settings"></Button>
             <Button text="Credits"></Button>
+            <Button text="Switch to the Game"></Button>
             <Button text="Quit to Desktop"></Button>
         </VBox>
     </center>
