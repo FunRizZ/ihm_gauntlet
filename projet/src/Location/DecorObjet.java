@@ -4,14 +4,15 @@ import Game_pack.IsMe;
 import Game_pack.Lookable;
 import Item.Item;
 
-public abstract class DecorObjet implements Lookable, IsMe{
+public abstract class DecorObjet extends Lookable implements IsMe{
     public Item item;
     
-    public DecorObjet(Item item) {
-    	this.item = item;
+    public DecorObjet(Item item, int x, int y) {
+    	super(x, y);
+        this.item = item;
     }
-    public DecorObjet() {
-    	this(null);
+    public DecorObjet(int x, int y) {
+    	this(null, x, y);
     }
     public Item take() {
     	Item i = this.item;

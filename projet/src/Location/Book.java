@@ -5,8 +5,8 @@ import Item.Map;
 
 public class Book extends DecorObjet{
 	
-	public Book() {
-		super((Item)new Map());
+	public Book(int x, int y) {
+		super((Item)new Map(), x, y);
 	}
 	
     public String getDescription() {

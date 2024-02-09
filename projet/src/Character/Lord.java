@@ -1,6 +1,7 @@
 package Character;
 
 public class Lord extends Character{
+    public Lord(int x, int y){super(x,y);}
     @Override
     public String toString() {
         return "Lord";

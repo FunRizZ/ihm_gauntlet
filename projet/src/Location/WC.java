@@ -4,8 +4,8 @@ import Item.Item;
 import Item.Basilic;
 
 public class WC extends DecorObjet{
-	public WC() {
-		super((Item)new Basilic());
+	public WC(int x, int y) {
+		super((Item)new Basilic(), x, y);
 	}
 
     public String getDescription() {

@@ -17,8 +17,8 @@ public class Hero extends WhoFight{
 
     private Location location;
 
-    public Hero(Location location){
-        super(DEFAULT_HP, DEFAULT_ARMOR, DEFAULT_DAMAGE);
+    public Hero(Location location, int x, int y){
+        super(DEFAULT_HP, DEFAULT_ARMOR, DEFAULT_DAMAGE, x, y);
         this.location = location;
     }
 
@@ -36,11 +36,11 @@ public class Hero extends WhoFight{
         	System.out.println("HERO kill the "+ enemy);
         	List<Item> items = enemy.getItems();
         	if (items != null) {
-        		DecorObjet obj = new Carcass(items.get(0));
+        		DecorObjet obj = new Carcass(items.get(0), enemy.getPosX(), enemy.getPosY());
         		this.location.addDecorObjet(obj);
         	}
         	else {
-        		DecorObjet obj = new Carcass();
+        		DecorObjet obj = new Carcass(enemy.getPosX(), enemy.getPosY());
         		this.location.addDecorObjet(obj);
         	}
         this.location.removeCharacter(enemy);	

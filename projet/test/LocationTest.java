@@ -1,3 +1,4 @@
+import Game_pack.Lookable;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -28,38 +29,32 @@ import static org.junit.Assert.*;
 
 public class LocationTest {
     private static Location l;
-    private static Map<Location,Exit> neighbor;
-    private static List<Character> characters;
-    private static List<DecorObjet> decorObjets;
-
-
+    private static int sizeX = 50;
+    private static int sizeY = 50;
     @BeforeClass
     public static void setup() {
         // create a location with characters, objects and exits
-        characters = new ArrayList<Character>();
-        characters.add(new Knight());
-        characters.add(new Dragon());
+        Lookable[][] board = new Lookable[sizeX][sizeY];
+        board[9][9] = new Knight(9,9);
+        board[7][10] = new Dragon(7,10);
 
-        decorObjets = new ArrayList<DecorObjet>();
-        decorObjets.add(new Table());
-        decorObjets.add(new Book());
+        board[1][1] = new Table(1,1);
+        board[2][2] = new Book(2, 2);
 
-        Location exit1 = new Location(LocationName.ARMORY);
-        Location exit2 = new Location(LocationName.KITCHEN);
+        Location exit1 = new Location(sizeX, sizeY, LocationName.ARMORY);
+        Location exit2 = new Location(sizeX, sizeY, LocationName.KITCHEN);
 
-        neighbor = new HashMap<Location,Exit>();
-        neighbor.put(exit1, new Exit(exit1));
-        neighbor.put(exit2, new Exit(exit2));
-
-        l = new Location(neighbor, characters, decorObjets, LocationName.GARDEN);
+        board[1][5] = new Exit(exit1,1,5);
+        board[5][1] = new Exit(exit2,5,1);
+        l = new Location(board, LocationName.GARDEN);
     }
 
      //test exits
     @Test
     public void testGoExit(){
         // creates an exit
-        Location guard_room = new Location(LocationName.GUARD_ROOM);
-        Exit exit_to_guard_room = new Exit(guard_room);
+        Location guard_room = new Location(sizeX, sizeY, LocationName.GUARD_ROOM);
+        Exit exit_to_guard_room = new Exit(guard_room,1,3);
 
         assertTrue(exit_to_guard_room.go(guard_room));
     }
@@ -67,9 +62,9 @@ public class LocationTest {
     @Test
     public void testGoKeyExit(){
         // creates an exit
-        Location guard_room = new Location(LocationName.GUARD_ROOM);
-        Hero h = new Hero(guard_room);
-        Exit exit_to_guard_room = new ExitKey(guard_room,h);
+        Location guard_room = new Location(sizeX, sizeY,LocationName.GUARD_ROOM);
+        Hero h = new Hero(guard_room,0 ,0 );
+        Exit exit_to_guard_room = new ExitKey(guard_room,h,20,20);
 
         assertFalse(exit_to_guard_room.go(guard_room));
 
@@ -81,25 +76,20 @@ public class LocationTest {
      
     @Test
     public void testgetExits(){
-        // compares exits with exist created in setup
-        int i = 0;
-        for(Map.Entry<Location, Exit> exit : neighbor.entrySet()) {
-            assertEquals(exit.getValue(), l.getExits().get(i));
-            i++;
-        }
+        // compares lenght of exits with the number of exit add
+        assertEquals(2, l.getExits().size());
     }
     
 
     @Test
     public void testgetCharacters(){
-        List<Character> ch = l.getCharacters();
-        assertEquals(ch, characters);
+        assertEquals(2, l.getCharacters().size());
     }
 
     @Test
     public void testAddCharacter(){
         // creates a character
-        Character c = new Guard();
+        Character c = new Guard(32,32);
 
         // compares size 
         int size_before_add = l.getCharacters().size();
@@ -110,7 +100,6 @@ public class LocationTest {
         // compares character 
         Character last_character = l.getCharacters().get(size_after_add-1);
         assertEquals(last_character, c);
-
     }
 
     @Test
@@ -132,38 +121,38 @@ public class LocationTest {
 
     @Test
     public void testDecorObject(){
-        List<DecorObjet> obj = l.getDecorObject();
-        assertEquals(obj, decorObjets);
+        // compares lenght of getDecorObject with the number of exit add
+        assertEquals(2, l.getDecorObjects().size());
     }
 
     @Test
     public void testAddDecorObject() {
-        Painting painting = new Painting();
+        Painting painting = new Painting(42,42);
 
         // compares size
-        int size_before_add = l.getDecorObject().size();
+        int size_before_add = l.getDecorObjects().size();
         l.addDecorObjet(painting);
-        int size_after_add = l.getDecorObject().size();
+        int size_after_add = l.getDecorObjects().size();
         assertEquals(size_before_add+1, size_after_add);
 
         // compares character 
-        DecorObjet last_obj = l.getDecorObject().get(size_after_add-1);
+        DecorObjet last_obj = l.getDecorObjects().get(size_after_add-1);
         assertEquals(last_obj, painting);
 
     }
 
     @Test
     public void testRemoveDecorObject() {
-        int size_before_remove = l.getDecorObject().size();
-        DecorObjet obj_delete = l.getDecorObject().get(size_before_remove-1);
+        int size_before_remove = l.getDecorObjects().size();
+        DecorObjet obj_delete = l.getDecorObjects().get(size_before_remove-1);
 
         // compares size
         l.removeDecorObjet(obj_delete);
-        int size_after_remove = l.getDecorObject().size();
+        int size_after_remove = l.getDecorObjects().size();
         assertEquals(size_before_remove-1, size_after_remove);
 
         // verify that last_char isn't in the list anymore
-        assertFalse(l.getDecorObject().contains(obj_delete));
+        assertFalse(l.getDecorObjects().contains(obj_delete));
     }
     
 }

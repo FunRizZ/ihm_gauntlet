@@ -11,8 +11,8 @@ public class Gargolyle extends WhoFight{
     public final static int DEFAULT_ARMOR = 10;
     public final static int DEFAULT_DAMAGE = 200;
 
-    public Gargolyle(){
-        super(DEFAULT_HP, DEFAULT_ARMOR, DEFAULT_DAMAGE,createItem());
+    public Gargolyle(int x, int y){
+        super(DEFAULT_HP, DEFAULT_ARMOR, DEFAULT_DAMAGE,createItem(), x, y);
     }
     private static List<Item> createItem(){
     	List<Item> lst = new ArrayList<Item>();

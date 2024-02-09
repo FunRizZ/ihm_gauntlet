@@ -4,8 +4,8 @@ import Item.DeadraHammer;
 import Item.Item;
 
 public class Table extends DecorObjet{
-	public Table() {
-		super((Item)new DeadraHammer());
+	public Table(int x, int y) {
+		super((Item)new DeadraHammer(), x, y);
 	}
 
     public String getDescription() {

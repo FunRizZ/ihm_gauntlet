@@ -1,4 +1,5 @@
 
+import Game_pack.Lookable;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -22,16 +23,17 @@ public class CharacterTest {
 
     // Initializing variables before all tests
     @BeforeClass
-    public static void setup() {        
-        Location l = new Location(LocationName.GARDEN);
+    public static void setup() {
+        int sizeY = 50;
+        int sizeX = 50;
+        Location l = new Location(sizeX, sizeY, LocationName.GARDEN);
 
-        h = new Hero(l);
+        h = new Hero(l,5,5);
         characters = new ArrayList<WhoFight>();
-        characters.add(new Knight());
-        characters.add(new Dragon());
-        characters.add(new Gargolyle());
-        characters.add(new Guard());
-
+        characters.add(new Knight(1,1));
+        characters.add(new Dragon(2,2));
+        characters.add(new Gargolyle(3,3));
+        characters.add(new Guard(4,4));
     }
 
     

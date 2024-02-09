@@ -20,8 +20,8 @@ public abstract class WhoFight extends Character{
     private Armor armor;
     private Shield shield;
 
-    public WhoFight(int hp, int armor_start, int damage_start, Weapon weapon, Armor armor, Shield shield, List<Item> items){
-        super(items);
+    public WhoFight(int hp, int armor_start, int damage_start, Weapon weapon, Armor armor, Shield shield, List<Item> items, int x, int y){
+        super(items, x, y);
         this.hp = hp;
         this.armor_total = armor_start;
         this.damage = damage_start;
@@ -38,11 +38,11 @@ public abstract class WhoFight extends Character{
             this.damage += this.weapon.getDamage();
         }
     }
-    public WhoFight(int hp, int armor_start, int damage_start){
-        this(hp, armor_start, damage_start, null, null, null,null);
+    public WhoFight(int hp, int armor_start, int damage_start, int x, int y){
+        this(hp, armor_start, damage_start, null, null, null,null, x, y);
     }
-    public WhoFight(int hp, int armor_start, int damage_start,List<Item> items){
-        this(hp, armor_start, damage_start, null, null, null,items);
+    public WhoFight(int hp, int armor_start, int damage_start,List<Item> items, int x, int y){
+        this(hp, armor_start, damage_start, null, null, null,items, x, y);
     }
 
 

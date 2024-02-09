@@ -1,9 +1,12 @@
 package Location;
 
-public class Exit {
+import Game_pack.Lookable;
+
+public class Exit extends Lookable {
     public final Location EXIT_LOCATION;
 
-    public Exit(Location exit){
+    public Exit(Location exit, int x, int y){
+        super(x, y);
         this.EXIT_LOCATION = exit;
     }
 
@@ -20,4 +23,7 @@ public class Exit {
         String description = "This exit leads to "+ EXIT_LOCATION.NAME +"\n";
         return description;
     }
+
+    @Override
+    public void look() {}
 }

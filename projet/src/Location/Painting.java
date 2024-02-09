@@ -2,8 +2,8 @@ package Location;
 
 
 public class Painting extends DecorObjet{
-	public Painting() {
-		super();
+	public Painting(int x, int y) {
+		super(x, y);
 	}
 	
     public String getDescription() {

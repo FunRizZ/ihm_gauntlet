@@ -7,8 +7,8 @@ import Item.key;
 public class ExitKey extends Exit{
     public final Hero HERO;
 
-    public ExitKey(Location exit, Hero h){
-        super(exit);
+    public ExitKey(Location exit, Hero h, int x, int y){
+        super(exit, x, y);
         this.HERO = h;
     }
 

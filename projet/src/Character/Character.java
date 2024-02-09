@@ -7,20 +7,20 @@ import Game_pack.IsMe;
 import Game_pack.Lookable;
 import Item.Item;
 
-public abstract class Character implements Lookable, IsMe{
+public abstract class Character extends Lookable implements IsMe{
     private List<Item> items;
-    
     /**
      * creates a character with items
      */
-    public Character(List<Item> items){
+    public Character(List<Item> items, int x, int y){
+        super(x,y);
         this.items = items;
     }
     /**
      * creates a character with no items
      */
-    public Character(){
-        this(null);
+    public Character(int x, int y){
+        this(null, x, y);
     }
 
     public List<Item> getItems() {

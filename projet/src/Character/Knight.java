@@ -11,8 +11,8 @@ public class Knight extends WhoFight{
     public final static int DEFAULT_ARMOR = 150;
     public final static int DEFAULT_DAMAGE = 150;
 
-    public Knight(){
-        super(DEFAULT_HP, DEFAULT_ARMOR, DEFAULT_DAMAGE,createItem());
+    public Knight(int x, int y){
+        super(DEFAULT_HP, DEFAULT_ARMOR, DEFAULT_DAMAGE,createItem(), x, y);
     }
     private static List<Item> createItem(){
     	List<Item> lst = new ArrayList<Item>();

@@ -5,8 +5,8 @@ import Item.Item;
 import Item.key;
 
 public class Cupboard extends DecorObjet{
-	public Cupboard() {
-		super((Item)new key());
+	public Cupboard(int x, int y) {
+		super((Item)new key(), x, y);
 	}
 
     public String getDescription() {

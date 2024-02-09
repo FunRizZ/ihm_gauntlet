@@ -4,8 +4,8 @@ import Item.Item;
 import Item.BeastlyShield;
 
 public class Vase extends DecorObjet{
-	public Vase() {
-		super((Item)new BeastlyShield());
+	public Vase(int x, int y) {
+		super((Item)new BeastlyShield(), x, y);
 	}
 
 

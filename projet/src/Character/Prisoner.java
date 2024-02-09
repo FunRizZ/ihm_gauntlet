@@ -1,6 +1,7 @@
 package Character;
 
 public class Prisoner extends Character{
+    public Prisoner(int x, int y){super(x, y);}
     @Override
     public String toString() {
         return "Prisoners";

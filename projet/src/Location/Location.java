@@ -10,7 +10,7 @@ public class Location{
     private final Lookable[][] BOARD;
     private final int SIZE_X;
     private final int SIZE_Y;
-    private final LocationName NAME;
+    public final LocationName NAME;
 
     public Location(Lookable[][] board,LocationName name){
         this.BOARD = board;
@@ -190,9 +190,4 @@ public class Location{
 
         return description + strExits + strCharacters + strDecorObjets;
     }
-
-    public void look(){
-        System.out.println(this);
-    }
-
 }
