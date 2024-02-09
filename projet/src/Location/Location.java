@@ -1,41 +1,51 @@
 package Location;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
 
 import Character.Character;
 import Game_pack.Lookable;
 
-public class Location implements Lookable{
-    public final LocationName NAME;
-    private Map<Location,Exit> neighbor;
-    private List<Character> characters;
-    private List<DecorObjet> decorObjets;
+public class Location{
+    private final Lookable[][] BOARD;
+    private final int SIZE_X;
+    private final int SIZE_Y;
+    private final LocationName NAME;
 
-    public Location(Map<Location,Exit> neighbor, List<Character> characters, List<DecorObjet> decorObjets, LocationName name){
+    public Location(Lookable[][] board,LocationName name){
+        this.BOARD = board;
+        this.SIZE_X = board.length;
+        this.SIZE_Y = board[0].length;
         this.NAME = name;
-        this.neighbor = neighbor;
-        this.characters = characters;
-        this.decorObjets = decorObjets;
     }
 
     /**
-     * creates a empty Location with name : name
+     * creates a Location with empty board
+     * @param sizeX size x of the board
+     * @param sizeY size y of the board
      */
-    public Location(LocationName name){
-        this(null,null,null,name);
+    public Location(int sizeX, int sizeY, LocationName name){
+        this.BOARD = new Lookable[sizeX][sizeY];
+        this.SIZE_X = sizeX;
+        this.SIZE_Y = sizeY;
+        this.NAME = name;
+        this.resetBoard();
     }
-
+    public void resetBoard(){
+        for(int x = 0; x < this.SIZE_X; x++){
+            for (int y = 0; y < this.SIZE_Y; y++){
+                this.BOARD[x][y] = null;
+            }
+        }
+    }
     public List<Location> getNeighbor() {
         List<Location> locations = new ArrayList<Location>();
-        Set<Location> keys = this.neighbor.keySet();
-        Object[] tab = keys.toArray();
-        for(int i = 0; i< tab.length; i++){
-            locations.add((Location)tab[i]);
+        for(int x = 0; x< SIZE_X; x++){
+            for(int y = 0; y< SIZE_Y; y++){
+                if(this.BOARD[x][y] instanceof Exit){
+                    locations.add(((Exit) this.BOARD[x][y]).EXIT_LOCATION);
+                }
+            }
         }
         return locations;
     }
@@ -44,82 +54,111 @@ public class Location implements Lookable{
      * @return null if no neighbor found else neighbor
      */
     public Location getNeighbor(LocationName location) {
-        if (this.neighbor == null) {return null;}
-        else {
-            List<Location> locations = getNeighbor();
-            for (Location loc : locations){
-                if(loc.NAME == location){return loc;}
-            }
-            return null;
+        List<Location> locations = getNeighbor();
+        for (Location loc : locations){
+            if(loc.NAME == location){return loc;}
         }
+        return null;
     }
 
  
     public List<Exit> getExits() {
-    	if (this.neighbor == null) {return null;}
-    	
         List<Exit> exits = new ArrayList<Exit>();
-        Collection<Exit> val = this.neighbor.values();
-        Object[] tab = val.toArray();
-        for(int i = 0; i< tab.length; i++){
-            exits.add((Exit)tab[i]);
+        for(int x = 0; x< SIZE_X; x++){
+            for(int y = 0; y< SIZE_Y; y++){
+                if(this.BOARD[x][y] instanceof Exit){
+                    exits.add((Exit)this.BOARD[x][y]);
+                }
+            }
         }
         return exits;
     }
     public List<Character> getCharacters() {
-        return this.characters;
+        List<Character> characters = new ArrayList<Character>();
+        for(int x = 0; x< SIZE_X; x++){
+            for(int y = 0; y< SIZE_Y; y++){
+                if(this.BOARD[x][y] instanceof Character){
+                    characters.add((Character)this.BOARD[x][y]);
+                }
+            }
+        }
+        return characters;
     }
-    public List<DecorObjet> getDecorObject() {
-        return this.decorObjets;
+    public List<DecorObjet> getDecorObjects() {
+        List<DecorObjet> decorObjects = new ArrayList<DecorObjet>();
+        for(int x = 0; x< SIZE_X; x++){
+            for(int y = 0; y< SIZE_Y; y++){
+                if(this.BOARD[x][y] instanceof DecorObjet){
+                    decorObjects.add((DecorObjet)this.BOARD[x][y]);
+                }
+            }
+        }
+        return decorObjects;
     }
     /**
      * @param location to go to
      * @return null if no exit found else exit found
      */
     public Exit getExit(LocationName location){
-        if (this.neighbor == null) return null;
-        else {
-            List<Location> locations = getNeighbor();
-            for (Location loc : locations){
-                if(loc.NAME == location){return this.neighbor.get(loc);}
-            }
-            return null;
+        List<Exit> exits = getExits();
+        for (Exit exit : exits){
+            if(exit.EXIT_LOCATION.NAME == location){return exit;}
         }
+        return null;
     }
-        /**
+
+    /**
      * @param location to go to
      * @return null if no exit found else exit found
      */
     public Exit getExit(Location location){
-        if (this.neighbor == null) return null;
-        else return this.neighbor.get(location);
+        List<Exit> exits = getExits();
+        for (Exit exit : exits){
+            if(exit.EXIT_LOCATION == location){return exit;}
+        }
+        return null;
     }
 
-    public void addCharacter(Character character){
-        if (this.characters == null){
-            this.characters = new ArrayList<Character>();
+    /**
+     * @param obj objet to add if there are no object in the position
+     * @return true if the obj has been added
+     */
+    public boolean addLookable(Lookable obj){
+        int posX = obj.getPosX();
+        int posY = obj.getPosY();
+        if (this.BOARD[posX][posY] == null){
+            this.BOARD[posX][posY] = obj;
+            return true;
         }
-        this.characters.add(character);
+        else {return false;}
     }
-    public void addDecorObjet(DecorObjet obj){
-        if (this.decorObjets == null){
-            this.decorObjets = new ArrayList<DecorObjet>();
+    public boolean addCharacter(Character character){
+        return addLookable((Lookable) character);
+    }
+    public boolean addDecorObjet(DecorObjet obj){
+        return addLookable((Lookable) obj);
+    }
+    public boolean addNeighbor(Exit exit){
+        return addLookable((Lookable) exit);
+    }
+    /**
+     * @param obj objet to delete
+     * @return true if the obj has been deleted
+     */
+    public boolean removeLookable(Lookable obj){
+        int posX = obj.getPosX();
+        int posY = obj.getPosY();
+        if (this.BOARD[posX][posY] == obj){
+            this.BOARD[posX][posY] = null;
+            return true;
         }
-        this.decorObjets.add(obj);
+        else {return false;}
     }
-    public void addNeighbor(Location location,Exit exit){
-        if (this.neighbor == null){
-            this.neighbor = new HashMap<Location,Exit>();
-        }
-        this.neighbor.put(location,exit);
+    public boolean removeCharacter(Character character){
+        return this.removeLookable((Lookable) character);
     }
-    public void removeCharacter(Character character){
-        if (this.characters == null){return;}
-        this.characters.remove(character);
-    }
-    public void removeDecorObjet(DecorObjet obj){
-        if (this.decorObjets == null){return;}
-        this.decorObjets.remove(obj);
+    public boolean removeDecorObjet(DecorObjet obj){
+        return this.removeLookable((Lookable) obj);
     }
     @Override
     public String toString(){
@@ -133,16 +172,18 @@ public class Location implements Lookable{
             }
         }
         String strCharacters = "";
-        if (this.characters != null){
+        List<Character> characters = this.getCharacters();
+        if (characters != null){
             strCharacters  = "In this room you have :\n";
-            for(Character character : this.characters){
+            for(Character character : characters){
                 strCharacters += "\t" + character + "\n";
             }
         }
         String strDecorObjets = "";
-        if (this.decorObjets != null){
+        List<DecorObjet> decorObjets = this.getDecorObjects();
+        if (decorObjets != null){
             strDecorObjets  = "In this room you can see:\n";
-            for(DecorObjet decorObjet : this.decorObjets){
+            for(DecorObjet decorObjet : decorObjets){
             	strDecorObjets += "\t" + decorObjet + "\n";
             }
         }
