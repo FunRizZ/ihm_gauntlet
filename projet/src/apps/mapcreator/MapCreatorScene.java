@@ -22,7 +22,7 @@ public class MapCreatorScene extends Application {
 				Scene scene = new Scene(MapCreator, width, height);
 	
 				primaryStage.setScene(scene);
-				primaryStage.setTitle("Hello World!");
+				primaryStage.setTitle("Gauntlet Map Creator");
 				primaryStage.show ();
     } 
 
