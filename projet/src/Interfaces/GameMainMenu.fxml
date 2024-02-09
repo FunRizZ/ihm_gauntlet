@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="Interfaces.GameMainMenu">
+    <center>
+        <VBox alignment="CENTER" spacing="10" scaleX="2" scaleY="2">
+            <Button text="New Game"></Button>
+            <Button text="Load Game"></Button>
+            <Button text="Map Creator"></Button>
+            <Button text="Scoreboard"></Button>
+            <Button text="Settings"></Button>
+            <Button text="Credits"></Button>
+            <Button text="Quit to Desktop"></Button>
+        </VBox>
+    </center>
+
+</BorderPane>
