@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.control.Button?>
 
 <?import javafx.scene.layout.VBox?>
 <fx:root type="javafx.scene.layout.BorderPane"
          xmlns="http://javafx.com/javafx/8"
-         xmlns:fx="http://javafx.com/fxml/1">
+         xmlns:fx="http://javafx.com/fxml/1"
+         fx:controller="apps.game.GameMenuController">
     <center>
         <VBox alignment="CENTER" spacing="10" scaleX="2" scaleY="2">
-            <Button  text="New Game"/>
-            <Button text="Load Game"/>
-            <Button text="Map Creator"/>
-            <Button text="Scoreboard"/>
-            <Button text="Settings"/>
-            <Button text="Credits"/>
-            <Button text="Quit to Desktop"/>
+            <Button text="New Game" prefWidth="150" style="-fx-border-color: black; -fx-border-width: 2;"/>
+            <Button text="Load Game" prefWidth="150" style="-fx-border-color: black; -fx-border-width: 2;"/>
+            <Button text="Map Creator" onAction="#changeScene" prefWidth="150" style="-fx-border-color: black; -fx-border-width: 2;"/>
+            <Button text="Scoreboard" prefWidth="150" style="-fx-border-color: black; -fx-border-width: 2;"/>
+            <Button text="Settings" prefWidth="150" style="-fx-border-color: black; -fx-border-width: 2;"/>
+            <Button text="Credits" prefWidth="150" style="-fx-border-color: black; -fx-border-width: 2;"/>
+            <Button text="Quit to Desktop" onAction="#handleQuit" prefWidth="150" style="-fx-border-color: black; -fx-border-width: 2;"/>
         </VBox>
     </center>
 
