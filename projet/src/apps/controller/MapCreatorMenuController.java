@@ -5,7 +5,6 @@ import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-import apps.controller.MainController;
 import apps.game.GameMenuLoad;
 
 public class MapCreatorMenuController extends MainController{
