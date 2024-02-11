@@ -1,4 +1,4 @@
-package projet.src.apps.game;
+package apps.game;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.BorderPane;

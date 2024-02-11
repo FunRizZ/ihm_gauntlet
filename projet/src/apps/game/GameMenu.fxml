@@ -7,12 +7,12 @@
 <fx:root type="javafx.scene.layout.BorderPane"
          xmlns="http://javafx.com/javafx/8"
          xmlns:fx="http://javafx.com/fxml/1"
-         fx:controller="apps.game.GameMenuController">
+         fx:controller="apps.controller.GameMenuController">
     <center>
         <VBox alignment="CENTER" spacing="10" scaleX="2" scaleY="2">
             <Button text="New Game" prefWidth="150" style="-fx-border-color: black; -fx-border-width: 2;"/>
             <Button text="Load Game" prefWidth="150" style="-fx-border-color: black; -fx-border-width: 2;"/>
-            <Button text="Map Creator" onAction="#changeScene" prefWidth="150" style="-fx-border-color: black; -fx-border-width: 2;"/>
+            <Button text="Map Creator" onAction="#changeCreatorMenu" prefWidth="150" style="-fx-border-color: black; -fx-border-width: 2;"/>
             <Button text="Scoreboard" prefWidth="150" style="-fx-border-color: black; -fx-border-width: 2;"/>
             <Button text="Settings" prefWidth="150" style="-fx-border-color: black; -fx-border-width: 2;"/>
             <Button text="Credits" prefWidth="150" style="-fx-border-color: black; -fx-border-width: 2;"/>
