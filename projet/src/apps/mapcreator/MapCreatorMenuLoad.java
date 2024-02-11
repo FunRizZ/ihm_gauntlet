@@ -5,12 +5,12 @@ import javafx.scene.layout.BorderPane;
 
 import java.io.IOException;
 
-public class MapCreatorMenuController extends BorderPane {
+public class MapCreatorMenuLoad extends BorderPane {
 
-    public MapCreatorMenuController() {
+    public MapCreatorMenuLoad() {
 				try {
 						// Locate the FXML file
-						FXMLLoader fxmlLoader = new FXMLLoader(MapCreatorMenuController.class.getResource("MapCreatorMenu.fxml"));
+						FXMLLoader fxmlLoader = new FXMLLoader(MapCreatorMenuLoad.class.getResource("MapCreatorMenu.fxml"));
 
 						// Since the loaded FXML file is the root of the scene,
 						// We must also set the Root as this class

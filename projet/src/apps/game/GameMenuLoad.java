@@ -5,12 +5,12 @@ import javafx.scene.layout.BorderPane;
 
 import java.io.IOException;
 
-public class GameMenuView extends BorderPane {
+public class GameMenuLoad extends BorderPane {
 
-    public GameMenuView() {
+    public GameMenuLoad() {
         try {
             // Locate the FXML file
-            FXMLLoader fxmlLoader = new FXMLLoader(GameMenuView.class.getResource("GameMenu.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(GameMenuLoad.class.getResource("GameMenu.fxml"));
 
             // Since the loaded FXML file is the root of the scene,
             // We must also set the Root as this class
