@@ -28,10 +28,20 @@ public class MapCreatorController extends BorderPane{
 
             // Actual loading
             fxmlLoader.load();
+            Map = (GridPane) this.getCenter();
+            this.generate(game);
         }
         catch(IOException ioe) {
             System.err.println("MapCreatorControlleur constructor error");
-            //ioe.printStackTrace();
+            ioe.printStackTrace();
+        }
+    }
+    public void generate(Game game) {
+        for(int x = 0; x < game.SIZE_MAP_X; x++){
+            for (int y = 0; y < game.SIZE_MAP_y; y++){
+                Button button = new Button(x +" , "+y);
+                Map.add(button,x,y);
+            }
         }
     }
 }
