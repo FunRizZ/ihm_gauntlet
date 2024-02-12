@@ -29,7 +29,8 @@ public class MapCreatorScene extends Application {
 		primaryStage.setTitle("Gauntlet Map Creator");
 		primaryStage.show ();
 		MainController mainController = new MainController();
-        mainController.setscene(scene, primaryStage);
+        mainController.setScene(scene);
+		mainController.setStage(primaryStage);
     } 
 
  
