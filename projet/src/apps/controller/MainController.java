@@ -14,12 +14,14 @@ public class MainController {
         double width = 1600, height = 900;
         scene = new Scene(gameMenu, width,height);
         stage.setScene(scene);
-        stage.show();
-        setscene(scene, stage);
+        setScene(scene);
     }
 
-    public void setscene(Scene scene, Stage stage) {
+    public void setScene(Scene scene) {
         MainController.scene = scene;
+    }
+
+    public void setStage(Stage stage) {
         MainController.stage = stage;
     }
 

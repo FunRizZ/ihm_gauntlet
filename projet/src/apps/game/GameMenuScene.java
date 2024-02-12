@@ -26,7 +26,8 @@ public class GameMenuScene extends Application {
         primaryStage.setTitle("Gauntlet");
         primaryStage.show ();
         MainController mainController = new MainController();
-        mainController.setscene(scene, primaryStage);
+        mainController.setScene(scene);
+        mainController.setStage(primaryStage);
     }
 
 
