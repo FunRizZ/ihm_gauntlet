@@ -5,8 +5,8 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class MainController {
-    private static Scene scene;
-    private static Stage stage;
+    public static Scene scene;
+    public static Stage stage;
     
     public void changeScene(Parent gameMenu) {
         stage=getStage();

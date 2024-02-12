@@ -8,8 +8,6 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 public class MapCreatorMenuController extends MainController {
-    Scene scene = getScene();
-    Stage stage = getStage();
 
     @FXML    
     public void handleKeyPressed() {

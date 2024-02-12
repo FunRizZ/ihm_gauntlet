@@ -13,11 +13,10 @@ import javafx.stage.Stage;
 public class MapCreatorScene extends Application {
 
     @Override
-    public void start (Stage primaryStage) throws Exception {  
-	
-        final BorderPane menu = new MapCreatorMenuLoad();
+    public void start (Stage primaryStage) throws Exception {
+ //       final BorderPane menu = new MapCreatorMenuLoad();
         MapCreatorController mapCreator = new MapCreatorController(new Game(15,15));// Scene dimensions
-		final BorderPane MapCreator = new MapCreatorMenuLoad();
+//		final BorderPane MapCreator = new MapCreatorMenuLoad();
 
 		// Scene dimensions
 		double width = 1600, height = 900;
@@ -28,9 +27,9 @@ public class MapCreatorScene extends Application {
 		primaryStage.setScene(scene);
 		primaryStage.setTitle("Gauntlet Map Creator");
 		primaryStage.show ();
-		MainController mainController = new MainController();
-        mainController.setScene(scene);
-		mainController.setStage(primaryStage);
+//		MainController mainController = new MainController();
+//        mainController.setScene(scene);
+//		mainController.setStage(primaryStage);
     } 
 
  
