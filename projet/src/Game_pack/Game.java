@@ -13,10 +13,14 @@ public class Game {
     public final Hero HERO;
     private List<Location> locations;
     private final Command cmd;
+    public final int SIZE_MAP_X;
+    public final int SIZE_MAP_y;
 
-    public Game(){
+    public Game(int sizeMapX, int sizeMapY){
         this.HERO = new Hero(locations.get(0),0,0);
         this.cmd = new Command(this);
+        this.SIZE_MAP_X = sizeMapX;
+        this.SIZE_MAP_y = sizeMapY;
     }
 
     public Location createLocation(LocationName locationName,int sizeX, int sizeY){

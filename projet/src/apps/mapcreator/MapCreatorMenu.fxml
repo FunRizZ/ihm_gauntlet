@@ -12,7 +12,7 @@
 
 	<center>
 		<VBox alignment="CENTER" spacing="10" scaleX="2" scaleY="2">
-			<Button  text="New Map"/>
+			<Button text="New Map"/>
 			<Button text="Load Map"/>
 			<Button text="Settings"/>
 			<Button text="Quit to Main Menu"/>
