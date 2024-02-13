@@ -6,6 +6,9 @@ import java.util.List;
 import Game_pack.IsMe;
 import Game_pack.Lookable;
 import Item.Item;
+import javafx.geometry.Rectangle2D;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 public abstract class Character extends Lookable implements IsMe{
     private List<Item> items;
@@ -71,5 +74,13 @@ public abstract class Character extends Lookable implements IsMe{
         	for (Item i : this.items) {dest += "with "+ i+ "\n\t";}
         }
         System.out.println(dest);
+    }
+
+    @Override
+    public ImageView getSpray() {
+        Image spray = (new Image(Character.class.getResource("/sprites/ghost.png").toExternalForm()));
+        ImageView view = new ImageView(spray);
+        view.setViewport(new Rectangle2D(0, 0, 80, 80));
+        return view;
     }
 }

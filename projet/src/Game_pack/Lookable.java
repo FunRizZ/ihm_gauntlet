@@ -1,5 +1,8 @@
 package Game_pack;
 
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+
 public abstract class Lookable {
     private int x;
     private int Y;
@@ -15,4 +18,9 @@ public abstract class Lookable {
     public int getPosY() {
         return Y;
     }
+
+    /**
+     * @return the path of the spray
+     */
+    public abstract ImageView getSpray();
 }

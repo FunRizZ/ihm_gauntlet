@@ -7,7 +7,7 @@ import Character.Character;
 import Game_pack.Lookable;
 
 public class Location{
-    private final Lookable[][] BOARD;
+    public final Lookable[][] BOARD;
     private final int SIZE_X;
     private final int SIZE_Y;
     public final LocationName NAME;

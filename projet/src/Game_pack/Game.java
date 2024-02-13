@@ -2,8 +2,6 @@ package Game_pack;
 import java.util.ArrayList;
 
 import java.util.List;
-import java.util.Scanner;
-
 import Character.Character;
 import Item.Item;
 import Character.*;
@@ -20,7 +18,9 @@ public class Game {
         locations = new ArrayList<Location>();
         locations.addFirst(createLocation(LocationName.GARDEN, sizeMapX, sizeMapY));
         this.HERO = new Hero(locations.getFirst(),0,0);
-        //this.cmd = new Command(this);
+
+        Location l = locations.getFirst();
+        l.addCharacter((Character) this.HERO);
         this.SIZE_MAP_X = sizeMapX;
         this.SIZE_MAP_y = sizeMapY;
     }

@@ -3,6 +3,8 @@ package Location;
 import Game_pack.IsMe;
 import Game_pack.Lookable;
 import Item.Item;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 public abstract class DecorObjet extends Lookable implements IsMe{
     public Item item;
@@ -26,4 +28,10 @@ public abstract class DecorObjet extends Lookable implements IsMe{
     }
     public abstract String toString();
     public abstract String getDescription();
+
+    @Override
+    public ImageView getSpray() {
+        Image spray = new Image(DecorObjet.class.getResource("/sprites/food.png").toExternalForm());
+        return new ImageView(spray);
+    }
 }
