@@ -9,6 +9,9 @@ import java.util.List;
 import Item.Item;
 import Location.Carcass;
 import Location.DecorObjet;
+import javafx.geometry.Rectangle2D;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 public class Hero extends WhoFight{
     public final static int DEFAULT_HP = 1000;
@@ -68,5 +71,13 @@ public class Hero extends WhoFight{
     }
     public String toString() {
     	return "HERO";
+    }
+
+    @Override
+    public ImageView getSpray(){
+        Image spray = (new Image(Hero.class.getResource("/sprites/elf.png").toExternalForm()));
+        ImageView view = new ImageView(spray);
+        view.setViewport(new Rectangle2D(0, 0, 80, 80));
+        return view;
     }
 }
