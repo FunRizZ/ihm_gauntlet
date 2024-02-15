@@ -8,13 +8,13 @@ import Character.*;
 import Location.*;
 
 public class Game {
+    public final static Game GAME = new Game(10,10);
     public final Hero HERO;
     private List<Location> locations;
     //private final Command cmd;
     public final int SIZE_MAP_X;
     public final int SIZE_MAP_y;
-
-    public Game(int sizeMapX, int sizeMapY){
+    private Game(int sizeMapX, int sizeMapY){
         locations = new ArrayList<Location>();
         locations.addFirst(createLocation(LocationName.GARDEN, sizeMapX, sizeMapY));
         this.HERO = new Hero(locations.getFirst(),0,0);

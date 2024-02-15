@@ -7,31 +7,25 @@
 <?import javafx.scene.layout.GridPane?>
 
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.StackPane?>
 <fx:root type="javafx.scene.layout.BorderPane"
          xmlns="http://javafx.com/javafx/8"
          xmlns:fx="http://javafx.com/fxml/1"
+         fx:controller="apps.mapcreator.MapCreatorController"
          fx:id="Root">
     <center>
         <GridPane fx:id="Map"/>
     </center>
     <bottom>
-        <TabPane fx:id="tabPane">
-            <tabs>
-                <Tab text="Onglet 1">
-                    <content>
-                        <fx:include source="SelectionIteam.fxml" />
-                    </content>
-                </Tab>
-                <Tab text="Onglet 2" fx:id="Tab2">
-                    <content>
-                        <HBox>
-                            <Button fx:id="b2"> bonjour </Button>
-                        </HBox>
-                    </content>
-                </Tab>
-            </tabs>
+        <TabPane fx:id="MapTabPane" stylesheets="/apps/mapcreator/MapCreatorCss.css">
+            <Tab text="Onglet 1" fx:id="Tab1">
+                <StackPane fx:id="Img11"/>
+            </Tab>
+            <Tab text="Onglet 2" fx:id="Tab2">
+                <HBox>
+                    <StackPane fx:id="Img21"/>
+                </HBox>
+            </Tab>
         </TabPane>
     </bottom>
 </fx:root>

@@ -1,0 +1,13 @@
+.tab-pane {
+ 	-fx-background-color: black;
+}
+.tab {
+ 	-fx-background-color: black;
+}
+.tab-label {
+    -fx-alignment: CENTER;
+    -fx-text-fill: #96b946;
+}
+.tab-pane .tab-header-area .tab-header-background {
+    -fx-opacity: 0.2;
+}
