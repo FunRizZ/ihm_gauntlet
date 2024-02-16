@@ -1,9 +1,12 @@
 package model.Location;
 
 
-public class Painting extends DecorObjet{
-	public Painting(int x, int y) {
-		super(x, y);
+import model.Item.Item;
+import model.Item.Treasure;
+
+public class TreasureView extends DecorObjet{
+	public TreasureView(int x, int y) {
+		super((Item)new Treasure(), x, y);
 	}
 	
     public String getDescription() {
@@ -13,3 +16,4 @@ public class Painting extends DecorObjet{
     	return "Painting";
     }
 }
+
