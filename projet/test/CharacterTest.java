@@ -3,7 +3,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import Character.*;
+import model.Character.*;
 
 import model.Location.LocationName;
 import model.Location.Location;
@@ -13,7 +13,7 @@ import java.util.Collections;
 import java.util.List;
 
 import static org.junit.Assert.*;
-import Item.*;
+import model.Item.*;
 
 
 public class CharacterTest {

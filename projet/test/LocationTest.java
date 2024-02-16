@@ -2,11 +2,11 @@ import model.Game_pack.Lookable;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import Character.Character;
-import Character.Dragon;
-import Character.Guard;
-import Character.Hero;
-import Character.Knight;
+import model.Character.Character;
+import model.Character.Dragon;
+import model.Character.Guard;
+import model.Character.Hero;
+import model.Character.Knight;
 import model.Item.Item;
 import model.Item.key;
 import model.Location.LocationName;
