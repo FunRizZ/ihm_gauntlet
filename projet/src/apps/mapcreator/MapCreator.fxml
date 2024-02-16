@@ -21,11 +21,11 @@
         <TabPane fx:id="MapTabPane" stylesheets="/apps/mapcreator/MapCreatorCss.css">
             <Tab text="Menu" fx:id="Tab1">
                 <HBox>
-                    <Button text="Save Map"></Button>
-                    <Button text="Load Map"></Button>
-                    <Button text="Settings"></Button>
-                    <Button text="Quit to Main Menu"></Button>
-                    <Button text="Quit to Desktop"></Button>
+                    <Button text="Save Map" />
+                    <Button text="Load Map" />
+                    <Button text="Settings" />
+                    <Button text="Quit to Main Menu" onAction="#changeGameMenu"/>
+                    <Button text="Quit to Desktop" onAction="#handleQuit"/>
                 </HBox>
             </Tab>
             <Tab text="Tools" fx:id="Tab2">

@@ -1,6 +1,10 @@
 package apps.controller;
 
+import apps.game.GameMenuScene;
 import apps.mapcreator.MapCreatorLoad;
+import apps.mapcreator.MapCreatorScene;
+import javafx.application.Platform;
+import javafx.event.ActionEvent;
 import model.Character.*;
 import model.Game_pack.Game;
 import model.Game_pack.Lookable;
@@ -106,6 +110,7 @@ public class MapCreatorController extends BorderPane{
         Img105.getChildren().add((new Lobber(-1,-1)).getSpray());
         Img105.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = 105);
 
+
         Delete.setOnAction(event -> this.object_select = -1);
     }
 
@@ -181,6 +186,17 @@ public class MapCreatorController extends BorderPane{
             GAME.HERO.getLocation().removeLookable( GAME.HERO.getLocation().BOARD[x][y]);
         }
         reset(x, y);
+    }
+    @FXML
+    public void handleQuit(ActionEvent event) {
+        System.out.println("You leave the game. Goodbye!");
+        Platform.exit();
+    }
+
+    @FXML
+    public void changeGameMenu (ActionEvent event) {
+        GameMenuScene gameMenu = new GameMenuScene();
+        gameMenu.changeScene(gameMenu.GAME_MENU, gameMenu.SCENE_TITLE);
     }
 
     /**
