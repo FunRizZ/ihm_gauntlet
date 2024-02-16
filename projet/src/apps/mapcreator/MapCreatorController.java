@@ -31,6 +31,27 @@ public class MapCreatorController extends BorderPane{
     @FXML
     Tab Tab2;
     @FXML
+    Tab Tab3;
+    @FXML
+    Tab Tab4;
+    @FXML
+    Tab Tab5;
+    @FXML
+    Tab Tab6;
+    @FXML
+    Tab Tab7;
+    @FXML
+    Tab Tab8;
+    @FXML
+    Tab Tab9;
+    @FXML
+    Tab Tab10;
+    @FXML
+    Tab Tab11;
+    @FXML
+    Tab Tab12;
+
+    @FXML
     StackPane Img21;
     @FXML
     StackPane Img11;
