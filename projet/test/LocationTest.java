@@ -1,27 +1,16 @@
-import Game_pack.Lookable;
+import model.Game_pack.Lookable;
+import model.Location.*;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import Character.Character;
-import Character.Dragon;
-import Character.Guard;
-import Character.Hero;
-import Character.Knight;
-import Item.Item;
-import Item.key;
-import Location.LocationName;
-import Location.Painting;
-import Location.Table;
-import Location.Location;
-import Location.Book;
-import Location.DecorObjet;
-import Location.Exit;
-import Location.ExitKey;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import model.Character.Character;
+import model.Character.Dragon;
+import model.Character.Guard;
+import model.Character.Hero;
+import model.Character.Knight;
+import model.Item.Item;
+import model.Item.key;
+import model.Location.Wall;
 
 
 import static org.junit.Assert.*;
@@ -127,17 +116,17 @@ public class LocationTest {
 
     @Test
     public void testAddDecorObject() {
-        Painting painting = new Painting(42,42);
+        Wall Wall = new Wall(42,42);
 
         // compares size
         int size_before_add = l.getDecorObjects().size();
-        l.addDecorObjet(painting);
+        l.addDecorObjet(Wall);
         int size_after_add = l.getDecorObjects().size();
         assertEquals(size_before_add+1, size_after_add);
 
         // compares character 
         DecorObjet last_obj = l.getDecorObjects().get(size_after_add-1);
-        assertEquals(last_obj, painting);
+        assertEquals(last_obj, Wall);
 
     }
 

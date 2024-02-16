@@ -1,8 +1,8 @@
 package apps.mapcreator;
 
-import Game_pack.Game;
-import Game_pack.Lookable;
-import Location.Wall;
+import model.Game_pack.Game;
+import model.Game_pack.Lookable;
+import model.Location.Wall;
 import javafx.animation.ScaleTransition;
 import javafx.fxml.FXML;
 import javafx.scene.Node;

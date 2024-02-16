@@ -1,6 +1,6 @@
 package apps.mapcreator;
 
-import Game_pack.Game;
+import model.Game_pack.Game;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
