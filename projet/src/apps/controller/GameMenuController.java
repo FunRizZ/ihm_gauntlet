@@ -6,7 +6,6 @@ import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-import apps.mapcreator.MapCreatorMenuLoad;
 
 
 public class GameMenuController extends MainController{
@@ -21,9 +20,9 @@ public class GameMenuController extends MainController{
 
     @FXML
     public void changeCreatorMenu (ActionEvent event) {
-        final BorderPane MapCreator = new MapCreatorMenuLoad();
-        changeScene(MapCreator);
-        MapCreatorMenuController mapCreatorMenuController = new MapCreatorMenuController();
-        mapCreatorMenuController.handleKeyPressed();
+//        final BorderPane MapCreator = new MapCreatorMenuLoad();
+//        changeScene(MapCreator);
+//        MapCreatorMenuController mapCreatorMenuController = new MapCreatorMenuController();
+//        mapCreatorMenuController.handleKeyPressed();
     }
 }

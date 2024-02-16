@@ -8,6 +8,7 @@
 
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.control.Button?>
 <fx:root type="javafx.scene.layout.BorderPane"
          xmlns="http://javafx.com/javafx/8"
          xmlns:fx="http://javafx.com/fxml/1"
@@ -19,10 +20,13 @@
     <bottom>
         <TabPane fx:id="MapTabPane" stylesheets="/apps/mapcreator/MapCreatorCss.css">
             <Tab text="Onglet 1" fx:id="Tab1">
-                <StackPane fx:id="Img11"/>
+                <HBox>
+                    <StackPane fx:id="Img11"/>
+                </HBox>
             </Tab>
             <Tab text="Onglet 2" fx:id="Tab2">
                 <HBox>
+                    <Button fx:id="Delete" text="Delete"/>
                     <StackPane fx:id="Img21"/>
                 </HBox>
             </Tab>

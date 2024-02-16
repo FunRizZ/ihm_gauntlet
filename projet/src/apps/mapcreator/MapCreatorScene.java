@@ -12,9 +12,8 @@ public class MapCreatorScene extends Application {
 
     @Override
     public void start (Stage primaryStage) throws Exception {
- //       final BorderPane menu = new MapCreatorMenuLoad();
         MapCreator mapCreator = new MapCreator(Game.GAME);// Scene dimensions
-//		final BorderPane MapCreator = new MapCreatorMenuLoad();
+
 
 		// Scene dimensions
 		double width = 1600, height = 900;

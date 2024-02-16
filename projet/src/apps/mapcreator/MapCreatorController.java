@@ -6,6 +6,7 @@ import Location.Wall;
 import javafx.animation.ScaleTransition;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
+import javafx.scene.control.Button;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.image.Image;
@@ -31,6 +32,10 @@ public class MapCreatorController extends BorderPane{
     Tab Tab2;
     @FXML
     StackPane Img21;
+    @FXML
+    StackPane Img11;
+    @FXML
+    Button Delete;
     public MapCreatorController() {
         this.GAME = MapCreator.GAME;
         this.object_select = -1;
@@ -39,8 +44,10 @@ public class MapCreatorController extends BorderPane{
     public void initialize(){
         this.generate();
         MapTabPane.setTabClosingPolicy(TabPane.TabClosingPolicy.UNAVAILABLE);
-        Img21.getChildren().add((new Wall(0,0)).getSpray());
+        Img21.getChildren().add((new Wall(-1,-1)).getSpray());
         Img21.addEventHandler(MouseEvent.MOUSE_CLICKED,event -> this.object_select = 1);
+
+        Delete.setOnAction(event -> this.object_select = -1);
     }
 
     /**
@@ -65,7 +72,7 @@ public class MapCreatorController extends BorderPane{
         ImageView fond = new ImageView(fondImage);
         StackPane image = new StackPane(fond);
 
-        fond.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> addLookable(GridPane.getColumnIndex(image),GridPane.getRowIndex(image)));
+        image.addEventFilter(MouseEvent.MOUSE_CLICKED, event -> addLookable(GridPane.getColumnIndex(image),GridPane.getRowIndex(image)));
         if (GAME.HERO.getLocation().BOARD[x][y] != null){       /* definition du spray */
             ImageView spray = GAME.HERO.getLocation().BOARD[x][y].getSpray();
 
@@ -74,7 +81,6 @@ public class MapCreatorController extends BorderPane{
         Map.add(image,x,y);
     }
     public Lookable getLookable(int x, int y){
-        System.out.println(this.object_select+" , "+x +" , "+y);
         switch (this.object_select){
             case 1 -> {
                 return new Wall(x,y);
@@ -83,9 +89,14 @@ public class MapCreatorController extends BorderPane{
         }
     }
     public void addLookable(int x, int y){
+        System.out.println(this.object_select+" , "+x +" , "+y);
         Lookable l = getLookable(x,y);
-        if (l != null){ GAME.HERO.getLocation().addLookable(l);}
-
+        if (l != null){
+            GAME.HERO.getLocation().addLookable(l);
+        }
+        else if(GAME.HERO.getLocation().BOARD[x][y] != null){
+            GAME.HERO.getLocation().removeLookable( GAME.HERO.getLocation().BOARD[x][y]);
+        }
         reset(x, y);
     }
 

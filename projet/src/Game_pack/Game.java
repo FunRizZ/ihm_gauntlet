@@ -8,7 +8,7 @@ import Character.*;
 import Location.*;
 
 public class Game {
-    public final static Game GAME = new Game(10,10);
+    public final static Game GAME = new Game(100,10);
     public final Hero HERO;
     private List<Location> locations;
     //private final Command cmd;
