@@ -10,7 +10,7 @@ import model.Character.Hero;
 import model.Character.Knight;
 import model.Item.Item;
 import model.Item.key;
-import model.Location.Painting;
+import model.Location.Wall;
 
 
 import static org.junit.Assert.*;
