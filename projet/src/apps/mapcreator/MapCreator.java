@@ -1,6 +1,6 @@
 package apps.mapcreator;
 
-import Game_pack.Game;
+import model.Game_pack.Game;
 import javafx.fxml.FXMLLoader;
 
 import javafx.scene.layout.BorderPane;

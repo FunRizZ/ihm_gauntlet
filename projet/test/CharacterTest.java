@@ -1,13 +1,12 @@
 
-import Game_pack.Lookable;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
 import Character.*;
 
-import Location.LocationName;
-import Location.Location;
+import model.Location.LocationName;
+import model.Location.Location;
 
 import java.util.ArrayList;
 import java.util.Collections;

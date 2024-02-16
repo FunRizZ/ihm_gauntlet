@@ -1,4 +1,4 @@
-import Game_pack.Lookable;
+import model.Game_pack.Lookable;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -7,21 +7,16 @@ import Character.Dragon;
 import Character.Guard;
 import Character.Hero;
 import Character.Knight;
-import Item.Item;
-import Item.key;
-import Location.LocationName;
-import Location.Painting;
-import Location.Table;
-import Location.Location;
-import Location.Book;
-import Location.DecorObjet;
-import Location.Exit;
-import Location.ExitKey;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import model.Item.Item;
+import model.Item.key;
+import model.Location.LocationName;
+import model.Location.Painting;
+import model.Location.Table;
+import model.Location.Location;
+import model.Location.Book;
+import model.Location.DecorObjet;
+import model.Location.Exit;
+import model.Location.ExitKey;
 
 
 import static org.junit.Assert.*;
