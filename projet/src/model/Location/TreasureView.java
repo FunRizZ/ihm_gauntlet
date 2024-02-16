@@ -1,6 +1,8 @@
 package model.Location;
 
 
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import model.Item.Item;
 import model.Item.Treasure;
 

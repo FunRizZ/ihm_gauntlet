@@ -1,5 +1,6 @@
-package apps.mapcreator;
+package apps.controller;
 
+import apps.mapcreator.MapCreatorLoad;
 import model.Game_pack.Game;
 import model.Game_pack.Lookable;
 import model.Location.Wall;
@@ -58,7 +59,7 @@ public class MapCreatorController extends BorderPane{
     @FXML
     Button Delete;
     public MapCreatorController() {
-        this.GAME = MapCreator.GAME;
+        this.GAME = MapCreatorLoad.GAME;
         this.object_select = -1;
     }
     @FXML
