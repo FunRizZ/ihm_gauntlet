@@ -1,6 +1,7 @@
 package apps.controller;
 
 import apps.mapcreator.MapCreatorScene;
+import apps.scoreboard.ScoreboardScene;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -21,4 +22,11 @@ public class GameMenuController{
         MapCreatorScene MapCreator = new MapCreatorScene();
         MapCreator.changeScene(MapCreator.MAPCREATOR, MapCreator.SCENE_TITLE);
     }
+
+    @FXML
+    public void changeScoreboardMenu (ActionEvent event) {
+        ScoreboardScene Scoreboard = new ScoreboardScene();
+        Scoreboard.changeScene(Scoreboard.SCOREBOARD, Scoreboard.SCENE_TITLE);
+    }
+
 }
