@@ -1,4 +1,5 @@
 import model.Game_pack.Lookable;
+import model.Location.*;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -9,14 +10,7 @@ import model.Character.Hero;
 import model.Character.Knight;
 import model.Item.Item;
 import model.Item.key;
-import model.Location.LocationName;
 import model.Location.Painting;
-import model.Location.Table;
-import model.Location.Location;
-import model.Location.Book;
-import model.Location.DecorObjet;
-import model.Location.Exit;
-import model.Location.ExitKey;
 
 
 import static org.junit.Assert.*;
@@ -122,17 +116,17 @@ public class LocationTest {
 
     @Test
     public void testAddDecorObject() {
-        Painting painting = new Painting(42,42);
+        Wall Wall = new Wall(42,42);
 
         // compares size
         int size_before_add = l.getDecorObjects().size();
-        l.addDecorObjet(painting);
+        l.addDecorObjet(Wall);
         int size_after_add = l.getDecorObjects().size();
         assertEquals(size_before_add+1, size_after_add);
 
         // compares character 
         DecorObjet last_obj = l.getDecorObjects().get(size_after_add-1);
-        assertEquals(last_obj, painting);
+        assertEquals(last_obj, Wall);
 
     }
 
