@@ -34,7 +34,7 @@ public class Daemon extends WhoFight{
     public ImageView getSpray(){
         Image spray = (new Image(Wall.class.getResource("/sprites/daemon.png").toExternalForm()));
         ImageView view = new ImageView(spray);
-        view.setViewport(new Rectangle2D(0, 0, 80, 80));
+        view.setViewport(new Rectangle2D(320, 0, 80, 80));
         return view;
     }
 
