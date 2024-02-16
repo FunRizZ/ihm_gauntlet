@@ -70,23 +70,12 @@
                 </HBox>
             </Tab>
 
-            <Tab text="Generators" fx:id="Tab9">
+            <Tab text="Spawners" fx:id="Tab9">
                 <HBox>
 
                 </HBox>
             </Tab>
-
-            <Tab text="Monsters" fx:id="Tab10">
-                <HBox>
-                </HBox>
-            </Tab>
-
-            <Tab text="PNJ" fx:id="Tab11">
-                <HBox>
-
-                </HBox>
-            </Tab>
-            <Tab text="Hero" fx:id="Tab12">
+            <Tab text="Players Spawner" fx:id="Tab10">
                 <HBox>
 
                 </HBox>

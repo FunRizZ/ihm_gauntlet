@@ -55,13 +55,13 @@ public class MapCreatorController extends BorderPane{
     Tab Tab12;
 
     @FXML
-    StackPane Img61;
-    @FXML
-    StackPane Img11;
+    Button Delete;
     @FXML
     StackPane Img31;
     @FXML
-    Button Delete;
+    StackPane Img61;
+    @FXML
+    StackPane Img71;
     @FXML
     StackPane Img81;
     public MapCreatorController() {
@@ -72,12 +72,15 @@ public class MapCreatorController extends BorderPane{
     public void initialize(){
         this.generate();
         MapTabPane.setTabClosingPolicy(TabPane.TabClosingPolicy.UNAVAILABLE);
-        Img61.getChildren().add((new Wall(-1,-1)).getSpray());
-        Img61.addEventHandler(MouseEvent.MOUSE_CLICKED,event -> this.object_select = 1);
-        Img81.getChildren().add((new TreasureView(-1,-1)).getSpray());
-        Img81.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = 81);
         Img31.getChildren().add((new PotionView(-1,-1)).getSpray());
         Img31.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = 31);
+        Img61.getChildren().add((new Wall(-1,-1)).getSpray());
+        Img61.addEventHandler(MouseEvent.MOUSE_CLICKED,event -> this.object_select = 61);
+        //TODO : faire Exit + key
+//        Img71.getChildren().add((new PotionView(-1,-1)).getSpray());
+//        Img71.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = 71);
+        Img81.getChildren().add((new TreasureView(-1,-1)).getSpray());
+        Img81.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = 81);
 
         Delete.setOnAction(event -> this.object_select = -1);
     }
@@ -114,7 +117,7 @@ public class MapCreatorController extends BorderPane{
     }
     public Lookable getLookable(int x, int y){
         switch (this.object_select){
-            case 1 -> {
+            case 61 -> {
                 return new Wall(x,y);
             }
             case 31 -> {
