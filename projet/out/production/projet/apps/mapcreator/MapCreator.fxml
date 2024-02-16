@@ -22,36 +22,68 @@
             <Tab text="Menu" fx:id="Tab1">
 
             </Tab>
-            <Tab text="Potions" fx:id="Tab2">
-                <HBox>
-                    <StackPane fx:id="Img11"/>
-                </HBox>
-            </Tab>
-            <Tab text="Keys" fx:id="Tab3">
+            <Tab text="Outils" fx:id="Tab2">
                 <HBox>
                     <Button fx:id="Delete" text="Delete"/>
+                </HBox>
+            </Tab>
+
+            <Tab text="Potions" fx:id="Tab3">
+                <HBox>
+                    <StackPane fx:id="Img11"/>
                     <StackPane fx:id="Img21"/>
                 </HBox>
             </Tab>
-            <Tab text="Food" fx:id="Tab4">
 
-            </Tab>
-            <Tab text="Walls" fx:id="Tab5">
+            <Tab text="Keys" fx:id="Tab4">
+                <HBox>
 
+                </HBox>
             </Tab>
-            <Tab text="Doors" fx:id="Tab6">
+
+            <Tab text="Food" fx:id="Tab5">
+                <HBox>
+
+                </HBox>
             </Tab>
-            <Tab text="Stairs" fx:id="Tab7">
+
+            <Tab text="Walls" fx:id="Tab6">
+                <HBox>
+
+                </HBox>
             </Tab>
+
+            <Tab text="Exits" fx:id="Tab7">
+                <HBox>
+
+                </HBox>
+            </Tab>
+
             <Tab text="Treasure" fx:id="Tab8">
+                <HBox>
+
+                </HBox>
             </Tab>
+
             <Tab text="Generators" fx:id="Tab9">
+                <HBox>
+
+                </HBox>
             </Tab>
+
             <Tab text="Monsters" fx:id="Tab10">
+
             </Tab>
+
             <Tab text="PNJ" fx:id="Tab11">
+                <HBox>
+
+                </HBox>
             </Tab>
             <Tab text="Hero" fx:id="Tab12">
+                <HBox>
+
+                </HBox>
             </Tab>
 
         </TabPane>
