@@ -3,6 +3,7 @@ package apps.mapcreator;
 import model.Game_pack.Game;
 import model.Game_pack.Lookable;
 import model.Item.Potion;
+import model.Location.HolyGrenadeView;
 import model.Location.PotionView;
 import model.Location.TreasureView;
 import model.Location.Wall;
@@ -59,6 +60,8 @@ public class MapCreatorController extends BorderPane{
     @FXML
     StackPane Img31;
     @FXML
+    StackPane Img41;
+    @FXML
     StackPane Img61;
     @FXML
     StackPane Img71;
@@ -74,6 +77,8 @@ public class MapCreatorController extends BorderPane{
         MapTabPane.setTabClosingPolicy(TabPane.TabClosingPolicy.UNAVAILABLE);
         Img31.getChildren().add((new PotionView(-1,-1)).getSpray());
         Img31.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = 31);
+        Img41.getChildren().add((new HolyGrenadeView(-1,-1)).getSpray());
+        Img41.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = 41);
         Img61.getChildren().add((new Wall(-1,-1)).getSpray());
         Img61.addEventHandler(MouseEvent.MOUSE_CLICKED,event -> this.object_select = 61);
         //TODO : faire Exit + key
@@ -117,11 +122,14 @@ public class MapCreatorController extends BorderPane{
     }
     public Lookable getLookable(int x, int y){
         switch (this.object_select){
-            case 61 -> {
-                return new Wall(x,y);
-            }
             case 31 -> {
                 return new PotionView(x,y);
+            }
+            case 41 -> {
+                return new HolyGrenadeView(x,y);
+            }
+            case 61 -> {
+                return new Wall(x,y);
             }
             case 81 -> {
                 return new TreasureView(x,y);

@@ -40,42 +40,48 @@
                 </HBox>
             </Tab>
 
-            <Tab text="Keys" fx:id="Tab4">
+            <Tab text="Weapon" fx:id="Tab4">
+                <HBox>
+                    <StackPane fx:id="Img41"/>
+                </HBox>
+            </Tab>
+
+            <Tab text="Keys" fx:id="Tab5">
                 <HBox>
 
                 </HBox>
             </Tab>
 
-            <Tab text="Food" fx:id="Tab5">
+            <Tab text="Food" fx:id="Tab6">
                 <HBox>
 
                 </HBox>
             </Tab>
 
-            <Tab text="Walls" fx:id="Tab6">
+            <Tab text="Walls" fx:id="Tab7">
                 <HBox>
                     <StackPane fx:id="Img61"/>
                 </HBox>
             </Tab>
 
-            <Tab text="Exits" fx:id="Tab7">
+            <Tab text="Exits" fx:id="Tab8">
                 <HBox>
 
                 </HBox>
             </Tab>
 
-            <Tab text="Treasure" fx:id="Tab8">
+            <Tab text="Treasure" fx:id="Tab9">
                 <HBox>
                     <StackPane fx:id="Img81"/>
                 </HBox>
             </Tab>
 
-            <Tab text="Spawners" fx:id="Tab9">
+            <Tab text="Spawners" fx:id="Tab10">
                 <HBox>
 
                 </HBox>
             </Tab>
-            <Tab text="Players Spawner" fx:id="Tab10">
+            <Tab text="Players Spawner" fx:id="Tab11">
                 <HBox>
 
                 </HBox>
