@@ -81,6 +81,8 @@
                     <StackPane fx:id="Img101"/>
                     <StackPane fx:id="Img102"/>
                     <StackPane fx:id="Img103"/>
+                    <StackPane fx:id="Img104"/>
+                    <StackPane fx:id="Img105"/>
                 </HBox>
             </Tab>
             <Tab text="Players Spawner" fx:id="Tab11">

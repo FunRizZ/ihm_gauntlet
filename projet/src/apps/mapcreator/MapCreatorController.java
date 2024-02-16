@@ -1,8 +1,6 @@
 package apps.mapcreator;
 
-import model.Character.Death;
-import model.Character.Daemon;
-import model.Character.Ghost;
+import model.Character.*;
 import model.Game_pack.Game;
 import model.Game_pack.Lookable;
 import model.Location.HolyGrenadeView;
@@ -73,6 +71,10 @@ public class MapCreatorController extends BorderPane{
     StackPane Img102;
     @FXML
     StackPane Img103;
+    @FXML
+    StackPane Img104;
+    @FXML
+    StackPane Img105;
     public MapCreatorController() {
         this.GAME = MapCreator.GAME;
         this.object_select = -1;
@@ -98,6 +100,10 @@ public class MapCreatorController extends BorderPane{
         Img102.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = 102);
         Img103.getChildren().add((new Ghost(-1,-1)).getSpray());
         Img103.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = 103);
+        Img104.getChildren().add((new Grunt(-1,-1)).getSpray());
+        Img104.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = 104);
+        Img105.getChildren().add((new Lobber(-1,-1)).getSpray());
+        Img105.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = 105);
 
         Delete.setOnAction(event -> this.object_select = -1);
     }
@@ -154,6 +160,12 @@ public class MapCreatorController extends BorderPane{
             }
             case 103 -> {
                 return new Ghost(x,y);
+            }
+            case 104 -> {
+                return new Grunt(x,y);
+            }
+            case 105 -> {
+                return new Lobber(x,y);
             }
             default -> {return null;}
         }

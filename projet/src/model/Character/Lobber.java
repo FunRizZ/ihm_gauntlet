@@ -5,22 +5,22 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import model.Location.Wall;
 
-public class Ghost extends WhoFight {
-    public final static int DEFAULT_HP = 200;
+public class Lobber extends WhoFight {
+    public final static int DEFAULT_HP = 100;
     public final static int DEFAULT_ARMOR = 10;
     public final static int DEFAULT_DAMAGE = 200;
-    public Ghost(int x, int y){super(DEFAULT_HP, DEFAULT_ARMOR, DEFAULT_DAMAGE,x,y);}
+    public Lobber(int x, int y){super(DEFAULT_HP, DEFAULT_ARMOR, DEFAULT_DAMAGE,x,y);}
     @Override
     public String toString() {
-        return "Ghost";
+        return "Lobber";
     }
 
     @Override
     public String getDescription() {
-        return "A ghost of a human who stays in our World after his death.";
+        return "A lobber.";
     }
     public ImageView getSpray(){
-        Image spray = (new Image(Wall.class.getResource("/sprites/ghost.png").toExternalForm()));
+        Image spray = (new Image(Wall.class.getResource("/sprites/lobber.png").toExternalForm()));
         ImageView view = new ImageView(spray);
         view.setViewport(new Rectangle2D(320, 0, 80, 80));
         return view;
