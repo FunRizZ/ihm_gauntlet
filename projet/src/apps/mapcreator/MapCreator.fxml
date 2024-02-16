@@ -20,7 +20,13 @@
     <bottom>
         <TabPane fx:id="MapTabPane" stylesheets="/apps/mapcreator/MapCreatorCss.css">
             <Tab text="Menu" fx:id="Tab1">
-
+                <HBox>
+                    <Button text="Save Map"></Button>
+                    <Button text="Load Map"></Button>
+                    <Button text="Settings"></Button>
+                    <Button text="Quit to Main Menu"></Button>
+                    <Button text="Quit to Desktop"></Button>
+                </HBox>
             </Tab>
             <Tab text="Tools" fx:id="Tab2">
                 <HBox>
@@ -31,7 +37,6 @@
             <Tab text="Potions" fx:id="Tab3">
                 <HBox>
                     <StackPane fx:id="Img11"/>
-                    <StackPane fx:id="Img21"/>
                 </HBox>
             </Tab>
 
@@ -49,7 +54,7 @@
 
             <Tab text="Walls" fx:id="Tab6">
                 <HBox>
-
+                    <StackPane fx:id="Img61"/>
                 </HBox>
             </Tab>
 
@@ -61,7 +66,7 @@
 
             <Tab text="Treasure" fx:id="Tab8">
                 <HBox>
-
+                    <StackPane fx:id="Img81"/>
                 </HBox>
             </Tab>
 
@@ -72,7 +77,8 @@
             </Tab>
 
             <Tab text="Monsters" fx:id="Tab10">
-
+                <HBox>
+                </HBox>
             </Tab>
 
             <Tab text="PNJ" fx:id="Tab11">

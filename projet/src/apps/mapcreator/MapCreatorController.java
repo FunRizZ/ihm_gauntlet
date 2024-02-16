@@ -2,6 +2,7 @@ package apps.mapcreator;
 
 import model.Game_pack.Game;
 import model.Game_pack.Lookable;
+import model.Location.TreasureView;
 import model.Location.Wall;
 import javafx.animation.ScaleTransition;
 import javafx.fxml.FXML;
@@ -52,11 +53,13 @@ public class MapCreatorController extends BorderPane{
     Tab Tab12;
 
     @FXML
-    StackPane Img21;
+    StackPane Img61;
     @FXML
     StackPane Img11;
     @FXML
     Button Delete;
+    @FXML
+    StackPane Img81;
     public MapCreatorController() {
         this.GAME = MapCreator.GAME;
         this.object_select = -1;
@@ -65,8 +68,10 @@ public class MapCreatorController extends BorderPane{
     public void initialize(){
         this.generate();
         MapTabPane.setTabClosingPolicy(TabPane.TabClosingPolicy.UNAVAILABLE);
-        Img21.getChildren().add((new Wall(-1,-1)).getSpray());
-        Img21.addEventHandler(MouseEvent.MOUSE_CLICKED,event -> this.object_select = 1);
+        Img61.getChildren().add((new Wall(-1,-1)).getSpray());
+        Img61.addEventHandler(MouseEvent.MOUSE_CLICKED,event -> this.object_select = 1);
+        Img81.getChildren().add((new TreasureView(-1,-1)).getSpray());
+        Img81.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = 81);
 
         Delete.setOnAction(event -> this.object_select = -1);
     }
@@ -105,6 +110,9 @@ public class MapCreatorController extends BorderPane{
         switch (this.object_select){
             case 1 -> {
                 return new Wall(x,y);
+            }
+            case 81 -> {
+                return new TreasureView(x,y);
             }
             default -> {return null;}
         }
