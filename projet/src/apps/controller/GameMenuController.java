@@ -1,16 +1,14 @@
 package apps.controller;
 
+import apps.mapcreator.MapCreatorScene;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
-import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 
-public class GameMenuController extends MainController{
-    Scene scene=getScene();
-    Stage stage=getStage();
+public class GameMenuController{
 
     @FXML
     public void handleQuit(ActionEvent event) {
@@ -20,9 +18,7 @@ public class GameMenuController extends MainController{
 
     @FXML
     public void changeCreatorMenu (ActionEvent event) {
-//        final BorderPane MapCreator = new MapCreatorMenuLoad();
-//        changeScene(MapCreator);
-//        MapCreatorMenuController mapCreatorMenuController = new MapCreatorMenuController();
-//        mapCreatorMenuController.handleKeyPressed();
+        MapCreatorScene MapCreator = new MapCreatorScene();
+        MapCreator.changeScene(MapCreator.MAPCREATOR, MapCreator.SCENE_TITLE);
     }
 }

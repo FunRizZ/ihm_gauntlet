@@ -1,37 +1,21 @@
 package apps.game;
 
-import apps.controller.MainController;
-import javafx.application.Application;
-import javafx.scene.Scene;
-import javafx.scene.layout.BorderPane;
-import javafx.stage.Stage;
+import apps.MainScene;
+
 
 /**
- * A first example of Scene
+ * scene of the Game menu
  **/
-public class GameMenuScene extends Application {
+public class GameMenuScene extends MainScene {
+    public final String SCENE_TITLE;
+    public final GameMenuLoad GAME_MENU;
+    public GameMenuScene (){
+        this.SCENE_TITLE = "map creator";
+        this.GAME_MENU = new GameMenuLoad();
 
-    @Override
-    public void start (Stage primaryStage) throws Exception {
-
-        final BorderPane GameMenu = new GameMenuLoad();
-
-        // Scene dimensions
-        double width = 1600, height = 900;
-
-        // Scene = container for all content
-        Scene scene = new Scene(GameMenu, width, height);
-
-        primaryStage.setScene(scene);
-        primaryStage.setTitle("Gauntlet");
-        primaryStage.show ();
-        MainController mainController = new MainController();
-        mainController.setScene(scene);
-        mainController.setStage(primaryStage);
     }
-
-
-    public static void main (String args []) {
-        launch (args);
+    @Override
+    public void load(){
+        this.changeScene(this.GAME_MENU, this.SCENE_TITLE);
     }
 }
