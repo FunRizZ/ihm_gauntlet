@@ -2,17 +2,20 @@ package apps.game;
 
 import apps.MainScene;
 
+
 /**
  * scene of the Game menu
  **/
 public class GameMenuScene extends MainScene {
+    public final String SCENE_TITLE;
+    public final GameMenuLoad GAME_MENU;
+    public GameMenuScene (){
+        this.SCENE_TITLE = "map creator";
+        this.GAME_MENU = new GameMenuLoad();
 
-    public void GameMenuScene (){
     }
     @Override
     public void load(){
-        GameMenuLoad mapCreatorLoad = new GameMenuLoad();
-
-        this.changeScene(mapCreatorLoad, "map creator");
+        this.changeScene(this.GAME_MENU, this.SCENE_TITLE);
     }
 }

@@ -5,8 +5,8 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public abstract class MainScene {
-    public Scene scene;
-    public Stage stage;
+    public static Scene scene;
+    public static Stage stage;
     public String sceneTitle;
     /**
      * scene dimension : width
