@@ -19,17 +19,41 @@
     </center>
     <bottom>
         <TabPane fx:id="MapTabPane" stylesheets="/apps/mapcreator/MapCreatorCss.css">
-            <Tab text="Onglet 1" fx:id="Tab1">
+            <Tab text="Menu" fx:id="Tab1">
+
+            </Tab>
+            <Tab text="Potions" fx:id="Tab2">
                 <HBox>
                     <StackPane fx:id="Img11"/>
                 </HBox>
             </Tab>
-            <Tab text="Onglet 2" fx:id="Tab2">
+            <Tab text="Keys" fx:id="Tab3">
                 <HBox>
                     <Button fx:id="Delete" text="Delete"/>
                     <StackPane fx:id="Img21"/>
                 </HBox>
             </Tab>
+            <Tab text="Food" fx:id="Tab4">
+
+            </Tab>
+            <Tab text="Walls" fx:id="Tab5">
+
+            </Tab>
+            <Tab text="Doors" fx:id="Tab6">
+            </Tab>
+            <Tab text="Stairs" fx:id="Tab7">
+            </Tab>
+            <Tab text="Treasure" fx:id="Tab8">
+            </Tab>
+            <Tab text="Generators" fx:id="Tab9">
+            </Tab>
+            <Tab text="Monsters" fx:id="Tab10">
+            </Tab>
+            <Tab text="PNJ" fx:id="Tab11">
+            </Tab>
+            <Tab text="Hero" fx:id="Tab12">
+            </Tab>
+
         </TabPane>
     </bottom>
 </fx:root>
