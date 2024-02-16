@@ -4,7 +4,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import model.Character.Character;
-import model.Character.Dragon;
+import model.Character.Daemon;
 import model.Character.Guard;
 import model.Character.Hero;
 import model.Character.Knight;
@@ -25,7 +25,7 @@ public class LocationTest {
         // create a location with characters, objects and exits
         Lookable[][] board = new Lookable[sizeX][sizeY];
         board[9][9] = new Knight(9,9);
-        board[7][10] = new Dragon(7,10);
+        board[7][10] = new Daemon(7,10);
 
         board[1][1] = new Table(1,1);
         board[2][2] = new Book(2, 2);

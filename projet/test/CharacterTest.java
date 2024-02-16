@@ -30,7 +30,7 @@ public class CharacterTest {
         h = new Hero(l,5,5);
         characters = new ArrayList<WhoFight>();
         characters.add(new Knight(1,1));
-        characters.add(new Dragon(2,2));
+        characters.add(new Daemon(2,2));
         characters.add(new Gargolyle(3,3));
         characters.add(new Guard(4,4));
     }

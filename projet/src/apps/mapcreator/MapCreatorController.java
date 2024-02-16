@@ -1,8 +1,9 @@
 package apps.mapcreator;
 
+import model.Character.Death;
+import model.Character.Daemon;
 import model.Game_pack.Game;
 import model.Game_pack.Lookable;
-import model.Item.Potion;
 import model.Location.HolyGrenadeView;
 import model.Location.PotionView;
 import model.Location.TreasureView;
@@ -52,8 +53,6 @@ public class MapCreatorController extends BorderPane{
     Tab Tab10;
     @FXML
     Tab Tab11;
-    @FXML
-    Tab Tab12;
 
     @FXML
     Button Delete;
@@ -67,6 +66,10 @@ public class MapCreatorController extends BorderPane{
     StackPane Img71;
     @FXML
     StackPane Img81;
+    @FXML
+    StackPane Img101;
+    @FXML
+    StackPane Img102;
     public MapCreatorController() {
         this.GAME = MapCreator.GAME;
         this.object_select = -1;
@@ -86,6 +89,10 @@ public class MapCreatorController extends BorderPane{
 //        Img71.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = 71);
         Img81.getChildren().add((new TreasureView(-1,-1)).getSpray());
         Img81.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = 81);
+        Img101.getChildren().add((new Death(-1,-1)).getSpray());
+        Img101.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = 101);
+        Img102.getChildren().add((new Daemon(-1,-1)).getSpray());
+        Img102.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = 102);
 
         Delete.setOnAction(event -> this.object_select = -1);
     }
@@ -133,6 +140,12 @@ public class MapCreatorController extends BorderPane{
             }
             case 81 -> {
                 return new TreasureView(x,y);
+            }
+            case 101 -> {
+                return new Death(x,y);
+            }
+            case 102 -> {
+                return new Daemon(x,y);
             }
             default -> {return null;}
         }

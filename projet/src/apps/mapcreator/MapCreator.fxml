@@ -76,9 +76,10 @@
                 </HBox>
             </Tab>
 
-            <Tab text="Spawners" fx:id="Tab10">
+            <Tab text="Spawners and Enemies" fx:id="Tab10">
                 <HBox>
-
+                    <StackPane fx:id="Img101"/>
+                    <StackPane fx:id="Img102"/>
                 </HBox>
             </Tab>
             <Tab text="Players Spawner" fx:id="Tab11">
