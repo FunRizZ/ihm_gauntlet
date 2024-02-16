@@ -15,7 +15,7 @@
          fx:controller="apps.controller.MapCreatorController"
          fx:id="Root">
     <center>
-        <GridPane fx:id="Map"/>
+        <GridPane fx:id="Map" hgap="2" vgap="2"/>
     </center>
     <bottom>
         <TabPane fx:id="MapTabPane" stylesheets="/apps/mapcreator/MapCreatorCss.css">
