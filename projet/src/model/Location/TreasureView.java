@@ -1,6 +1,7 @@
 package model.Location;
 
 
+import javafx.geometry.Rectangle2D;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import model.Item.Item;
@@ -17,5 +18,13 @@ public class TreasureView extends DecorObjet{
     public String toString() {
     	return "Painting";
     }
+
+	@Override
+	public ImageView getSpray(){
+		Image spray = (new Image(Wall.class.getResource("/sprites/treasure.png").toExternalForm()));
+		ImageView view = new ImageView(spray);
+		view.setViewport(new Rectangle2D(0, 0, 80, 80));
+		return view;
+	}
 }
 

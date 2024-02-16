@@ -20,38 +20,73 @@
     <bottom>
         <TabPane fx:id="MapTabPane" stylesheets="/apps/mapcreator/MapCreatorCss.css">
             <Tab text="Menu" fx:id="Tab1">
-
-            </Tab>
-            <Tab text="Potions" fx:id="Tab2">
                 <HBox>
-                    <StackPane fx:id="Img11"/>
+                    <Button text="Save Map"></Button>
+                    <Button text="Load Map"></Button>
+                    <Button text="Settings"></Button>
+                    <Button text="Quit to Main Menu"></Button>
+                    <Button text="Quit to Desktop"></Button>
                 </HBox>
             </Tab>
-            <Tab text="Keys" fx:id="Tab3">
+            <Tab text="Tools" fx:id="Tab2">
                 <HBox>
                     <Button fx:id="Delete" text="Delete"/>
-                    <StackPane fx:id="Img21"/>
                 </HBox>
             </Tab>
-            <Tab text="Food" fx:id="Tab4">
 
+            <Tab text="Potions" fx:id="Tab3">
+                <HBox>
+                    <StackPane fx:id="Img31"/>
+                </HBox>
             </Tab>
-            <Tab text="Walls" fx:id="Tab5">
 
+            <Tab text="Weapon" fx:id="Tab4">
+                <HBox>
+                    <StackPane fx:id="Img41"/>
+                </HBox>
             </Tab>
-            <Tab text="Doors" fx:id="Tab6">
+
+            <Tab text="Keys" fx:id="Tab5">
+                <HBox>
+
+                </HBox>
             </Tab>
-            <Tab text="Stairs" fx:id="Tab7">
+
+            <Tab text="Food" fx:id="Tab6">
+                <HBox>
+
+                </HBox>
             </Tab>
-            <Tab text="Treasure" fx:id="Tab8">
+
+            <Tab text="Walls" fx:id="Tab7">
+                <HBox>
+                    <StackPane fx:id="Img61"/>
+                </HBox>
             </Tab>
-            <Tab text="Generators" fx:id="Tab9">
+
+            <Tab text="Exits" fx:id="Tab8">
+                <HBox>
+
+                </HBox>
             </Tab>
-            <Tab text="Monsters" fx:id="Tab10">
+
+            <Tab text="Treasure" fx:id="Tab9">
+                <HBox>
+                    <StackPane fx:id="Img81"/>
+                </HBox>
             </Tab>
-            <Tab text="PNJ" fx:id="Tab11">
+
+            <Tab text="Spawners and Enemies" fx:id="Tab10">
+                <HBox>
+                    <StackPane fx:id="Img101"/>
+                    <StackPane fx:id="Img102"/>
+                    <StackPane fx:id="Img103"/>
+                </HBox>
             </Tab>
-            <Tab text="Hero" fx:id="Tab12">
+            <Tab text="Players Spawner" fx:id="Tab11">
+                <HBox>
+
+                </HBox>
             </Tab>
 
         </TabPane>
