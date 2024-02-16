@@ -2,6 +2,8 @@ package apps.mapcreator;
 
 import model.Game_pack.Game;
 import model.Game_pack.Lookable;
+import model.Item.Potion;
+import model.Location.PotionView;
 import model.Location.TreasureView;
 import model.Location.Wall;
 import javafx.animation.ScaleTransition;
@@ -57,6 +59,8 @@ public class MapCreatorController extends BorderPane{
     @FXML
     StackPane Img11;
     @FXML
+    StackPane Img31;
+    @FXML
     Button Delete;
     @FXML
     StackPane Img81;
@@ -72,6 +76,8 @@ public class MapCreatorController extends BorderPane{
         Img61.addEventHandler(MouseEvent.MOUSE_CLICKED,event -> this.object_select = 1);
         Img81.getChildren().add((new TreasureView(-1,-1)).getSpray());
         Img81.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = 81);
+        Img31.getChildren().add((new PotionView(-1,-1)).getSpray());
+        Img31.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = 31);
 
         Delete.setOnAction(event -> this.object_select = -1);
     }
@@ -110,6 +116,9 @@ public class MapCreatorController extends BorderPane{
         switch (this.object_select){
             case 1 -> {
                 return new Wall(x,y);
+            }
+            case 31 -> {
+                return new PotionView(x,y);
             }
             case 81 -> {
                 return new TreasureView(x,y);
