@@ -9,17 +9,21 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.control.Button?>
-
+<?import javafx.scene.control.ScrollPane?>
 <fx:root type="javafx.scene.layout.BorderPane"
          xmlns="http://javafx.com/javafx/8"
          xmlns:fx="http://javafx.com/fxml/1"
          fx:controller="apps.controller.MapCreatorController"
-         fx:id="Root">
+         fx:id="Root"
+         onKeyPressed="#dezoom"
+         stylesheets="/apps/mapcreator/MapCreatorCss.css">
     <center>
-        <GridPane fx:id="Map" hgap="2" vgap="2"/>
+        <ScrollPane>
+            <GridPane fx:id="Map" hgap="2" vgap="2" />
+        </ScrollPane>
     </center>
     <bottom>
-        <TabPane fx:id="MapTabPane" stylesheets="/apps/mapcreator/MapCreatorCss.css">
+        <TabPane fx:id="MapTabPane">
             <Tab text="Menu" fx:id="Tab1">
                 <HBox>
                     <Button text="Save Map" />

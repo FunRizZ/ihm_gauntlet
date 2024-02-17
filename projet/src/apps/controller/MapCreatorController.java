@@ -5,6 +5,7 @@ import apps.mapcreator.MapCreatorLoad;
 import apps.mapcreator.MapCreatorScene;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
+import javafx.scene.input.KeyEvent;
 import model.Character.*;
 import model.Game_pack.Game;
 import model.Game_pack.Lookable;
@@ -29,6 +30,7 @@ import javafx.util.Duration;
 public class MapCreatorController extends BorderPane{
     private int object_select;
     private final Game GAME;
+    private double zoom;
     @FXML
     BorderPane Root;
     @FXML
@@ -83,6 +85,7 @@ public class MapCreatorController extends BorderPane{
     public MapCreatorController() {
         this.GAME = MapCreatorLoad.GAME;
         this.object_select = -1;
+        this.zoom = 1;
     }
     @FXML
     public void initialize(){
@@ -199,15 +202,13 @@ public class MapCreatorController extends BorderPane{
         gameMenu.changeScene(gameMenu.GAME_MENU, gameMenu.SCENE_TITLE);
     }
 
-    /**
-     * @param node the node were the dezoom is applied
-     * @param val value of the dezoom
-     */
     @FXML
-    public void dezoom(Node node, double val){
-        ScaleTransition scaleTransition = new ScaleTransition(Duration.seconds(0.1),node);
-        scaleTransition.setToX(1-val); // échelle horizontale
-        scaleTransition.setToY(1-val); // échelle verticale
+    public void dezoom(KeyEvent event){
+        System.out.println(zoom);
+        if(zoom > 0){zoom = zoom - 0.001;}
+        ScaleTransition scaleTransition = new ScaleTransition(Duration.seconds(0.1),Map);
+        scaleTransition.setToX(zoom); // échelle horizontale
+        scaleTransition.setToY(zoom); // échelle verticale
         scaleTransition.play();
     }
 

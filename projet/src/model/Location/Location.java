@@ -1,8 +1,11 @@
 package model.Location;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.gson.stream.JsonWriter;
 import model.Character.Character;
 import model.Game_pack.Lookable;
 
@@ -189,5 +192,12 @@ public class Location{
         }
 
         return description + strExits + strCharacters + strDecorObjets;
+    }
+    //TODO
+    public void toFile() throws IOException {
+
+        JsonWriter writer = new JsonWriter(new FileWriter("/location.json"));
+        for (DecorObjet obj : this.getDecorObjects()) {
+        }
     }
 }
