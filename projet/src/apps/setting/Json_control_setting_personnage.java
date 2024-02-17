@@ -3,6 +3,8 @@ import com.google.gson.Gson;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 
+import javafx.scene.input.KeyCode;
+
 import java.io.FileWriter;
 
 import java.io.FileReader;
@@ -25,13 +27,28 @@ public class Json_control_setting_personnage {
             reader.close();
 
         } catch (IOException e) {
-            // si le fichier n'existe pas, créez un nouveau fichier JSON puis on le lit apres
-            define_base_setting_personnage.define_perso_control();
-            JsonReader reader = new JsonReader(new FileReader("projet\\src\\apps\\setting\\setting.json"));
-            person = gson.fromJson(reader, setting_personnage[].class);
-            reader.close();
+            // si le fichier n'existe pas, créez un nouveau fichier
+            reinitialize_setting_personnage();
         }
     }  
+
+        public void reinitialize_setting_personnage() throws IOException{
+        Gson gson = new Gson();
+            setting_personnage person1 = new setting_personnage(KeyCode.UP, KeyCode.DOWN, KeyCode.LEFT, KeyCode.RIGHT, KeyCode.SPACE, KeyCode.ENTER, KeyCode.F);
+            setting_personnage person2 = new setting_personnage(KeyCode.Z, KeyCode.S, KeyCode.Q, KeyCode.D, KeyCode.A, KeyCode.W, KeyCode.E);
+            setting_personnage person3 = new setting_personnage(KeyCode.Y, KeyCode.H, KeyCode.G, KeyCode.J, KeyCode.T, KeyCode.B, KeyCode.U);
+            setting_personnage perso4 = new setting_personnage(KeyCode.O, KeyCode.L, KeyCode.K, KeyCode.N, KeyCode.I, KeyCode.N, KeyCode.P);
+            setting_personnage[] pers = {person1, person2, person3, perso4};
+            person = pers;
+            JsonWriter writer = new JsonWriter(new FileWriter("projet\\src\\apps\\setting\\setting.json"));
+            writer.beginArray(); // commence le tableau
+            for (setting_personnage p : pers) 
+            {
+                gson.toJson(p, setting_personnage.class, writer);
+            }
+            writer.endArray(); // termine le tableau
+            writer.close();
+        }
 
     public void print() {
         for (setting_personnage p : person) {
@@ -45,6 +62,7 @@ public class Json_control_setting_personnage {
             System.out.println();
         }
     }
+    
     public static setting_personnage[] getPerson() {
         return person;
     }
