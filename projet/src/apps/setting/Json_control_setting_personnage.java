@@ -12,12 +12,8 @@ import java.io.IOException;
 
 public class Json_control_setting_personnage {
     private static setting_personnage person[];
-    public static void main(String[] args) throws IOException {
-        Json_control_setting_personnage j = new Json_control_setting_personnage();
-        j.print();
-    }
 
-    public Json_control_setting_personnage() throws IOException{
+    public Json_control_setting_personnage() {
         Gson gson = new Gson();
 
         try {
@@ -28,7 +24,11 @@ public class Json_control_setting_personnage {
 
         } catch (IOException e) {
             // si le fichier n'existe pas, créez un nouveau fichier
-            reinitialize_setting_personnage();
+            try {
+                reinitialize_setting_personnage();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
         }
     }  
 
@@ -49,24 +49,11 @@ public class Json_control_setting_personnage {
             writer.endArray(); // termine le tableau
             writer.close();
         }
-
-    public void print() {
-        for (setting_personnage p : person) {
-            System.out.println("avancer "+p.getUP());
-            System.out.println("reculer "+p.getDOWN());
-            System.out.println("gauche "+p.getLEFT());
-            System.out.println("droite "+p.getRIGHT());
-            System.out.println("attack "+p.getAttack());
-            System.out.println("bomb "+p.getBomb());
-            System.out.println("resurection "+p.getResurec());
-            System.out.println();
-        }
-    }
     
-    public static setting_personnage[] getPerson() {
+    public setting_personnage[] getPerson() {
         return person;
     }
-    public static setting_personnage getPerson(int i) {
+    public setting_personnage getPerson(int i) {
         return person[i];
     }
     

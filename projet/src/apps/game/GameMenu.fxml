@@ -14,7 +14,7 @@
             <Button text="Load Game" prefWidth="150" style="-fx-border-color: black; -fx-border-width: 2;"/>
             <Button text="Map Creator" onAction="#changeCreatorMenu" prefWidth="150" style="-fx-border-color: black; -fx-border-width: 2;"/>
             <Button text="Scoreboard" prefWidth="150" style="-fx-border-color: black; -fx-border-width: 2;"/>
-            <Button text="Settings" prefWidth="150" style="-fx-border-color: black; -fx-border-width: 2;"/>
+            <Button text="Settings" onAction="#changeSetting" prefWidth="150" style="-fx-border-color: black; -fx-border-width: 2;"/>
             <Button text="Credits" prefWidth="150" style="-fx-border-color: black; -fx-border-width: 2;"/>
             <Button text="Quit to Desktop" onAction="#handleQuit" prefWidth="150" style="-fx-border-color: black; -fx-border-width: 2;"/>
         </VBox>
