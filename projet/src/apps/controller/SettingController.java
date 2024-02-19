@@ -6,7 +6,9 @@ import apps.MainScene;
 import apps.setting.Json_control_setting_personnage;
 import apps.setting.setting_personnage;
 import javafx.application.Platform;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Scene;
@@ -17,8 +19,11 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.StackPane;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javafx.stage.WindowEvent;
 
 public class SettingController{
     Json_control_setting_personnage Json_control_setting_personnage = new Json_control_setting_personnage();
@@ -80,25 +85,40 @@ public class SettingController{
 
             Label label = new Label("...");
             StackPane root = new StackPane();
+            Text text = new Text("enter/escape to close");
+            text.setFont(new Font(10));
             root.setStyle("-fx-border-color: black;");
-                        root.getChildren().add(label);
-            Scene scene = new Scene(root, 80, 60);
+            StackPane.setAlignment(text, Pos.BOTTOM_RIGHT); // Positionner le texte en bas à droite
+            root.getChildren().add(text);
+            root.getChildren().add(label);
 
+            Scene scene = new Scene(root, 100, 100);
             Stage stage = new Stage();
             stage.setScene(scene);
-            //ajout un fond gris a la fenetre
             stage.initStyle(StageStyle.TRANSPARENT);  
-            
             stage.show();
+            
+            //désactiver la fenêtre principale
             MainScene.scene.getRoot().setDisable(true);
+            // Ajouter un événement pour activer la fenêtre principale lorsque la nouvelle fenêtre se ferme
+            stage.setOnHiding((EventHandler<WindowEvent>) new EventHandler<WindowEvent>() {
+                public void handle(WindowEvent we) {
+                    MainScene.scene.getRoot().setDisable(false);
+                }
+            });
+            //force la fenêtre à reprendre le focus lorsqu'elle est perdue
             stage.focusedProperty().addListener((observable, oldValue, newValue) -> {
                 if (!newValue) {
                     // La fenêtre a perdu le focus, donc nous demandons à la fenêtre de reprendre le focus
                     Platform.runLater(stage::requestFocus);
                 }
             });
+
             scene.setOnKeyPressed(keyEvent -> {
                 KeyCode keyName = keyEvent.getCode();
+                if(keyName == KeyCode.ESCAPE){
+                    stage.close();
+                }
                 if (keyName == KeyCode.ESCAPE || keyName == KeyCode.ENTER) {
                     stage.close();
                     if (lastKeyCode[0] != null) {// Utiliser lastKeyCode[0] pour accéder à la valeur
@@ -133,7 +153,6 @@ public class SettingController{
                         }                        
                         // Utiliser lastKeyCode[0] pour modifier la valeur
                         updateButtons(players);
-                        MainScene.scene.getRoot().setDisable(false);
                         apps.setting.Json_control_setting_personnage.save_control();
                     }
                 }
@@ -142,6 +161,7 @@ public class SettingController{
             });
         });
     }
+
     private void updateButtons(setting_personnage[] personnage) {
         for (Node node : Grid.getChildren()) {
             if (node instanceof Button) {
