@@ -2,7 +2,6 @@ package apps.controller;
 
 import apps.game.GameMenuScene;
 import apps.mapcreator.MapCreatorLoad;
-import apps.mapcreator.MapCreatorScene;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.scene.input.KeyEvent;
@@ -15,7 +14,6 @@ import model.Location.TreasureView;
 import model.Location.Wall;
 import javafx.animation.ScaleTransition;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
@@ -67,11 +65,11 @@ public class MapCreatorController extends BorderPane{
     @FXML
     StackPane Img41;
     @FXML
-    StackPane Img61;
-    @FXML
     StackPane Img71;
     @FXML
     StackPane Img81;
+    @FXML
+    StackPane Img91;
     @FXML
     StackPane Img101;
     @FXML
@@ -95,13 +93,13 @@ public class MapCreatorController extends BorderPane{
         Img31.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = 31);
         Img41.getChildren().add((new HolyGrenadeView(-1,-1)).getSpray());
         Img41.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = 41);
-        Img61.getChildren().add((new Wall(-1,-1)).getSpray());
-        Img61.addEventHandler(MouseEvent.MOUSE_CLICKED,event -> this.object_select = 61);
+        Img71.getChildren().add((new Wall(-1,-1)).getSpray());
+        Img71.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = 61);
         //TODO : faire Exit + key
-//        Img71.getChildren().add((new PotionView(-1,-1)).getSpray());
-//        Img71.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = 71);
-        Img81.getChildren().add((new TreasureView(-1,-1)).getSpray());
-        Img81.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = 81);
+//        Img81.getChildren().add((new PotionView(-1,-1)).getSpray());
+//        Img81.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = 71);
+        Img91.getChildren().add((new TreasureView(-1,-1)).getSpray());
+        Img91.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = 81);
         Img101.getChildren().add((new Death(-1,-1)).getSpray());
         Img101.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = 101);
         Img102.getChildren().add((new Daemon(-1,-1)).getSpray());
@@ -142,7 +140,7 @@ public class MapCreatorController extends BorderPane{
         image.addEventFilter(MouseEvent.MOUSE_CLICKED, event -> addLookable(GridPane.getColumnIndex(image),GridPane.getRowIndex(image)));
         if (GAME.HERO.getLocation().BOARD[x][y] != null){       /* definition du spray */
             ImageView spray = GAME.HERO.getLocation().BOARD[x][y].getSpray();
-
+            //TODO : Modifier ça pour s'adapter aux spawn voulus des joueurs
             image.getChildren().add(spray);
         }
         Map.add(image,x,y);

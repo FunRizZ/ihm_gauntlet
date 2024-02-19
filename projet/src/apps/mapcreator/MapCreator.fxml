@@ -28,7 +28,6 @@
                 <HBox>
                     <Button text="Save Map" />
                     <Button text="Load Map" />
-                    <Button text="Settings" />
                     <Button text="Quit to Main Menu" onAction="#changeGameMenu"/>
                     <Button text="Quit to Desktop" onAction="#handleQuit"/>
                 </HBox>
@@ -65,7 +64,7 @@
 
             <Tab text="Walls" fx:id="Tab7">
                 <HBox>
-                    <StackPane fx:id="Img61"/>
+                    <StackPane fx:id="Img71"/>
                 </HBox>
             </Tab>
 
@@ -77,7 +76,7 @@
 
             <Tab text="Treasure" fx:id="Tab9">
                 <HBox>
-                    <StackPane fx:id="Img81"/>
+                    <StackPane fx:id="Img91"/>
                 </HBox>
             </Tab>
 
