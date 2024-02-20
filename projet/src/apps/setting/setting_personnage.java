@@ -77,4 +77,5 @@ public class setting_personnage {
     public KeyCode getResurec() {
         return this.Resurec;
     }
+
 }

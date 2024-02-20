@@ -12,6 +12,7 @@ import java.io.IOException;
 
 public class Json_control_setting_personnage {
     private static setting_personnage person[];
+    private static settingScene settingsScene;
 
     public Json_control_setting_personnage() {
         Gson gson = new Gson();
@@ -20,6 +21,7 @@ public class Json_control_setting_personnage {
             // lire le fichier JSON existant
             JsonReader reader = new JsonReader(new FileReader("projet\\src\\apps\\setting\\setting.json"));
             person = gson.fromJson(reader, setting_personnage[].class);
+            settingsScene = gson.fromJson(reader, settingScene.class);
             reader.close();
 
         } catch (IOException e) {
@@ -39,7 +41,9 @@ public class Json_control_setting_personnage {
             setting_personnage person3 = new setting_personnage(KeyCode.Y, KeyCode.H, KeyCode.G, KeyCode.J, KeyCode.T, KeyCode.B, KeyCode.U);
             setting_personnage perso4 = new setting_personnage(KeyCode.O, KeyCode.L, KeyCode.K, KeyCode.N, KeyCode.I, KeyCode.N, KeyCode.P);
             setting_personnage[] pers = {person1, person2, person3, perso4};
+            settingScene setti = new settingScene();
             person = pers;
+            settingsScene = setti;
             JsonWriter writer = new JsonWriter(new FileWriter("projet\\src\\apps\\setting\\setting.json"));
             writer.beginArray(); // commence le tableau
             for (setting_personnage p : pers) 
@@ -47,6 +51,7 @@ public class Json_control_setting_personnage {
                 gson.toJson(p, setting_personnage.class, writer);
             }
             writer.endArray(); // termine le tableau
+            gson.toJson(setti, settingScene.class, writer);
             writer.close();
         }
     
@@ -66,11 +71,15 @@ public class Json_control_setting_personnage {
                 gson.toJson(p, setting_personnage.class, writer);
             }
             writer.endArray(); // termine le tableau
+            gson.toJson(settingsScene, settingScene.class, writer);
             writer.close();
         } catch (Exception e) {
             System.out.println(e.getMessage());
             e.printStackTrace();
         }
+    }
+    public settingScene getSettingsScene() {
+        return settingsScene;
     }
 }
 

@@ -4,11 +4,13 @@ package apps.controller;
 
 import apps.MainScene;
 import apps.setting.Json_control_setting_personnage;
+import apps.setting.settingScene;
 import apps.setting.setting_personnage;
 import javafx.application.Platform;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Scene;
@@ -28,6 +30,7 @@ import javafx.stage.WindowEvent;
 public class SettingController{
     Json_control_setting_personnage Json_control_setting_personnage = new Json_control_setting_personnage();
     setting_personnage[] players = Json_control_setting_personnage.getPerson();
+    settingScene settingScene = Json_control_setting_personnage.getSettingsScene();
     
     @FXML
     private GridPane Grid;
@@ -55,7 +58,25 @@ public class SettingController{
         // Résolutions d'écran
         ComboBox<String> resolution = new ComboBox<>();
         resolution.getItems().addAll("1280 x 720", "1920 x 1080", "2560 x 1440");
-        resolution.getSelectionModel().selectFirst(); // Sélectionne la première résolution par défaut
+        String itemToSelect = (int)settingScene.getWidth()+" x "+(int)settingScene.getHeight();
+        resolution.getSelectionModel().select(itemToSelect); // Sélectionne la première résolution par défaut
+        
+        resolution.getSelectionModel().selectedItemProperty().addListener((ChangeListener<? super String>) new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observableValue, String oldValue, String newValue) {
+                String[] dimensions = newValue.split(" x ");
+                double width = Double.parseDouble(dimensions[0]);
+                double height = Double.parseDouble(dimensions[1]);
+
+                // Utilisez la classe MainScene pour changer la taille de la fenêtre
+                settingScene.setWidth(width);
+                settingScene.setHeight(height);
+                MainScene.stage.setWidth(width);
+                MainScene.stage.setHeight(height);
+                apps.setting.Json_control_setting_personnage.save_control();
+                }
+        });
+
         Grid.add(resolution, 0, Grid.getChildren().size()/4);        
     }
 
