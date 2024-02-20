@@ -5,12 +5,12 @@ import javafx.scene.layout.GridPane;
 
 import java.io.IOException;
 
-public class Setting_load extends GridPane {
+public class SettingPageLoad extends GridPane {
 
-    public Setting_load() {
+    public SettingPageLoad() {
         try {
             // Locate the FXML file
-            FXMLLoader fxmlLoader = new FXMLLoader(Setting_load.class.getResource("Setting.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(SettingPageLoad.class.getResource("Setting.fxml"));
 
             // Since the loaded FXML file is the root of the scene,
             // We must also set the Root as this class

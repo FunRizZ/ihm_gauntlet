@@ -3,7 +3,7 @@ package apps.controller;
 
 
 import apps.MainScene;
-import apps.setting.Json_control_setting_personnage;
+import apps.setting.JsonSetting;
 import apps.setting.settingScene;
 import apps.setting.setting_personnage;
 import javafx.application.Platform;
@@ -28,9 +28,8 @@ import javafx.stage.StageStyle;
 import javafx.stage.WindowEvent;
 
 public class SettingController{
-    Json_control_setting_personnage Json_control_setting_personnage = new Json_control_setting_personnage();
-    setting_personnage[] players = Json_control_setting_personnage.getPerson();
-    settingScene settingScene = Json_control_setting_personnage.getSettingsScene();
+    setting_personnage[] players = JsonSetting.getPersonnages();
+    settingScene settingScene = JsonSetting.getSettingsScene();
     
     @FXML
     private GridPane Grid;
@@ -73,7 +72,7 @@ public class SettingController{
                 settingScene.setHeight(height);
                 MainScene.stage.setWidth(width);
                 MainScene.stage.setHeight(height);
-                apps.setting.Json_control_setting_personnage.save_control();
+                JsonSetting.save_control();
                 }
         });
 
@@ -174,7 +173,7 @@ public class SettingController{
                         }                        
                         // Utiliser lastKeyCode[0] pour modifier la valeur
                         updateButtons(players);
-                        apps.setting.Json_control_setting_personnage.save_control();
+                        JsonSetting.save_control();
                     }
                 }
                 lastKeyCode[0] = keyName; // Utiliser lastKeyCode[0] pour modifier la valeur
