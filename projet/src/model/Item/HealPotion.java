@@ -2,7 +2,7 @@ package model.Item;
 
 import model.Character.Hero;
 
-public class Potion extends Item{
+public class HealPotion extends Item{
     public static final int HEAL = 500;
     
     @Override

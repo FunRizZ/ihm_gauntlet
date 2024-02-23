@@ -59,7 +59,7 @@
 
             <Tab text="Food" fx:id="Tab6">
                 <HBox>
-
+                    <StackPane fx:id="Img61"/>
                 </HBox>
             </Tab>
 
@@ -90,7 +90,7 @@
                     <StackPane fx:id="Img105"/>
                 </HBox>
             </Tab>
-            <Tab text="Players Spawner" fx:id="Tab11">
+            <Tab text="Players" fx:id="Tab11">
                 <HBox>
 
                 </HBox>

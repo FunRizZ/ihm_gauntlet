@@ -7,7 +7,7 @@ import javafx.geometry.Rectangle2D;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import model.Item.Item;
-import model.Item.Potion;
+import model.Item.HealPotion;
 import model.Location.Wall;
 
 public class Grunt extends WhoFight{
@@ -20,7 +20,7 @@ public class Grunt extends WhoFight{
     }
     private static List<Item> createItem(){
     	List<Item> lst = new ArrayList<Item>();
-    	lst.add((Item)new Potion());
+    	lst.add((Item)new HealPotion());
     	return lst;
     }
     @Override

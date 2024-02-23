@@ -8,10 +8,7 @@ import javafx.scene.input.KeyEvent;
 import model.Character.*;
 import model.Game_pack.Game;
 import model.Game_pack.Lookable;
-import model.Location.HolyGrenadeView;
-import model.Location.PotionView;
-import model.Location.TreasureView;
-import model.Location.Wall;
+import model.Location.*;
 import javafx.animation.ScaleTransition;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -65,6 +62,8 @@ public class MapCreatorController extends BorderPane{
     @FXML
     StackPane Img41;
     @FXML
+    StackPane Img61;
+    @FXML
     StackPane Img71;
     @FXML
     StackPane Img81;
@@ -89,17 +88,19 @@ public class MapCreatorController extends BorderPane{
     public void initialize(){
         this.generate();
         MapTabPane.setTabClosingPolicy(TabPane.TabClosingPolicy.UNAVAILABLE);
-        Img31.getChildren().add((new PotionView(-1,-1)).getSpray());
+        Img31.getChildren().add((new HealPotionView(-1,-1)).getSpray());
         Img31.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = 31);
         Img41.getChildren().add((new HolyGrenadeView(-1,-1)).getSpray());
         Img41.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = 41);
+        Img61.getChildren().add((new FoodView(-1,-1)).getSpray());
+        Img61.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = 61);
         Img71.getChildren().add((new Wall(-1,-1)).getSpray());
-        Img71.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = 61);
+        Img71.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = 71);
         //TODO : faire Exit + key
 //        Img81.getChildren().add((new PotionView(-1,-1)).getSpray());
 //        Img81.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = 71);
         Img91.getChildren().add((new TreasureView(-1,-1)).getSpray());
-        Img91.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = 81);
+        Img91.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = 91);
         Img101.getChildren().add((new Death(-1,-1)).getSpray());
         Img101.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = 101);
         Img102.getChildren().add((new Daemon(-1,-1)).getSpray());
@@ -148,15 +149,18 @@ public class MapCreatorController extends BorderPane{
     public Lookable getLookable(int x, int y){
         switch (this.object_select){
             case 31 -> {
-                return new PotionView(x,y);
+                return new HealPotionView(x,y);
             }
             case 41 -> {
                 return new HolyGrenadeView(x,y);
             }
             case 61 -> {
+                return new FoodView(x,y);
+            }
+            case 71 -> {
                 return new Wall(x,y);
             }
-            case 81 -> {
+            case 91 -> {
                 return new TreasureView(x,y);
             }
             case 101 -> {
