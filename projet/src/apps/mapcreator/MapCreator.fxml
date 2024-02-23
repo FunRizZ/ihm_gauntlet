@@ -27,7 +27,7 @@
         <TabPane fx:id="MapTabPane">
             <Tab text="Menu" fx:id="Tab1">
                 <HBox>
-                    <Button text="Save Map" />
+                    <Button text="Save Map"  onAction="#SaveMap"/>
                     <Button text="Load Map" />
                     <Button text="Settings" onAction="#changeSetting"/>
                     <Button text="Quit to Main Menu" onAction="#changeGameMenu"/>

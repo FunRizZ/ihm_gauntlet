@@ -24,6 +24,8 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.util.Duration;
 
+import java.io.IOException;
+
 public class MapCreatorController extends BorderPane{
     private int object_select;
     private final Game GAME;
@@ -227,6 +229,17 @@ public class MapCreatorController extends BorderPane{
         scaleTransition.setToX(zoom); // échelle horizontale
         scaleTransition.setToY(zoom); // échelle verticale
         scaleTransition.play();
+    }
+
+    @FXML
+    public void SaveMap(ActionEvent event){
+        try {
+            GAME.HERO.getLocation().toFile();
+        }catch (Exception e){
+            System.err.println("error on SaveMap ");
+            e.printStackTrace();
+        }
+
     }
 
 }

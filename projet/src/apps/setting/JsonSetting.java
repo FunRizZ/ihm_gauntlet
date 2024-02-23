@@ -16,7 +16,7 @@ public class JsonSetting {
 
     private static void setup_setting() {
             try {
-                JsonReader reader = new JsonReader(new FileReader("projet\\src\\apps\\setting\\setting.json"));
+                JsonReader reader = new JsonReader(new FileReader("./src/apps/setting/setting.json"));
                 Gson gson = new Gson();
                 personnages = gson.fromJson(reader, setting_personnage[].class);
                 settingsScene = gson.fromJson(reader, settingScene.class);
@@ -38,7 +38,7 @@ public class JsonSetting {
             settingsScene = setti;
             JsonWriter writer;
             try {
-                writer = new JsonWriter(new FileWriter("projet\\src\\apps\\setting\\setting.json"));
+                writer = new JsonWriter(new FileWriter("./src/apps/setting/setting.json"));
                 writer.beginArray(); // commence le tableau
             for (setting_personnage p : pers) 
             {
@@ -74,7 +74,7 @@ public class JsonSetting {
     public static void save_control() {
         Gson gson = new Gson();
         try {
-            JsonWriter writer = new JsonWriter(new FileWriter("projet\\src\\apps\\setting\\setting.json"));
+            JsonWriter writer = new JsonWriter(new FileWriter("./src/apps/setting/setting.json"));
             writer.beginArray(); // commence le tableau
             for (setting_personnage p : personnages) {
                 gson.toJson(p, setting_personnage.class, writer);

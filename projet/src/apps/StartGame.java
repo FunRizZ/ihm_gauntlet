@@ -1,7 +1,6 @@
 package apps;
 
 import apps.game.GameMenuScene;
-import apps.mapcreator.MapCreatorScene;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
