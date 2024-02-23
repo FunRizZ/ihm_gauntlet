@@ -85,7 +85,7 @@ public class SettingController{
             for (int x = 0; x < personnages.length; x++) {
                 Label label = new Label("player" + (x+1));
                 grid.add(label, x+1, 0);
-                Button button = new Button(personnages[x].getKey(actions[i]).toString());
+                Button button = new Button();
                 button.setMinWidth(100);
                 button.setMinHeight(50);
                 add(button);
@@ -153,6 +153,11 @@ public class SettingController{
                 if (keyName == KeyCode.ENTER) {
                     stage.close();
                     if (lastKeyCode[0] != null) {
+                        for (int i = 0; i < players.length; i++) {
+                            if (players[i].getKeyString(lastKeyCode[0]) != null) {
+                                players[i].setKey(players[i].getKeyString(lastKeyCode[0]), null);
+                            }
+                        }
                         switch (rowIndex) {
                             case 1:
                                 players[columnIndex-1].setKey("UP", lastKeyCode[0]);
@@ -200,29 +205,36 @@ public class SettingController{
                 int rowIndex = GridPane.getRowIndex(button);
 
                 setting_personnage player = personnage[columnIndex - 1];
+                KeyCode key = null;
 
                 switch (rowIndex) {
                     case 1:
-                        button.setText(player.getKey("UP").getName());
+                        key = player.getKey("UP");
                         break;
                     case 2:
-                        button.setText(player.getKey("DOWN").getName());
+                        key = player.getKey("DOWN");
                         break;
                     case 3:
-                        button.setText(player.getKey("LEFT").getName());
+                        key = player.getKey("LEFT");
                         break;
                     case 4:
-                        button.setText(player.getKey("RIGHT").getName());
+                        key = player.getKey("RIGHT");
                         break;
                     case 5:
-                        button.setText(player.getKey("Attack").getName());
+                        key = player.getKey("Attack");
                         break;
                     case 6:
-                        button.setText(player.getKey("Bomb").getName());
+                        key = player.getKey("Bomb");
                         break;
                     case 7:
-                        button.setText(player.getKey("Resurec").getName());
+                        key = player.getKey("Resurec");
                         break;
+                }
+
+                if (key != null) {
+                    button.setText(key.getName());
+                } else {
+                    button.setText("");
                 }
             }
         }
