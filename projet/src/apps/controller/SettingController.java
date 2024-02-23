@@ -78,20 +78,20 @@ public class SettingController{
 
 
     
-    private void createcontrol(GridPane grid, setting_personnage[] personnages)
-    {
-        for (int i = 1; i <= players[0].getClass().getDeclaredFields().length; i++) {
-            for (int x = 0; x < personnages.length; x++)
-            {
+    private void createcontrol(GridPane grid, setting_personnage[] personnages) {
+        String[] actions = {"UP", "DOWN", "LEFT", "RIGHT", "Attack", "Bomb", "Resurec"};
+
+        for (int i = 0; i < actions.length; i++) {
+            for (int x = 0; x < personnages.length; x++) {
                 Label label = new Label("player" + (x+1));
                 grid.add(label, x+1, 0);
-                Button button = new Button();
-                add(button);
+                Button button = new Button(personnages[x].getKey(actions[i]).toString());
                 button.setMinWidth(100);
                 button.setMinHeight(50);
+                add(button);
                 GridPane.setHgrow(button, Priority.SOMETIMES);
                 GridPane.setVgrow(button, Priority.SOMETIMES);
-                grid.add(button, x + 1, i);
+                grid.add(button, x + 1, i + 1);
             }
         }
     }
@@ -152,39 +152,39 @@ public class SettingController{
                 }
                 if (keyName == KeyCode.ENTER) {
                     stage.close();
-                    if (lastKeyCode[0] != null) {// Utiliser lastKeyCode[0] pour accéder à la valeur
+                    if (lastKeyCode[0] != null) {
                         switch (rowIndex) {
                             case 1:
-                                players[columnIndex-1].setUP(lastKeyCode[0]);
+                                players[columnIndex-1].setKey("UP", lastKeyCode[0]);
                                 break;
                                 
                             case 2:
-                                players[columnIndex-1].setDOWN(lastKeyCode[0]);
+                                players[columnIndex-1].setKey("DOWN", lastKeyCode[0]);
                                 break;
                                 
                             case 3:
-                                players[columnIndex-1].setLEFT(lastKeyCode[0]);
+                                players[columnIndex-1].setKey("LEFT", lastKeyCode[0]);
                                 break;
                                 
                             case 4:
-                                players[columnIndex-1].setRIGHT(lastKeyCode[0]);
+                                players[columnIndex-1].setKey("RIGHT", lastKeyCode[0]);
                                 break;
                                 
                             case 5:
-                                players[columnIndex-1].setAttack(lastKeyCode[0]);
+                                players[columnIndex-1].setKey("Attack", lastKeyCode[0]);
                                 break;
                                 
                             case 6:
-                                players[columnIndex-1].setBomb(lastKeyCode[0]);
+                                players[columnIndex-1].setKey("Bomb", lastKeyCode[0]);
                                 break;
                                 
                             case 7:
-                                players[columnIndex-1].setResurec(lastKeyCode[0]);
+                                players[columnIndex-1].setKey("Resurec", lastKeyCode[0]);
                                 break;
-                        }                        
+                        }
+                    }                        
                         updateButtons(players);
                         JsonSetting.save_control();
-                    }
                 }
                 lastKeyCode[0] = keyName;
                 label.setText(""+keyName);
@@ -203,25 +203,25 @@ public class SettingController{
 
                 switch (rowIndex) {
                     case 1:
-                        button.setText(player.getUP().getName());
+                        button.setText(player.getKey("UP").getName());
                         break;
                     case 2:
-                        button.setText(player.getDOWN().getName());
+                        button.setText(player.getKey("DOWN").getName());
                         break;
                     case 3:
-                        button.setText(player.getLEFT().getName());
+                        button.setText(player.getKey("LEFT").getName());
                         break;
                     case 4:
-                        button.setText(player.getRIGHT().getName());
+                        button.setText(player.getKey("RIGHT").getName());
                         break;
                     case 5:
-                        button.setText(player.getAttack().getName());
+                        button.setText(player.getKey("Attack").getName());
                         break;
                     case 6:
-                        button.setText(player.getBomb().getName());
+                        button.setText(player.getKey("Bomb").getName());
                         break;
                     case 7:
-                        button.setText(player.getResurec().getName());
+                        button.setText(player.getKey("Resurec").getName());
                         break;
                 }
             }

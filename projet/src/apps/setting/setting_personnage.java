@@ -1,81 +1,37 @@
 package apps.setting;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javafx.scene.input.KeyCode;
 
-
 public class setting_personnage {
-    private KeyCode UP;
-    private KeyCode DOWN;
-    private KeyCode LEFT;
-    private KeyCode RIGHT;
-    private KeyCode Attack;
-    private KeyCode Bomb;
-    private KeyCode Resurec;
+    private Map<String, KeyCode> keySettings = new HashMap<>();
 
     public setting_personnage(KeyCode UP, KeyCode DOWN, KeyCode LEFT, KeyCode RIGHT, KeyCode Attack, KeyCode Bomb, KeyCode Resurec) {
-        this.UP = UP;
-        this.DOWN = DOWN;
-        this.LEFT = LEFT;
-        this.RIGHT = RIGHT;
-        this.Attack = Attack;
-        this.Bomb = Bomb;
-        this.Resurec = Resurec;
+        keySettings.put("UP", UP);
+        keySettings.put("DOWN", DOWN);
+        keySettings.put("LEFT", LEFT);
+        keySettings.put("RIGHT", RIGHT);
+        keySettings.put("Attack", Attack);
+        keySettings.put("Bomb", Bomb);
+        keySettings.put("Resurec", Resurec);
     }
 
-    public void setUP(KeyCode UP) {
-        this.UP = UP;
+    public void setKey(String action, KeyCode key) {
+        keySettings.put(action, key);
     }
 
-    public KeyCode getUP() {
-        return this.UP;
+    public KeyCode getKey(String action) {
+        return keySettings.get(action);
     }
 
-    public void setDOWN(KeyCode DOWN) {
-        this.DOWN = DOWN;
+    public String getKeyString(KeyCode Key) {
+        for (Map.Entry<String, KeyCode> entry : keySettings.entrySet()) {
+            if (entry.getValue() == Key) {
+                return entry.getKey();
+            }
+        }
+        return null;
     }
-
-    public KeyCode getDOWN() {
-        return this.DOWN;
-    }
-
-    public void setLEFT(KeyCode LEFT) {
-        this.LEFT = LEFT;
-    }
-
-    public KeyCode getLEFT() {
-        return this.LEFT;
-    }
-
-    public void setRIGHT(KeyCode RIGHT) {
-        this.RIGHT = RIGHT;
-    }
-
-    public KeyCode getRIGHT() {
-        return this.RIGHT;
-    }
-
-    public void setAttack(KeyCode Attack) {
-        this.Attack = Attack;
-    }
-
-    public KeyCode getAttack() {
-        return this.Attack;
-    }
-
-    public void setBomb(KeyCode bomb) {
-        this.Bomb = bomb;
-    }
-
-    public KeyCode getBomb() {
-        return this.Bomb;
-    }
-
-    public void setResurec(KeyCode resurec) {
-        this.Resurec = resurec;
-    }
-
-    public KeyCode getResurec() {
-        return this.Resurec;
-    }
-
 }
