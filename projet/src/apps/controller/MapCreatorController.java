@@ -2,6 +2,7 @@ package apps.controller;
 
 import apps.game.GameMenuScene;
 import apps.mapcreator.MapCreatorLoad;
+import apps.setting.SettingCreatorScene;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.scene.input.KeyEvent;
@@ -202,6 +203,12 @@ public class MapCreatorController extends BorderPane{
     public void changeGameMenu (ActionEvent event) {
         GameMenuScene gameMenu = new GameMenuScene();
         gameMenu.changeScene(gameMenu.GAME_MENU, gameMenu.SCENE_TITLE);
+    }
+
+    @FXML
+    public void changeSetting (ActionEvent event) {
+        SettingCreatorScene Setting = new SettingCreatorScene();
+        Setting.changeScene(Setting.SETTING, Setting.SCENE_TITLE);
     }
 
     @FXML
