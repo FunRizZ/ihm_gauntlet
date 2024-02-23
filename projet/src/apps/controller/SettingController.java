@@ -3,12 +3,13 @@ package apps.controller;
 
 
 import apps.MainScene;
+import apps.game.GameMenuScene;
 import apps.setting.JsonSetting;
 import apps.setting.settingScene;
 import apps.setting.setting_personnage;
 import javafx.application.Platform;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
@@ -33,64 +34,63 @@ public class SettingController{
     
     @FXML
     private GridPane Grid;
+    @FXML
+    private ComboBox<String> Resolution;
+    @FXML
+    private ComboBox<String> Langue;
 
     @FXML
     public void initialize() {
-       
-        Grid.setHgap(2);
-        Grid.setVgap(2);
-        
-        Grid.setAlignment(Pos.CENTER); // Centrer le GridPane
-        GridPane.setHgrow(Grid, Priority.ALWAYS);
-        GridPane.setVgrow(Grid, Priority.ALWAYS);
 
-
-        String[] labelsText = {"Control", "UP", "DOWN", "LEFT", "RIGHT", "ATTACK", "BOMB", "RESUREC"};
-
-    for (int i = 0; i < labelsText.length; i++) {
-        Label label = new Label(labelsText[i]);
-        Grid.add(label, 0, i);
-    }
         createcontrol(Grid, players);
         updateButtons(players);
 
-        // Résolutions d'écran
-        ComboBox<String> resolution = new ComboBox<>();
-        resolution.getItems().addAll("1280 x 720", "1920 x 1080", "2560 x 1440");
-        String itemToSelect = (int)settingScene.getWidth()+" x "+(int)settingScene.getHeight();
-        resolution.getSelectionModel().select(itemToSelect); // Sélectionne la première résolution par défaut
-        
-        resolution.getSelectionModel().selectedItemProperty().addListener((ChangeListener<? super String>) new ChangeListener<String>() {
-            @Override
-            public void changed(ObservableValue<? extends String> observableValue, String oldValue, String newValue) {
-                String[] dimensions = newValue.split(" x ");
-                double width = Double.parseDouble(dimensions[0]);
-                double height = Double.parseDouble(dimensions[1]);
+        Resolution.setItems(FXCollections.observableArrayList("1280 x 720", "1920 x 1080"));
+        Resolution.getSelectionModel().select((int)settingScene.getWidth() + " x " + (int)settingScene.getHeight());
+        Resolution.setOnAction(new EventHandler<ActionEvent>() {
+        @Override
+        public void handle(ActionEvent event) {
+            String selectedValue = Resolution.getValue();
+            String[] dimensions = selectedValue.split(" x ");
+            double width = Double.parseDouble(dimensions[0]);
+            double height = Double.parseDouble(dimensions[1]);
 
-                // Utilisez la classe MainScene pour changer la taille de la fenêtre
-                settingScene.setWidth(width);
-                settingScene.setHeight(height);
-                MainScene.stage.setWidth(width);
-                MainScene.stage.setHeight(height);
-                JsonSetting.save_control();
-                }
+            settingScene.setWidth(width);
+            settingScene.setHeight(height);
+            MainScene.stage.setWidth(width);
+            MainScene.stage.setHeight(height);
+            JsonSetting.save_control();
+
+            }
         });
+        Langue.setItems(FXCollections.observableArrayList("fr", "en"));
+        Langue.getSelectionModel().select(settingScene.getLangue());
+        Langue.setOnAction(new EventHandler<ActionEvent>() {
+        @Override
+        public void handle(ActionEvent event) {
+            String selectedValue = Langue.getValue();
 
-        Grid.add(resolution, 0, Grid.getChildren().size()/4);        
+            settingScene.setLangue(selectedValue);
+            JsonSetting.save_control();
+            }
+        });
     }
 
 
     
     private void createcontrol(GridPane grid, setting_personnage[] personnages)
     {
-        for (int i = 0; i <= players[0].getClass().getDeclaredFields().length; i++) {
+        for (int i = 1; i <= players[0].getClass().getDeclaredFields().length; i++) {
             for (int x = 0; x < personnages.length; x++)
             {
                 Label label = new Label("player" + (x+1));
                 grid.add(label, x+1, 0);
                 Button button = new Button();
                 add(button);
-                button.setStyle("-fx-background-color: transparent; -fx-text-fill: black; -fx-padding: 5 10 5 10;");
+                button.setMinWidth(100);
+                button.setMinHeight(50);
+                GridPane.setHgrow(button, Priority.SOMETIMES);
+                GridPane.setVgrow(button, Priority.SOMETIMES);
                 grid.add(button, x + 1, i);
             }
         }
@@ -104,18 +104,29 @@ public class SettingController{
             lastKeyCode[0] = KeyCode.getKeyCode(button.getText());
 
             Label label = new Label("...");
-            StackPane root = new StackPane();
+            label.setFont(new Font(15));
+            StackPane stackPane = new StackPane();
             Text text = new Text("enter/escape to close");
             text.setFont(new Font(10));
-            root.setStyle("-fx-border-color: black;");
-            StackPane.setAlignment(text, Pos.BOTTOM_RIGHT); // Positionner le texte en bas à droite
-            root.getChildren().add(text);
-            root.getChildren().add(label);
+            stackPane.setStyle("-fx-border-color: black;");
+            StackPane.setAlignment(text, Pos.BOTTOM_RIGHT);
+            stackPane.getChildren().add(text);
+            stackPane.getChildren().add(label);
 
-            Scene scene = new Scene(root, 100, 100);
+            Scene enterKey = new Scene(stackPane, 100, 100);
             Stage stage = new Stage();
-            stage.setScene(scene);
+            stage.setScene(enterKey);
             stage.initStyle(StageStyle.TRANSPARENT);  
+            //centrer la fenêtre
+            double centerXPosition = MainScene.stage.getX() + MainScene.stage.getWidth() / 2d;
+            double centerYPosition = MainScene.stage.getY() + MainScene.stage.getHeight() / 2d;
+
+            // On place le stage au centre du parentStage
+            stage.setOnShown(evt -> {
+                stage.setX(centerXPosition - stage.getWidth() / 2d);
+                stage.setY(centerYPosition - stage.getHeight() / 2d);
+            });
+
             stage.show();
             
             //désactiver la fenêtre principale
@@ -134,12 +145,12 @@ public class SettingController{
                 }
             });
 
-            scene.setOnKeyPressed(keyEvent -> {
+            enterKey.setOnKeyPressed(keyEvent -> {
                 KeyCode keyName = keyEvent.getCode();
                 if(keyName == KeyCode.ESCAPE){
                     stage.close();
                 }
-                if (keyName == KeyCode.ESCAPE || keyName == KeyCode.ENTER) {
+                if (keyName == KeyCode.ENTER) {
                     stage.close();
                     if (lastKeyCode[0] != null) {// Utiliser lastKeyCode[0] pour accéder à la valeur
                         switch (rowIndex) {
@@ -171,12 +182,11 @@ public class SettingController{
                                 players[columnIndex-1].setResurec(lastKeyCode[0]);
                                 break;
                         }                        
-                        // Utiliser lastKeyCode[0] pour modifier la valeur
                         updateButtons(players);
                         JsonSetting.save_control();
                     }
                 }
-                lastKeyCode[0] = keyName; // Utiliser lastKeyCode[0] pour modifier la valeur
+                lastKeyCode[0] = keyName;
                 label.setText(""+keyName);
             });
         });
@@ -189,35 +199,37 @@ public class SettingController{
                 int columnIndex = GridPane.getColumnIndex(button);
                 int rowIndex = GridPane.getRowIndex(button);
 
-                // Assurez-vous que columnIndex et rowIndex ne sont pas null
-                if (columnIndex != 0 && rowIndex != 0) {
-                    setting_personnage player = personnage[columnIndex - 1];
+                setting_personnage player = personnage[columnIndex - 1];
 
-                    switch (rowIndex) {
-                        case 1:
-                            button.setText(player.getUP().getName());
-                            break;
-                        case 2:
-                            button.setText(player.getDOWN().getName());
-                            break;
-                        case 3:
-                            button.setText(player.getLEFT().getName());
-                            break;
-                        case 4:
-                            button.setText(player.getRIGHT().getName());
-                            break;
-                        case 5:
-                            button.setText(player.getAttack().getName());
-                            break;
-                        case 6:
-                            button.setText(player.getBomb().getName());
-                            break;
-                        case 7:
-                            button.setText(player.getResurec().getName());
-                            break;
-                    }
+                switch (rowIndex) {
+                    case 1:
+                        button.setText(player.getUP().getName());
+                        break;
+                    case 2:
+                        button.setText(player.getDOWN().getName());
+                        break;
+                    case 3:
+                        button.setText(player.getLEFT().getName());
+                        break;
+                    case 4:
+                        button.setText(player.getRIGHT().getName());
+                        break;
+                    case 5:
+                        button.setText(player.getAttack().getName());
+                        break;
+                    case 6:
+                        button.setText(player.getBomb().getName());
+                        break;
+                    case 7:
+                        button.setText(player.getResurec().getName());
+                        break;
                 }
             }
         }
+    }
+    @FXML
+    public void goMenu(ActionEvent event) {
+        GameMenuScene GameMenu = new GameMenuScene();
+        GameMenu.changeScene(GameMenu.GAME_MENU, GameMenu.SCENE_TITLE);
     }
 }

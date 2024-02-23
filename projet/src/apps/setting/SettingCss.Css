@@ -1,0 +1,30 @@
+.grid-pane {
+    -fx-background-color: rgba(0, 0, 0, 0.50);
+    -fx-padding: 20;
+    -fx-hgap: 10;
+    -fx-vgap: 10;
+}
+
+.text {
+    -fx-fill: rgb(255, 255, 255);
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+}
+
+.button {
+    -fx-background-color: #4CAF50;
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+}
+
+.combo-box {
+    -fx-background-color: #4CAF50;
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+}
+
+.combo-box .cell {
+    -fx-background-color: #4CAF50;
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+}

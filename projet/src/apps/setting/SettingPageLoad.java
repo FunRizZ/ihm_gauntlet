@@ -1,11 +1,11 @@
 package apps.setting;
 
 import javafx.fxml.FXMLLoader;
-import javafx.scene.layout.GridPane;
+import javafx.scene.layout.BorderPane;
 
 import java.io.IOException;
 
-public class SettingPageLoad extends GridPane {
+public class SettingPageLoad extends BorderPane {
 
     public SettingPageLoad() {
         try {

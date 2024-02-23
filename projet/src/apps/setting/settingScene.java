@@ -3,6 +3,7 @@ package apps.setting;
 public class settingScene {
     private double width = 1280;
     private double height = 720;
+    private String langue = "fr";
 
     // getters et setters pour width et height
     public double getWidth() {
@@ -19,5 +20,13 @@ public class settingScene {
 
     public void setHeight(double height) {
         this.height = height;
+    }
+
+    public String getLangue() {
+        return langue;
+    }
+
+    public void setLangue(String langue) {
+        this.langue = langue;
     }
 }
