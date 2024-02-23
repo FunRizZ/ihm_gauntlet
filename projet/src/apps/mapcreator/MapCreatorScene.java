@@ -11,7 +11,7 @@ public class MapCreatorScene extends MainScene {
     public final MapCreatorLoad MAPCREATOR;
     public MapCreatorScene (){
         super();
-        this.SCENE_TITLE = "map creator";
+        this.SCENE_TITLE = "Map Creator";
         this.MAPCREATOR = new MapCreatorLoad(Game.GAME);
     }
     @Override

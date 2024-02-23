@@ -26,11 +26,14 @@ public abstract class MainScene {
 
         scene = new Scene(gameMenu, this.width, this.height);
 
+        stage.setTitle(this.sceneTitle);
         stage.setScene(scene);
         setScene(scene);
     }
 
-    public void setScene(Scene scene) { this.scene = scene; }
+    public void setScene(Scene scene) {
+        this.scene = scene;
+    }
 
     public void setStage(Stage stage) {
         this.stage = stage;

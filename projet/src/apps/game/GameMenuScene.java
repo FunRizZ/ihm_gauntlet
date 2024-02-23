@@ -10,9 +10,8 @@ public class GameMenuScene extends MainScene {
     public final String SCENE_TITLE;
     public final GameMenuLoad GAME_MENU;
     public GameMenuScene (){
-        this.SCENE_TITLE = "map creator";
+        this.SCENE_TITLE = "Menu Gauntlet";
         this.GAME_MENU = new GameMenuLoad();
-
     }
     @Override
     public void load(){
