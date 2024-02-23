@@ -9,6 +9,7 @@ import javafx.scene.input.KeyEvent;
 import model.Character.*;
 import model.Game_pack.Game;
 import model.Game_pack.Lookable;
+import model.Item.PoisonPotion;
 import model.Location.*;
 import javafx.animation.ScaleTransition;
 import javafx.fxml.FXML;
@@ -61,6 +62,8 @@ public class MapCreatorController extends BorderPane{
     @FXML
     StackPane Img31;
     @FXML
+    StackPane Img32;
+    @FXML
     StackPane Img41;
     @FXML
     StackPane Img61;
@@ -91,6 +94,8 @@ public class MapCreatorController extends BorderPane{
         MapTabPane.setTabClosingPolicy(TabPane.TabClosingPolicy.UNAVAILABLE);
         Img31.getChildren().add((new HealPotionView(-1,-1)).getSpray());
         Img31.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = 31);
+        Img32.getChildren().add((new PoisonPotionView(-1,-1)).getSpray());
+        Img32.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = 31);
         Img41.getChildren().add((new HolyGrenadeView(-1,-1)).getSpray());
         Img41.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = 41);
         Img61.getChildren().add((new FoodView(-1,-1)).getSpray());
@@ -151,6 +156,9 @@ public class MapCreatorController extends BorderPane{
         switch (this.object_select){
             case 31 -> {
                 return new HealPotionView(x,y);
+            }
+            case 32 -> {
+                return new PoisonPotionView(x,y);
             }
             case 41 -> {
                 return new HolyGrenadeView(x,y);

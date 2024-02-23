@@ -43,6 +43,7 @@
             <Tab text="Potions" fx:id="Tab3">
                 <HBox>
                     <StackPane fx:id="Img31"/>
+                    <StackPane fx:id="Img32"/>
                 </HBox>
             </Tab>
 
