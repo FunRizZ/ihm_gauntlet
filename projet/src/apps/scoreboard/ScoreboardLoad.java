@@ -1,9 +1,8 @@
 package apps.scoreboard;
 
-import apps.mapcreator.MapCreatorLoad;
+import model.Game_pack.Game;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.BorderPane;
-import model.Game_pack.Game;
 import java.io.IOException;
 
 public class ScoreboardLoad extends BorderPane {
