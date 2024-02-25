@@ -13,6 +13,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -24,12 +25,13 @@ import javafx.scene.layout.Priority;
 import javafx.scene.layout.StackPane;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.stage.WindowEvent;
 
 public class SettingController{
-    setting_personnage[] players = JsonSetting.getPersonnages();
+    setting_personnage[] players = JsonSetting.getSetting();
     settingScene settingScene = JsonSetting.getSettingsScene();
     
     @FXML
@@ -44,8 +46,8 @@ public class SettingController{
 
         createcontrol(Grid, players);
         updateButtons(players);
-
-        Resolution.setItems(FXCollections.observableArrayList("1280 x 720", "1920 x 1080"));
+        Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
+        Resolution.setItems(FXCollections.observableArrayList("1280 x 720", (int)screenBounds.getWidth()+" x "+(int)screenBounds.getHeight()));
         Resolution.getSelectionModel().select((int)settingScene.getWidth() + " x " + (int)settingScene.getHeight());
         Resolution.setOnAction(new EventHandler<ActionEvent>() {
         @Override

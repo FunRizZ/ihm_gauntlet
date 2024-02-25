@@ -8,6 +8,5 @@
          fx:controller="apps.controller.ScoreboardController">
     <center>
 
-    </center>
-
+    </center>  
 </fx:root>

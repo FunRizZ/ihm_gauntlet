@@ -19,3 +19,5 @@ javac -cp "$LIB_PATH" -Xlint:all -Xdiags:verbose @sources.txt
 
 # Supprimer le fichier temporaire
 rm sources.txt
+
+find . -name "*.class" -type f -delete

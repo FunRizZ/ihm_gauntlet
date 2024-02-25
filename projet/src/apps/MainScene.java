@@ -31,12 +31,12 @@ public abstract class MainScene {
         setScene(scene);
     }
 
-    public void setScene(Scene scene) {
-        this.scene = scene;
+    public void setScene(Scene newscene) {
+        scene = newscene;
     }
 
-    public void setStage(Stage stage) {
-        this.stage = stage;
+    public void setStage(Stage newstage) {
+        stage = newstage;
     }
 
     public Scene getScene() {

@@ -6,8 +6,7 @@ import javafx.scene.layout.BorderPane;
 import java.io.IOException;
 
 public class ScoreboardLoad extends BorderPane {
-    public static final Game GAME= Game.GAME;
-    public ScoreboardLoad(Game game) {
+    public ScoreboardLoad() {
         try {
             // Locate the FXML file
             FXMLLoader fxmlLoader = new FXMLLoader(ScoreboardLoad.class.getResource("Scoreboard.fxml"));

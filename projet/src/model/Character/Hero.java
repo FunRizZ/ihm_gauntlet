@@ -6,12 +6,14 @@ import model.Location.Location;
 
 import java.util.List;
 
+import apps.setting.setting_personnage;
 import model.Item.Item;
 import model.Location.Carcass;
 import model.Location.DecorObjet;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
 
 public class Hero extends WhoFight{
     public final static int DEFAULT_HP = 1000;
@@ -19,10 +21,12 @@ public class Hero extends WhoFight{
     public final static int DEFAULT_DAMAGE = 200;
 
     private Location location;
+    private setting_personnage setting;
 
-    public Hero(Location location, int x, int y){
+    public Hero(Location location, setting_personnage setting,int x, int y){
         super(DEFAULT_HP, DEFAULT_ARMOR, DEFAULT_DAMAGE, x, y);
         this.location = location;
+        this.setting = setting;
     }
 
     public Location getLocation() {
@@ -79,5 +83,8 @@ public class Hero extends WhoFight{
         ImageView view = new ImageView(spray);
         view.setViewport(new Rectangle2D(0, 0, 80, 80));
         return view;
+    }
+    public String getKeyString(KeyCode Key) {
+        return setting.getKeyString(Key);
     }
 }

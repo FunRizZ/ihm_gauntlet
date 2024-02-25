@@ -3,6 +3,7 @@ import model.Location.*;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import apps.setting.setting_personnage;
 import model.Character.Character;
 import model.Character.Daemon;
 import model.Character.Guard;
@@ -10,8 +11,6 @@ import model.Character.Hero;
 import model.Character.Knight;
 import model.Item.Item;
 import model.Item.key;
-import model.Location.Wall;
-
 
 import static org.junit.Assert.*;
 
@@ -52,7 +51,8 @@ public class LocationTest {
     public void testGoKeyExit(){
         // creates an exit
         Location guard_room = new Location(sizeX, sizeY,LocationName.GUARD_ROOM);
-        Hero h = new Hero(guard_room,0 ,0 );
+        setting_personnage setting = new setting_personnage(null, null, null, null, null, null, null);
+        Hero h = new Hero(guard_room,setting,0 ,0 );
         Exit exit_to_guard_room = new ExitKey(guard_room,h,20,20);
 
         assertFalse(exit_to_guard_room.go(guard_room));

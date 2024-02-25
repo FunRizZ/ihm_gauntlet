@@ -3,6 +3,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import apps.setting.setting_personnage;
 import model.Character.*;
 
 import model.Location.LocationName;
@@ -26,8 +27,9 @@ public class CharacterTest {
         int sizeY = 50;
         int sizeX = 50;
         Location l = new Location(sizeX, sizeY, LocationName.GARDEN);
+        setting_personnage setting = new setting_personnage(null, null, null, null, null, null, null);
 
-        h = new Hero(l,5,5);
+        h = new Hero(l,setting,5,5);
         characters = new ArrayList<WhoFight>();
         characters.add(new Knight(1,1));
         characters.add(new Daemon(2,2));

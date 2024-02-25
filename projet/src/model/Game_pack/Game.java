@@ -3,6 +3,8 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 import java.util.List;
+
+import apps.setting.JsonSetting;
 import model.Item.Item;
 import model.Character.Hero;
 import model.Character.Character;
@@ -26,7 +28,7 @@ public class Game {
             System.out.println("file not found");
             locations.addFirst(this.createLocation(LocationName.GARDEN,sizeMapX,sizeMapY));
         }
-        this.HERO = new Hero(locations.getFirst(),0,0);
+        this.HERO = new Hero(locations.getFirst(),JsonSetting.getSetting(0),0,0);
 
         Location l = locations.getFirst();
         Location l2 = new Location(sizeMapX, sizeMapY, LocationName.HALLWAY);

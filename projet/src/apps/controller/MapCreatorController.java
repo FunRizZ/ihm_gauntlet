@@ -26,7 +26,7 @@ import javafx.util.Duration;
 
 import java.io.IOException;
 
-public class MapCreatorController extends BorderPane{
+public class MapCreatorController{
     private int object_select;
     private final Game GAME;
     private double zoom;
