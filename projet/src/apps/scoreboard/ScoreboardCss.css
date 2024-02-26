@@ -1,10 +1,12 @@
 .centered-table .table-cell {
     -fx-alignment: center;
     -fx-font-size: 20px;
+    -fx-text-background-color: yellow;
 }
 .centered-table .column-header {
     -fx-alignment: center;
     -fx-background-color: black;
+    -fx-text-background-color: yellow;
 }
 .table-view {
     -fx-background-color: transparent;
@@ -13,12 +15,8 @@
     -fx-background-color: transparent;
 }
 .table-view .table-cell{
-    -fx-border-color: white;
+    -fx-border-color: yellow;
     -fx-padding: 2 0 2 10px;
-}
-.table-row-cell: hover {
-    -fx-background-color: black;
-    -fx-text-background-color: yellow;
 }
 .table-row-cell: odd{
     -fx-background-color: black;
@@ -33,7 +31,6 @@
 .button {
     -fx-border-color: yellow;
     -fx-background-color: black;
-    color: yellow;
     -fx-border-width: 2;
 }
 
