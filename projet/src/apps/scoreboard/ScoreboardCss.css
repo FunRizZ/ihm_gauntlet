@@ -32,6 +32,7 @@
     -fx-border-color: yellow;
     -fx-background-color: black;
     -fx-border-width: 2;
+    -fx-text-fill: yellow;
 }
 
 .table-view .virtual-flow .scroll-bar:vertical,
@@ -52,4 +53,7 @@
 }
 .table-view .virtual-flow .scroll-bar:horizontal .thumb {
     -fx-background-color:  black;
+}
+.root {
+    -fx-background-color: black;
 }
