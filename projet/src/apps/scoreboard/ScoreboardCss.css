@@ -49,10 +49,10 @@
     -fx-padding: 2;
 }
 .table-view .virtual-flow .scroll-bar:vertical .thumb{
-    -fx-background-color:  black;
+    -fx-background-color:  grey;
 }
 .table-view .virtual-flow .scroll-bar:horizontal .thumb {
-    -fx-background-color:  black;
+    -fx-background-color:  grey;
 }
 .root {
     -fx-background-color: black;
