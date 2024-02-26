@@ -1,0 +1,7 @@
+.centered-table .table-cell {
+    -fx-alignment: center;
+    -fx-font-size: 20px;
+}
+.centered-table .column-header {
+    -fx-alignment: center;
+}
