@@ -9,7 +9,7 @@
     -fx-text-background-color: yellow;
 }
 .table-view {
-    -fx-background-color: transparent;
+    -fx-background-color: yellow;
 }
 .table-view .column-header-background .filler {
     -fx-background-color: transparent;
