@@ -54,11 +54,11 @@ public class Game {
     }
 
     public Location createLocation(LocationName locationName,int sizeX, int sizeY){
+        List<Spawn> sp = new ArrayList<>(2);
         Spawn spawn1 = new Spawn(1,1);
         Spawn spawn2 = new Spawn(2,2);
         Spawn spawn3 = new Spawn(3,1);
         Spawn spawn4 = new Spawn(4,2);
-        List<Spawn> sp = new ArrayList<>(2);
         sp.add(spawn1);
         sp.add(spawn2);
         sp.add(spawn3);

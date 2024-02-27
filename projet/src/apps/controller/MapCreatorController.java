@@ -85,6 +85,8 @@ public class MapCreatorController{
     StackPane Img104;
     @FXML
     StackPane Img105;
+    @FXML
+    StackPane Img111;
     public MapCreatorController() {
         this.GAME = MapCreatorLoad.GAME;
         this.object_select = -1;
@@ -119,6 +121,8 @@ public class MapCreatorController{
         Img104.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = 104);
         Img105.getChildren().add((new Lobber(-1,-1)).getSpray());
         Img105.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = 105);
+        Img111.getChildren().add(new Spawn(-1,-1).getSpray());
+        Img111.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = 111);
 
 
         Delete.setOnAction(event -> this.object_select = -1);
@@ -188,6 +192,11 @@ public class MapCreatorController{
             }
             case 105 -> {
                 return new Lobber(x,y);
+            }
+            case 111 -> {
+                Spawn sp = new Spawn(x,y);
+                GAME.getMainHero().getLocation().SPAWNS.add(sp);
+                return sp;
             }
             default -> {return null;}
         }

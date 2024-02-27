@@ -94,7 +94,7 @@
             </Tab>
             <Tab text="Players" fx:id="Tab11">
                 <HBox>
-
+                    <StackPane fx:id="Img111"/>
                 </HBox>
             </Tab>
 
