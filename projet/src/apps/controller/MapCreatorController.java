@@ -147,8 +147,8 @@ public class MapCreatorController extends BorderPane{
         StackPane image = new StackPane(fond);
 
         image.addEventFilter(MouseEvent.MOUSE_CLICKED, event -> addLookable(GridPane.getColumnIndex(image),GridPane.getRowIndex(image)));
-        if (GAME.HERO.getLocation().BOARD[x][y] != null){       /* definition du spray */
-            ImageView spray = GAME.HERO.getLocation().BOARD[x][y].getSpray();
+        if (GAME.getMainHero().getLocation().BOARD[x][y] != null){       /* definition du spray */
+            ImageView spray = GAME.getMainHero().getLocation().BOARD[x][y].getSpray();
             //TODO : Modifier ça pour s'adapter aux spawn voulus des joueurs
             image.getChildren().add(spray);
         }
@@ -196,10 +196,10 @@ public class MapCreatorController extends BorderPane{
         System.out.println(this.object_select+" , "+x +" , "+y);
         Lookable l = getLookable(x,y);
         if (l != null){
-            GAME.HERO.getLocation().addLookable(l);
+            GAME.getMainHero().getLocation().addLookable(l);
         }
-        else if(GAME.HERO.getLocation().BOARD[x][y] != null){
-            GAME.HERO.getLocation().removeLookable( GAME.HERO.getLocation().BOARD[x][y]);
+        else if(GAME.getMainHero().getLocation().BOARD[x][y] != null){
+            GAME.getMainHero().getLocation().removeLookable( GAME.getMainHero().getLocation().BOARD[x][y]);
         }
         reset(x, y);
     }
@@ -234,11 +234,17 @@ public class MapCreatorController extends BorderPane{
     @FXML
     public void SaveMap(ActionEvent event){
         try {
-            GAME.HERO.getLocation().toFile();
+            GAME.getMainHero().getLocation().toFile();
         }catch (Exception e){
             System.err.println("error on SaveMap ");
             e.printStackTrace();
         }
+
+    }
+
+    @FXML
+    public void load(ActionEvent event){
+        GAME.load("bonjour");
 
     }
 

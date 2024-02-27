@@ -43,11 +43,9 @@ public class Location {
         for(int i = 0; i< decorObjects.size(); i++){
             JsonObject jsonObjectDecorObject = decorObjects.get(i).getAsJsonObject();
             try {
-                Class objClass = Class.forName(gson.fromJson(jsonObjectDecorObject.get("name"), String.class));
-                System.out.println(objClass);
+                Class objClass = Class.forName("",gson.fromJson(jsonObjectDecorObject.get("name"), String.class));
                 DecorObjet obj = (DecorObjet) gson.fromJson(jsonObjectDecorObject.get("elt"), objClass);
-                System.out.println(gson.fromJson(jsonObjectDecorObject.get("elt"), objClass));
-                //this.addLookable(obj);
+                this.addLookable(obj);
             }catch (Exception e){
                 System.err.println(e);
             }
@@ -279,7 +277,7 @@ public class Location {
             writer.name("decorObject").beginArray();
             for (DecorObjet obj: decorObjects){
                 writer.beginObject();
-                writer.name("name").value(obj.getClass().getName());
+                writer.name("name").value(obj.getClass().getSimpleName());
                 writer.name("elt").value(gson.toJson(obj));
                 writer.endObject();
             }

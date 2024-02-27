@@ -40,13 +40,13 @@ public class JsonSetting {
             try {
                 writer = new JsonWriter(new FileWriter("./src/apps/setting/setting.json"));
                 writer.beginArray(); // commence le tableau
-            for (setting_personnage p : pers) 
-            {
-                gson.toJson(p, setting_personnage.class, writer);
-            }
-            writer.endArray(); // termine le tableau
-            gson.toJson(setti, settingScene.class, writer);
-            writer.close();
+                for (setting_personnage p : pers)
+                {
+                    gson.toJson(p, setting_personnage.class, writer);
+                }
+                writer.endArray(); // termine le tableau
+                gson.toJson(setti, settingScene.class, writer);
+                writer.close();
             } catch (IOException e) {
                 e.printStackTrace();
             }

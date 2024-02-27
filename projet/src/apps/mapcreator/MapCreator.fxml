@@ -28,7 +28,7 @@
             <Tab text="Menu" fx:id="Tab1">
                 <HBox>
                     <Button text="Save Map"  onAction="#SaveMap"/>
-                    <Button text="Load Map" />
+                    <Button text="Load Map" onAction="#load"/>
                     <Button text="Settings" onAction="#changeSetting"/>
                     <Button text="Quit to Main Menu" onAction="#changeGameMenu"/>
                     <Button text="Quit to Desktop" onAction="#handleQuit"/>
