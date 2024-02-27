@@ -16,7 +16,7 @@ public class JsonSetting {
 
     private static void setup_setting() {
             try {
-                JsonReader reader = new JsonReader(new FileReader("./src/apps/setting/setting.json"));
+                JsonReader reader = new JsonReader(new FileReader("./save/setting.json"));
                 Gson gson = new Gson();
                 personnages = gson.fromJson(reader, setting_personnage[].class);
                 settingsScene = gson.fromJson(reader, settingScene.class);
@@ -38,7 +38,7 @@ public class JsonSetting {
             settingsScene = setti;
             JsonWriter writer;
             try {
-                writer = new JsonWriter(new FileWriter("./src/apps/setting/setting.json"));
+                writer = new JsonWriter(new FileWriter("./save/setting.json"));
                 writer.beginArray(); // commence le tableau
                 for (setting_personnage p : pers)
                 {
@@ -52,7 +52,7 @@ public class JsonSetting {
             }
         }
     
-    public static setting_personnage[] getPersonnages() {
+    public static setting_personnage[] getSetting() {
         if (personnages == null) {
             setup_setting();
             return personnages;
@@ -61,7 +61,7 @@ public class JsonSetting {
             return personnages;
         }
     }
-    public static setting_personnage getPersonnage(int i) {
+    public static setting_personnage getSetting(int i) {
         if (personnages == null) {
             setup_setting();
             return personnages[i];
@@ -74,7 +74,7 @@ public class JsonSetting {
     public static void save_control() {
         Gson gson = new Gson();
         try {
-            JsonWriter writer = new JsonWriter(new FileWriter("./src/apps/setting/setting.json"));
+            JsonWriter writer = new JsonWriter(new FileWriter("./save/setting.json"));
             writer.beginArray(); // commence le tableau
             for (setting_personnage p : personnages) {
                 gson.toJson(p, setting_personnage.class, writer);

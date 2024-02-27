@@ -1,13 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.cell.PropertyValueFactory?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.Button?>
 
 <fx:root type="javafx.scene.layout.BorderPane"
          xmlns="http://javafx.com/javafx/8"
          xmlns:fx="http://javafx.com/fxml/1"
-         fx:controller="apps.controller.ScoreboardController">
+         fx:controller="apps.controller.ScoreboardController"
+         stylesheets="/apps/scoreboard/ScoreboardCss.Css">
     <center>
-
+        <TableView fx:id="scoreTable" styleClass="centered-table">
+            <columns>
+                <TableColumn fx:id="rankColumn" text="Rank">
+                </TableColumn>
+                <TableColumn fx:id="playerColumn" text="Player">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="player" />
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn fx:id="scoreColumn" text="Score">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="score" />
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn fx:id="dateColumn" text="Date">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="date" />
+                    </cellValueFactory>
+                </TableColumn>
+            </columns>
+        </TableView>
     </center>
-
+    <bottom>
+        <HBox alignment="CENTER" spacing="10">
+            <Button text="Menu" onAction="#goMenu" />
+        </HBox>
+    </bottom>
 </fx:root>
