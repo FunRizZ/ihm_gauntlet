@@ -1,1 +1,1 @@
-{"sizeX":100,"sizeY":10,"decorObject":[],"character":[{"name":"Hero","x":0,"y":0}],"exit":[]}
+{"sizeX":100,"sizeY":10,"decorObject":[{"name":"model.Location.HealPotionView","elt":"{\"item\":{},\"x\":1,\"Y\":1}"},{"name":"model.Location.HealPotionView","elt":"{\"item\":{},\"x\":2,\"Y\":2}"},{"name":"model.Location.HealPotionView","elt":"{\"item\":{},\"x\":3,\"Y\":1}"},{"name":"model.Location.HealPotionView","elt":"{\"item\":{},\"x\":4,\"Y\":2}"}],"character":[{"name":"Hero","x":0,"y":0}],"exit":[{"name":"Exit","x":10,"y":9,"exit_location":"./save/locations/HALLWAY.json"}]}

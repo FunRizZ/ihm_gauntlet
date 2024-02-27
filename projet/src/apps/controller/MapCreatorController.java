@@ -244,7 +244,7 @@ public class MapCreatorController{
 
     @FXML
     public void load(ActionEvent event){
-        GAME.load("bonjour");
+       // GAME.load("bonjour");
 
     }
 

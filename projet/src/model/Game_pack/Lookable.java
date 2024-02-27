@@ -18,7 +18,8 @@ public abstract class Lookable {
     public int getPosY() {
         return Y;
     }
-
+    public void setPosX(int x){this.x = x;}
+    public void setPosY(int y){this.Y = y;}
     /**
      * @return the path of the spray
      */

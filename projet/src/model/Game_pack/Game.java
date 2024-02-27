@@ -12,46 +12,58 @@ import model.Location.Exit;
 import model.Location.Location;
 import model.Character.WhoFight;
 import model.Location.LocationName;
+import model.Location.Spawn;
 
 public class Game {
-    public final static Game GAME = new Game(100,10);
+    public final static Game GAME = new Game(100,10, 1);
     public final int NB_HERO;
     public final List<Hero> HEROS;
-    private List<Location> locations;
+    private Location location;
     //private final Command cmd;
     public final int SIZE_MAP_X;
     public final int SIZE_MAP_y;
     private Game(int sizeMapX, int sizeMapY, int nbHero){
         this.NB_HERO = nbHero;
         this.HEROS = new ArrayList<>(nbHero);
-        locations = new ArrayList<Location>();
+
         try {
-            locations.addFirst(new Location("./save/locations/GARDEN.json"));
+            this.location = new Location("./save/locations/GARDEN.json a");
 
         }catch (Exception error){
             System.out.println("file not found");
-            locations.addFirst(this.createLocation(LocationName.GARDEN,sizeMapX,sizeMapY));
-        }
-        this.HERO = new Hero(locations.getFirst(),JsonSetting.getSetting(0),0,0);
 
-            Location l = locations.getFirst();
-            Location l2 = new Location(sizeMapX, sizeMapY, LocationName.HALLWAY);
+            Spawn spawn1 = new Spawn(2,2);
+            List<Spawn> sp = new ArrayList<>(2);
+            sp.add(spawn1);
+
+            this.location = this.createLocation(LocationName.GARDEN,sizeMapX,sizeMapY);
+
+            Location l2 = new Location(sizeMapX, sizeMapY, LocationName.HALLWAY,sp);
             Exit e = new Exit(l2,10,9);
-            l.addNeighbor(e);
+            this.location.addNeighbor(e);
 
         }
+        //ajout des heros
         for (int i = 0; i< nbHero; i++){
-            this.HEROS.add( new Hero(locations.getFirst(),0,0));
+            this.HEROS.add( new Hero(this.location,JsonSetting.getSetting(0),0,0));
+            this.location.addCharacter(this.HEROS.get(i));
         }
-        Location l = locations.getFirst();
-        l.addCharacter((Character) this.HERO);
+
         this.SIZE_MAP_X = sizeMapX;
         this.SIZE_MAP_y = sizeMapY;
     }
 
     public Location createLocation(LocationName locationName,int sizeX, int sizeY){
-        Location location = new Location(sizeX,sizeY,locationName);
-        this.locations.add(location);
+        Spawn spawn1 = new Spawn(1,1);
+        Spawn spawn2 = new Spawn(2,2);
+        Spawn spawn3 = new Spawn(3,1);
+        Spawn spawn4 = new Spawn(4,2);
+        List<Spawn> sp = new ArrayList<>(2);
+        sp.add(spawn1);
+        sp.add(spawn2);
+        sp.add(spawn3);
+        sp.add(spawn4);
+        Location location = new Location(sizeX,sizeY,locationName,sp);
         return location;
     }
 
@@ -63,37 +75,18 @@ public class Game {
      * all the characters fight againt the HERO. The HERO don't attacks himself
      */
     public void attackHero(){
-        Location locationH = this.HERO.getLocation();
-        try{
-            for (Character c : locationH.getCharacters()) {
-                if (c instanceof WhoFight){
-                    ((WhoFight)c).fight(this.HERO);
-                    System.out.println(c + " hit the hero");
-                }
-            }
-        }catch(NullPointerException e){}
     }
-    /**
-     * @return true if the hero has the treasure else false
-     */
-    public boolean treasureIsGet(){
-        boolean res = false;
-        try{
-            for (Item i : this.HERO.getItems()) {
-                if(i.isMe("Treasure")){res = true;}
-            }
-        }catch(NullPointerException e){}
-        return res;
-    }
+
     public boolean Load(String path){
         try {
-            this.locations.clear();
-            this.locations.add(new Location(path));
+            this.location = new Location(path);
         }catch (Exception e){
             return false;
         }
         for (Hero hero : this.HEROS) {
-
+            hero.setLocation(this.location);
+            hero.setPosX(this.location.SPAWNS.getFirst().getPosX());
+            hero.setPosY(this.location.SPAWNS.getFirst().getPosY());
         }
         return true;
     }

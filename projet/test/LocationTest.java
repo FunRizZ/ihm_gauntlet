@@ -12,6 +12,9 @@ import model.Character.Knight;
 import model.Item.Item;
 import model.Item.key;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.Assert.*;
 
 
@@ -29,8 +32,12 @@ public class LocationTest {
         board[1][1] = new Table(1,1);
         board[2][2] = new Book(2, 2);
 
-        Location exit1 = new Location(sizeX, sizeY, LocationName.ARMORY);
-        Location exit2 = new Location(sizeX, sizeY, LocationName.KITCHEN);
+        Spawn spawn1 = new Spawn(2,2);
+        List<Spawn> sp = new ArrayList<>(2);
+        sp.add(spawn1);
+
+        Location exit1 = new Location(sizeX, sizeY, LocationName.ARMORY, sp);
+        Location exit2 = new Location(sizeX, sizeY, LocationName.KITCHEN,sp);
 
         board[1][5] = new Exit(exit1,1,5);
         board[5][1] = new Exit(exit2,5,1);
@@ -40,8 +47,11 @@ public class LocationTest {
      //test exits
     @Test
     public void testGoExit(){
+        Spawn spawn1 = new Spawn(2,2);
+        List<Spawn> sp = new ArrayList<>(2);
+        sp.add(spawn1);
         // creates an exit
-        Location guard_room = new Location(sizeX, sizeY, LocationName.GUARD_ROOM);
+        Location guard_room = new Location(sizeX, sizeY, LocationName.GUARD_ROOM,sp);
         Exit exit_to_guard_room = new Exit(guard_room,1,3);
 
         assertTrue(exit_to_guard_room.go(guard_room));
@@ -49,8 +59,11 @@ public class LocationTest {
     
     @Test
     public void testGoKeyExit(){
+        Spawn spawn1 = new Spawn(2,2);
+        List<Spawn> sp = new ArrayList<>(2);
+        sp.add(spawn1);
         // creates an exit
-        Location guard_room = new Location(sizeX, sizeY,LocationName.GUARD_ROOM);
+        Location guard_room = new Location(sizeX, sizeY,LocationName.GUARD_ROOM,sp);
         setting_personnage setting = new setting_personnage(null, null, null, null, null, null, null);
         Hero h = new Hero(guard_room,setting,0 ,0 );
         Exit exit_to_guard_room = new ExitKey(guard_room,h,20,20);

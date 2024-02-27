@@ -15,6 +15,8 @@ import model.Game_pack.Lookable;
 
 public class Location {
     public final Lookable[][] BOARD;
+
+    public final List<Spawn> SPAWNS;
     /**
      * number of columns
      */
@@ -38,6 +40,7 @@ public class Location {
         this.SIZE_X = gson.fromJson(jsonObject.get("sizeX"),Integer.class);
         this.SIZE_Y = gson.fromJson(jsonObject.get("sizeY"),Integer.class);
         this.BOARD = new Lookable[this.SIZE_X][this.SIZE_Y];
+        this.SPAWNS = new ArrayList<>(4);
 
         JsonArray decorObjects = jsonObject.getAsJsonArray("decorObject");
         for(int i = 0; i< decorObjects.size(); i++){
@@ -59,19 +62,28 @@ public class Location {
         this.SIZE_X = board.length;
         this.SIZE_Y = board[0].length;
         this.NAME = name;
+        this.SPAWNS = new ArrayList<>(1);
+        this.SPAWNS.add(new Spawn(0, 0));
+        this.addDecorObjet(this.SPAWNS.getFirst());
     }
     /**
      * creates a Location with empty board
-     *
      * @param sizeX number of columns
      * @param sizeY number of rows
+     * @param spawns different spawns
      */
-    public Location(int sizeX, int sizeY, LocationName name) {
+    public Location(int sizeX, int sizeY, LocationName name, List<Spawn> spawns) {
         this.BOARD = new Lookable[sizeX][sizeY];
         this.SIZE_X = sizeX;
         this.SIZE_Y = sizeY;
-        this.NAME = name;
         this.resetBoard();
+
+        this.NAME = name;
+        this.SPAWNS = spawns;
+        for (Spawn spawn : this.SPAWNS){
+            this.addDecorObjet(spawn);
+        }
+
     }
 
     public void resetBoard() {
@@ -180,7 +192,7 @@ public class Location {
     public boolean addLookable(Lookable obj) {
         int posX = obj.getPosX();
         int posY = obj.getPosY();
-        if (this.BOARD[posX][posY] == null) {
+        if (this.BOARD[posX][posY] == null || this.BOARD[posX][posY] instanceof Spawn) {
             this.BOARD[posX][posY] = obj;
             return true;
         } else {

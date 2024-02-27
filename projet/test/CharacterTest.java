@@ -1,4 +1,5 @@
 
+import model.Location.Spawn;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -26,7 +27,10 @@ public class CharacterTest {
     public static void setup() {
         int sizeY = 50;
         int sizeX = 50;
-        Location l = new Location(sizeX, sizeY, LocationName.GARDEN);
+        Spawn spawn1 = new Spawn(2,2);
+        List<Spawn> sp = new ArrayList<>(2);
+        sp.add(spawn1);
+        Location l = new Location(sizeX, sizeY, LocationName.GARDEN,sp);
         setting_personnage setting = new setting_personnage(null, null, null, null, null, null, null);
 
         h = new Hero(l,setting,5,5);
