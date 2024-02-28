@@ -37,6 +37,7 @@
             <Tab text="Tools" fx:id="Tab2">
                 <HBox>
                     <Button fx:id="Delete" text="Delete"/>
+                    <Button text="Back to start" onAction="#Back"/>
                 </HBox>
             </Tab>
 
@@ -73,7 +74,7 @@
 
             <Tab text="Exits" fx:id="Tab8">
                 <HBox>
-
+                    <StackPane fx:id="Img81"/>
                 </HBox>
             </Tab>
 

@@ -34,7 +34,7 @@ public class Location {
         JsonObject jsonObject = (JsonObject) JsonParser.parseReader(jsonReader);
 
         String name = path.split("/")[path.split("/").length -1].split(".json")[0];
-        System.out.println(name);
+//        System.out.println(name);
         this.NAME = LocationName.valueOf(name);
 
         this.SIZE_X = gson.fromJson(jsonObject.get("sizeX"),Integer.class);
@@ -43,20 +43,40 @@ public class Location {
         this.SPAWNS = new ArrayList<>(4);
 
         JsonArray decorObjects = jsonObject.getAsJsonArray("decorObject");
-        for(int i = 0; i< decorObjects.size(); i++){
-            JsonObject jsonObjectDecorObject = decorObjects.get(i).getAsJsonObject();
-            try {
+        JsonArray characters = jsonObject.getAsJsonArray("character");
+        //JsonArray exits = jsonObject.getAsJsonArray("exits");
+        try {
+            for(int i = 0; i< decorObjects.size(); i++) {
+                JsonObject jsonObjectDecorObject = decorObjects.get(i).getAsJsonObject();
                 Class objClass = Class.forName(gson.fromJson(jsonObjectDecorObject.get("name"), String.class));
-                System.out.println(objClass);
-                DecorObjet obj = (DecorObjet) gson.fromJson(jsonObjectDecorObject.get("elt"), objClass);
-                System.out.println(gson.fromJson(jsonObjectDecorObject.get("elt"), objClass));
-                //this.addLookable(obj);
-            }catch (Exception e){
-                System.err.println(e);
-            }
-        }
+                Integer x = gson.fromJson(jsonObjectDecorObject.get("x"), Integer.class);
+                Integer y = gson.fromJson(jsonObjectDecorObject.get("y"), Integer.class);
 
+                DecorObjet obj = (DecorObjet) objClass.getConstructors()[0].newInstance(x, y);
+
+                this.addLookable(obj);
+                if (obj instanceof Spawn) {
+                    this.SPAWNS.add((Spawn) obj);
+                }
+            }
+            for(int i = 0; i< characters.size(); i++) {
+                JsonObject jsonCharacters = characters.get(i).getAsJsonObject();
+                Class objClass = Class.forName(gson.fromJson(jsonCharacters.get("name"), String.class));
+                Integer x = gson.fromJson(jsonCharacters.get("x"), Integer.class);
+                Integer y = gson.fromJson(jsonCharacters.get("y"), Integer.class);
+
+                if (objClass.getSimpleName().equals("Hero")){
+                }else {
+                    Character character = (Character) objClass.getConstructors()[0].newInstance(x, y);
+                    this.addLookable(character);
+                }
+
+            }
+        }catch (Exception e){
+            System.err.println(e);
+        }
     }
+
     public Location(Lookable[][] board, LocationName name) {
         this.BOARD = board;
         this.SIZE_X = board.length;
@@ -292,7 +312,8 @@ public class Location {
             for (DecorObjet obj: decorObjects){
                 writer.beginObject();
                 writer.name("name").value(obj.getClass().getName());
-                writer.name("elt").value(gson.toJson(obj));
+                writer.name("x").value(obj.getPosX());
+                writer.name("y").value(obj.getPosY());
                 writer.endObject();
             }
             writer.endArray();
@@ -300,17 +321,17 @@ public class Location {
             writer.name("character").beginArray();
             for (Character chr: characters){
                 writer.beginObject();
-                writer.name("name").value(chr.getClass().getSimpleName());
+                writer.name("name").value(chr.getClass().getName());
                 writer.name("x").value(chr.getPosX());
                 writer.name("y").value(chr.getPosY());
                 writer.endObject();
             }
             writer.endArray();
 
-            writer.name("exit").beginArray();
+            writer.name("exits").beginArray();
             for (Exit ext: exits){
                 writer.beginObject();
-                writer.name("name").value(ext.getClass().getSimpleName());
+                writer.name("name").value(ext.getClass().getName());
                 writer.name("x").value(ext.getPosX());
                 writer.name("y").value(ext.getPosY());
                 writer.name("exit_location").value(ext.EXIT_LOCATION.toFile());

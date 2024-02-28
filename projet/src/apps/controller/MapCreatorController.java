@@ -5,7 +5,10 @@ import apps.mapcreator.MapCreatorLoad;
 import apps.setting.SettingCreatorScene;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
+import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.HBox;
+import javafx.util.Pair;
 import model.Character.*;
 import model.Game_pack.Game;
 import model.Game_pack.Lookable;
@@ -25,11 +28,16 @@ import javafx.scene.layout.StackPane;
 import javafx.util.Duration;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Enumeration;
+import java.util.HashMap;
+import java.util.List;
 
 public class MapCreatorController{
     private int object_select;
     private final Game GAME;
     private double zoom;
+    public List<Pair<Location, Button>> maps;
     @FXML
     BorderPane Root;
     @FXML
@@ -91,6 +99,8 @@ public class MapCreatorController{
         this.GAME = MapCreatorLoad.GAME;
         this.object_select = -1;
         this.zoom = 1;
+        this.maps = new ArrayList<>();
+        this.maps.add( new Pair (GAME.getMainHero().getLocation(), new Button(GAME.getMainHero().getLocation().NAME.name())));
     }
     @FXML
     public void initialize(){
@@ -106,9 +116,9 @@ public class MapCreatorController{
         Img61.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = 61);
         Img71.getChildren().add((new Wall(-1,-1)).getSpray());
         Img71.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = 71);
-        //TODO : faire Exit + key
-//        Img81.getChildren().add((new PotionView(-1,-1)).getSpray());
-//        Img81.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = 71);
+
+        Img81.getChildren().add((new Exit(GAME.createLocation(LocationName.GARDEN,12,12), 0, 0)).getSpray());
+        Img81.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = 81);
         Img91.getChildren().add((new TreasureView(-1,-1)).getSpray());
         Img91.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = 91);
         Img101.getChildren().add((new Death(-1,-1)).getSpray());
@@ -153,10 +163,24 @@ public class MapCreatorController{
         image.addEventFilter(MouseEvent.MOUSE_CLICKED, event -> addLookable(GridPane.getColumnIndex(image),GridPane.getRowIndex(image)));
         if (GAME.getMainHero().getLocation().BOARD[x][y] != null){       /* definition du spray */
             ImageView spray = GAME.getMainHero().getLocation().BOARD[x][y].getSpray();
-            //TODO : Modifier ça pour s'adapter aux spawn voulus des joueurs
             image.getChildren().add(spray);
         }
         Map.add(image,x,y);
+    }
+    public void resetMap(){
+        for (int x = 0; x < GAME.SIZE_MAP_X; x++){
+            for (int y = 0; y < GAME.SIZE_MAP_y; y++){
+                reset(x,y);
+            }
+        }
+    }
+    public void changeMap(Location loc){
+        for (Pair p : this.maps){
+            if (p.getKey().equals(loc)){
+                GAME.changeLocation(loc);
+                this.resetMap();
+            }
+        }
     }
     public Lookable getLookable(int x, int y){
         switch (this.object_select){
@@ -174,6 +198,22 @@ public class MapCreatorController{
             }
             case 71 -> {
                 return new Wall(x,y);
+            }
+            case 81 -> {
+                LocationName locationName = LocationName.values()[this.maps.size()];
+                Location l = GAME.createLocation(locationName, GAME.SIZE_MAP_X, GAME.SIZE_MAP_y);
+
+                Button b = new Button("switch to "+ locationName.name());
+                b.setOnAction( e -> {
+                    System.out.println("you are in "+ GAME.getMainHero().getLocation().NAME.name());
+                    System.out.println("move to " + l.NAME.name());
+                    changeMap(l);
+                    b.setDisable(true);
+                });
+                maps.addLast( new Pair (l, b));
+                ((HBox)Tab2.getContent()).getChildren().add(b);
+
+                return new Exit(l,x,y);
             }
             case 91 -> {
                 return new TreasureView(x,y);
@@ -208,6 +248,15 @@ public class MapCreatorController{
             GAME.getMainHero().getLocation().addLookable(l);
         }
         else if(GAME.getMainHero().getLocation().BOARD[x][y] != null){
+            if (GAME.getMainHero().getLocation().BOARD[x][y] instanceof Exit){
+
+                for (Pair p : this.maps){
+                    if (p.getKey().equals( ((Exit) GAME.getMainHero().getLocation().BOARD[x][y]).EXIT_LOCATION)){
+                        int pos = ((HBox) Tab2.getContent()).getChildren().indexOf(p.getValue());
+                        ((HBox) Tab2.getContent()).getChildren().remove(pos);
+                    }
+                }
+            }
             GAME.getMainHero().getLocation().removeLookable( GAME.getMainHero().getLocation().BOARD[x][y]);
         }
         reset(x, y);
@@ -253,8 +302,20 @@ public class MapCreatorController{
 
     @FXML
     public void load(ActionEvent event){
-       // GAME.load("bonjour");
-
+       if(GAME.Load("./save/locations/GARDEN.json")){
+            this.resetMap();
+       }else {
+           System.out.println("error on load");
+       }
     }
-
+    @FXML
+    public void Back(ActionEvent event){
+        if (this.maps.size() > 1){
+            for (Pair p : this.maps) {
+                ((Button) p.getValue()).setDisable(false);
+            }
+            GAME.changeLocation(this.maps.getFirst().getKey());
+            this.resetMap();
+        }
+    }
 }

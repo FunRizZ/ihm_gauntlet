@@ -1,1 +1,1 @@
-{"sizeX":100,"sizeY":10,"decorObject":[{"name":"model.Location.Spawn","elt":"{\"x\":2,\"Y\":2}"}],"character":[],"exit":[]}
+{"sizeX":100,"sizeY":10,"decorObject":[{"name":"model.Location.Spawn","x":2,"y":2}],"character":[],"exit":[]}

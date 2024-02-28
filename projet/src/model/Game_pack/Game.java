@@ -26,27 +26,15 @@ public class Game {
         this.NB_HERO = nbHero;
         this.HEROS = new ArrayList<>(nbHero);
 
-        try {
-            this.location = new Location("./save/locations/GARDEN.json a");
-
-        }catch (Exception error){
-            System.out.println("file not found");
-
-            Spawn spawn1 = new Spawn(2,2);
-            List<Spawn> sp = new ArrayList<>(2);
-            sp.add(spawn1);
-
-            this.location = this.createLocation(LocationName.GARDEN,sizeMapX,sizeMapY);
-
-            Location l2 = new Location(sizeMapX, sizeMapY, LocationName.HALLWAY,sp);
-            Exit e = new Exit(l2,10,9);
-            this.location.addNeighbor(e);
-
-        }
+        this.location = createLocation(LocationName.GARDEN, sizeMapX, sizeMapY);
         //ajout des heros
         for (int i = 0; i< nbHero; i++){
-            this.HEROS.add( new Hero(this.location,JsonSetting.getSetting(0),0,0));
-            this.location.addCharacter(this.HEROS.get(i));
+            int spawnX = this.location.SPAWNS.get(i).getPosX();
+            int spawnY = this.location.SPAWNS.get(i).getPosY();
+            Hero hero =  new Hero(this.location,JsonSetting.getSetting(0),spawnX,spawnY);
+
+            this.HEROS.add(hero);
+            this.location.addCharacter(hero);
         }
 
         this.SIZE_MAP_X = sizeMapX;
@@ -54,11 +42,11 @@ public class Game {
     }
 
     public Location createLocation(LocationName locationName,int sizeX, int sizeY){
-        List<Spawn> sp = new ArrayList<>(2);
+        List<Spawn> sp = new ArrayList<>(4);
         Spawn spawn1 = new Spawn(1,1);
-        Spawn spawn2 = new Spawn(2,2);
+        Spawn spawn2 = new Spawn(2,1);
         Spawn spawn3 = new Spawn(3,1);
-        Spawn spawn4 = new Spawn(4,2);
+        Spawn spawn4 = new Spawn(4,1);
         sp.add(spawn1);
         sp.add(spawn2);
         sp.add(spawn3);
@@ -76,18 +64,24 @@ public class Game {
      */
     public void attackHero(){
     }
-
+    public void changeLocation(Location location){
+        this.location = location;
+        for (int i =  0 ; i < this.NB_HERO; i++) {
+            Hero hero = this.HEROS.get(i);
+            hero.setLocation(this.location);
+            hero.setPosX(this.location.SPAWNS.get(i).getPosX());
+            hero.setPosY(this.location.SPAWNS.get(i).getPosY());
+            this.location.addCharacter(hero);
+        }
+    }
     public boolean Load(String path){
         try {
             this.location = new Location(path);
         }catch (Exception e){
+            System.out.println(e);
             return false;
         }
-        for (Hero hero : this.HEROS) {
-            hero.setLocation(this.location);
-            hero.setPosX(this.location.SPAWNS.getFirst().getPosX());
-            hero.setPosY(this.location.SPAWNS.getFirst().getPosY());
-        }
+        changeLocation(this.location);
         return true;
     }
 }
