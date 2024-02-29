@@ -47,6 +47,7 @@
                     <StackPane fx:id="Img32"/>
                     <StackPane fx:id="Img33"/>
                     <StackPane fx:id="Img34"/>
+                    <StackPane fx:id="Img35"/>
                 </HBox>
             </Tab>
 
@@ -58,7 +59,7 @@
 
             <Tab text="Keys" fx:id="Tab5">
                 <HBox>
-
+                    <StackPane fx:id="Img51"/>
                 </HBox>
             </Tab>
 

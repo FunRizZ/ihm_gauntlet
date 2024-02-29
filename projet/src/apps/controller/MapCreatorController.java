@@ -74,7 +74,11 @@ public class MapCreatorController{
     @FXML
     StackPane Img34;
     @FXML
+    StackPane Img35;
+    @FXML
     StackPane Img41;
+    @FXML
+    StackPane Img51;
     @FXML
     StackPane Img61;
     @FXML
@@ -117,13 +121,18 @@ public class MapCreatorController{
         Img31.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = 31);
         Img32.getChildren().add((new PoisonPotionView(-1,-1)).getSpray());
         Img32.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = 32);
-        Img33.getChildren().add((new AttackPotionView(-1,-1)).getSpray());
+        Img33.getChildren().add((new DefensePotionView(-1,-1)).getSpray());
         Img33.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = 33);
-        Img34.getChildren().add((new DefensePotionView(-1,-1)).getSpray());
+        Img34.getChildren().add((new AttackPotionView(-1,-1)).getSpray());
         Img34.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = 34);
+        Img35.getChildren().add((new MagicPotionView(-1,-1)).getSpray());
+        Img35.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = 35);
 
         Img41.getChildren().add((new HolyGrenadeView(-1,-1)).getSpray());
         Img41.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = 41);
+
+        Img51.getChildren().add((new KeyView(-1,-1)).getSpray());
+        Img51.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = 51);
 
         Img61.getChildren().add((new FoodView(-1,-1)).getSpray());
         Img61.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = 61);
@@ -213,13 +222,19 @@ public class MapCreatorController{
                 return new PoisonPotionView(x,y);
             }
             case 33 -> {
-                return new AttackPotionView(x,y);
+                return new DefensePotionView(x,y);
             }
             case 34 -> {
-                return new DefensePotionView(x,y);
+                return new AttackPotionView(x,y);
+            }
+            case 35 -> {
+                return new MagicPotionView(x,y);
             }
             case 41 -> {
                 return new HolyGrenadeView(x,y);
+            }
+            case 51 -> {
+                return new KeyView(x,y);
             }
             case 61 -> {
                 return new FoodView(x,y);
