@@ -126,7 +126,7 @@ public class Location {
                 Integer x = gson.fromJson(jsonExit.get("x"), Integer.class);
                 Integer y = gson.fromJson(jsonExit.get("y"), Integer.class);
                 Location exitLocation = new Location(gson.fromJson(jsonExit.get("exit_location"), String.class));
-
+                exitLocation.loadJson(gson.fromJson(jsonExit.get("exit_location"), String.class));
                 Exit obj = (Exit) objClass.getConstructors()[0].newInstance(exitLocation, x, y);
                 this.addLookable(obj);
             }

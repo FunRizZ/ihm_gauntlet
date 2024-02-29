@@ -65,7 +65,6 @@ public class Game {
         this.location = location;
         for (int i =  0 ; i < this.NB_HERO; i++) {
             Hero hero = this.HEROS.get(i);
-            System.err.println(i);
             hero.setLocation(this.location);
             hero.setPosX(this.location.SPAWNS.get(i).getPosX());
             hero.setPosY(this.location.SPAWNS.get(i).getPosY());
