@@ -1,9 +1,6 @@
 package apps.scoreboard;
 
 import apps.MainScene;
-import apps.game.GameMenuLoad;
-import apps.mapcreator.MapCreatorLoad;
-import model.Game_pack.Game;
 
 /**
  * scene of the Scoreboard / Hall of Fame
@@ -15,6 +12,7 @@ public class ScoreboardScene extends MainScene {
         super();
         this.SCENE_TITLE = "Hall of Fame";
         this.SCOREBOARD = new ScoreboardLoad();
+        this.SCOREBOARD.init();
     }
     @Override
     public void load(){

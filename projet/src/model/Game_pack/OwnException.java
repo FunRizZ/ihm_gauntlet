@@ -1,6 +1,8 @@
 package model.Game_pack;
 
 public class OwnException extends Exception{
+    private static final long serialVersionUID = 1L;
+
     private final String function;
     private final String msg;
     

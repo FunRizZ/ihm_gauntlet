@@ -41,10 +41,8 @@ public class Scoreboard {
             loadScoresFromFile();
         }
         scores.add(new Score(player, score, date));
-
         // Trier les scores en ordre décroissant
         scores.sort(Comparator.comparing(Score::getScore).reversed());
-
         saveScoresToFile();
     }
 

@@ -31,6 +31,7 @@ public class CharacterTest {
         List<Spawn> sp = new ArrayList<>(2);
         sp.add(spawn1);
         Location l = new Location(sizeX, sizeY, LocationName.GARDEN,sp);
+        l.resetBoard();
         setting_personnage setting = new setting_personnage(null, null, null, null, null, null, null);
 
         h = new Hero(l,setting,5,5);

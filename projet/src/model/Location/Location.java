@@ -41,14 +41,55 @@ public class Location {
         this.SIZE_Y = gson.fromJson(jsonObject.get("sizeY"),Integer.class);
         this.BOARD = new Lookable[this.SIZE_X][this.SIZE_Y];
         this.SPAWNS = new ArrayList<>(4);
+    }
 
-        JsonArray decorObjects = jsonObject.getAsJsonArray("decorObject");
-        JsonArray characters = jsonObject.getAsJsonArray("character");
-        //JsonArray exits = jsonObject.getAsJsonArray("exits");
-        try {
+    public Location(Lookable[][] board, LocationName name) {
+        this.BOARD = board;
+        this.SIZE_X = board.length;
+        this.SIZE_Y = board[0].length;
+        this.NAME = name;
+        this.SPAWNS = new ArrayList<>(1);
+        this.SPAWNS.add(new Spawn(0, 0));
+    }
+    /**
+     * creates a Location with empty board
+     * @param sizeX number of columns
+     * @param sizeY number of rows
+     * @param spawns different spawns
+     */
+    public Location(int sizeX, int sizeY, LocationName name, List<Spawn> spawns) {
+        this.BOARD = new Lookable[sizeX][sizeY];
+        this.SIZE_X = sizeX;
+        this.SIZE_Y = sizeY;
+        this.NAME = name;
+        this.SPAWNS = spawns;
+    }
+
+    public void spawn() {
+        for (Spawn spawn : this.SPAWNS) {
+            this.addDecorObjet(spawn);
+        }
+    }
+
+    public void resetBoard() {
+        for (int x = 0; x < this.SIZE_X; x++) {
+            for (int y = 0; y < this.SIZE_Y; y++) {
+                this.BOARD[x][y] = null;
+            }
+        }
+    }
+
+    public void loadJson(String path)
+    {
+        try{
+        Gson gson = new Gson();
+            JsonReader jsonReader = new JsonReader(new FileReader(path));
+            JsonObject jsonObject = (JsonObject) JsonParser.parseReader(jsonReader);
+            JsonArray decorObjects = jsonObject.getAsJsonArray("decorObject");
+            JsonArray characters = jsonObject.getAsJsonArray("character");
             for(int i = 0; i< decorObjects.size(); i++) {
                 JsonObject jsonObjectDecorObject = decorObjects.get(i).getAsJsonObject();
-                Class objClass = Class.forName(gson.fromJson(jsonObjectDecorObject.get("name"), String.class));
+                Class<?> objClass = Class.forName(gson.fromJson(jsonObjectDecorObject.get("name"), String.class));
                 Integer x = gson.fromJson(jsonObjectDecorObject.get("x"), Integer.class);
                 Integer y = gson.fromJson(jsonObjectDecorObject.get("y"), Integer.class);
 
@@ -61,7 +102,7 @@ public class Location {
             }
             for(int i = 0; i< characters.size(); i++) {
                 JsonObject jsonCharacters = characters.get(i).getAsJsonObject();
-                Class objClass = Class.forName(gson.fromJson(jsonCharacters.get("name"), String.class));
+                Class<?> objClass = Class.forName(gson.fromJson(jsonCharacters.get("name"), String.class));
                 Integer x = gson.fromJson(jsonCharacters.get("x"), Integer.class);
                 Integer y = gson.fromJson(jsonCharacters.get("y"), Integer.class);
 
@@ -70,47 +111,9 @@ public class Location {
                     Character character = (Character) objClass.getConstructors()[0].newInstance(x, y);
                     this.addLookable(character);
                 }
-
             }
-        }catch (Exception e){
-            System.err.println(e);
-        }
-    }
-
-    public Location(Lookable[][] board, LocationName name) {
-        this.BOARD = board;
-        this.SIZE_X = board.length;
-        this.SIZE_Y = board[0].length;
-        this.NAME = name;
-        this.SPAWNS = new ArrayList<>(1);
-        this.SPAWNS.add(new Spawn(0, 0));
-        this.addDecorObjet(this.SPAWNS.getFirst());
-    }
-    /**
-     * creates a Location with empty board
-     * @param sizeX number of columns
-     * @param sizeY number of rows
-     * @param spawns different spawns
-     */
-    public Location(int sizeX, int sizeY, LocationName name, List<Spawn> spawns) {
-        this.BOARD = new Lookable[sizeX][sizeY];
-        this.SIZE_X = sizeX;
-        this.SIZE_Y = sizeY;
-        this.resetBoard();
-
-        this.NAME = name;
-        this.SPAWNS = spawns;
-        for (Spawn spawn : this.SPAWNS){
-            this.addDecorObjet(spawn);
-        }
-
-    }
-
-    public void resetBoard() {
-        for (int x = 0; x < this.SIZE_X; x++) {
-            for (int y = 0; y < this.SIZE_Y; y++) {
-                this.BOARD[x][y] = null;
-            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
@@ -291,7 +294,6 @@ public class Location {
      * @return the path of the location save
      */
     public String toFile(){
-        Gson gson = new Gson();
         //path of the file
         String path = "./save/locations/"+this.NAME.name()+".json";
 
