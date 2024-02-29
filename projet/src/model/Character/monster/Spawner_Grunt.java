@@ -7,8 +7,8 @@ import model.Location.Location;
 import model.Location.decorObject.Wall;
 
 public class Spawner_Grunt extends Spawner {
-    public Spawner_Grunt(Location location, int x, int y) {
-        super(new Grunt(-1,-1).getHp()*2, new Grunt(-1,-1).getArmor()*2, new Grunt(-1,-1), 5, location, x, y);
+    public Spawner_Grunt(int x, int y) {
+        super(new Grunt(-1,-1).getHp()*2, new Grunt(-1,-1).getArmor()*2, new Grunt(-1,-1), 5, x, y);
     }
 
     @Override

@@ -129,9 +129,6 @@ public class LocationTest {
         assertFalse(l.getCharacters().contains(character_to_delete));
     }
 
-    
-    
-
     @Test
     public void testDecorObject(){
         // compares lenght of getDecorObject with the number of exit add

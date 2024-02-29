@@ -11,6 +11,7 @@ import com.google.gson.*;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import model.Character.Character;
+import model.Character.hero.Hero;
 import model.Game_pack.Lookable;
 import model.Location.decorObject.DecorObjet;
 import model.Location.decorObject.Spawn;
@@ -81,27 +82,15 @@ public class Location {
         }
     }
 
-    public void loadJson(String path)
-    {
+    public void loadJson(String path) {
         try{
-        Gson gson = new Gson();
+            Gson gson = new Gson();
             JsonReader jsonReader = new JsonReader(new FileReader(path));
             JsonObject jsonObject = (JsonObject) JsonParser.parseReader(jsonReader);
-            JsonArray decorObjects = jsonObject.getAsJsonArray("decorObject");
-            JsonArray characters = jsonObject.getAsJsonArray("character");
-            for(int i = 0; i< decorObjects.size(); i++) {
-                JsonObject jsonObjectDecorObject = decorObjects.get(i).getAsJsonObject();
-                Class<?> objClass = Class.forName(gson.fromJson(jsonObjectDecorObject.get("name"), String.class));
-                Integer x = gson.fromJson(jsonObjectDecorObject.get("x"), Integer.class);
-                Integer y = gson.fromJson(jsonObjectDecorObject.get("y"), Integer.class);
 
-                DecorObjet obj = (DecorObjet) objClass.getConstructors()[0].newInstance(x, y);
-
-                this.addLookable(obj);
-                if (obj instanceof Spawn) {
-                    this.SPAWNS.add((Spawn) obj);
-                }
-            }
+            JsonArray decorObjects = jsonObject.getAsJsonArray("decorObjects");
+            JsonArray characters = jsonObject.getAsJsonArray("characters");
+            JsonArray exits = jsonObject.getAsJsonArray("exits");
             for(int i = 0; i< characters.size(); i++) {
                 JsonObject jsonCharacters = characters.get(i).getAsJsonObject();
                 Class<?> objClass = Class.forName(gson.fromJson(jsonCharacters.get("name"), String.class));
@@ -109,13 +98,40 @@ public class Location {
                 Integer y = gson.fromJson(jsonCharacters.get("y"), Integer.class);
 
                 if (objClass.getSimpleName().equals("Hero")){
+                    DecorObjet obj = new Spawn(x,y);
+                    this.addDecorObjet(obj);
+                    this.SPAWNS.add((Spawn) obj);
                 }else {
                     Character character = (Character) objClass.getConstructors()[0].newInstance(x, y);
                     this.addLookable(character);
                 }
             }
+            for(int i = 0; i< decorObjects.size(); i++) {
+                JsonObject jsonObjectDecorObject = decorObjects.get(i).getAsJsonObject();
+                Class<?> objClass = Class.forName(gson.fromJson(jsonObjectDecorObject.get("name"), String.class));
+                Integer x = gson.fromJson(jsonObjectDecorObject.get("x"), Integer.class);
+                Integer y = gson.fromJson(jsonObjectDecorObject.get("y"), Integer.class);
+
+                DecorObjet obj = (DecorObjet) objClass.getConstructors()[0].newInstance(x, y);
+                this.addLookable(obj);
+
+                if (obj instanceof Spawn) {
+                    this.SPAWNS.add((Spawn) obj);
+                }
+            }
+            for(int i = 0; i< exits.size(); i++) {
+                JsonObject jsonExit = exits.get(i).getAsJsonObject();
+
+                Class<?> objClass = Class.forName(gson.fromJson(jsonExit.get("name"), String.class));
+                Integer x = gson.fromJson(jsonExit.get("x"), Integer.class);
+                Integer y = gson.fromJson(jsonExit.get("y"), Integer.class);
+                Location exitLocation = new Location(gson.fromJson(jsonExit.get("exit_location"), String.class));
+
+                Exit obj = (Exit) objClass.getConstructors()[0].newInstance(exitLocation, x, y);
+                this.addLookable(obj);
+            }
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());;
         }
     }
 
@@ -182,19 +198,6 @@ public class Location {
         return decorObjects;
     }
 
-    /**
-     * @param location to go to
-     * @return null if no exit found else exit found
-     */
-    public Exit getExit(LocationName location) {
-        List<Exit> exits = getExits();
-        for (Exit exit : exits) {
-            if (exit.EXIT_LOCATION.NAME == location) {
-                return exit;
-            }
-        }
-        return null;
-    }
 
     /**
      * @param location to go to
@@ -265,7 +268,7 @@ public class Location {
         String description = "You are in the " + this.NAME + " \n\n";
         String strExits = "They have no issue";
         List<Exit> exits = this.getExits();
-        if (exits != null) {
+        if (!exits.isEmpty()) {
             strExits = "In this room you have those exits :\n";
             for (Exit exit : exits) {
                 strExits += "\t" + exit + "\n";
@@ -273,7 +276,7 @@ public class Location {
         }
         String strCharacters = "";
         List<Character> characters = this.getCharacters();
-        if (characters != null) {
+        if (!characters.isEmpty()) {
             strCharacters = "In this room you have :\n";
             for (Character character : characters) {
                 strCharacters += "\t" + character + "\n";
@@ -281,10 +284,10 @@ public class Location {
         }
         String strDecorObjets = "";
         List<DecorObjet> decorObjets = this.getDecorObjects();
-        if (decorObjets != null) {
+        if (!decorObjets.isEmpty()) {
             strDecorObjets = "In this room you can see:\n";
             for (DecorObjet decorObjet : decorObjets) {
-                strDecorObjets += "\t" + decorObjet + "\n";
+                strDecorObjets += "\t" + decorObjet.toString() + "\n";
             }
         }
 
@@ -312,7 +315,7 @@ public class Location {
             writer.name("sizeX").value(this.SIZE_X);
             writer.name("sizeY").value(this.SIZE_Y);
 
-            writer.name("decorObject").beginArray();
+            writer.name("decorObjects").beginArray();
             for (DecorObjet obj: decorObjects){
                 writer.beginObject();
                 writer.name("name").value(obj.getClass().getName());
@@ -322,7 +325,7 @@ public class Location {
             }
             writer.endArray();
 
-            writer.name("character").beginArray();
+            writer.name("characters").beginArray();
             for (Character chr: characters){
                 writer.beginObject();
                 writer.name("name").value(chr.getClass().getName());

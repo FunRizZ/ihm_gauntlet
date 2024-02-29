@@ -158,9 +158,9 @@ public class MapCreatorController{
         Img104.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = 104);
         Img105.getChildren().add((new Lobber(-1,-1)).getSpray());
         Img105.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = 105);
-        Img106.getChildren().add(new Spawner_Grunt(GAME.getMainHero().getLocation(),-1,-1).getSpray());
+        Img106.getChildren().add(new Spawner_Grunt(-1,-1).getSpray());
         Img106.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = 106);
-        Img107.getChildren().add((new Spawner_Ghost(GAME.getMainHero().getLocation(),-1,-1)).getSpray());
+        Img107.getChildren().add((new Spawner_Ghost(-1,-1)).getSpray());
         Img107.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = 107);
         Img111.getChildren().add(new Spawn(-1,-1).getSpray());
 
@@ -213,6 +213,18 @@ public class MapCreatorController{
             }
         }
     }
+    public Button creatExitButton(Location location){
+        Button b = new Button("switch to "+ location.NAME.name());
+        b.setOnAction( e -> {
+            System.out.println("you are in "+ GAME.getMainHero().getLocation().NAME.name());
+            System.out.println("move to " + location.NAME.name());
+            changeMap(location);
+            b.setDisable(true);
+        });
+        ((HBox)Tab2.getContent()).getChildren().add(b);
+        maps.addLast( new Pair<>(location, b));
+        return b;
+    }
     public Lookable getLookable(int x, int y){
         switch (this.object_select){
             case 31 -> {
@@ -249,15 +261,7 @@ public class MapCreatorController{
                 LocationName locationName = LocationName.values()[this.maps.size()];
                 Location l = GAME.createLocation(locationName, GAME.SIZE_MAP_X, GAME.SIZE_MAP_y);
 
-                Button b = new Button("switch to "+ locationName.name());
-                b.setOnAction( e -> {
-                    System.out.println("you are in "+ GAME.getMainHero().getLocation().NAME.name());
-                    System.out.println("move to " + l.NAME.name());
-                    changeMap(l);
-                    b.setDisable(true);
-                });
-                maps.addLast( new Pair<>(l, b));
-                ((HBox)Tab2.getContent()).getChildren().add(b);
+                this.creatExitButton(l);
 
                 return new Exit(l,x,y);
             }
@@ -280,10 +284,10 @@ public class MapCreatorController{
                 return new Lobber(x,y);
             }
             case 106 -> {
-                return new Spawner_Grunt(GAME.getMainHero().getLocation(),x,y);
+                return new Spawner_Grunt(x,y);
             }
             case 107 -> {
-                return new Spawner_Ghost(GAME.getMainHero().getLocation(),x,y);
+                return new Spawner_Ghost(x,y);
             }
             case 111 -> {
                 Spawn sp = new Spawn(x,y);
@@ -304,8 +308,7 @@ public class MapCreatorController{
 
                 for (Pair<Location, Button> p : this.maps){
                     if (p.getKey().equals( ((Exit) GAME.getMainHero().getLocation().BOARD[x][y]).EXIT_LOCATION)){
-                        int pos = ((HBox) Tab2.getContent()).getChildren().indexOf(p.getValue());
-                        ((HBox) Tab2.getContent()).getChildren().remove(pos);
+                        ((HBox) Tab2.getContent()).getChildren().remove(p.getValue());
                     }
                 }
             }
@@ -355,7 +358,16 @@ public class MapCreatorController{
     @FXML
     public void load(ActionEvent event){
        if(GAME.Load("./save/locations/GARDEN.json")){
-            this.resetMap();
+           this.resetMap();
+           for (Pair<Location, Button> p : this.maps) {
+               ((HBox) Tab2.getContent()).getChildren().remove(p.getValue());
+           }
+           this.maps.clear();
+           this.maps.add( new Pair<> (GAME.getMainHero().getLocation(), new Button(GAME.getMainHero().getLocation().NAME.name())));
+           for (Exit exit : GAME.getMainHero().getLocation().getExits()){
+               System.out.println(exit.EXIT_LOCATION);
+               this.creatExitButton(exit.EXIT_LOCATION);
+           }
        }else {
            System.out.println("error on load");
        }
@@ -363,11 +375,11 @@ public class MapCreatorController{
     @FXML
     public void Back(ActionEvent event){
         if (this.maps.size() > 1){
+            GAME.changeLocation(this.maps.getFirst().getKey());
+            this.resetMap();
             for (Pair<Location, Button> p : this.maps) {
                 p.getValue().setDisable(false);
             }
-            GAME.changeLocation(this.maps.getFirst().getKey());
-            this.resetMap();
         }
     }
 }

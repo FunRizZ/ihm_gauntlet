@@ -10,7 +10,7 @@ import model.Location.LocationName;
 import model.Location.decorObject.Spawn;
 
 public class Game {
-    public final static Game GAME = new Game(100,10, 1);
+    public final static Game GAME = new Game(100,10, 3);
     public final int NB_HERO;
     public final List<Hero> HEROS;
     private Location location;
@@ -65,6 +65,7 @@ public class Game {
         this.location = location;
         for (int i =  0 ; i < this.NB_HERO; i++) {
             Hero hero = this.HEROS.get(i);
+            System.err.println(i);
             hero.setLocation(this.location);
             hero.setPosX(this.location.SPAWNS.get(i).getPosX());
             hero.setPosY(this.location.SPAWNS.get(i).getPosY());
