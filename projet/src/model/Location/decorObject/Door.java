@@ -13,7 +13,6 @@ public class Door extends DecorObjet{
         super(x, y);
         this.orientation = orientation;
     }
-
     @Override
     public String toString() {
         return "Door";

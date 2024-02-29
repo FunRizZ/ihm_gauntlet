@@ -70,6 +70,10 @@ public class MapCreatorController{
     @FXML
     StackPane Img32;
     @FXML
+    StackPane Img33;
+    @FXML
+    StackPane Img34;
+    @FXML
     StackPane Img41;
     @FXML
     StackPane Img61;
@@ -102,7 +106,7 @@ public class MapCreatorController{
         this.object_select = -1;
         this.zoom = 1;
         this.maps = new ArrayList<>();
-        this.maps.add( new Pair<Location, Button> (GAME.getMainHero().getLocation(), new Button(GAME.getMainHero().getLocation().NAME.name())));
+        this.maps.add( new Pair<> (GAME.getMainHero().getLocation(), new Button(GAME.getMainHero().getLocation().NAME.name())));
     }
     @FXML
     public void initialize(){
@@ -112,7 +116,11 @@ public class MapCreatorController{
         Img31.getChildren().add((new HealPotionView(-1,-1)).getSpray());
         Img31.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = 31);
         Img32.getChildren().add((new PoisonPotionView(-1,-1)).getSpray());
-        Img32.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = 31);
+        Img32.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = 32);
+        Img33.getChildren().add((new AttackPotionView(-1,-1)).getSpray());
+        Img33.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = 33);
+        Img34.getChildren().add((new DefensePotionView(-1,-1)).getSpray());
+        Img34.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = 34);
 
         Img41.getChildren().add((new HolyGrenadeView(-1,-1)).getSpray());
         Img41.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = 41);
@@ -204,6 +212,12 @@ public class MapCreatorController{
             case 32 -> {
                 return new PoisonPotionView(x,y);
             }
+            case 33 -> {
+                return new AttackPotionView(x,y);
+            }
+            case 34 -> {
+                return new DefensePotionView(x,y);
+            }
             case 41 -> {
                 return new HolyGrenadeView(x,y);
             }
@@ -227,7 +241,7 @@ public class MapCreatorController{
                     changeMap(l);
                     b.setDisable(true);
                 });
-                maps.addLast( new Pair<Location, Button>(l, b));
+                maps.addLast( new Pair<>(l, b));
                 ((HBox)Tab2.getContent()).getChildren().add(b);
 
                 return new Exit(l,x,y);

@@ -123,5 +123,19 @@ public abstract class WhoFight extends Character {
         this.hp += i;
         if (this.hp > WhoFight.MAX_HP){this.hp = WhoFight.MAX_HP;}
     }
+    /**
+     * increases armor from WhoFight by i
+     * @param i number of armor raise
+     */
+    public void addDefense(int i){
+        this.armor_total += i;
+    }
+    /**
+     * increases Dammage from WhoFight by his damage * i
+     * @param i multiplier of damage
+     */
+    public void addAttack(double i){
+        this.damage = (int) (this.damage * i);
+    }
 
 }

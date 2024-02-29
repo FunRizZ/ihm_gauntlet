@@ -45,6 +45,8 @@
                 <HBox>
                     <StackPane fx:id="Img31"/>
                     <StackPane fx:id="Img32"/>
+                    <StackPane fx:id="Img33"/>
+                    <StackPane fx:id="Img34"/>
                 </HBox>
             </Tab>
 
