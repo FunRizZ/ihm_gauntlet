@@ -100,7 +100,7 @@ public class MapCreatorController{
         this.object_select = -1;
         this.zoom = 1;
         this.maps = new ArrayList<>();
-        this.maps.add( new Pair (GAME.getMainHero().getLocation(), new Button(GAME.getMainHero().getLocation().NAME.name())));
+        this.maps.add( new Pair<Location, Button> (GAME.getMainHero().getLocation(), new Button(GAME.getMainHero().getLocation().NAME.name())));
     }
     @FXML
     public void initialize(){
@@ -175,7 +175,7 @@ public class MapCreatorController{
         }
     }
     public void changeMap(Location loc){
-        for (Pair p : this.maps){
+        for (Pair<Location, Button> p : this.maps){
             if (p.getKey().equals(loc)){
                 GAME.changeLocation(loc);
                 this.resetMap();
@@ -210,7 +210,7 @@ public class MapCreatorController{
                     changeMap(l);
                     b.setDisable(true);
                 });
-                maps.addLast( new Pair (l, b));
+                maps.addLast( new Pair<Location, Button>(l, b));
                 ((HBox)Tab2.getContent()).getChildren().add(b);
 
                 return new Exit(l,x,y);
@@ -250,7 +250,7 @@ public class MapCreatorController{
         else if(GAME.getMainHero().getLocation().BOARD[x][y] != null){
             if (GAME.getMainHero().getLocation().BOARD[x][y] instanceof Exit){
 
-                for (Pair p : this.maps){
+                for (Pair<Location, Button> p : this.maps){
                     if (p.getKey().equals( ((Exit) GAME.getMainHero().getLocation().BOARD[x][y]).EXIT_LOCATION)){
                         int pos = ((HBox) Tab2.getContent()).getChildren().indexOf(p.getValue());
                         ((HBox) Tab2.getContent()).getChildren().remove(pos);
@@ -311,8 +311,8 @@ public class MapCreatorController{
     @FXML
     public void Back(ActionEvent event){
         if (this.maps.size() > 1){
-            for (Pair p : this.maps) {
-                ((Button) p.getValue()).setDisable(false);
+            for (Pair<Location, Button> p : this.maps) {
+                p.getValue().setDisable(false);
             }
             GAME.changeLocation(this.maps.getFirst().getKey());
             this.resetMap();

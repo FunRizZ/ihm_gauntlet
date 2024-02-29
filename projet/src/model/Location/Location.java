@@ -48,7 +48,7 @@ public class Location {
         try {
             for(int i = 0; i< decorObjects.size(); i++) {
                 JsonObject jsonObjectDecorObject = decorObjects.get(i).getAsJsonObject();
-                Class objClass = Class.forName(gson.fromJson(jsonObjectDecorObject.get("name"), String.class));
+                Class<?> objClass = Class.forName(gson.fromJson(jsonObjectDecorObject.get("name"), String.class));
                 Integer x = gson.fromJson(jsonObjectDecorObject.get("x"), Integer.class);
                 Integer y = gson.fromJson(jsonObjectDecorObject.get("y"), Integer.class);
 
@@ -61,7 +61,7 @@ public class Location {
             }
             for(int i = 0; i< characters.size(); i++) {
                 JsonObject jsonCharacters = characters.get(i).getAsJsonObject();
-                Class objClass = Class.forName(gson.fromJson(jsonCharacters.get("name"), String.class));
+                Class<?> objClass = Class.forName(gson.fromJson(jsonCharacters.get("name"), String.class));
                 Integer x = gson.fromJson(jsonCharacters.get("x"), Integer.class);
                 Integer y = gson.fromJson(jsonCharacters.get("y"), Integer.class);
 
@@ -291,7 +291,6 @@ public class Location {
      * @return the path of the location save
      */
     public String toFile(){
-        Gson gson = new Gson();
         //path of the file
         String path = "./save/locations/"+this.NAME.name()+".json";
 

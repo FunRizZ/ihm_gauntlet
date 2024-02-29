@@ -1,9 +1,6 @@
 package apps.scoreboard;
 
 import apps.MainScene;
-import apps.game.GameMenuLoad;
-import apps.mapcreator.MapCreatorLoad;
-import model.Game_pack.Game;
 
 /**
  * scene of the Scoreboard / Hall of Fame

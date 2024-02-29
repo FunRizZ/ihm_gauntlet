@@ -1,16 +1,11 @@
 package model.Game_pack;
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 import java.util.List;
 
 import apps.setting.JsonSetting;
-import model.Item.Item;
 import model.Character.Hero;
-import model.Character.Character;
-import model.Location.Exit;
 import model.Location.Location;
-import model.Character.WhoFight;
 import model.Location.LocationName;
 import model.Location.Spawn;
 

@@ -53,7 +53,7 @@ public class ScoreboardController {
         // Définir les éléments de scoreTable
         scoreTable.getItems().setAll(topScores);
 
-        for (@SuppressWarnings("rawtypes") TableColumn column : scoreTable.getColumns()) {
+        for (TableColumn<Scoreboard.Score, ?> column : scoreTable.getColumns()) {
             column.setSortable(false);
             column.setResizable(false);
             column.setReorderable(false);
@@ -65,11 +65,9 @@ public class ScoreboardController {
         scoreTable.maxWidthProperty().bind(MainScene.stage.widthProperty().multiply(0.75));
         scoreTable.maxHeightProperty().bind(MainScene.stage.heightProperty().multiply(0.75));
 
-        System.out.println(scoreTable.getMaxWidth());
-        System.out.println(scoreTable.getMaxHeight());
 
         scoreTable.setFixedCellSize((scoreTable.getMaxHeight() / 10.5));
-        for (TableColumn column : scoreTable.getColumns()) {
+        for (TableColumn<Scoreboard.Score, ?> column : scoreTable.getColumns()) {
             column.setPrefWidth((scoreTable.getMaxWidth() / 4.01));
         }
         
