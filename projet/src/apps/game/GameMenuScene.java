@@ -12,6 +12,7 @@ public class GameMenuScene extends MainScene {
     public GameMenuScene (){
         this.SCENE_TITLE = "Menu Gauntlet";
         this.GAME_MENU = new GameMenuLoad();
+        GAME_MENU.init();
     }
     @Override
     public void load(){

@@ -13,6 +13,7 @@ public class MapCreatorScene extends MainScene {
         super();
         this.SCENE_TITLE = "Map Creator";
         this.MAPCREATOR = new MapCreatorLoad(Game.GAME);
+        this.MAPCREATOR.init();
     }
     @Override
     public void load(){

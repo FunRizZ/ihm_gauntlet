@@ -12,6 +12,7 @@ public class SettingCreatorScene extends MainScene {
         super();
         this.SCENE_TITLE = "Setting";
         this.SETTING = new SettingPageLoad();
+        this.SETTING.init();
     }
     @Override
     public void load(){

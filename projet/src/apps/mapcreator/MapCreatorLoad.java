@@ -6,23 +6,22 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.BorderPane;
 import java.io.IOException;
 
-public class MapCreatorLoad extends BorderPane{
-    public static final Game GAME= Game.GAME;
-    public MapCreatorLoad(Game game) {
-        try {
-            // Locate the FXML file
-            FXMLLoader fxmlLoader = new FXMLLoader(MapCreatorLoad.class.getResource("MapCreator.fxml"));
+public class MapCreatorLoad extends BorderPane {
+    public static final Game GAME = Game.GAME;
 
-            // Since the loaded FXML file is the root of the scene,
-            // We must also set the Root as this class
+    private FXMLLoader fxmlLoader;
+
+    public MapCreatorLoad(Game game) {
+        fxmlLoader = new FXMLLoader(MapCreatorLoad.class.getResource("MapCreator.fxml"));
+    }
+
+    public void init() {
+        try {
             fxmlLoader.setRoot(this);
-            // Actual loading
             fxmlLoader.load();
-        }
-        catch(IOException ioe) {
+        } catch(IOException ioe) {
             System.err.println("MapCreatorControlleur constructor error");
             ioe.printStackTrace();
         }
     }
-
 }

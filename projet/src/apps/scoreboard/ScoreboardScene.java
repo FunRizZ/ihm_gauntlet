@@ -12,6 +12,7 @@ public class ScoreboardScene extends MainScene {
         super();
         this.SCENE_TITLE = "Hall of Fame";
         this.SCOREBOARD = new ScoreboardLoad();
+        this.SCOREBOARD.init();
     }
     @Override
     public void load(){
