@@ -37,11 +37,17 @@ public class LocationTest {
         sp.add(spawn1);
 
         Location exit1 = new Location(sizeX, sizeY, LocationName.ARMORY, sp);
+        exit1.resetBoard();
+        exit1.spawn();
         Location exit2 = new Location(sizeX, sizeY, LocationName.KITCHEN,sp);
+        exit2.resetBoard();
+        exit2.spawn();
 
         board[1][5] = new Exit(exit1,1,5);
         board[5][1] = new Exit(exit2,5,1);
         l = new Location(board, LocationName.GARDEN);
+        l.addDecorObjet(l.SPAWNS.getFirst());
+
     }
 
      //test exits
@@ -52,6 +58,8 @@ public class LocationTest {
         sp.add(spawn1);
         // creates an exit
         Location guard_room = new Location(sizeX, sizeY, LocationName.GUARD_ROOM,sp);
+        guard_room.resetBoard();
+        guard_room.spawn();
         Exit exit_to_guard_room = new Exit(guard_room,1,3);
 
         assertTrue(exit_to_guard_room.go(guard_room));
@@ -64,6 +72,8 @@ public class LocationTest {
         sp.add(spawn1);
         // creates an exit
         Location guard_room = new Location(sizeX, sizeY,LocationName.GUARD_ROOM,sp);
+        guard_room.resetBoard();
+        guard_room.spawn();
         setting_personnage setting = new setting_personnage(null, null, null, null, null, null, null);
         Hero h = new Hero(guard_room,setting,0 ,0 );
         Exit exit_to_guard_room = new ExitKey(guard_room,h,20,20);
