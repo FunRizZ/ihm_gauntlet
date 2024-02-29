@@ -91,6 +91,8 @@
                     <StackPane fx:id="Img103"/>
                     <StackPane fx:id="Img104"/>
                     <StackPane fx:id="Img105"/>
+                    <StackPane fx:id="Img106"/>
+                    <StackPane fx:id="Img107"/>
                 </HBox>
             </Tab>
             <Tab text="Players" fx:id="Tab11">

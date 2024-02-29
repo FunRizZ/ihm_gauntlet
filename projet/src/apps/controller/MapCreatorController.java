@@ -94,6 +94,10 @@ public class MapCreatorController{
     @FXML
     StackPane Img105;
     @FXML
+    StackPane Img106;
+    @FXML
+    StackPane Img107;
+    @FXML
     StackPane Img111;
     public MapCreatorController() {
         this.GAME = MapCreatorLoad.GAME;
@@ -131,6 +135,10 @@ public class MapCreatorController{
         Img104.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = 104);
         Img105.getChildren().add((new Lobber(-1,-1)).getSpray());
         Img105.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = 105);
+        Img106.getChildren().add(new Spawner_Grunt(GAME.getMainHero().getLocation(),-1,-1).getSpray());
+        Img106.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = 106);
+        Img107.getChildren().add((new Spawner_Ghost(GAME.getMainHero().getLocation(),-1,-1)).getSpray());
+        Img107.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = 107);
         Img111.getChildren().add(new Spawn(-1,-1).getSpray());
         Img111.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = 111);
 
@@ -232,6 +240,12 @@ public class MapCreatorController{
             }
             case 105 -> {
                 return new Lobber(x,y);
+            }
+            case 106 -> {
+                return new Spawner_Grunt(GAME.getMainHero().getLocation(),x,y);
+            }
+            case 107 -> {
+                return new Spawner_Ghost(GAME.getMainHero().getLocation(),x,y);
             }
             case 111 -> {
                 Spawn sp = new Spawn(x,y);

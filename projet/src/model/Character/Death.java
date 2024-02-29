@@ -19,7 +19,7 @@ public class Death extends WhoFight{
         super(DEFAULT_HP, DEFAULT_ARMOR, DEFAULT_DAMAGE,createItem(), x, y);
     }
     private static List<Item> createItem(){
-        List<Item> lst = new ArrayList<Item>();
+        List<Item> lst = new ArrayList<>();
         lst.add((Item)new Treasure());
         return lst;
     }

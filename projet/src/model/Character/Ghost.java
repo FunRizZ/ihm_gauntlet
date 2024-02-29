@@ -19,6 +19,7 @@ public class Ghost extends WhoFight {
     public String getDescription() {
         return "A ghost of a human who stays in our World after his death.";
     }
+    @Override
     public ImageView getSpray(){
         Image spray = (new Image(Wall.class.getResource("/sprites/ghost.png").toExternalForm()));
         ImageView view = new ImageView(spray);
