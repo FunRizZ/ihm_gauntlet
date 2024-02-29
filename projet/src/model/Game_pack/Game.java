@@ -1,10 +1,19 @@
 package model.Game_pack;
+import java.io.FileReader;
 import java.util.ArrayList;
 
 import java.util.List;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.google.gson.stream.JsonReader;
+
 import apps.setting.JsonSetting;
 import model.Character.Hero;
+import model.Character.Character;
+import model.Location.DecorObjet;
 import model.Location.Location;
 import model.Location.LocationName;
 import model.Location.Spawn;
@@ -72,8 +81,38 @@ public class Game {
     public boolean Load(String path){
         try {
             this.location = new Location(path);
+            Gson gson = new Gson();
+            JsonReader jsonReader = new JsonReader(new FileReader(path));
+            JsonObject jsonObject = (JsonObject) JsonParser.parseReader(jsonReader);
+            JsonArray decorObjects = jsonObject.getAsJsonArray("decorObject");
+            JsonArray characters = jsonObject.getAsJsonArray("character");
+            for(int i = 0; i< decorObjects.size(); i++) {
+                JsonObject jsonObjectDecorObject = decorObjects.get(i).getAsJsonObject();
+                Class<?> objClass = Class.forName(gson.fromJson(jsonObjectDecorObject.get("name"), String.class));
+                Integer x = gson.fromJson(jsonObjectDecorObject.get("x"), Integer.class);
+                Integer y = gson.fromJson(jsonObjectDecorObject.get("y"), Integer.class);
+
+                DecorObjet obj = (DecorObjet) objClass.getConstructors()[0].newInstance(x, y);
+
+                location.addLookable(obj);
+                if (obj instanceof Spawn) {
+                    location.SPAWNS.add((Spawn) obj);
+                }
+            }
+            for(int i = 0; i< characters.size(); i++) {
+                JsonObject jsonCharacters = characters.get(i).getAsJsonObject();
+                Class<?> objClass = Class.forName(gson.fromJson(jsonCharacters.get("name"), String.class));
+                Integer x = gson.fromJson(jsonCharacters.get("x"), Integer.class);
+                Integer y = gson.fromJson(jsonCharacters.get("y"), Integer.class);
+
+                if (objClass.getSimpleName().equals("Hero")){
+                }else {
+                    Character character = (Character) objClass.getConstructors()[0].newInstance(x, y);
+                    location.addLookable(character);
+                }
+
+            }
         }catch (Exception e){
-            System.out.println(e);
             return false;
         }
         changeLocation(this.location);

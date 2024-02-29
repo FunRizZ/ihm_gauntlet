@@ -42,39 +42,6 @@ public class Location {
         this.BOARD = new Lookable[this.SIZE_X][this.SIZE_Y];
         this.SPAWNS = new ArrayList<>(4);
 
-        JsonArray decorObjects = jsonObject.getAsJsonArray("decorObject");
-        JsonArray characters = jsonObject.getAsJsonArray("character");
-        //JsonArray exits = jsonObject.getAsJsonArray("exits");
-        try {
-            for(int i = 0; i< decorObjects.size(); i++) {
-                JsonObject jsonObjectDecorObject = decorObjects.get(i).getAsJsonObject();
-                Class<?> objClass = Class.forName(gson.fromJson(jsonObjectDecorObject.get("name"), String.class));
-                Integer x = gson.fromJson(jsonObjectDecorObject.get("x"), Integer.class);
-                Integer y = gson.fromJson(jsonObjectDecorObject.get("y"), Integer.class);
-
-                DecorObjet obj = (DecorObjet) objClass.getConstructors()[0].newInstance(x, y);
-
-                this.addLookable(obj);
-                if (obj instanceof Spawn) {
-                    this.SPAWNS.add((Spawn) obj);
-                }
-            }
-            for(int i = 0; i< characters.size(); i++) {
-                JsonObject jsonCharacters = characters.get(i).getAsJsonObject();
-                Class<?> objClass = Class.forName(gson.fromJson(jsonCharacters.get("name"), String.class));
-                Integer x = gson.fromJson(jsonCharacters.get("x"), Integer.class);
-                Integer y = gson.fromJson(jsonCharacters.get("y"), Integer.class);
-
-                if (objClass.getSimpleName().equals("Hero")){
-                }else {
-                    Character character = (Character) objClass.getConstructors()[0].newInstance(x, y);
-                    this.addLookable(character);
-                }
-
-            }
-        }catch (Exception e){
-            System.err.println(e);
-        }
     }
 
     public Location(Lookable[][] board, LocationName name) {
