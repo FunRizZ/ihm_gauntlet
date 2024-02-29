@@ -1,6 +1,6 @@
 package model.Item;
 
-import model.Character.Hero;
+import model.Character.hero.Hero;
 
 public class HealPotion extends Item{
     public static final int HEAL = 500;

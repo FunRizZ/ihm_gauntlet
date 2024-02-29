@@ -1,6 +1,6 @@
 package model.Item;
 
-import model.Character.Hero;
+import model.Character.hero.Hero;
 
 public abstract class Armor extends Item{
     private final int ARMOR;

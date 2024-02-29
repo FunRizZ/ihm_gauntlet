@@ -1,6 +1,6 @@
 package model.Item;
 
-import model.Character.Hero;
+import model.Character.hero.Hero;
 import model.Location.Location;
 
 public class Map extends Item{

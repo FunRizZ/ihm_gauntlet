@@ -69,6 +69,7 @@
             <Tab text="Walls" fx:id="Tab7">
                 <HBox>
                     <StackPane fx:id="Img71"/>
+                    <StackPane fx:id="Img72"/>
                 </HBox>
             </Tab>
 

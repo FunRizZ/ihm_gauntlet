@@ -1,6 +1,6 @@
 package model.Location;
 
-import model.Character.Hero;
+import model.Character.hero.Hero;
 import model.Item.Item;
 import model.Item.key;
 

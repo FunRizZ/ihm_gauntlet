@@ -1,5 +1,10 @@
 
-import model.Location.Spawn;
+import model.Character.hero.Hero;
+import model.Character.monster.Daemon;
+import model.Character.monster.Grunt;
+import model.Character.other.Guard;
+import model.Character.other.Knight;
+import model.Location.decorObject.Spawn;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;

@@ -1,14 +1,15 @@
 import model.Game_pack.Lookable;
 import model.Location.*;
+import model.Location.decorObject.*;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
 import apps.setting.setting_personnage;
 import model.Character.Character;
-import model.Character.Daemon;
-import model.Character.Guard;
-import model.Character.Hero;
-import model.Character.Knight;
+import model.Character.monster.Daemon;
+import model.Character.other.Guard;
+import model.Character.hero.Hero;
+import model.Character.other.Knight;
 import model.Item.Item;
 import model.Item.key;
 

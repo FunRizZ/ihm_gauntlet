@@ -1,6 +1,6 @@
 package model.Item;
 
-import model.Character.Hero;
+import model.Character.hero.Hero;
 
 public class PoisonPotion extends Item{
     public static final int DAMAGE = 200;

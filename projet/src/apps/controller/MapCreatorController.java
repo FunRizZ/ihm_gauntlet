@@ -5,14 +5,12 @@ import apps.mapcreator.MapCreatorLoad;
 import apps.setting.SettingCreatorScene;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
-import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.HBox;
 import javafx.util.Pair;
-import model.Character.*;
+import model.Character.monster.*;
 import model.Game_pack.Game;
 import model.Game_pack.Lookable;
-import model.Item.PoisonPotion;
 import model.Location.*;
 import javafx.animation.ScaleTransition;
 import javafx.fxml.FXML;
@@ -26,11 +24,9 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.util.Duration;
+import model.Location.decorObject.*;
 
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Enumeration;
-import java.util.HashMap;
 import java.util.List;
 
 public class MapCreatorController{
@@ -80,6 +76,8 @@ public class MapCreatorController{
     @FXML
     StackPane Img71;
     @FXML
+    StackPane Img72;
+    @FXML
     StackPane Img81;
     @FXML
     StackPane Img91;
@@ -110,22 +108,30 @@ public class MapCreatorController{
     public void initialize(){
         this.generate();
         MapTabPane.setTabClosingPolicy(TabPane.TabClosingPolicy.UNAVAILABLE);
+
         Img31.getChildren().add((new HealPotionView(-1,-1)).getSpray());
         Img31.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = 31);
         Img32.getChildren().add((new PoisonPotionView(-1,-1)).getSpray());
         Img32.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = 31);
+
         Img41.getChildren().add((new HolyGrenadeView(-1,-1)).getSpray());
         Img41.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = 41);
+
         Img61.getChildren().add((new FoodView(-1,-1)).getSpray());
         Img61.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = 61);
+
         Img71.getChildren().add((new Wall(-1,-1)).getSpray());
         Img71.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = 71);
+        Img72.getChildren().add((new Door(-1,-1,9)).getSpray());
+        Img72.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = 72);
 
         Img81.getChildren().add((new Exit(GAME.createLocation(LocationName.GARDEN,12,12), 0, 0)).getSpray());
         Img81.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = 81);
+
         Img91.getChildren().add((new TreasureView(-1,-1)).getSpray());
         Img91.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = 91);
         Img101.getChildren().add((new Death(-1,-1)).getSpray());
+
         Img101.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = 101);
         Img102.getChildren().add((new Daemon(-1,-1)).getSpray());
         Img102.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = 102);
@@ -140,8 +146,8 @@ public class MapCreatorController{
         Img107.getChildren().add((new Spawner_Ghost(GAME.getMainHero().getLocation(),-1,-1)).getSpray());
         Img107.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = 107);
         Img111.getChildren().add(new Spawn(-1,-1).getSpray());
-        Img111.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = 111);
 
+        Img111.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = 111);
 
         Delete.setOnAction(event -> this.object_select = -1);
     }
@@ -206,6 +212,9 @@ public class MapCreatorController{
             }
             case 71 -> {
                 return new Wall(x,y);
+            }
+            case 72 -> {
+                return new Door(x,y);
             }
             case 81 -> {
                 LocationName locationName = LocationName.values()[this.maps.size()];

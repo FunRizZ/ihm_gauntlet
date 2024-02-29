@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import apps.setting.JsonSetting;
-import model.Character.Hero;
+import model.Character.hero.Hero;
 import model.Location.Location;
 import model.Location.LocationName;
-import model.Location.Spawn;
+import model.Location.decorObject.Spawn;
 
 public class Game {
     public final static Game GAME = new Game(100,10, 1);

@@ -1,6 +1,6 @@
 package model.Game_pack;
 
-import model.Character.Hero;
+import model.Character.hero.Hero;
 
 public interface Useable {
 	public void use(Hero h);
