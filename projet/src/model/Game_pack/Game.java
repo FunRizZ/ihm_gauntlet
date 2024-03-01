@@ -10,7 +10,7 @@ import model.Location.LocationName;
 import model.Location.decorObject.Spawn;
 
 public class Game {
-    public final static Game GAME = new Game(100,10, 3);
+    public final static Game GAME = new Game(100,10, 1);
     public final int NB_HERO;
     public final List<Hero> HEROS;
     private Location location;

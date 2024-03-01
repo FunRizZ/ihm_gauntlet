@@ -23,11 +23,11 @@ public class Location {
     /**
      * number of columns
      */
-    private final int SIZE_X;
+    public final int SIZE_X;
     /**
      * number of rows
      */
-    private final int SIZE_Y;
+    public final int SIZE_Y;
     public final LocationName NAME;
 
     public Location(String path) throws FileNotFoundException {

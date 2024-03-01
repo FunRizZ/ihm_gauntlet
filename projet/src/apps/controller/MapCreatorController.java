@@ -199,8 +199,8 @@ public class MapCreatorController{
         Map.add(image,x,y);
     }
     public void resetMap(){
-        for (int x = 0; x < GAME.SIZE_MAP_X; x++){
-            for (int y = 0; y < GAME.SIZE_MAP_y; y++){
+        for (int x = 0; x < GAME.getMainHero().getLocation().SIZE_X; x++){
+            for (int y = 0; y < GAME.getMainHero().getLocation().SIZE_Y; y++){
                 reset(x,y);
             }
         }
@@ -354,6 +354,17 @@ public class MapCreatorController{
         }
 
     }
+    private void parcoursAllExits(Location location, List<Exit> exits){
+        if (exits.isEmpty()){
+            this.creatExitButton(location);
+        }
+        else{
+            for (Exit exit: exits){
+                parcoursAllExits(exit.EXIT_LOCATION, exit.EXIT_LOCATION.getExits());
+            }
+            this.creatExitButton(location);
+        }
+    }
 
     @FXML
     public void load(ActionEvent event){
@@ -364,9 +375,12 @@ public class MapCreatorController{
            }
            this.maps.clear();
            this.maps.add( new Pair<> (GAME.getMainHero().getLocation(), new Button(GAME.getMainHero().getLocation().NAME.name())));
-           for (Exit exit : GAME.getMainHero().getLocation().getExits()){
-               System.out.println(exit.EXIT_LOCATION);
-               this.creatExitButton(exit.EXIT_LOCATION);
+           parcoursAllExits(GAME.getMainHero().getLocation(), GAME.getMainHero().getLocation().getExits());
+
+           for (Pair<Location, Button> p : this.maps) { /* supprime le bouton pour revenir au depart */
+               if( p.getKey() == GAME.getMainHero().getLocation()){
+                   ((HBox) Tab2.getContent()).getChildren().remove(p.getValue());
+               }
            }
        }else {
            System.out.println("error on load");

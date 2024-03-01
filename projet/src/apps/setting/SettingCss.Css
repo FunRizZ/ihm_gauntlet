@@ -1,3 +1,8 @@
+.root{
+    -fx-background-image: url('/sprites/menuWallpaper.jpeg');
+    -fx-background-size: cover;
+    -fx-background-repeat: no-repeat;
+}
 .grid-pane {
     -fx-background-color: rgba(0, 0, 0, 0.50);
     -fx-padding: 20;

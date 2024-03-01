@@ -1,14 +1,21 @@
+.root{
+    -fx-background-image: url('/sprites/menuWallpaper.jpeg');
+    -fx-background-size: cover;
+    -fx-background-repeat: no-repeat;
+}
 .centered-table .table-cell {
     -fx-alignment: center;
     -fx-font-size: 20px;
     -fx-text-background-color: yellow;
 }
 .centered-table .column-header {
+    -fx-opacity: 0.8;
     -fx-alignment: center;
     -fx-background-color: black;
     -fx-text-background-color: yellow;
 }
 .table-view {
+    -fx-opacity: 0.8;
     -fx-background-color: yellow;
 }
 .table-view .column-header-background .filler {
@@ -53,7 +60,4 @@
 }
 .table-view .virtual-flow .scroll-bar:horizontal .thumb {
     -fx-background-color:  grey;
-}
-.root {
-    -fx-background-color: black;
 }
