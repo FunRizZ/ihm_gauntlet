@@ -1,15 +1,15 @@
 package model.Location;
 
-import model.Character.hero.Hero;
+import model.Game_pack.Game;
 import model.Item.Item;
 import model.Item.key;
 
 public class ExitKey extends Exit{
-    public final Hero HERO;
+    public final Game GAME;
 
-    public ExitKey(Location exit, Hero h, int x, int y){
+    public ExitKey(Location exit, Game game, int x, int y){
         super(exit, x, y);
-        this.HERO = h;
+        this.GAME = game;
     }
 
     /**
@@ -19,7 +19,7 @@ public class ExitKey extends Exit{
     public boolean go(Location location){
         Item k;
         try{
-            k = this.HERO.getItem("key");
+            k = this.GAME.getMainHero().getItem("key");
         }catch(NullPointerException e){return false;}
         return location == EXIT_LOCATION && (k instanceof key);
     }

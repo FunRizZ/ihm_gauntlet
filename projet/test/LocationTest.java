@@ -1,3 +1,4 @@
+import model.Game_pack.Game;
 import model.Game_pack.Lookable;
 import model.Location.*;
 import model.Location.decorObject.*;
@@ -76,12 +77,12 @@ public class LocationTest {
         guard_room.resetBoard();
         guard_room.spawn();
         setting_personnage setting = new setting_personnage(null, null, null, null, null, null, null);
-        Hero h = new Hero(guard_room,setting,0 ,0 );
-        Exit exit_to_guard_room = new ExitKey(guard_room,h,20,20);
+        //Hero h = new Hero(guard_room,setting,0 ,0 );
+        Exit exit_to_guard_room = new ExitKey(guard_room, Game.GAME,20,20);
 
         assertFalse(exit_to_guard_room.go(guard_room));
 
-        h.addItem((Item) new key());
+        Game.GAME.getMainHero().addItem((Item) new key());
         assertTrue(exit_to_guard_room.go(guard_room));
     }
     
