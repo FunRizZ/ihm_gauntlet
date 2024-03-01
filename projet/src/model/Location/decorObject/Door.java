@@ -9,9 +9,9 @@ public class Door extends DecorObjet{
     public Door(int x, int y) {
         super(x, y);
     }
-    public Door(int x, int y, int orientation) {
+    public Door(int x, int y, int new_orientation) {
         super(x, y);
-        this.orientation = orientation;
+        orientation = new_orientation;
     }
     @Override
     public String toString() {

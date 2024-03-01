@@ -3,7 +3,6 @@ package model.Character.monster;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import model.Location.Location;
 import model.Location.decorObject.Wall;
 
 public class Spawner_Ghost extends Spawner {
