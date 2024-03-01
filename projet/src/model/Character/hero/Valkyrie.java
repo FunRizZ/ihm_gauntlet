@@ -2,7 +2,6 @@ package model.Character.hero;
 
 
 import apps.setting.setting_personnage;
-import model.Character.hero.Hero;
 import model.Location.Location;
 
 import javafx.geometry.Rectangle2D;

@@ -3,7 +3,6 @@ package model.Location.decorObject;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import model.Item.AttackPotion;
 import model.Item.DefensePotion;
 
 public class DefensePotionView extends DecorObjet {

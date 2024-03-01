@@ -4,7 +4,6 @@ package model.Location.decorObject;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import model.Item.Treasure;
 import model.Item.key;
 
 public class KeyView extends DecorObjet {

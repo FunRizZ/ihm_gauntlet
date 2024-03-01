@@ -11,7 +11,6 @@ import com.google.gson.*;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import model.Character.Character;
-import model.Character.hero.Hero;
 import model.Game_pack.Lookable;
 import model.Location.decorObject.DecorObjet;
 import model.Location.decorObject.Spawn;
