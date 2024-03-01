@@ -1,8 +1,0 @@
-{
-    "java.configuration.updateBuildConfiguration": "interactive",
-    "java.eclipse.downloadSources": true,
-    "java.configuration.runtimes": [
-    ],
-    "java.configuration.detectJdksAtStart": true,
-    "java.codeAction.sortMembers.avoidVolatileChanges": true
-}
