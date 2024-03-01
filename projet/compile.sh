@@ -13,8 +13,9 @@ javac -cp "$LIB_PATH" -Xlint:all -Xdiags:verbose @sources.txt
 
 # Exécuter le programme (linux)
 #java -cp "./src:./lib/*"  apps.StartGame 
-# Exécuter le programme (marche surement pas sur linux)
+# Exécuter le programme (windows)
 #java -cp "./src;./lib/*"  apps.StartGame 
+# Exécuter le programme (windows avec dependance)
 #java --module-path $PATH_TO_FX --add-modules javafx.controls,javafx.fxml -cp "./src;./lib/*"  apps.StartGame
 
 # Supprimer le fichier temporaire
