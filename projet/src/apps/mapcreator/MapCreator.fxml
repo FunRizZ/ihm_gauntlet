@@ -27,17 +27,17 @@
         <TabPane fx:id="MapTabPane">
             <Tab text="Menu" fx:id="Tab1">
                 <HBox>
-                    <Button text="Save Map"  onAction="#SaveMap"/>
-                    <Button text="Load Map" onAction="#load"/>
-                    <Button text="Settings" onAction="#changeSetting"/>
-                    <Button text="Quit to Main Menu" onAction="#changeGameMenu"/>
-                    <Button text="Quit to Desktop" onAction="#handleQuit"/>
+                    <Button text="%saveMap"  onAction="#SaveMap"/>
+                    <Button text="%loadMap" onAction="#load"/>
+                    <Button text="%settings" onAction="#changeSetting"/>
+                    <Button text="%quitMainMenu" onAction="#changeGameMenu"/>
+                    <Button text="%quitDesktop" onAction="#handleQuit"/>
                 </HBox>
             </Tab>
-            <Tab text="Tools" fx:id="Tab2">
+            <Tab text="%tools" fx:id="Tab2">
                 <HBox>
-                    <Button fx:id="Delete" text="Delete"/>
-                    <Button text="Back to start" onAction="#Back"/>
+                    <Button fx:id="%delete" text="Delete"/>
+                    <Button text="%backToStart" onAction="#Back"/>
                 </HBox>
             </Tab>
 
@@ -51,44 +51,44 @@
                 </HBox>
             </Tab>
 
-            <Tab text="Weapon" fx:id="Tab4">
+            <Tab text="%weapon" fx:id="Tab4">
                 <HBox>
                     <StackPane fx:id="Img41"/>
                 </HBox>
             </Tab>
 
-            <Tab text="Keys" fx:id="Tab5">
+            <Tab text="%keys" fx:id="Tab5">
                 <HBox>
                     <StackPane fx:id="Img51"/>
                 </HBox>
             </Tab>
 
-            <Tab text="Food" fx:id="Tab6">
+            <Tab text="%food" fx:id="Tab6">
                 <HBox>
                     <StackPane fx:id="Img61"/>
                 </HBox>
             </Tab>
 
-            <Tab text="Walls" fx:id="Tab7">
+            <Tab text="%walls" fx:id="Tab7">
                 <HBox>
                     <StackPane fx:id="Img71"/>
                     <StackPane fx:id="Img72"/>
                 </HBox>
             </Tab>
 
-            <Tab text="Exits" fx:id="Tab8">
+            <Tab text="%exit" fx:id="Tab8">
                 <HBox>
                     <StackPane fx:id="Img81"/>
                 </HBox>
             </Tab>
 
-            <Tab text="Treasure" fx:id="Tab9">
+            <Tab text="%treasures" fx:id="Tab9">
                 <HBox>
                     <StackPane fx:id="Img91"/>
                 </HBox>
             </Tab>
 
-            <Tab text="Spawners and Enemies" fx:id="Tab10">
+            <Tab text="%spawnersAndEnemies" fx:id="Tab10">
                 <HBox>
                     <StackPane fx:id="Img101"/>
                     <StackPane fx:id="Img102"/>
@@ -99,7 +99,7 @@
                     <StackPane fx:id="Img107"/>
                 </HBox>
             </Tab>
-            <Tab text="Players" fx:id="Tab11">
+            <Tab text="%players" fx:id="Tab11">
                 <HBox>
                     <StackPane fx:id="Img111"/>
                 </HBox>

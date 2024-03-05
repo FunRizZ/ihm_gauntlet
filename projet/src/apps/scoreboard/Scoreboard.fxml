@@ -11,13 +11,13 @@
          xmlns="http://javafx.com/javafx/8"
          xmlns:fx="http://javafx.com/fxml/1"
          fx:controller="apps.controller.ScoreboardController"
-         stylesheets="/apps/scoreboard/ScoreboardCss.Css">
+         stylesheets="/apps/scoreboard/ScoreboardCss.css">
     <center>
         <TableView fx:id="scoreTable" styleClass="centered-table">
             <columns>
-                <TableColumn fx:id="rankColumn" text="Rank">
+                <TableColumn fx:id="rankColumn" text="%rank">
                 </TableColumn>
-                <TableColumn fx:id="playerColumn" text="Player">
+                <TableColumn fx:id="playerColumn" text="%playername">
                     <cellValueFactory>
                         <PropertyValueFactory property="player" />
                     </cellValueFactory>

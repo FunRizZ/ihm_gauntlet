@@ -1,5 +1,6 @@
 package apps.mapcreator;
 
+import apps.controller.SettingController;
 import model.Game_pack.Game;
 import javafx.fxml.FXMLLoader;
 
@@ -12,7 +13,7 @@ public class MapCreatorLoad extends BorderPane {
     private FXMLLoader fxmlLoader;
 
     public MapCreatorLoad(Game game) {
-        fxmlLoader = new FXMLLoader(MapCreatorLoad.class.getResource("MapCreator.fxml"));
+        fxmlLoader = new FXMLLoader(MapCreatorLoad.class.getResource("MapCreator.fxml"), SettingController.language);
     }
 
     public void init() {

@@ -11,13 +11,13 @@
          stylesheets="/apps/game/GameCss.css">
     <center>
         <VBox alignment="CENTER" spacing="10" scaleX="2" scaleY="2">
-            <Button text="New Game" prefWidth="150"/>
-            <Button text="Load Game" prefWidth="150"/>
-            <Button text="Map Creator" onAction="#changeCreatorMenu" prefWidth="150"/>
-            <Button text="Scoreboard" onAction="#changeScoreboardMenu" prefWidth="150"/>
-            <Button text="Settings" onAction="#changeSetting" prefWidth="150"/>
+            <Button text="%newGame" prefWidth="150"/>
+            <Button text="%loadGame" prefWidth="150"/>
+            <Button text="%mapCreator" onAction="#changeCreatorMenu" prefWidth="150"/>
+            <Button text="%scoreboard" onAction="#changeScoreboardMenu" prefWidth="150"/>
+            <Button text="%settings" onAction="#changeSetting" prefWidth="150"/>
             <Button text="Credits" prefWidth="150"/>
-            <Button text="Quit to Desktop" onAction="#handleQuit" prefWidth="150"/>
+            <Button text="%quitDesktop" onAction="#handleQuit" prefWidth="150"/>
         </VBox>
     </center>
 

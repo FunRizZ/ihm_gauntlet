@@ -15,17 +15,17 @@
                                 stylesheets="/apps/setting/SettingCss.Css">
         <center>
                 <GridPane fx:id="Grid" alignment="center" styleClass="grid-pane" >
-                        <Label text="Control" GridPane.columnIndex="0" GridPane.rowIndex="0" />
-                        <Label text="UP" GridPane.columnIndex="0" GridPane.rowIndex="1" />
-                        <Label text="DOWN" GridPane.columnIndex="0" GridPane.rowIndex="2" />
-                        <Label text="LEFT" GridPane.columnIndex="0" GridPane.rowIndex="3" />
-                        <Label text="RIGHT" GridPane.columnIndex="0" GridPane.rowIndex="4" />
-                        <Label text="ATTACK" GridPane.columnIndex="0" GridPane.rowIndex="5" />
-                        <Label text="BOMB" GridPane.columnIndex="0" GridPane.rowIndex="6" />
-                        <Label text="RESUREC" GridPane.columnIndex="0" GridPane.rowIndex="7" />
+                        <Label text="%control" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                        <Label text="%up" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                        <Label text="%down" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                        <Label text="%left" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+                        <Label text="%right" GridPane.columnIndex="0" GridPane.rowIndex="4" />
+                        <Label text="%attack" GridPane.columnIndex="0" GridPane.rowIndex="5" />
+                        <Label text="%bomb" GridPane.columnIndex="0" GridPane.rowIndex="6" />
+                        <Label text="%resurrect" GridPane.columnIndex="0" GridPane.rowIndex="7" />
                         <Label text="Resolution" GridPane.columnIndex="0" GridPane.rowIndex="8" />
                         <ComboBox fx:id="Resolution" GridPane.columnIndex="0" GridPane.rowIndex="9"/>
-                        <Label text="Language" GridPane.columnIndex="4" GridPane.rowIndex="8" />
+                        <Label text="%languageUI" GridPane.columnIndex="4" GridPane.rowIndex="8" />
                         <ComboBox fx:id="Langue" minWidth="100" minHeight="30" GridPane.columnIndex="4" GridPane.rowIndex="9"/>
                 </GridPane>
         </center>

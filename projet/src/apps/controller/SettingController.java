@@ -30,9 +30,15 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.stage.WindowEvent;
 
+import java.util.Locale;
+import java.util.Objects;
+import java.util.ResourceBundle;
+
 public class SettingController{
     setting_personnage[] players = JsonSetting.getSetting();
     settingScene settingScene = JsonSetting.getSettingsScene();
+
+    public static ResourceBundle language = ResourceBundle.getBundle("language/texts");
     
     @FXML
     private GridPane Grid;
@@ -71,6 +77,13 @@ public class SettingController{
         @Override
         public void handle(ActionEvent event) {
             String selectedValue = Langue.getValue();
+
+            if(Objects.equals(selectedValue, "fr")){
+                language = ResourceBundle.getBundle("language/texts", new Locale("fr"));
+            }
+            else {
+                language = ResourceBundle.getBundle("language/texts", new Locale("en"));
+            }
 
             settingScene.setLangue(selectedValue);
             JsonSetting.save_control();
