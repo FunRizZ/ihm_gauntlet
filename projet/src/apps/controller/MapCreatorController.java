@@ -372,23 +372,23 @@ public class MapCreatorController{
 
     @FXML
     public void load(ActionEvent event){
-       if(GAME.Load("./save/locations/GARDEN.json")){
-           this.resetMap();
-           for (Pair<Location, Button> p : this.maps) {
-               ((HBox) Tab2.getContent()).getChildren().remove(p.getValue());
-           }
-           this.maps.clear();
-           this.maps.add( new Pair<> (GAME.getMainHero().getLocation(), new Button(GAME.getMainHero().getLocation().NAME.name())));
-           parcoursAllExits(GAME.getMainHero().getLocation(), GAME.getMainHero().getLocation().getExits());
+        if(GAME.Load("./save/locations/GARDEN.json")){
+            this.resetMap();
+            for (Pair<Location, Button> p : this.maps) {
+                ((HBox) Tab2.getContent()).getChildren().remove(p.getValue());
+            }
+            this.maps.clear();
+            this.maps.add( new Pair<> (GAME.getMainHero().getLocation(), new Button(GAME.getMainHero().getLocation().NAME.name())));
+            parcoursAllExits(GAME.getMainHero().getLocation(), GAME.getMainHero().getLocation().getExits());
 
-           for (Pair<Location, Button> p : this.maps) { /* supprime le bouton pour revenir au depart */
-               if( p.getKey() == GAME.getMainHero().getLocation()){
-                   ((HBox) Tab2.getContent()).getChildren().remove(p.getValue());
-               }
-           }
-       }else {
-           System.out.println("error on load");
-       }
+            for (Pair<Location, Button> p : this.maps) { /* supprime le bouton pour revenir au depart */
+                if( p.getKey() == GAME.getMainHero().getLocation()){
+                    ((HBox) Tab2.getContent()).getChildren().remove(p.getValue());
+                }
+            }
+        }else {
+            System.out.println("error on load");
+        }
     }
     @FXML
     public void Back(ActionEvent event){

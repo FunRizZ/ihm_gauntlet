@@ -1,5 +1,6 @@
 package apps.controller;
 
+import apps.game.SelectHeroScene;
 import apps.mapcreator.MapCreatorScene;
 import apps.scoreboard.ScoreboardScene;
 import apps.credits.creditsScene;
@@ -27,25 +28,30 @@ public class GameMenuController{
     @FXML
     public void changeCreatorMenu (ActionEvent event) {
         MapCreatorScene MapCreator = new MapCreatorScene();
-        MapCreator.changeScene(MapCreator.MAPCREATOR, MapCreator.SCENE_TITLE);
+        MapCreator.load();
     }
 
     @FXML
     public void changeScoreboardMenu (ActionEvent event) {
         ScoreboardScene Scoreboard = new ScoreboardScene();
-        Scoreboard.changeScene(Scoreboard.SCOREBOARD, Scoreboard.SCENE_TITLE);
+        Scoreboard.load();
     }
 
     @FXML
     public void changeSettingMenu (ActionEvent event) {
         SettingCreatorScene Setting = new SettingCreatorScene();
-        Setting.changeScene(Setting.SETTING, Setting.SCENE_TITLE);
+        Setting.load();
     }
 
     @FXML
     public void changeCreditsMenu (ActionEvent event) {
         creditsScene Credits = new creditsScene();
-        Credits.changeScene(Credits.CREDITS, Credits.SCENE_TITLE);
+        Credits.load();
+    }
+    @FXML
+    public void newGame(ActionEvent event){
+        SelectHeroScene heroChoice = new SelectHeroScene();
+        heroChoice.load();
     }
 
     @FXML
