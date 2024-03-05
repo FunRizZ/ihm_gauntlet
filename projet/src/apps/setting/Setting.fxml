@@ -25,7 +25,7 @@
                         <Label text="RESUREC" GridPane.columnIndex="0" GridPane.rowIndex="7" />
                         <Label text="Resolution" GridPane.columnIndex="0" GridPane.rowIndex="8" />
                         <ComboBox fx:id="Resolution" GridPane.columnIndex="0" GridPane.rowIndex="9"/>
-                        <Label text="Langue" GridPane.columnIndex="4" GridPane.rowIndex="8" />
+                        <Label text="Language" GridPane.columnIndex="4" GridPane.rowIndex="8" />
                         <ComboBox fx:id="Langue" minWidth="100" minHeight="30" GridPane.columnIndex="4" GridPane.rowIndex="9"/>
                 </GridPane>
         </center>
