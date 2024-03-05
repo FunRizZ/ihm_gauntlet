@@ -29,8 +29,10 @@ import model.Location.decorObject.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import static apps.controller.ItemsEnum.*;
+
 public class MapCreatorController{
-    private int object_select;
+    private ItemsEnum object_select;
     private final Game GAME;
     private double zoom;
     public List<Pair<Location, Button>> maps;
@@ -105,9 +107,11 @@ public class MapCreatorController{
     StackPane Img107;
     @FXML
     StackPane Img111;
+
+
     public MapCreatorController() {
         this.GAME = MapCreatorLoad.GAME;
-        this.object_select = -1;
+        this.object_select = delete;
         this.zoom = 1;
         this.maps = new ArrayList<>();
         this.maps.add( new Pair<> (GAME.getMainHero().getLocation(), new Button(GAME.getMainHero().getLocation().NAME.name())));
@@ -118,55 +122,55 @@ public class MapCreatorController{
         MapTabPane.setTabClosingPolicy(TabPane.TabClosingPolicy.UNAVAILABLE);
 
         Img31.getChildren().add((new HealPotionView(-1,-1)).getSpray());
-        Img31.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = 31);
+        Img31.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = Heal_Potion);
         Img32.getChildren().add((new PoisonPotionView(-1,-1)).getSpray());
-        Img32.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = 32);
+        Img32.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = Poison_Potion);
         Img33.getChildren().add((new DefensePotionView(-1,-1)).getSpray());
-        Img33.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = 33);
+        Img33.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = Defense_Potion);
         Img34.getChildren().add((new AttackPotionView(-1,-1)).getSpray());
-        Img34.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = 34);
+        Img34.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = Attack_Potion);
         Img35.getChildren().add((new MagicPotionView(-1,-1)).getSpray());
-        Img35.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = 35);
+        Img35.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = Magic_Potion);
 
         Img41.getChildren().add((new HolyGrenadeView(-1,-1)).getSpray());
-        Img41.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = 41);
+        Img41.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = Key);
 
         Img51.getChildren().add((new KeyView(-1,-1)).getSpray());
-        Img51.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = 51);
+        Img51.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = Key);
 
         Img61.getChildren().add((new FoodView(-1,-1)).getSpray());
-        Img61.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = 61);
+        Img61.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = Food);
 
         Img71.getChildren().add((new Wall(-1,-1)).getSpray());
-        Img71.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = 71);
+        Img71.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = Wall);
         Img72.getChildren().add((new Door(-1,-1,9)).getSpray());
-        Img72.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = 72);
+        Img72.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = Door);
 
         Img81.getChildren().add((new Exit(GAME.createLocation(LocationName.GARDEN,12,12), 0, 0)).getSpray());
-        Img81.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = 81);
+        Img81.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = Exit);
 
         Img91.getChildren().add((new TreasureView(-1,-1)).getSpray());
-        Img91.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = 91);
+        Img91.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = Treasure);
         Img101.getChildren().add((new Death(-1,-1)).getSpray());
 
-        Img101.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = 101);
+        Img101.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = Death);
         Img102.getChildren().add((new Daemon(-1,-1)).getSpray());
-        Img102.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = 102);
+        Img102.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = Daemon);
         Img103.getChildren().add((new Ghost(-1,-1)).getSpray());
-        Img103.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = 103);
+        Img103.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = Ghost);
         Img104.getChildren().add((new Grunt(-1,-1)).getSpray());
-        Img104.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = 104);
+        Img104.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = Grunt);
         Img105.getChildren().add((new Lobber(-1,-1)).getSpray());
-        Img105.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = 105);
+        Img105.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = Lobber);
         Img106.getChildren().add(new Spawner_Grunt(-1,-1).getSpray());
-        Img106.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = 106);
+        Img106.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = Spawner_Grunt);
         Img107.getChildren().add((new Spawner_Ghost(-1,-1)).getSpray());
-        Img107.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = 107);
+        Img107.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = Spawner_Ghost);
         Img111.getChildren().add(new Spawn(-1,-1).getSpray());
 
-        Img111.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = 111);
+        Img111.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = Spawn_Hero);
 
-        Delete.setOnAction(event -> this.object_select = -1);
+        Delete.setOnAction(event -> this.object_select = delete);
     }
 
     /**
@@ -227,37 +231,37 @@ public class MapCreatorController{
     }
     public Lookable getLookable(int x, int y){
         switch (this.object_select){
-            case 31 -> {
+            case Heal_Potion -> {
                 return new HealPotionView(x,y);
             }
-            case 32 -> {
+            case Poison_Potion -> {
                 return new PoisonPotionView(x,y);
             }
-            case 33 -> {
+            case Defense_Potion -> {
                 return new DefensePotionView(x,y);
             }
-            case 34 -> {
+            case Attack_Potion -> {
                 return new AttackPotionView(x,y);
             }
-            case 35 -> {
+            case Magic_Potion -> {
                 return new MagicPotionView(x,y);
             }
-            case 41 -> {
+            case Holy_Grenade -> {
                 return new HolyGrenadeView(x,y);
             }
-            case 51 -> {
+            case Key -> {
                 return new KeyView(x,y);
             }
-            case 61 -> {
+            case Food -> {
                 return new FoodView(x,y);
             }
-            case 71 -> {
+            case Wall -> {
                 return new Wall(x,y);
             }
-            case 72 -> {
+            case Door -> {
                 return new Door(x,y);
             }
-            case 81 -> {
+            case Exit -> {
                 LocationName locationName = LocationName.values()[this.maps.size()];
                 Location l = GAME.createLocation(locationName, GAME.SIZE_MAP_X, GAME.SIZE_MAP_y);
 
@@ -265,31 +269,31 @@ public class MapCreatorController{
 
                 return new Exit(l,x,y);
             }
-            case 91 -> {
+            case Treasure -> {
                 return new TreasureView(x,y);
             }
-            case 101 -> {
+            case Death -> {
                 return new Death(x,y);
             }
-            case 102 -> {
+            case Daemon -> {
                 return new Daemon(x,y);
             }
-            case 103 -> {
+            case Ghost -> {
                 return new Ghost(x,y);
             }
-            case 104 -> {
+            case Grunt -> {
                 return new Grunt(x,y);
             }
-            case 105 -> {
+            case Lobber -> {
                 return new Lobber(x,y);
             }
-            case 106 -> {
+            case Spawner_Grunt -> {
                 return new Spawner_Grunt(x,y);
             }
-            case 107 -> {
+            case Spawner_Ghost -> {
                 return new Spawner_Ghost(x,y);
             }
-            case 111 -> {
+            case Spawn_Hero -> {
                 Spawn sp = new Spawn(x,y);
                 GAME.getMainHero().getLocation().SPAWNS.add(sp);
                 return sp;
