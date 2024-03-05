@@ -6,7 +6,7 @@ import javafx.scene.layout.BorderPane;
 import java.io.IOException;
 
 public class creditsLoad extends BorderPane {
-    private FXMLLoader fxmlLoader;
+    private final FXMLLoader fxmlLoader;
 
     public creditsLoad() {
         fxmlLoader = new FXMLLoader(creditsLoad.class.getResource("credits.fxml"));

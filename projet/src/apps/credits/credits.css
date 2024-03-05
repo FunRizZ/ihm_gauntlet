@@ -8,3 +8,17 @@
     -fx-background-color: #8B0000;
     -fx-text-fill: #96b946;
 }
+
+#title {
+    -fx-font: 100px Tahoma;
+    -fx-color: black;
+    -fx-border-style: none none solid none;
+    -fx-border-width: 5px;
+    -fx-border-color: red;
+}
+#rainbow {
+    -fx-font: 50px Tahoma;
+    -fx-fill: linear-gradient(from 0% 0% to 100% 200%, repeat, aqua 0%, red 50%);
+    -fx-stroke: black;
+    -fx-stroke-width: 1;
+}
