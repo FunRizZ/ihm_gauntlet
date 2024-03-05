@@ -1,26 +1,26 @@
 
-import model.Character.hero.Hero;
-import model.Character.monster.Daemon;
-import model.Character.monster.Grunt;
-import model.Character.other.Guard;
-import model.Character.other.Knight;
-import model.Location.decorObject.Spawn;
+import model.character.hero.Hero;
+import model.character.monster.Daemon;
+import model.character.monster.Grunt;
+import model.character.other.Guard;
+import model.character.other.Knight;
+import model.location.decorObject.Spawn;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
 import apps.setting.setting_personnage;
-import model.Character.*;
+import model.character.*;
 
-import model.Location.LocationName;
-import model.Location.Location;
+import model.location.LocationName;
+import model.location.Location;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 import static org.junit.Assert.*;
-import model.Item.*;
+import model.item.*;
 
 
 public class CharacterTest {

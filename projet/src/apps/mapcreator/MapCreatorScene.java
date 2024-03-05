@@ -1,7 +1,7 @@
 package apps.mapcreator;
 
 import apps.MainScene;
-import model.Game_pack.Game;
+import model.game_pack.Game;
 
 /**
  * scene of the Map creator

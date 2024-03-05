@@ -1,18 +1,17 @@
-import model.Game_pack.Game;
-import model.Game_pack.Lookable;
-import model.Location.*;
-import model.Location.decorObject.*;
+import model.game_pack.Game;
+import model.game_pack.Lookable;
+import model.location.*;
+import model.location.decorObject.*;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
 import apps.setting.setting_personnage;
-import model.Character.Character;
-import model.Character.monster.Daemon;
-import model.Character.other.Guard;
-import model.Character.hero.Hero;
-import model.Character.other.Knight;
-import model.Item.Item;
-import model.Item.key;
+import model.character.Character;
+import model.character.monster.Daemon;
+import model.character.other.Guard;
+import model.character.other.Knight;
+import model.item.Item;
+import model.item.key;
 
 import java.util.ArrayList;
 import java.util.List;
