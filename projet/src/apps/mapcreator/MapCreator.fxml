@@ -36,7 +36,7 @@
             </Tab>
             <Tab text="%tools" fx:id="Tab2">
                 <HBox>
-                    <Button fx:id="%delete" text="Delete"/>
+                    <Button fx:id="Delete" text="%delete"/>
                     <Button text="%backToStart" onAction="#Back"/>
                 </HBox>
             </Tab>

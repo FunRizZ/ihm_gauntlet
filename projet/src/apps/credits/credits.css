@@ -1,14 +1,9 @@
-.root{
+/*.root{
     -fx-background-image: url('/sprites/menuWallpaper.jpeg');
     -fx-background-size: cover;
     -fx-background-repeat: no-repeat;
-}
-.button{
-    -fx-border-color: transparent;
-    -fx-background-color: black;
-    -fx-opacity: 0.70;
-    -fx-text-fill: #96b946;
-}
+}*/
+
 .button:pressed {
     -fx-background-color: #8B0000;
     -fx-text-fill: #96b946;
