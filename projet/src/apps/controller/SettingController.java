@@ -71,7 +71,7 @@ public class SettingController{
 
             }
         });
-        Langue.setItems(FXCollections.observableArrayList("fr", "en"));
+        Langue.setItems(FXCollections.observableArrayList("fr", "en", "es"));
         Langue.getSelectionModel().select(settingScene.getLangue());
         Langue.setOnAction(new EventHandler<ActionEvent>() {
         @Override
@@ -80,6 +80,9 @@ public class SettingController{
 
             if(Objects.equals(selectedValue, "fr")){
                 language = ResourceBundle.getBundle("language/texts", new Locale("fr"));
+            }
+            else if(Objects.equals(selectedValue, "es")){
+                language = ResourceBundle.getBundle("language/texts", new Locale("es"));
             }
             else {
                 language = ResourceBundle.getBundle("language/texts", new Locale("en"));
