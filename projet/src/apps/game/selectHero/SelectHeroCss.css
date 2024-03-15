@@ -1,0 +1,14 @@
+.root{
+    -fx-background-image: url('/sprites/menuWallpaper.jpeg');
+}
+.scroll-pane {
+    -fx-background-color: black;
+}
+.scroll-pane > .corner {
+    -fx-background-color: black;
+}
+.button {
+    -fx-background-color: black;
+    -fx-text-fill: yellow;
+    -fx-font-size: 16px;
+}

@@ -9,28 +9,29 @@
          fx:controller="apps.controller.SelectHeroController"
          stylesheets="/apps/game/selectHero/SelectHeroCss.css">
     <center>
-        <HBox fx:id="selection" style="-fx-border-color: white;">
+        <HBox fx:id="selection" style="-fx-border-color: transparent;">
             <VBox>
-                <Label text="Elf" />
+                <Label text="Elf" style="-fx-text-fill:green"/>
                 <StackPane fx:id="Elf"/>
             </VBox>
             <VBox >
-                <Label text="Warrior" />
+                <Label text="Warrior" style="-fx-text-fill:red"/>
                 <StackPane fx:id="Warrior"/>
             </VBox>
             <VBox >
-                <Label text="Valkyrie" />
+                <Label text="Valkyrie" style="-fx-text-fill:blue"/>
                 <StackPane fx:id="Valkyrie"/>
             </VBox>
             <VBox>
-                <Label text="Wizard" />
+                <Label text="Wizard" style="-fx-text-fill:yellow"/>
                 <StackPane fx:id="Wizard"/>
             </VBox>
         </HBox>
     </center>
     <bottom>
-        <HBox fx:id="buttons" style="-fx-border-color: white;">
+        <HBox fx:id="buttons">
             <Button text="%quitMainMenu" alignment="CENTER_RIGHT" onAction="#changeGameMenu"/>
+            <Region HBox.hgrow="ALWAYS"/>
             <Button text="%proceed" onAction="#handleProceed"/>
         </HBox>
     </bottom>
