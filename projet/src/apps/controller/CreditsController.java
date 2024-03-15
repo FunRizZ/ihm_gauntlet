@@ -3,7 +3,9 @@ package apps.controller;
 import apps.game.GameMenuScene;
 import javafx.fxml.FXML;
 
-
+/**
+ * Class Controller for the Credits
+ */
 public class CreditsController{
 
     /**

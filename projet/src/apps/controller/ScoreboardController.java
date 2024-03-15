@@ -12,6 +12,9 @@ import apps.MainScene;
 import apps.game.GameMenuScene;
 import apps.scoreboard.Scoreboard;
 
+/**
+ * Class Controller for the Scoreboard
+ */
 public class ScoreboardController {
     @FXML
     private TableView<Scoreboard.Score> scoreTable;

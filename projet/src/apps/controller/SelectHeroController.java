@@ -12,6 +12,9 @@ import javafx.scene.layout.StackPane;
 import model.character.hero.*;
 import model.game_pack.Game;
 
+/**
+ * Class Controller for Select Hero
+ */
 public class SelectHeroController extends BorderPane {
     public final Game GAME;
     @FXML

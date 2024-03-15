@@ -34,6 +34,9 @@ import java.util.Locale;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
+/**
+ * Class Controller for the Settings
+ */
 public class SettingController{
     setting_personnage[] players = JsonSetting.getSetting();
     settingScene settingScene = JsonSetting.getSettingsScene();

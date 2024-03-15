@@ -9,8 +9,15 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+//TODO Faire la doc (Ambroise)
 
+/**
+ * Class for the Scoreboard
+ */
 public class Scoreboard {
+    /**
+     * Class score
+     */
     public static class Score {
         String player;
         int score;

@@ -10,6 +10,7 @@
          xmlns:fx="http://javafx.com/fxml/1"
          fx:controller="apps.controller.CreditsController"
          stylesheets="/apps/credits/credits.css">
+
     <center>
         <VBox alignment="CENTER" spacing="10">
             <Text fx:id="title" text="%createdBy"/>
