@@ -12,7 +12,7 @@
          stylesheets="/apps/credits/credits.css">
     <center>
         <VBox alignment="CENTER" spacing="10">
-            <Text fx:id="title">Crée par</Text>
+            <Text fx:id="title" text="%createdBy"/>
             <Text fx:id="rainbow">Nathanaël MAITREHENRY</Text>
             <Text fx:id="rainbow">Emilie VESSELLA</Text>
             <Text fx:id="rainbow">Jean-Michel CHEVALIER</Text>
