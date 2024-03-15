@@ -211,6 +211,7 @@ public class MapCreatorController{
      * Method that reset the entire map
      */
     public void resetMap(){
+        Map.getChildren().clear();
         for (int x = 0; x < GAME.getMainHero().getLocation().SIZE_X; x++){
             for (int y = 0; y < GAME.getMainHero().getLocation().SIZE_Y; y++){
                 reset(x,y);
@@ -426,7 +427,7 @@ public class MapCreatorController{
     public void load(){
         if(GAME.Load("./save/locations/GARDEN.json")){
             this.resetMap();
-            for (Pair<Location, Button> p : this.maps) {
+            for (Pair<Location, Button> p : this.maps) { /* supprime tous les bouttons */
                 ((HBox) Tab2.getContent()).getChildren().remove(p.getValue());
             }
             this.maps.clear();
@@ -441,6 +442,19 @@ public class MapCreatorController{
         }else {
             System.out.println("error on load");
         }
+    }
+    /**
+     * Load a map
+     */
+    @FXML
+    public void reset(){
+        GAME.reset();
+        this.resetMap();
+        for (Pair<Location, Button> p : this.maps) { /* supprime tous les bouttons */
+            ((HBox) Tab2.getContent()).getChildren().remove(p.getValue());
+        }
+        this.maps.clear();
+        this.maps.add( new Pair<> (GAME.getMainHero().getLocation(), new Button(GAME.getMainHero().getLocation().NAME.name())));
     }
 
     //TODO Nath, fais la doc de cette fonction stp
