@@ -464,7 +464,9 @@ public class MapCreatorController{
         this.maps.add( new Pair<> (GAME.getMainHero().getLocation(), new Button(GAME.getMainHero().getLocation().NAME.name())));
     }
 
-    //TODO Nath, fais la doc de cette fonction stp
+    /**
+     * Return to the root of the map (quit the exit where we are
+     */
     @FXML
     public void Back(){
         if (this.maps.size() > 1){
