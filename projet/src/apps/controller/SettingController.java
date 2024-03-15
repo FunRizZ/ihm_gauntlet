@@ -38,6 +38,7 @@ public class SettingController{
     setting_personnage[] players = JsonSetting.getSetting();
     settingScene settingScene = JsonSetting.getSettingsScene();
 
+    //language is the Resource Bundle of the different languages, use in the FXML LOADER to change languages in scenes
     public static ResourceBundle language = ResourceBundle.getBundle("language/texts");
     
     @FXML
@@ -47,6 +48,9 @@ public class SettingController{
     @FXML
     private ComboBox<String> Langue;
 
+    /**
+     * Initialize the setting scene
+     */
     @FXML
     public void initialize() {
 
@@ -56,6 +60,7 @@ public class SettingController{
         Resolution.setItems(FXCollections.observableArrayList("1280 x 720", (int)screenBounds.getWidth()+" x "+(int)screenBounds.getHeight()));
         Resolution.getSelectionModel().select((int)settingScene.getWidth() + " x " + (int)settingScene.getHeight());
         Resolution.setOnAction(new EventHandler<ActionEvent>() {
+            //TODO Faire la doc de handle
         @Override
         public void handle(ActionEvent event) {
             String selectedValue = Resolution.getValue();
@@ -74,6 +79,10 @@ public class SettingController{
         Langue.setItems(FXCollections.observableArrayList("fr", "en", "es"));
         Langue.getSelectionModel().select(settingScene.getLangue());
         Langue.setOnAction(new EventHandler<ActionEvent>() {
+            /**
+             * Allow the language change with the Resource Bundle
+             * @param event the event which occurred
+             */
         @Override
         public void handle(ActionEvent event) {
             String selectedValue = Langue.getValue();
@@ -95,7 +104,11 @@ public class SettingController{
     }
 
 
-    
+    /**
+     * Create the controller binds of each character
+     * @param grid
+     * @param personnages
+     */
     private void createcontrol(GridPane grid, setting_personnage[] personnages) {
         String[] actions = {"UP", "DOWN", "LEFT", "RIGHT", "Attack", "Bomb", "Resurec"};
 
@@ -113,12 +126,17 @@ public class SettingController{
             }
         }
     }
+
+    /**
+     * Add a button
+     * @param button
+     */
     void add(Button button){
         button.setOnAction(event -> {
             Integer columnIndex = GridPane.getColumnIndex(button);
             Integer rowIndex = GridPane.getRowIndex(button);
 
-            KeyCode[] lastKeyCode = new KeyCode[1]; // Utiliser un tableau pour stocker lastKeyCode
+            KeyCode[] lastKeyCode = new KeyCode[1]; // Save lastKeyCode in a tab
             lastKeyCode[0] = KeyCode.getKeyCode(button.getText());
 
             Label label = new Label("...");
@@ -135,11 +153,11 @@ public class SettingController{
             Stage stage = new Stage();
             stage.setScene(enterKey);
             stage.initStyle(StageStyle.TRANSPARENT);  
-            //centrer la fenêtre
+            //Center the window
             double centerXPosition = MainScene.stage.getX() + MainScene.stage.getWidth() / 2d;
             double centerYPosition = MainScene.stage.getY() + MainScene.stage.getHeight() / 2d;
 
-            // On place le stage au centre du parentStage
+            // Place the stage in the center of the Parent stage
             stage.setOnShown(evt -> {
                 stage.setX(centerXPosition - stage.getWidth() / 2d);
                 stage.setY(centerYPosition - stage.getHeight() / 2d);
@@ -147,18 +165,18 @@ public class SettingController{
 
             stage.show();
             
-            //désactiver la fenêtre principale
+            //Deactivate the main window
             MainScene.scene.getRoot().setDisable(true);
-            // Ajouter un événement pour activer la fenêtre principale lorsque la nouvelle fenêtre se ferme
+            // Add an event to activate the main window when the new window closes
             stage.setOnHiding((EventHandler<WindowEvent>) new EventHandler<WindowEvent>() {
                 public void handle(WindowEvent we) {
                     MainScene.scene.getRoot().setDisable(false);
                 }
             });
-            //force la fenêtre à reprendre le focus lorsqu'elle est perdue
+            //forces window to regain focus when lost
             stage.focusedProperty().addListener((observable, oldValue, newValue) -> {
                 if (!newValue) {
-                    // La fenêtre a perdu le focus, donc nous demandons à la fenêtre de reprendre le focus
+                    // The window has lost focus, so we ask the window to regain focus
                     Platform.runLater(stage::requestFocus);
                 }
             });
@@ -215,6 +233,7 @@ public class SettingController{
         });
     }
 
+    //TODO Faire la doc ici
     private void updateButtons(setting_personnage[] personnage) {
         for (Node node : Grid.getChildren()) {
             if (node instanceof Button) {
@@ -257,8 +276,12 @@ public class SettingController{
             }
         }
     }
+
+    /**
+     * Change the actual scene to the Main Menu scene
+     */
     @FXML
-    public void goMenu(ActionEvent event) {
+    public void goMenu() {
         GameMenuScene GameMenu = new GameMenuScene();
         GameMenu.changeScene(GameMenu.GAME_MENU, GameMenu.SCENE_TITLE);
     }

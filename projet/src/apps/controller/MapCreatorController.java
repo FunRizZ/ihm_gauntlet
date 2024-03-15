@@ -4,8 +4,6 @@ import apps.game.GameMenuScene;
 import apps.mapcreator.MapCreatorLoad;
 import apps.setting.SettingCreatorScene;
 import javafx.application.Platform;
-import javafx.event.ActionEvent;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.HBox;
 import javafx.util.Pair;
 import model.character.monster.*;
@@ -29,10 +27,10 @@ import model.location.decorObject.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import static apps.controller.ItemsEnum.*;
+import static apps.controller.EntitiesEnum.*;
 
 public class MapCreatorController{
-    private ItemsEnum object_select;
+    private EntitiesEnum object_select;
     private final Game GAME;
     private double zoom;
     public List<Pair<Location, Button>> maps;
@@ -108,7 +106,9 @@ public class MapCreatorController{
     @FXML
     StackPane Img111;
 
-
+    /**
+     * Constructor of the Map Creator
+     */
     public MapCreatorController() {
         this.GAME = MapCreatorLoad.GAME;
         this.object_select = DELETE;
@@ -116,6 +116,10 @@ public class MapCreatorController{
         this.maps = new ArrayList<>();
         this.maps.add( new Pair<> (GAME.getMainHero().getLocation(), new Button(GAME.getMainHero().getLocation().NAME.name())));
     }
+
+    /**
+     * Method that initialize the grid of the Map Creator
+     */
     @FXML
     public void initialize(){
         this.generate();
@@ -202,6 +206,10 @@ public class MapCreatorController{
         }
         Map.add(image,x,y);
     }
+
+    /**
+     * Method that reset the entire map
+     */
     public void resetMap(){
         for (int x = 0; x < GAME.getMainHero().getLocation().SIZE_X; x++){
             for (int y = 0; y < GAME.getMainHero().getLocation().SIZE_Y; y++){
@@ -209,6 +217,11 @@ public class MapCreatorController{
             }
         }
     }
+
+    /**
+     * Method that change the Map
+     * @param loc the map you choose for the change
+     */
     public void changeMap(Location loc){
         for (Pair<Location, Button> p : this.maps){
             if (p.getKey().equals(loc)){
@@ -217,6 +230,7 @@ public class MapCreatorController{
             }
         }
     }
+    //TODO : Nath fait la doc stp xD
     public Button creatExitButton(Location location){
         Button b = new Button("switch to "+ location.NAME.name());
         b.setOnAction( e -> {
@@ -229,6 +243,13 @@ public class MapCreatorController{
         maps.addLast( new Pair<>(location, b));
         return b;
     }
+
+    /**
+     * Associate the right view for each case at position
+     * @param x
+     * @param y
+     * @return the association of the view in the case (x,y)
+     */
     public Lookable getLookable(int x, int y){
         switch (this.object_select){
             case HEAL_POTION -> {
@@ -301,6 +322,12 @@ public class MapCreatorController{
             default -> {return null;}
         }
     }
+
+    /**
+     * Add the view to the case (x,y)
+     * @param x
+     * @param y
+     */
     public void addLookable(int x, int y){
         System.out.println(this.object_select+" , "+x +" , "+y);
         Lookable l = getLookable(x,y);
@@ -320,26 +347,39 @@ public class MapCreatorController{
         }
         reset(x, y);
     }
+
+    /**
+     * Quit the game
+     */
     @FXML
-    public void handleQuit(ActionEvent event) {
+    public void handleQuit() {
         System.out.println("You leave the game. Goodbye!");
         Platform.exit();
     }
 
+    /**
+     * Change the actual scene to the Main Menu scene
+     */
     @FXML
-    public void changeGameMenu (ActionEvent event) {
+    public void changeGameMenu() {
         GameMenuScene gameMenu = new GameMenuScene();
         gameMenu.changeScene(gameMenu.GAME_MENU, gameMenu.SCENE_TITLE);
     }
 
+    /**
+     * Change the actual scene to the Settings scene
+     */
     @FXML
-    public void changeSetting (ActionEvent event) {
+    public void changeSetting() {
         SettingCreatorScene Setting = new SettingCreatorScene();
         Setting.changeScene(Setting.SETTING, Setting.SCENE_TITLE);
     }
 
+    /**
+     * Make a dezoom
+     */
     @FXML
-    public void dezoom(KeyEvent event){
+    public void dezoom(){
         System.out.println(zoom);
         if(zoom > 0){zoom = zoom - 0.001;}
         ScaleTransition scaleTransition = new ScaleTransition(Duration.seconds(0.1),Map);
@@ -348,8 +388,11 @@ public class MapCreatorController{
         scaleTransition.play();
     }
 
+    /**
+     * Save the map
+     */
     @FXML
-    public void SaveMap(ActionEvent event){
+    public void SaveMap(){
         try {
             GAME.getMainHero().getLocation().toFile();
         }catch (Exception e){
@@ -358,6 +401,12 @@ public class MapCreatorController{
         }
 
     }
+
+    /**
+     * Create buttons for each exits of the map
+     * @param location the actual map
+     * @param exits the list of exits in the map
+     */
     private void parcoursAllExits(Location location, List<Exit> exits){
         if (exits.isEmpty()){
             this.creatExitButton(location);
@@ -370,8 +419,11 @@ public class MapCreatorController{
         }
     }
 
+    /**
+     * Load a map
+     */
     @FXML
-    public void load(ActionEvent event){
+    public void load(){
         if(GAME.Load("./save/locations/GARDEN.json")){
             this.resetMap();
             for (Pair<Location, Button> p : this.maps) {
@@ -390,8 +442,10 @@ public class MapCreatorController{
             System.out.println("error on load");
         }
     }
+
+    //TODO Nath, fais la doc de cette fonction stp
     @FXML
-    public void Back(ActionEvent event){
+    public void Back(){
         if (this.maps.size() > 1){
             GAME.changeLocation(this.maps.getFirst().getKey());
             this.resetMap();
