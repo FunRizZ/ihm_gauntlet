@@ -16,7 +16,7 @@
             <Button text="%mapCreator" onAction="#changeCreatorMenu" prefWidth="150"/>
             <Button text="%scoreboard" onAction="#changeScoreboardMenu" prefWidth="150"/>
             <Button text="%settings" onAction="#changeSettingMenu" prefWidth="150"/>
-            <Button text="Credits" onAction="#changeCreditsMenu" prefWidth="150"/>
+            <Button text="%credits" onAction="#changeCreditsMenu" prefWidth="150"/>
             <Button text="%quitDesktop" onAction="#handleQuit" prefWidth="150"/>
         </VBox>
     </center>
