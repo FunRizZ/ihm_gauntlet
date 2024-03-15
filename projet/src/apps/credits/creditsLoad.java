@@ -1,5 +1,6 @@
 package apps.credits;
 
+import apps.controller.SettingController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.BorderPane;
 
@@ -9,7 +10,7 @@ public class creditsLoad extends BorderPane {
     private final FXMLLoader fxmlLoader;
 
     public creditsLoad() {
-        fxmlLoader = new FXMLLoader(creditsLoad.class.getResource("credits.fxml"));
+        fxmlLoader = new FXMLLoader(creditsLoad.class.getResource("credits.fxml"), SettingController.language);
     }
 
     public void init() {
