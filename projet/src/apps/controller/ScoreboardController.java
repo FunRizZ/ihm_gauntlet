@@ -7,7 +7,6 @@ import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import apps.MainScene;
 import apps.game.GameMenuScene;

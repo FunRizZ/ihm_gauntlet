@@ -4,8 +4,6 @@ import apps.game.GameMenuScene;
 import apps.mapcreator.MapCreatorLoad;
 import apps.setting.SettingCreatorScene;
 import javafx.application.Platform;
-import javafx.event.ActionEvent;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.HBox;
 import javafx.util.Pair;
 import model.character.monster.*;
