@@ -1,10 +1,9 @@
 package apps.controller;
 
-import apps.game.GameMenuScene;
+import apps.mainMenu.MainMenuScene;
 import apps.mapcreator.MapCreatorLoad;
 import apps.setting.SettingCreatorScene;
 import javafx.application.Platform;
-import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.util.Pair;
 import model.character.monster.*;
@@ -370,7 +369,7 @@ public class MapCreatorController{
      */
     @FXML
     public void changeGameMenu() {
-        GameMenuScene gameMenu = new GameMenuScene();
+        MainMenuScene gameMenu = new MainMenuScene();
         gameMenu.changeScene(gameMenu.GAME_MENU, gameMenu.SCENE_TITLE);
     }
 

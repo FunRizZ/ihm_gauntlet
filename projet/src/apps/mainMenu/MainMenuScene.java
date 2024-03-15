@@ -1,4 +1,4 @@
-package apps.game;
+package apps.mainMenu;
 
 import apps.MainScene;
 
@@ -6,16 +6,16 @@ import apps.MainScene;
 /**
  * Scene of the Game menu
  **/
-public class GameMenuScene extends MainScene {
+public class MainMenuScene extends MainScene {
     public final String SCENE_TITLE;
-    public final GameMenuLoad GAME_MENU;
+    public final MainMenuLoad GAME_MENU;
 
     /**
      * Definition of the Game Menu Scene
      */
-    public GameMenuScene (){
+    public MainMenuScene(){
         this.SCENE_TITLE = "Menu Gauntlet";
-        this.GAME_MENU = new GameMenuLoad();
+        this.GAME_MENU = new MainMenuLoad();
         GAME_MENU.init();
     }
 

@@ -1,4 +1,4 @@
-package apps.game;
+package apps.mainMenu;
 
 import apps.controller.SettingController;
 import javafx.fxml.FXMLLoader;
@@ -9,14 +9,14 @@ import java.io.IOException;
 /**
  * Loading of Game Menu
  */
-public class GameMenuLoad extends BorderPane {
+public class MainMenuLoad extends BorderPane {
     private final FXMLLoader fxmlLoader;
 
     /**
      * Load the Game Menu with fxmlLoader
      */
-    public GameMenuLoad() {
-        fxmlLoader = new FXMLLoader(GameMenuLoad.class.getResource("GameMenu.fxml"), SettingController.language);
+    public MainMenuLoad() {
+        fxmlLoader = new FXMLLoader(MainMenuLoad.class.getResource("MainMenu.fxml"), SettingController.language);
     }
 
     /**

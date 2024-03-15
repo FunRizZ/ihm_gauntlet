@@ -10,7 +10,7 @@ import model.location.LocationName;
 import model.location.decorObject.Spawn;
 
 public class Game {
-    public final static Game GAME = new Game(100,100, 1);
+    public final static Game GAME = new Game(20,20, 1);
     public int NB_HERO;
     public final List<Hero> HEROS;
     private Location location;
@@ -92,6 +92,7 @@ public class Game {
             this.defaultHero = false;
             this.HEROS.removeFirst();
             this.NB_HERO--;
+            this.location = h.getLocation();
         }
         this.NB_HERO++;
         this.HEROS.add(h);

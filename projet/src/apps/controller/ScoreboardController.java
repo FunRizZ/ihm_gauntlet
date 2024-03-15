@@ -9,7 +9,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.fxml.FXML;
 import apps.MainScene;
-import apps.game.GameMenuScene;
+import apps.mainMenu.MainMenuScene;
 import apps.scoreboard.Scoreboard;
 
 /**
@@ -84,7 +84,7 @@ public class ScoreboardController {
      */
     @FXML
     public void goMenu() {
-        GameMenuScene GameMenu = new GameMenuScene();
+        MainMenuScene GameMenu = new MainMenuScene();
         GameMenu.changeScene(GameMenu.GAME_MENU, GameMenu.SCENE_TITLE);
     }
 }

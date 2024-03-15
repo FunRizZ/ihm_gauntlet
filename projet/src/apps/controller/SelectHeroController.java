@@ -1,9 +1,7 @@
 package apps.controller;
 
-import apps.game.GameMenuScene;
+import apps.mainMenu.MainMenuScene;
 import apps.setting.JsonSetting;
-import javafx.application.Platform;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
@@ -63,7 +61,7 @@ public class SelectHeroController extends BorderPane {
      */
     @FXML
     public void changeGameMenu() {
-        GameMenuScene gameMenu = new GameMenuScene();
+        MainMenuScene gameMenu = new MainMenuScene();
         gameMenu.changeScene(gameMenu.GAME_MENU, gameMenu.SCENE_TITLE);
     }
     /**

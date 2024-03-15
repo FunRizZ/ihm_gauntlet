@@ -7,7 +7,7 @@
          xmlns="http://javafx.com/javafx/8"
          xmlns:fx="http://javafx.com/fxml/1"
          fx:controller="apps.controller.SelectHeroController"
-         stylesheets="/apps/game/SelectHeroCss.css">
+         stylesheets="/apps/game/selectHero/SelectHeroCss.css">
     <center>
         <HBox fx:id="selection" style="-fx-border-color: white;">
             <VBox>

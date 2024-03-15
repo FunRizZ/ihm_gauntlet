@@ -7,8 +7,8 @@
 <fx:root type="javafx.scene.layout.BorderPane"
          xmlns="http://javafx.com/javafx/8"
          xmlns:fx="http://javafx.com/fxml/1"
-         fx:controller="apps.controller.GameMenuController"
-         stylesheets="/apps/game/GameCss.css">
+         fx:controller="apps.controller.MainMenuController"
+         stylesheets="/apps/mainMenu/MainMenuCss.css">
     <center>
         <VBox alignment="CENTER" spacing="10" scaleX="2" scaleY="2">
             <Button text="%newGame" onAction="#newGame" prefWidth="150"/>

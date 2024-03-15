@@ -3,7 +3,7 @@ package apps.controller;
 
 
 import apps.MainScene;
-import apps.game.GameMenuScene;
+import apps.mainMenu.MainMenuScene;
 import apps.setting.JsonSetting;
 import apps.setting.settingScene;
 import apps.setting.setting_personnage;
@@ -285,7 +285,7 @@ public class SettingController{
      */
     @FXML
     public void goMenu() {
-        GameMenuScene GameMenu = new GameMenuScene();
+        MainMenuScene GameMenu = new MainMenuScene();
         GameMenu.changeScene(GameMenu.GAME_MENU, GameMenu.SCENE_TITLE);
     }
 }

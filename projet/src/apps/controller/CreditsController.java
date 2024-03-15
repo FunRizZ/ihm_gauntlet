@@ -1,6 +1,6 @@
 package apps.controller;
 
-import apps.game.GameMenuScene;
+import apps.mainMenu.MainMenuScene;
 import javafx.fxml.FXML;
 
 /**
@@ -13,7 +13,7 @@ public class CreditsController{
      */
     @FXML
     public void goMenu() {
-        GameMenuScene GameMenu = new GameMenuScene();
+        MainMenuScene GameMenu = new MainMenuScene();
         GameMenu.changeScene(GameMenu.GAME_MENU, GameMenu.SCENE_TITLE);
     }
 }

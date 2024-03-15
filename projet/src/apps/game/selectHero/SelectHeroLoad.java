@@ -1,4 +1,4 @@
-package apps.game;
+package apps.game.selectHero;
 
 import apps.controller.SettingController;
 import javafx.fxml.FXMLLoader;

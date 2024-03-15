@@ -1,6 +1,6 @@
 package apps.controller;
 
-import apps.game.SelectHeroScene;
+import apps.game.selectHero.SelectHeroScene;
 import apps.mapcreator.MapCreatorScene;
 import apps.scoreboard.ScoreboardScene;
 import apps.credits.creditsScene;
@@ -12,7 +12,7 @@ import javafx.fxml.FXML;
 /**
  * Class Controller for the Game Menu
  */
-public class GameMenuController{
+public class MainMenuController {
     /*
     @FXML
     public void changeGameMenu (ActionEvent event) {
