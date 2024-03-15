@@ -4,16 +4,24 @@ import apps.MainScene;
 
 
 /**
- * scene of the Game menu
+ * Scene of the Game menu
  **/
 public class GameMenuScene extends MainScene {
     public final String SCENE_TITLE;
     public final GameMenuLoad GAME_MENU;
+
+    /**
+     * Definition of the Game Menu Scene
+     */
     public GameMenuScene (){
         this.SCENE_TITLE = "Menu Gauntlet";
         this.GAME_MENU = new GameMenuLoad();
         GAME_MENU.init();
     }
+
+    /**
+     * Load the Game Menu Scene
+     */
     @Override
     public void load(){
         this.changeScene(this.GAME_MENU, this.SCENE_TITLE);
