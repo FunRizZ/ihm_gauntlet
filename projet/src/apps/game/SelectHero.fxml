@@ -30,8 +30,8 @@
     </center>
     <bottom>
         <HBox fx:id="buttons" style="-fx-border-color: white;">
-            <Button text="%quitMainMenu" alignment="CENTER_RIGHT"/>
-            <Button text="%proceed"/>
+            <Button text="%quitMainMenu" alignment="CENTER_RIGHT" onAction="#changeGameMenu"/>
+            <Button text="%proceed" onAction="#handleProceed"/>
         </HBox>
     </bottom>
 </fx:root>

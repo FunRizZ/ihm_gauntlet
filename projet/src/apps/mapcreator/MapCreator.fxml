@@ -30,6 +30,7 @@
                 <HBox>
                     <Button fx:id="saveButton" text="%saveMap"  onAction="#SaveMap"/>
                     <Button text="%loadMap" onAction="#load"/>
+                    <Button text="%reset" onAction="#reset"/>
                     <Button text="%settings" onAction="#changeSetting"/>
                     <Button text="%quitMainMenu" onAction="#changeGameMenu"/>
                     <Button text="%quitDesktop" onAction="#handleQuit"/>

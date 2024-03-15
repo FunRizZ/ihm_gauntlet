@@ -9,7 +9,7 @@ import java.io.IOException;
  * Class for Loading Settings Scene
  */
 public class SettingPageLoad extends BorderPane {
-    private FXMLLoader fxmlLoader;
+    private final FXMLLoader fxmlLoader;
 
     /**
      * Load the Settings Scene with fxmlLoader
