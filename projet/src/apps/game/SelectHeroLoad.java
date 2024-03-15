@@ -3,22 +3,21 @@ package apps.game;
 import apps.controller.SettingController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
 
-import java.io.IOException;
-
-public class GameMenuLoad extends BorderPane {
+public class SelectHeroLoad extends BorderPane {
     private final FXMLLoader fxmlLoader;
 
-    public GameMenuLoad() {
-        fxmlLoader = new FXMLLoader(GameMenuLoad.class.getResource("GameMenu.fxml"), SettingController.language);
+    public SelectHeroLoad() {
+        fxmlLoader = new FXMLLoader(SelectHeroLoad.class.getResource("SelectHero.fxml"), SettingController.language);
     }
 
     public void init() {
         try {
             fxmlLoader.setRoot(this);
             fxmlLoader.load();
-        } catch(IOException ioe) {
-            System.err.println("GameMenu constructor error");
+        } catch(Exception ioe) {
+            System.err.println("SelectHeroLoad constructor error");
             ioe.printStackTrace();
         }
     }

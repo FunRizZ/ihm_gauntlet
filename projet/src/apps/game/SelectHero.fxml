@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<fx:root type="javafx.scene.layout.BorderPane"
+         xmlns="http://javafx.com/javafx/8"
+         xmlns:fx="http://javafx.com/fxml/1"
+         fx:controller="apps.controller.SelectHeroController"
+         stylesheets="/apps/game/SelectHeroCss.css">
+    <center>
+        <HBox fx:id="selection" style="-fx-border-color: white;">
+            <VBox>
+                <Label text="Elf" />
+                <StackPane fx:id="Elf"/>
+            </VBox>
+            <VBox >
+                <Label text="Warrior" />
+                <StackPane fx:id="Warrior"/>
+            </VBox>
+            <VBox >
+                <Label text="Valkyrie" />
+                <StackPane fx:id="Valkyrie"/>
+            </VBox>
+            <VBox>
+                <Label text="Wizard" />
+                <StackPane fx:id="Wizard"/>
+            </VBox>
+        </HBox>
+    </center>
+    <bottom>
+        <HBox fx:id="buttons" style="-fx-border-color: white;">
+            <Button text="%quitMainMenu" alignment="CENTER_RIGHT"/>
+            <Button text="%proceed"/>
+        </HBox>
+    </bottom>
+</fx:root>
