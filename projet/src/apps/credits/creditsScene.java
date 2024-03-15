@@ -4,7 +4,7 @@ import apps.MainScene;
 
 
 /**
- * Create the Credits scene
+ * Class for create the Credits scene
  **/
 public class creditsScene extends MainScene {
     public final String SCENE_TITLE;

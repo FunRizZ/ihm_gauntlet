@@ -9,7 +9,9 @@ import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
-
+/**
+ * Class Controller for the Game Menu
+ */
 public class GameMenuController{
     /*
     @FXML

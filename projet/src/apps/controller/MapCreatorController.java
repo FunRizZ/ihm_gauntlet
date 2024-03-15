@@ -29,6 +29,9 @@ import java.util.List;
 
 import static apps.controller.EntitiesEnum.*;
 
+/**
+ * Class controller for the Map Creator
+ */
 public class MapCreatorController{
     private EntitiesEnum object_select;
     private final Game GAME;

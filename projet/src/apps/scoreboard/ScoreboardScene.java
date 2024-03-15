@@ -9,6 +9,9 @@ public class ScoreboardScene extends MainScene {
     public final String SCENE_TITLE;
     public final ScoreboardLoad SCOREBOARD;
 
+    /**
+     * Definition of the Scoreboard Scene
+     */
     public ScoreboardScene (){
         super();
         this.SCENE_TITLE = "Hall of Fame";

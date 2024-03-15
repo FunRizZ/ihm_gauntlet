@@ -10,6 +10,9 @@ import java.io.FileWriter;
 import java.io.FileReader;
 import java.io.IOException;
 
+/**
+ * Json Class, uses for save
+ */
 public class JsonSetting {
     private static setting_personnage personnages[];
     private static settingScene settingsScene;  

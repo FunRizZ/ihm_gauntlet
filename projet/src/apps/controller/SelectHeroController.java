@@ -10,6 +10,9 @@ import model.character.hero.Warrior;
 import model.character.hero.Wizard;
 import model.game_pack.Game;
 
+/**
+ * Class Controller for Select Hero
+ */
 public class SelectHeroController extends BorderPane {
     public final Game GAME;
     @FXML
