@@ -12,10 +12,16 @@ public class MapCreatorLoad extends BorderPane {
 
     private FXMLLoader fxmlLoader;
 
-    public MapCreatorLoad(Game game) {
+    /**
+     * Load the MapCreator menu with FXMLLOADER
+     */
+    public MapCreatorLoad() {
         fxmlLoader = new FXMLLoader(MapCreatorLoad.class.getResource("MapCreator.fxml"), SettingController.language);
     }
 
+    /**
+     * Initialize the MapCreator scene
+     */
     public void init() {
         try {
             fxmlLoader.setRoot(this);

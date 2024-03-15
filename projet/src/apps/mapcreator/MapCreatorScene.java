@@ -1,7 +1,6 @@
 package apps.mapcreator;
 
 import apps.MainScene;
-import model.game_pack.Game;
 
 /**
  * scene of the Map creator
@@ -9,12 +8,20 @@ import model.game_pack.Game;
 public class MapCreatorScene extends MainScene {
     public final String SCENE_TITLE;
     public final MapCreatorLoad MAPCREATOR;
+
+    /**
+     * Constructor of MapCreator scene
+     */
     public MapCreatorScene (){
         super();
         this.SCENE_TITLE = "Map Creator";
-        this.MAPCREATOR = new MapCreatorLoad(Game.GAME);
+        this.MAPCREATOR = new MapCreatorLoad();
         this.MAPCREATOR.init();
     }
+
+    /**
+     * Load method for MapCreator
+     */
     @Override
     public void load(){
         this.changeScene(MAPCREATOR, this.SCENE_TITLE);
