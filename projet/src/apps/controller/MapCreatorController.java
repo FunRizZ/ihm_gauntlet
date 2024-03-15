@@ -4,6 +4,7 @@ import apps.game.GameMenuScene;
 import apps.mapcreator.MapCreatorLoad;
 import apps.setting.SettingCreatorScene;
 import javafx.application.Platform;
+import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.util.Pair;
 import model.character.monster.*;
@@ -37,6 +38,8 @@ public class MapCreatorController{
     private final Game GAME;
     private double zoom;
     public List<Pair<Location, Button>> maps;
+    @FXML
+    Button saveButton;
     @FXML
     BorderPane Root;
     @FXML
@@ -241,6 +244,7 @@ public class MapCreatorController{
             System.out.println("move to " + location.NAME.name());
             changeMap(location);
             b.setDisable(true);
+            saveButton.setDisable(true);
         });
         ((HBox)Tab2.getContent()).getChildren().add(b);
         maps.addLast( new Pair<>(location, b));
@@ -452,6 +456,7 @@ public class MapCreatorController{
         if (this.maps.size() > 1){
             GAME.changeLocation(this.maps.getFirst().getKey());
             this.resetMap();
+            saveButton.setDisable(false);
             for (Pair<Location, Button> p : this.maps) {
                 p.getValue().setDisable(false);
             }
