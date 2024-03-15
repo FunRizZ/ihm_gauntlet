@@ -1,5 +1,6 @@
 package apps.controller;
 
+import apps.game.GameScene;
 import apps.mainMenu.MainMenuScene;
 import apps.setting.JsonSetting;
 import javafx.fxml.FXML;
@@ -62,7 +63,7 @@ public class SelectHeroController extends BorderPane {
     @FXML
     public void changeGameMenu() {
         MainMenuScene gameMenu = new MainMenuScene();
-        gameMenu.changeScene(gameMenu.GAME_MENU, gameMenu.SCENE_TITLE);
+        gameMenu.load();
     }
     /**
      * Change the actual scene to the Main Menu scene
@@ -73,5 +74,8 @@ public class SelectHeroController extends BorderPane {
         for (Hero h : GAME.HEROS){
             System.out.println(h.getClass().getSimpleName());
         }
+
+        GameScene game = new GameScene();
+        game.load();
     }
 }
