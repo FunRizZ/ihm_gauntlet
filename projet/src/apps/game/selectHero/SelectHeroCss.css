@@ -1,0 +1,10 @@
+.root{
+    -fx-background-image: url('/sprites/menuWallpaper.jpeg');
+    -fx-background-size: cover;
+    -fx-background-repeat: no-repeat;
+    -fx-border-color: blue;
+}
+.label{
+    -fx-background-color: #8B0000;
+    -fx-text-fill: #96b946;
+}
