@@ -1,6 +1,7 @@
 package apps.controller;
 
-public enum ItemsEnum {
+//The enum of all entities of the game (Items, mobs)
+public enum EntitiesEnum {
     HEAL_POTION,
     POISON_POTION,
     DEFENSE_POTION,

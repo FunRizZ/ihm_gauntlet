@@ -29,10 +29,10 @@ import model.location.decorObject.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import static apps.controller.ItemsEnum.*;
+import static apps.controller.EntitiesEnum.*;
 
 public class MapCreatorController{
-    private ItemsEnum object_select;
+    private EntitiesEnum object_select;
     private final Game GAME;
     private double zoom;
     public List<Pair<Location, Button>> maps;
