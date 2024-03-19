@@ -16,8 +16,8 @@ public class Grunt extends WhoFight {
     public final static int DEFAULT_ARMOR = 10;
     public final static int DEFAULT_DAMAGE = 200;
 
-    public Grunt(int x, int y){
-        super(DEFAULT_HP, DEFAULT_ARMOR, DEFAULT_DAMAGE,3,1,createItem(), x, y);
+    public Grunt(int x, int y, int level){
+        super((DEFAULT_HP*level), DEFAULT_ARMOR, (DEFAULT_DAMAGE*level),3,level,createItem(), x, y);
     }
     private static List<Item> createItem(){
     	List<Item> lst = new ArrayList<Item>();

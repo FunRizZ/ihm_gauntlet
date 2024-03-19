@@ -167,17 +167,17 @@ public class MapCreatorController{
 
         Img101.getChildren().add((new Death(-1,-1)).getSpray());
         Img101.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = DEATH);
-        Img102.getChildren().add((new Daemon(-1,-1)).getSpray());
+        Img102.getChildren().add((new Daemon(-1,-1,1)).getSpray());
         Img102.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = DAEMON);
-        Img103.getChildren().add((new Ghost(-1,-1)).getSpray());
+        Img103.getChildren().add((new Ghost(-1,-1,1)).getSpray());
         Img103.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = GHOST);
-        Img104.getChildren().add((new Grunt(-1,-1)).getSpray());
+        Img104.getChildren().add((new Grunt(-1,-1,1)).getSpray());
         Img104.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = GRUNT);
-        Img105.getChildren().add((new Lobber(-1,-1)).getSpray());
+        Img105.getChildren().add((new Lobber(-1,-1,1)).getSpray());
         Img105.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = LOBBER);
-        Img106.getChildren().add(new Spawner_Grunt(-1,-1).getSpray());
+        Img106.getChildren().add(new Spawner_Grunt1(-1,-1).getSpray());
         Img106.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = SPAWNER_GRUNT);
-        Img107.getChildren().add((new Spawner_Ghost(-1,-1,1)).getSpray());
+        Img107.getChildren().add((new Spawner_Ghost1(-1,-1,1)).getSpray());
         Img107.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = SPAWNER_GHOST);
 
         Img111.getChildren().add(new Spawn(-1,-1).getSpray());
@@ -311,22 +311,22 @@ public class MapCreatorController{
                 return new Death(x,y);
             }
             case DAEMON -> {
-                return new Daemon(x,y);
+                return new Daemon(x,y,1);
             }
             case GHOST -> {
-                return new Ghost(x,y);
+                return new Ghost(x,y,1);
             }
             case GRUNT -> {
-                return new Grunt(x,y);
+                return new Grunt(x,y,1);
             }
             case LOBBER -> {
-                return new Lobber(x,y);
+                return new Lobber(x,y,1);
             }
             case SPAWNER_GRUNT -> {
-                return new Spawner_Grunt(x,y);
+                return new Spawner_Grunt1(x,y);
             }
             case SPAWNER_GHOST -> {
-                return new Spawner_Ghost(x,y,1);
+                return new Spawner_Ghost1(x,y,1);
             }
             case SPAWN_HERO -> {
                 Spawn sp = new Spawn(x,y);

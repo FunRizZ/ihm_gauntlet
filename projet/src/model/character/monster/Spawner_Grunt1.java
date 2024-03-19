@@ -5,14 +5,14 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import model.location.decorObject.Wall;
 
-public class Spawner_Grunt extends Spawner {
-    public Spawner_Grunt(int x, int y) {
-        super(new Grunt(-1,-1).getHp()*2, new Grunt(-1,-1).getArmor()*2, new Grunt(-1,-1), x, y,1);
+public class Spawner_Grunt1 extends Spawner {
+    public Spawner_Grunt1(int x, int y) {
+        super(new Grunt(-1,-1,1).getHp()*2, new Grunt(-1,-1,1).getArmor()*2, new Grunt(-1,-1,1), x, y,1);
     }
 
     @Override
     public String getDescription() {
-        return "Spawner of grunt";
+        return "Spawner Grunt 1";
     }
     @Override
     public String toString() {
@@ -22,7 +22,7 @@ public class Spawner_Grunt extends Spawner {
     public ImageView getSpray(){
         Image spray = (new Image(Wall.class.getResource("/sprites/spawner_grunt.png").toExternalForm()));
         ImageView view = new ImageView(spray);
-        view.setViewport(new Rectangle2D(80, 0, 80, 80));
+        view.setViewport(new Rectangle2D(0, 0, 80, 80));
         return view;
     }
 }
