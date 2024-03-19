@@ -20,8 +20,10 @@ public enum EntitiesEnum {
     GHOST,
     GRUNT,
     LOBBER,
-    SPAWNER_GRUNT,
-    SPAWNER_GHOST,
+    SPAWNER_GRUNT1,
+    SPAWNER_GHOST1,
+    SPAWNER_GHOST2,
+    SPAWNER_GHOST3,
     SPAWN_HERO,
     DELETE
 }

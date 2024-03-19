@@ -109,7 +109,11 @@ public class MapCreatorController{
     @FXML
     StackPane Img106;
     @FXML
-    StackPane Img107;
+    StackPane Img1071;
+    @FXML
+    StackPane Img1072;
+    @FXML
+    StackPane Img1073;
     @FXML
     StackPane Img111;
 
@@ -176,9 +180,13 @@ public class MapCreatorController{
         Img105.getChildren().add((new Lobber(-1,-1,1)).getSpray());
         Img105.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = LOBBER);
         Img106.getChildren().add(new Spawner_Grunt1(-1,-1).getSpray());
-        Img106.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = SPAWNER_GRUNT);
-        Img107.getChildren().add((new Spawner_Ghost1(-1,-1,1)).getSpray());
-        Img107.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = SPAWNER_GHOST);
+        Img106.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = SPAWNER_GRUNT1);
+        Img1071.getChildren().add((new Spawner_Ghost1(-1,-1,1)).getSpray());
+        Img1071.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = SPAWNER_GHOST1);
+        Img1072.getChildren().add((new Spawner_Ghost2(-1,-1,2)).getSpray());
+        Img1072.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = SPAWNER_GHOST2);
+        Img1073.getChildren().add((new Spawner_Ghost3(-1,-1,3)).getSpray());
+        Img1073.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = SPAWNER_GHOST3);
 
         Img111.getChildren().add(new Spawn(-1,-1).getSpray());
         Img111.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = SPAWN_HERO);
@@ -322,11 +330,17 @@ public class MapCreatorController{
             case LOBBER -> {
                 return new Lobber(x,y,1);
             }
-            case SPAWNER_GRUNT -> {
+            case SPAWNER_GRUNT1 -> {
                 return new Spawner_Grunt1(x,y);
             }
-            case SPAWNER_GHOST -> {
+            case SPAWNER_GHOST1 -> {
                 return new Spawner_Ghost1(x,y,1);
+            }
+            case SPAWNER_GHOST2 -> {
+                return new Spawner_Ghost2(x,y,2);
+            }
+            case SPAWNER_GHOST3 -> {
+                return new Spawner_Ghost3(x,y,3);
             }
             case SPAWN_HERO -> {
                 Spawn sp = new Spawn(x,y);

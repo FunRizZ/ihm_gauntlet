@@ -99,7 +99,9 @@
                     <StackPane fx:id="Img104"/>
                     <StackPane fx:id="Img105"/>
                     <StackPane fx:id="Img106"/>
-                    <StackPane fx:id="Img107"/>
+                    <StackPane fx:id="Img1071"/>
+                    <StackPane fx:id="Img1072"/>
+                    <StackPane fx:id="Img1073"/>
                 </HBox>
             </Tab>
             <Tab text="%players" fx:id="Tab11">
