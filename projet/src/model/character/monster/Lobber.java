@@ -10,7 +10,7 @@ public class Lobber extends WhoFight {
     public final static int DEFAULT_HP = 100;
     public final static int DEFAULT_ARMOR = 10;
     public final static int DEFAULT_DAMAGE = 200;
-    public Lobber(int x, int y){super(DEFAULT_HP, DEFAULT_ARMOR, DEFAULT_DAMAGE,x,y);}
+    public Lobber(int x, int y){super(DEFAULT_HP, DEFAULT_ARMOR, DEFAULT_DAMAGE,3,1,x,y);}
     @Override
     public String toString() {
         return "Lobber";

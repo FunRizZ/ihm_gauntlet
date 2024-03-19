@@ -173,7 +173,7 @@ public class MapCreatorController{
         Img105.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = LOBBER);
         Img106.getChildren().add(new Spawner_Grunt(-1,-1).getSpray());
         Img106.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = SPAWNER_GRUNT);
-        Img107.getChildren().add((new Spawner_Ghost(-1,-1)).getSpray());
+        Img107.getChildren().add((new Spawner_Ghost(-1,-1,1)).getSpray());
         Img107.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = SPAWNER_GHOST);
 
         Img111.getChildren().add(new Spawn(-1,-1).getSpray());
@@ -319,7 +319,7 @@ public class MapCreatorController{
                 return new Spawner_Grunt(x,y);
             }
             case SPAWNER_GHOST -> {
-                return new Spawner_Ghost(x,y);
+                return new Spawner_Ghost(x,y,1);
             }
             case SPAWN_HERO -> {
                 Spawn sp = new Spawn(x,y);
