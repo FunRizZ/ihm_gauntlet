@@ -21,6 +21,8 @@ public enum EntitiesEnum {
     GRUNT,
     LOBBER,
     SPAWNER_GRUNT1,
+    SPAWNER_GRUNT2,
+    SPAWNER_GRUNT3,
     SPAWNER_GHOST1,
     SPAWNER_GHOST2,
     SPAWNER_GHOST3,

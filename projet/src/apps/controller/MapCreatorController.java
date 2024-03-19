@@ -107,7 +107,11 @@ public class MapCreatorController{
     @FXML
     StackPane Img105;
     @FXML
-    StackPane Img106;
+    StackPane Img1061;
+    @FXML
+    StackPane Img1062;
+    @FXML
+    StackPane Img1063;
     @FXML
     StackPane Img1071;
     @FXML
@@ -179,8 +183,12 @@ public class MapCreatorController{
         Img104.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = GRUNT);
         Img105.getChildren().add((new Lobber(-1,-1,1)).getSpray());
         Img105.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = LOBBER);
-        Img106.getChildren().add(new Spawner_Grunt1(-1,-1).getSpray());
-        Img106.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = SPAWNER_GRUNT1);
+        Img1061.getChildren().add(new Spawner_Grunt1(-1,-1).getSpray());
+        Img1061.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = SPAWNER_GRUNT1);
+        Img1062.getChildren().add(new Spawner_Grunt2(-1,-1).getSpray());
+        Img1062.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = SPAWNER_GRUNT2);
+        Img1063.getChildren().add(new Spawner_Grunt3(-1,-1).getSpray());
+        Img1063.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = SPAWNER_GRUNT3);
         Img1071.getChildren().add((new Spawner_Ghost1(-1,-1,1)).getSpray());
         Img1071.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = SPAWNER_GHOST1);
         Img1072.getChildren().add((new Spawner_Ghost2(-1,-1,2)).getSpray());
@@ -332,6 +340,12 @@ public class MapCreatorController{
             }
             case SPAWNER_GRUNT1 -> {
                 return new Spawner_Grunt1(x,y);
+            }
+            case SPAWNER_GRUNT2 -> {
+                return new Spawner_Grunt2(x,y);
+            }
+            case SPAWNER_GRUNT3 -> {
+                return new Spawner_Grunt3(x,y);
             }
             case SPAWNER_GHOST1 -> {
                 return new Spawner_Ghost1(x,y,1);

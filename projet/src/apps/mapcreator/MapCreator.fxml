@@ -12,6 +12,7 @@
 <?import javafx.scene.control.ScrollPane?>
 
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
 <fx:root type="javafx.scene.layout.BorderPane"
          xmlns="http://javafx.com/javafx/8"
          xmlns:fx="http://javafx.com/fxml/1"
@@ -98,10 +99,30 @@
                     <StackPane fx:id="Img103"/>
                     <StackPane fx:id="Img104"/>
                     <StackPane fx:id="Img105"/>
-                    <StackPane fx:id="Img106"/>
-                    <StackPane fx:id="Img1071"/>
-                    <StackPane fx:id="Img1072"/>
-                    <StackPane fx:id="Img1073"/>
+                    <VBox>
+                        <StackPane fx:id="Img1061"/>
+                        <Label text="%spawnGrunt1"/>
+                    </VBox>
+                    <VBox>
+                        <StackPane fx:id="Img1062"/>
+                        <Label text="%spawnGrunt2"/>
+                    </VBox>
+                    <VBox>
+                        <StackPane fx:id="Img1063"/>
+                        <Label text="%spawnGrunt3"/>
+                    </VBox>
+                    <VBox>
+                        <StackPane fx:id="Img1071"/>
+                        <Label text="%spawnGhost1"/>
+                    </VBox>
+                    <VBox>
+                        <StackPane fx:id="Img1072"/>
+                        <Label text="%spawnGhost2"/>
+                    </VBox>
+                    <VBox>
+                        <StackPane fx:id="Img1073"/>
+                        <Label text="%spawnGhost3"/>
+                    </VBox>
                 </HBox>
             </Tab>
             <Tab text="%players" fx:id="Tab11">
