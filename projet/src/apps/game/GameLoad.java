@@ -12,7 +12,7 @@ public class GameLoad extends BorderPane {
      * Load the Select Hero with fxmlLoader
      */
     public GameLoad() {
-        fxmlLoader = new FXMLLoader(SelectHeroLoad.class.getResource("Game.fxml"), SettingController.language);
+        fxmlLoader = new FXMLLoader(this.getClass().getResource("Game.fxml"), SettingController.language);
     }
 
     /**

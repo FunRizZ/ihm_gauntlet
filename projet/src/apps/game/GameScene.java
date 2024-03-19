@@ -21,6 +21,6 @@ public class GameScene extends MainScene {
      */
     @Override
     public void load(){
-        this.load();
+        this.changeScene(this.MENU, this.SCENE_TITLE);
     }
 }
