@@ -7,6 +7,7 @@ public enum EntitiesEnum {
     DEFENSE_POTION,
     ATTACK_POTION,
     MAGIC_POTION,
+    SPEED_POTION,
     HOLY_GRENADE,
     KEY,
     FOOD,

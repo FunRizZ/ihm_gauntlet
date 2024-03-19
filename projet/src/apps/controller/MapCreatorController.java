@@ -81,6 +81,8 @@ public class MapCreatorController{
     @FXML
     StackPane Img35;
     @FXML
+    StackPane Img36;
+    @FXML
     StackPane Img41;
     @FXML
     StackPane Img51;
@@ -140,6 +142,8 @@ public class MapCreatorController{
         Img34.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = ATTACK_POTION);
         Img35.getChildren().add((new MagicPotionView(-1,-1)).getSpray());
         Img35.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = MAGIC_POTION);
+        Img36.getChildren().add((new SpeedPotionView(-1,-1)).getSpray());
+        Img36.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = SPEED_POTION);
 
         Img41.getChildren().add((new HolyGrenadeView(-1,-1)).getSpray());
         Img41.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = HOLY_GRENADE);
@@ -273,6 +277,9 @@ public class MapCreatorController{
             }
             case MAGIC_POTION -> {
                 return new MagicPotionView(x,y);
+            }
+            case SPEED_POTION -> {
+                return new SpeedPotionView(x,y);
             }
             case HOLY_GRENADE -> {
                 return new HolyGrenadeView(x,y);
