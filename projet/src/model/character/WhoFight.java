@@ -76,6 +76,9 @@ public abstract class WhoFight extends Character {
         return this.damage;
     }
 
+    public int getRange(){
+        return this.range;
+    }
      public int getHp() {
         return this.hp;
     }

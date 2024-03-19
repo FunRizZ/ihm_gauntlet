@@ -9,20 +9,18 @@ import java.util.Random;
 
 public abstract class Spawner extends WhoFight {
     public final WhoFight MOB;
-    public final int RANGE;
     public final Location LOCATION;
 
-    public Spawner(int hp, int armor_start, WhoFight mob, int range, int x, int y) {
-        super(hp, armor_start, 0, x, y);
+    public Spawner(int hp, int armor_start, WhoFight mob, int x, int y, int level) {
+        super(hp, armor_start, 0,3,level, x, y);
         this.MOB = mob;
-        this.RANGE = range;
         this.LOCATION = Game.GAME.getMainHero().getLocation();
     }
     @Override
     public void fight(WhoFight enemy){
         int distanceX = this.getPosX() - enemy.getPosX();
         int distanceY = this.getPosY() - enemy.getPosY();
-        if ((-this.RANGE <  distanceX && distanceX > this.RANGE) && (-this.RANGE <  distanceY && distanceY > this.RANGE)) {
+        if ((-this.getRange() <  distanceX && distanceX > this.getRange()) && (-this.getRange() <  distanceY && distanceY > this.getRange())) {
             Character monster = null;
             do {
                 int x = (new Random()).nextInt(distanceX * 2) - distanceX;
