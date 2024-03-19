@@ -13,6 +13,8 @@
 
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.ScrollBar?>
 <fx:root type="javafx.scene.layout.BorderPane"
          xmlns="http://javafx.com/javafx/8"
          xmlns:fx="http://javafx.com/fxml/1"
@@ -93,49 +95,89 @@
             </Tab>
 
             <Tab text="%spawnersAndEnemies" fx:id="Tab10">
-                <HBox>
-                    <StackPane fx:id="Img101"/>
-                    <StackPane fx:id="Img102"/>
-                    <StackPane fx:id="Img103"/>
-                    <StackPane fx:id="Img104"/>
-                    <StackPane fx:id="Img105"/>
-                    <VBox>
-                        <StackPane fx:id="Img1061"/>
-                        <Label text="%spawnGrunt1"/>
-                    </VBox>
-                    <VBox>
-                        <StackPane fx:id="Img1062"/>
-                        <Label text="%spawnGrunt2"/>
-                    </VBox>
-                    <VBox>
-                        <StackPane fx:id="Img1063"/>
-                        <Label text="%spawnGrunt3"/>
-                    </VBox>
-                    <VBox>
-                        <StackPane fx:id="Img1071"/>
-                        <Label text="%spawnGhost1"/>
-                    </VBox>
-                    <VBox>
-                        <StackPane fx:id="Img1072"/>
-                        <Label text="%spawnGhost2"/>
-                    </VBox>
-                    <VBox>
-                        <StackPane fx:id="Img1073"/>
-                        <Label text="%spawnGhost3"/>
-                    </VBox>
-                    <VBox>
-                        <StackPane fx:id="Img1081"/>
-                        <Label text="%spawnDaemon1"/>
-                    </VBox>
-                    <VBox>
-                        <StackPane fx:id="Img1082"/>
-                        <Label text="%spawnDaemon2"/>
-                    </VBox>
-                    <VBox>
-                        <StackPane fx:id="Img1083"/>
-                        <Label text="%spawnDaemon3"/>
-                    </VBox>
+            <ScrollPane vbarPolicy="NEVER" style="-fx-background-color:black">
+                <HBox style="-fx-background-color:#96b946">
+                    <HBox style="-fx-background-color:black">
+                        <StackPane fx:id="Img101"/>
+                        <StackPane fx:id="Img102"/>
+                        <StackPane fx:id="Img103"/>
+                        <StackPane fx:id="Img104"/>
+                        <StackPane fx:id="Img105"/>
+                    </HBox>
+
+
+                    <Separator/>
+
+                    <HBox>
+                        <VBox style="-fx-background-color:black">
+                            <StackPane fx:id="Img1071"/>
+                            <Label text="%spawnGhost1"/>
+                        </VBox>
+                        <VBox style="-fx-background-color:black">
+                            <StackPane fx:id="Img1072"/>
+                            <Label text="%spawnGhost2"/>
+                        </VBox>
+                        <VBox style="-fx-background-color:black">
+                            <StackPane fx:id="Img1073"/>
+                            <Label text="%spawnGhost3"/>
+                        </VBox>
+                    </HBox>
+
+                    <Separator/>
+
+                    <HBox>
+                        <VBox style="-fx-background-color:black">
+                            <StackPane fx:id="Img1061"/>
+                            <Label text="%spawnGrunt1"/>
+                        </VBox>
+                        <VBox style="-fx-background-color:black">
+                            <StackPane fx:id="Img1062"/>
+                            <Label text="%spawnGrunt2"/>
+                        </VBox>
+                        <VBox style="-fx-background-color:black">
+                            <StackPane fx:id="Img1063"/>
+                            <Label text="%spawnGrunt3"/>
+                        </VBox>
+                    </HBox>
+
+                    <Separator/>
+
+                    <HBox>
+                        <VBox style="-fx-background-color:black">
+                            <StackPane fx:id="Img1081"/>
+                            <Label text="%spawnDaemon1"/>
+                        </VBox>
+                        <VBox style="-fx-background-color:black">
+                            <StackPane fx:id="Img1082"/>
+                            <Label text="%spawnDaemon2"/>
+                        </VBox>
+                        <VBox style="-fx-background-color:black">
+                            <StackPane fx:id="Img1083"/>
+                            <Label text="%spawnDaemon3"/>
+                        </VBox>
+                    </HBox>
+
+                    <Separator/>
+
+                    <HBox>
+                        <VBox style="-fx-background-color:black">
+                            <StackPane fx:id="Img1091"/>
+                            <Label text="%spawnLobber1"/>
+                        </VBox>
+                        <VBox style="-fx-background-color:black">
+                            <StackPane fx:id="Img1092"/>
+                            <Label text="%spawnLobber2"/>
+                        </VBox>
+                        <VBox style="-fx-background-color:black">
+                            <StackPane fx:id="Img1093"/>
+                            <Label text="%spawnLobber3"/>
+                        </VBox>
+                    </HBox>
                 </HBox>
+            </ScrollPane>
+
+
+
             </Tab>
             <Tab text="%players" fx:id="Tab11">
                 <HBox>

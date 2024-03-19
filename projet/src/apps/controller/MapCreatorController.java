@@ -125,6 +125,12 @@ public class MapCreatorController{
     @FXML
     StackPane Img1083;
     @FXML
+    StackPane Img1091;
+    @FXML
+    StackPane Img1092;
+    @FXML
+    StackPane Img1093;
+    @FXML
     StackPane Img111;
 
     /**
@@ -189,24 +195,34 @@ public class MapCreatorController{
         Img104.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = GRUNT);
         Img105.getChildren().add((new Lobber(-1,-1,1)).getSpray());
         Img105.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = LOBBER);
+
         Img1061.getChildren().add(new Spawner_Grunt1(-1,-1).getSpray());
         Img1061.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = SPAWNER_GRUNT1);
         Img1062.getChildren().add(new Spawner_Grunt2(-1,-1).getSpray());
         Img1062.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = SPAWNER_GRUNT2);
         Img1063.getChildren().add(new Spawner_Grunt3(-1,-1).getSpray());
         Img1063.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = SPAWNER_GRUNT3);
+
         Img1071.getChildren().add((new Spawner_Ghost1(-1,-1,1)).getSpray());
         Img1071.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = SPAWNER_GHOST1);
         Img1072.getChildren().add((new Spawner_Ghost2(-1,-1,2)).getSpray());
         Img1072.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = SPAWNER_GHOST2);
         Img1073.getChildren().add((new Spawner_Ghost3(-1,-1,3)).getSpray());
         Img1073.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = SPAWNER_GHOST3);
+
         Img1081.getChildren().add((new Spawner_Daemon1(-1,-1)).getSpray());
         Img1081.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = SPAWNER_DAEMON1);
         Img1082.getChildren().add((new Spawner_Daemon2(-1,-1)).getSpray());
         Img1082.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = SPAWNER_DAEMON2);
         Img1083.getChildren().add((new Spawner_Daemon3(-1,-1)).getSpray());
         Img1083.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = SPAWNER_DAEMON3);
+
+        Img1091.getChildren().add((new Spawner_Lobber1(-1,-1)).getSpray());
+        Img1091.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = SPAWNER_LOBBER1);
+        Img1092.getChildren().add((new Spawner_Lobber1(-1,-1)).getSpray());
+        Img1092.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = SPAWNER_LOBBER2);
+        Img1093.getChildren().add((new Spawner_Lobber1(-1,-1)).getSpray());
+        Img1093.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = SPAWNER_LOBBER3);
 
         Img111.getChildren().add(new Spawn(-1,-1).getSpray());
         Img111.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = SPAWN_HERO);
@@ -376,6 +392,15 @@ public class MapCreatorController{
             }
             case SPAWNER_DAEMON3 -> {
                 return new Spawner_Daemon3(x,y);
+            }
+            case SPAWNER_LOBBER1 -> {
+                return new Spawner_Lobber1(x,y);
+            }
+            case SPAWNER_LOBBER2 -> {
+                return new Spawner_Lobber2(x,y);
+            }
+            case SPAWNER_LOBBER3 -> {
+                return new Spawner_Lobber3(x,y);
             }
             case SPAWN_HERO -> {
                 Spawn sp = new Spawn(x,y);
