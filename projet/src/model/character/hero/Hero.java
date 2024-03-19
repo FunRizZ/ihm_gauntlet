@@ -30,6 +30,12 @@ public class Hero extends WhoFight {
         this.setting = setting;
     }
 
+    public Hero(Location location, setting_personnage setting,int x, int y, int hp, int armor, int damage){
+        super(hp, armor, damage, x, y);
+        this.location = location;
+        this.setting = setting;
+    }
+
     public Location getLocation() {
         return location;
     }

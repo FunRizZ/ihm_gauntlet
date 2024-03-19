@@ -10,8 +10,9 @@ import javafx.scene.image.ImageView;
 
 public class Wizard extends Hero {
 
+    //TODO Ajouter les stats de vitesse et de range d'attaque
     public Wizard(Location location, setting_personnage setting, int x, int y) {
-        super(location, setting, x, y);
+        super(location, setting, x, y,500,50,600);
     }
 
     @Override

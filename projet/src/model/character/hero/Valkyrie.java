@@ -10,8 +10,9 @@ import javafx.scene.image.ImageView;
 
 public class Valkyrie extends Hero {
 
+    //TODO Ajouter les stats de vitesse et de range d'attaque
     public Valkyrie(Location location, setting_personnage setting, int x, int y) {
-        super(location, setting, x, y);
+        super(location, setting, x, y,700,150,200);
     }
 
     @Override

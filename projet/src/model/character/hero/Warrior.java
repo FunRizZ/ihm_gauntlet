@@ -10,8 +10,9 @@ import javafx.scene.image.ImageView;
 
 public class Warrior extends Hero {
 
+    //TODO Ajouter les stats de vitesse et de range d'attaque
     public Warrior(Location location, setting_personnage setting, int x, int y) {
-        super(location, setting, x, y);
+        super(location, setting, x, y,900,250,400);
     }
 
     @Override
