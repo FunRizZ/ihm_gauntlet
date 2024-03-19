@@ -9,7 +9,6 @@ Then open a terminal and enter the command : './compile.sh' and the game should 
 
 How to change the UI language :
 When you are in the Main Menu, go to Settings and choose in the language field the language you want.
-Quit and return in the Setting page for update the language in it.
 Languages available : French, English and Spanish
 
 Functionalities :

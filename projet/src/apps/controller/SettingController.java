@@ -5,6 +5,7 @@ package apps.controller;
 import apps.MainScene;
 import apps.mainMenu.MainMenuScene;
 import apps.setting.JsonSetting;
+import apps.setting.SettingCreatorScene;
 import apps.setting.settingScene;
 import apps.setting.setting_personnage;
 import javafx.application.Platform;
@@ -42,7 +43,7 @@ public class SettingController{
     settingScene settingScene = JsonSetting.getSettingsScene();
 
     //language is the Resource Bundle of the different languages, use in the FXML LOADER to change languages in scenes
-    public static ResourceBundle language = ResourceBundle.getBundle("language/texts");
+    public static ResourceBundle language = ResourceBundle.getBundle("language/texts", new Locale(JsonSetting.getSettingsScene().getLangue()));
     
     @FXML
     private GridPane Grid;
@@ -63,7 +64,10 @@ public class SettingController{
         Resolution.setItems(FXCollections.observableArrayList("1280 x 720", (int)screenBounds.getWidth()+" x "+(int)screenBounds.getHeight()));
         Resolution.getSelectionModel().select((int)settingScene.getWidth() + " x " + (int)settingScene.getHeight());
         Resolution.setOnAction(new EventHandler<ActionEvent>() {
-            //TODO Faire la doc de handle
+            /**
+             * Allow the resolution change
+             * @param event the event which occurred
+             */
         @Override
         public void handle(ActionEvent event) {
             String selectedValue = Resolution.getValue();
@@ -102,6 +106,8 @@ public class SettingController{
 
             settingScene.setLangue(selectedValue);
             JsonSetting.save_control();
+            SettingCreatorScene Setting = new SettingCreatorScene();
+            Setting.load();
             }
         });
     }
@@ -236,7 +242,10 @@ public class SettingController{
         });
     }
 
-    //TODO Faire la doc ici
+    /**
+     * Update the buttons
+     * @param personnage
+     */
     private void updateButtons(setting_personnage[] personnage) {
         for (Node node : Grid.getChildren()) {
             if (node instanceof Button) {
@@ -287,5 +296,18 @@ public class SettingController{
     public void goMenu() {
         MainMenuScene GameMenu = new MainMenuScene();
         GameMenu.changeScene(GameMenu.GAME_MENU, GameMenu.SCENE_TITLE);
+    }
+
+    /**
+     * Reinitialize the setting
+     */
+    @FXML
+    public void reinit_setting() {
+        JsonSetting.reinitialize_setting_personnage();
+        language = ResourceBundle.getBundle("language/texts", new Locale("fr"));
+        MainScene.stage.setWidth(JsonSetting.getSettingsScene().getWidth());
+        MainScene.stage.setHeight(JsonSetting.getSettingsScene().getHeight());
+        SettingCreatorScene Setting = new SettingCreatorScene();
+        Setting.load();
     }
 }
