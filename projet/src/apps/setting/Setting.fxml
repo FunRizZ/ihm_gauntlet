@@ -8,6 +8,8 @@
 <?import javafx.collections.FXCollections?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <fx:root type="javafx.scene.layout.BorderPane" 
                                 xmlns="http://javafx.com/javafx"
                                 xmlns:fx="http://javafx.com/fxml"
@@ -23,13 +25,17 @@
                         <Label text="%attack" GridPane.columnIndex="0" GridPane.rowIndex="5" />
                         <Label text="%bomb" GridPane.columnIndex="0" GridPane.rowIndex="6" />
                         <Label text="%resurrect" GridPane.columnIndex="0" GridPane.rowIndex="7" />
-                        <Label text="Resolution" GridPane.columnIndex="0" GridPane.rowIndex="8" />
+                        <Label text="%resolution" GridPane.columnIndex="0" GridPane.rowIndex="8" />
                         <ComboBox fx:id="Resolution" GridPane.columnIndex="0" GridPane.rowIndex="9"/>
                         <Label text="%languageUI" GridPane.columnIndex="4" GridPane.rowIndex="8" />
                         <ComboBox fx:id="Langue" minWidth="100" minHeight="30" GridPane.columnIndex="4" GridPane.rowIndex="9"/>
                 </GridPane>
         </center>
         <bottom>
-                <Button text="Menu" onAction="#goMenu" GridPane.columnIndex="2" GridPane.rowIndex="8"/>
+                <HBox>
+                        <Button text="Menu" onAction="#goMenu" />
+                        <Pane HBox.hgrow="ALWAYS" />
+                        <Button text="%reinitialize" onAction="#reinit_setting" />
+                </HBox>
         </bottom>
 </fx:root>

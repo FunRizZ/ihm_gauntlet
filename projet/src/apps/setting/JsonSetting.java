@@ -1,7 +1,7 @@
 package apps.setting;
 import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
 
 import javafx.scene.input.KeyCode;
 
@@ -18,18 +18,19 @@ public class JsonSetting {
     private static settingScene settingsScene;  
 
     private static void setup_setting() {
-            try {
-                JsonReader reader = new JsonReader(new FileReader("./save/setting.json"));
-                Gson gson = new Gson();
-                personnages = gson.fromJson(reader, setting_personnage[].class);
-                settingsScene = gson.fromJson(reader, settingScene.class);
-                reader.close();
-            } catch (IOException e) {
-                reinitialize_setting_personnage();
-            }
+        try {
+            JsonReader reader = new JsonReader(new FileReader("./save/setting.json"));
+            Gson gson = new Gson();
+            JsonObject jsonObject = gson.fromJson(reader, JsonObject.class);
+            personnages = gson.fromJson(jsonObject.get("personnages"), setting_personnage[].class);
+            settingsScene = gson.fromJson(jsonObject.get("settingsScene"), settingScene.class);
+            reader.close();
+        } catch (IOException e) {
+            reinitialize_setting_personnage();
         }
+    }
 
-        private static void reinitialize_setting_personnage() {
+        public static void reinitialize_setting_personnage() {
             Gson gson = new Gson();
             setting_personnage person1 = new setting_personnage(KeyCode.UP, KeyCode.DOWN, KeyCode.LEFT, KeyCode.RIGHT, KeyCode.SPACE, KeyCode.ENTER, KeyCode.F);
             setting_personnage person2 = new setting_personnage(KeyCode.Z, KeyCode.S, KeyCode.Q, KeyCode.D, KeyCode.A, KeyCode.W, KeyCode.E);
@@ -39,16 +40,13 @@ public class JsonSetting {
             settingScene setti = new settingScene();
             personnages = pers;
             settingsScene = setti;
-            JsonWriter writer;
+
             try {
-                writer = new JsonWriter(new FileWriter("./save/setting.json"));
-                writer.beginArray(); // commence le tableau
-                for (setting_personnage p : pers)
-                {
-                    gson.toJson(p, setting_personnage.class, writer);
-                }
-                writer.endArray(); // termine le tableau
-                gson.toJson(setti, settingScene.class, writer);
+                FileWriter writer = new FileWriter("./save/setting.json");
+                JsonObject jsonObject = new JsonObject();
+                jsonObject.add("personnages", gson.toJsonTree(personnages, setting_personnage[].class));
+                jsonObject.add("settingsScene", gson.toJsonTree(settingsScene, settingScene.class));
+                gson.toJson(jsonObject, writer);
                 writer.close();
             } catch (IOException e) {
                 e.printStackTrace();
@@ -77,13 +75,11 @@ public class JsonSetting {
     public static void save_control() {
         Gson gson = new Gson();
         try {
-            JsonWriter writer = new JsonWriter(new FileWriter("./save/setting.json"));
-            writer.beginArray(); // commence le tableau
-            for (setting_personnage p : personnages) {
-                gson.toJson(p, setting_personnage.class, writer);
-            }
-            writer.endArray(); // termine le tableau
-            gson.toJson(settingsScene, settingScene.class, writer);
+            FileWriter writer = new FileWriter("./save/setting.json");
+            JsonObject jsonObject = new JsonObject();
+            jsonObject.add("personnages", gson.toJsonTree(personnages, setting_personnage[].class));
+            jsonObject.add("settingsScene", gson.toJsonTree(settingsScene, settingScene.class));
+            gson.toJson(jsonObject, writer);
             writer.close();
         } catch (Exception e) {
             System.out.println(e.getMessage());
