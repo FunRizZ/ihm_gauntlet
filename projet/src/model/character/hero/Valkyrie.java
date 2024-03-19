@@ -12,7 +12,7 @@ public class Valkyrie extends Hero {
 
     //TODO Ajouter les stats de vitesse et de range d'attaque
     public Valkyrie(Location location, setting_personnage setting, int x, int y) {
-        super(location, setting, x, y,700,150,200);
+        super(location, setting, x, y,700,150,200,30);
     }
 
     @Override

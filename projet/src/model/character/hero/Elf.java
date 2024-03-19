@@ -12,7 +12,7 @@ public class Elf extends Hero {
 
     //TODO Ajouter les stats de vitesse et de range d'attaque
     public Elf(Location location, setting_personnage setting, int x, int y) {
-        super(location, setting, x, y,500,50,200);
+        super(location, setting, x, y,500,50,200,100);
     }
 
     @Override

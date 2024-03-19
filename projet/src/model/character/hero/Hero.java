@@ -20,18 +20,20 @@ public class Hero extends WhoFight {
     public final static int DEFAULT_HP = 1000;
     public final static int DEFAULT_ARMOR = 50;
     public final static int DEFAULT_DAMAGE = 200;
+    public final static int level = 0;
+    public final static int DEFAULT_RANGE = 100;
 
     private Location location;
     private setting_personnage setting;
 
     public Hero(Location location, setting_personnage setting,int x, int y){
-        super(DEFAULT_HP, DEFAULT_ARMOR, DEFAULT_DAMAGE, x, y);
+        super(DEFAULT_HP, DEFAULT_ARMOR, DEFAULT_DAMAGE,level,DEFAULT_RANGE, x, y);
         this.location = location;
         this.setting = setting;
     }
 
-    public Hero(Location location, setting_personnage setting,int x, int y, int hp, int armor, int damage){
-        super(hp, armor, damage, x, y);
+    public Hero(Location location, setting_personnage setting,int x, int y, int hp, int armor, int damage, int range){
+        super(hp, armor, damage,level,range, x, y);
         this.location = location;
         this.setting = setting;
     }
