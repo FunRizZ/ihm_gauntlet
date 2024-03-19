@@ -123,6 +123,18 @@
                         <StackPane fx:id="Img1073"/>
                         <Label text="%spawnGhost3"/>
                     </VBox>
+                    <VBox>
+                        <StackPane fx:id="Img1081"/>
+                        <Label text="%spawnDaemon1"/>
+                    </VBox>
+                    <VBox>
+                        <StackPane fx:id="Img1082"/>
+                        <Label text="%spawnDaemon2"/>
+                    </VBox>
+                    <VBox>
+                        <StackPane fx:id="Img1083"/>
+                        <Label text="%spawnDaemon3"/>
+                    </VBox>
                 </HBox>
             </Tab>
             <Tab text="%players" fx:id="Tab11">

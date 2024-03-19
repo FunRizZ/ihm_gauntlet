@@ -119,6 +119,12 @@ public class MapCreatorController{
     @FXML
     StackPane Img1073;
     @FXML
+    StackPane Img1081;
+    @FXML
+    StackPane Img1082;
+    @FXML
+    StackPane Img1083;
+    @FXML
     StackPane Img111;
 
     /**
@@ -195,6 +201,12 @@ public class MapCreatorController{
         Img1072.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = SPAWNER_GHOST2);
         Img1073.getChildren().add((new Spawner_Ghost3(-1,-1,3)).getSpray());
         Img1073.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = SPAWNER_GHOST3);
+        Img1081.getChildren().add((new Spawner_Daemon1(-1,-1)).getSpray());
+        Img1081.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = SPAWNER_DAEMON1);
+        Img1082.getChildren().add((new Spawner_Daemon2(-1,-1)).getSpray());
+        Img1082.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = SPAWNER_DAEMON2);
+        Img1083.getChildren().add((new Spawner_Daemon3(-1,-1)).getSpray());
+        Img1083.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = SPAWNER_DAEMON3);
 
         Img111.getChildren().add(new Spawn(-1,-1).getSpray());
         Img111.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = SPAWN_HERO);
@@ -355,6 +367,15 @@ public class MapCreatorController{
             }
             case SPAWNER_GHOST3 -> {
                 return new Spawner_Ghost3(x,y,3);
+            }
+            case SPAWNER_DAEMON1 -> {
+                return new Spawner_Daemon1(x,y);
+            }
+            case SPAWNER_DAEMON2 -> {
+                return new Spawner_Daemon2(x,y);
+            }
+            case SPAWNER_DAEMON3 -> {
+                return new Spawner_Daemon3(x,y);
             }
             case SPAWN_HERO -> {
                 Spawn sp = new Spawn(x,y);
