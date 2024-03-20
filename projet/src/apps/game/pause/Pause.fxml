@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<fx:root type="javafx.scene.layout.BorderPane"
+         xmlns="http://javafx.com/javafx/8"
+         xmlns:fx="http://javafx.com/fxml/1"
+         fx:controller="apps.controller.PauseController"
+         stylesheets="/apps/game/pause/PauseCss.css">
+    <center>
+        <VBox alignment="CENTER" spacing="10">
+            <children>
+                <Button text="%save" fx:id="saveButton" onAction="#handleSave"/>
+                <Button text="%loadGame" fx:id="loadButton" onAction="#handleLoad"/>
+                <Button text="%soundSettings" fx:id="soundButton" onAction="#handleSettingSound"/>
+                <Button text="%quitMainMenu" fx:id="quitToMainMenuButton" onAction="#handleQuitToMainMenu"/>
+                <Button text="%quitDesktop" fx:id="quitToDesktopButton" onAction="#handleQuitToDesktop"/>
+            </children>
+        </VBox>
+    </center>
+</fx:root>

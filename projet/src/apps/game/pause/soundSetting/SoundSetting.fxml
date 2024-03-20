@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<fx:root type="javafx.scene.layout.BorderPane"
+         xmlns="http://javafx.com/javafx/8"
+         xmlns:fx="http://javafx.com/fxml/1"
+         fx:controller="apps.controller.SoundSettingController"
+         stylesheets="/apps/game/pause/soundSetting/SoundSettingCss.css">
+    <center>
+        <VBox alignment="CENTER" spacing="10">
+            <children>
+                <Label text="%volume" />
+                <Slider fx:id="volumeSlider" min="0" max="100" value="50" />
+                <Button text="%toggleSound" fx:id="toggleSoundButton" onAction="#handleToggleSound"/>
+                <Button text="%toggleMusic" fx:id="toggleMusicButton" onAction="#handleToggleMusic"/>
+                <Button text="%back" fx:id="backButton" onAction="#handleBack"/>
+            </children>
+        </VBox>
+    </center>
+</fx:root>

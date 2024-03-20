@@ -1,7 +1,10 @@
 package apps;
 
+import apps.game.pause.PauseScene;
 import apps.mainMenu.MainMenuScene;
 import javafx.application.Application;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
 /**
@@ -19,11 +22,18 @@ public class StartGame extends Application {
      */
     @Override
     public void start (Stage primaryStage) throws Exception {
-
         MainScene mainController = new MainMenuScene();
 
         mainController.setStage(primaryStage);
         mainController.load();
+
+        MainScene.scene.addEventHandler(KeyEvent.KEY_PRESSED, (KeyEvent event) -> {
+            if (event.getCode() == KeyCode.ESCAPE) {
+                PauseScene pauseScene = new PauseScene();
+                pauseScene.loadNewScene();
+            }
+        });
+
         primaryStage.show();
     }
 
