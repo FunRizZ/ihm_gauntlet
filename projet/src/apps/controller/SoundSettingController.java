@@ -1,6 +1,7 @@
 package apps.controller;
 
 import apps.game.pause.PauseScene;
+import apps.game.pause.soundSetting.SoundManager;
 import javafx.fxml.FXML;
 import javafx.scene.control.Slider;
 
@@ -9,12 +10,12 @@ public class SoundSettingController {
     @FXML
     private Slider volumeSlider;
 
-    /**
-     * Toggles the sound on/off
-     */
     @FXML
-    protected void handleToggleSound() {
-        // Add code here to toggle sound on/off
+    public void initialize(){
+        volumeSlider.valueProperty().addListener((observable, oldValue, newValue) -> {
+            double volume = newValue.doubleValue() / 100.0; // Assuming the slider range is 0-100
+            SoundManager.setVolume(volume);
+        });
     }
 
     /**
@@ -22,7 +23,19 @@ public class SoundSettingController {
      */
     @FXML
     protected void handleToggleMusic() {
-        // Add code here to toggle music on/off
+        if (SoundManager.isPlaying()) {
+            SoundManager.pause();
+        } else {
+            SoundManager.play();
+        }
+    }
+
+
+    /**
+     * Toggles the sound on/off
+     */
+    @FXML
+    protected void handleToggleSound() {
     }
 
     /**
