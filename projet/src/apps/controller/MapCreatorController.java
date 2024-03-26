@@ -1,10 +1,23 @@
 package apps.controller;
 
+import apps.MainScene;
 import apps.mainMenu.MainMenuScene;
 import apps.mapcreator.MapCreatorLoad;
 import apps.setting.SettingCreatorScene;
 import javafx.application.Platform;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.HBox;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
+import javafx.stage.WindowEvent;
 import javafx.util.Pair;
 import model.character.monster.*;
 import model.game_pack.Game;
@@ -12,9 +25,6 @@ import model.game_pack.Lookable;
 import model.location.*;
 import javafx.animation.ScaleTransition;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Tab;
-import javafx.scene.control.TabPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -24,6 +34,7 @@ import javafx.scene.layout.StackPane;
 import javafx.util.Duration;
 import model.location.decorObject.*;
 
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,6 +47,7 @@ public class MapCreatorController{
     private EntitiesEnum object_select;
     private final Game GAME;
     private double zoom;
+    static int[] dimension = new int[2];
     public List<Pair<Location, Button>> maps;
     @FXML
     Button saveButton;
@@ -342,11 +354,10 @@ public class MapCreatorController{
             }
             case EXIT -> {
                 LocationName locationName = LocationName.values()[this.maps.size()];
-                Location l = GAME.createLocation(locationName, GAME.SIZE_MAP_X, GAME.SIZE_MAP_y);
-
-                this.creatExitButton(l);
-
-                return new Exit(l,x,y);
+                int[] loc = addExit();
+                Location newLoc = GAME.createLocation(locationName, loc[0], loc[1]);
+                this.creatExitButton(newLoc);
+                return new Exit(newLoc,x,y);
             }
             case TREASURE -> {
                 return new TreasureView(x,y);
@@ -557,5 +568,90 @@ public class MapCreatorController{
                 p.getValue().setDisable(false);
             }
         }
+    }
+
+    //TODO Fix cette fonction de mort
+    public int[] addExit(){
+        //Creating a GridPane container
+        GridPane grid = new GridPane();
+        grid.setPadding(new Insets(10, 10, 10, 10));
+        grid.setVgap(5);
+        grid.setHgap(5);
+
+        //Defining the Name text field
+        final TextField height = new TextField();
+        height.setPromptText("Enter your first name.");
+        height.setPrefColumnCount(10);
+        height.getText();
+        GridPane.setConstraints(height, 0, 0);
+        grid.getChildren().add(height);
+
+        //Defining the Last Name text field
+        final TextField width = new TextField();
+        width.setPromptText("Enter your last name.");
+        GridPane.setConstraints(width, 0, 1);
+        grid.getChildren().add(width);
+
+        //Defining the Submit button
+        Button submit = new Button("Submit");
+        GridPane.setConstraints(submit, 1, 0);
+        grid.getChildren().add(submit);
+
+        //Defining the Clear button
+        Button clear = new Button("Clear");
+        GridPane.setConstraints(clear, 1, 1);
+        grid.getChildren().add(clear);
+
+
+        Scene enterSize = new Scene(grid, 300, 300);
+        Stage stage = new Stage();
+        stage.setScene(enterSize);
+        stage.initStyle(StageStyle.TRANSPARENT);
+
+        //Center the window
+        double centerXPosition = MainScene.stage.getX() + MainScene.stage.getWidth() / 2d;
+        double centerYPosition = MainScene.stage.getY() + MainScene.stage.getHeight() / 2d;
+
+        // Place the stage in the center of the Parent stage
+        stage.setOnShown(evt -> {
+            stage.setX(centerXPosition - stage.getWidth() / 2d);
+            stage.setY(centerYPosition - stage.getHeight() / 2d);
+        });
+
+        stage.show();
+
+        //Deactivate the main window
+        MainScene.scene.getRoot().setDisable(true);
+        // Add an event to activate the main window when the new window closes
+        stage.setOnHiding((EventHandler<WindowEvent>) new EventHandler<WindowEvent>() {
+            public void handle(WindowEvent we) {
+                MainScene.scene.getRoot().setDisable(false);
+            }
+        });
+        //forces window to regain focus when lost
+        stage.focusedProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue) {
+                // The window has lost focus, so we ask the window to regain focus
+                Platform.runLater(stage::requestFocus);
+            }
+        });
+        submit.setOnMouseClicked(event -> {
+            System.out.println("a");
+            dimension[0] = Integer.parseInt(height.getText());
+            dimension[1] = Integer.parseInt(width.getText());
+            stage.close();
+        });
+
+        //Setting an action for the Clear button
+        clear.setOnAction(new EventHandler<ActionEvent>() {
+
+            @Override
+            public void handle(ActionEvent e) {
+                height.clear();
+                width.clear();
+            }
+        });
+        System.out.println("a");
+        return dimension;
     }
 }
