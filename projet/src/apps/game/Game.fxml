@@ -3,28 +3,60 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<fx:root type="javafx.scene.layout.BorderPane"
+<fx:root type="javafx.scene.layout.Pane"
          xmlns="http://javafx.com/javafx/8"
          xmlns:fx="http://javafx.com/fxml/1"
          fx:controller="apps.controller.GameController"
-         stylesheets="/apps/game/GameCss.css">
-    <left>
-        <VBox>
-            <VBox>
-                <Label text="%player1" />
-            </VBox>
-            <Region VBox.vgrow="ALWAYS"/>
-            <VBox>
-                <Label text="%player2" />
-            </VBox>
-            <Region VBox.vgrow="ALWAYS"/>
-            <VBox>
-                <Label text="%player3" />
-            </VBox>
-            <Region VBox.vgrow="ALWAYS"/>
-            <VBox>
-                <Label text="%player4" />
-            </VBox>
-        </VBox>
-    </left>
-</fx:root>
+         stylesheets="/apps/game/GameCss.css"
+        onKeyPressed="#keyPressedAction">
+    <Button> </Button>
+    <StackPane>
+        <ScrollPane vbarPolicy="NEVER" hbarPolicy="NEVER">
+            <GridPane fx:id="map"/>
+        </ScrollPane>
+        <BorderPane>
+        <bottom>
+            <HBox>
+                <VBox>
+                    <HBox>
+                        <Label text="Difficulty: " />
+                        <Label fx:id="difficulty" text="XXX" />
+                    </HBox>
+                    <HBox>
+                        <Label text="Location: " />
+                        <Label fx:id="nameLocation" text="XXX" />
+                    </HBox>
+                    <HBox>
+                        <Label text="Time: " />
+                        <Label fx:id="time" text="XXhXXhXXsec" />
+                    </HBox>
+                </VBox>
+                <Region HBox.hgrow="ALWAYS" />
+                <VBox>
+                    <HBox>
+                        <Label text="%player1" style="-fx-font-size: 40;"/>
+                    </HBox>
+                    <HBox>
+                        <Label text="HP: " />
+                        <Label fx:id="joueur1hp" text="XXX" />
+                    </HBox>
+                    <HBox>
+                        <Label text="Keys: " />
+                        <Label fx:id="joueur1nbKey" text="XXX" />
+                    </HBox>
+                </VBox>
+                <Region HBox.hgrow="ALWAYS" />
+                <VBox>
+                    <HBox>
+                        <Label text="%player2" style="-fx-font-size: 40;"/>
+                    </HBox>
+                    <HBox>
+                        <Label text="HP: " />
+                        <Label fx:id="joueur2hp" text="XXX" />
+                    </HBox>
+                </VBox>
+            </HBox>
+        </bottom>
+        </BorderPane>
+        </StackPane>
+    </fx:root>

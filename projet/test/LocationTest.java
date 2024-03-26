@@ -5,7 +5,7 @@ import model.location.decorObject.*;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import apps.setting.setting_personnage;
+import apps.setting.SettingPersonnage;
 import model.character.Character;
 import model.character.monster.Daemon;
 import model.character.other.Guard;
@@ -75,7 +75,7 @@ public class LocationTest {
         Location guard_room = new Location(sizeX, sizeY,LocationName.GUARD_ROOM,sp);
         guard_room.resetBoard();
         guard_room.spawn();
-        setting_personnage setting = new setting_personnage(null, null, null, null, null, null, null);
+        SettingPersonnage setting = new SettingPersonnage(null, null, null, null, null, null, null);
         //Hero h = new Hero(guard_room,setting,0 ,0 );
         Exit exit_to_guard_room = new ExitKey(guard_room, Game.GAME,20,20);
 

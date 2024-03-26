@@ -1,11 +1,12 @@
 package apps.game.pause;
 
 import javafx.scene.Scene;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 
-public class PauseScene {
+public class PauseScene{
     public final PauseLoad MENU;
     public static Stage pauseStage;
 

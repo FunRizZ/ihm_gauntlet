@@ -7,7 +7,7 @@ import apps.mainMenu.MainMenuScene;
 import apps.setting.JsonSetting;
 import apps.setting.SettingCreatorScene;
 import apps.setting.settingScene;
-import apps.setting.setting_personnage;
+import apps.setting.SettingPersonnage;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
@@ -39,7 +39,7 @@ import java.util.ResourceBundle;
  * Class Controller for the Settings
  */
 public class SettingController{
-    setting_personnage[] players = JsonSetting.getSetting();
+    SettingPersonnage[] players = JsonSetting.getSetting();
     settingScene settingScene = JsonSetting.getSettingsScene();
 
     //language is the Resource Bundle of the different languages, use in the FXML LOADER to change languages in scenes
@@ -118,7 +118,7 @@ public class SettingController{
      * @param grid
      * @param personnages
      */
-    private void createcontrol(GridPane grid, setting_personnage[] personnages) {
+    private void createcontrol(GridPane grid, SettingPersonnage[] personnages) {
         String[] actions = {"UP", "DOWN", "LEFT", "RIGHT", "Attack", "Bomb", "Resurec"};
 
         for (int i = 0; i < actions.length; i++) {
@@ -246,14 +246,14 @@ public class SettingController{
      * Update the buttons
      * @param personnage
      */
-    private void updateButtons(setting_personnage[] personnage) {
+    private void updateButtons(SettingPersonnage[] personnage) {
         for (Node node : Grid.getChildren()) {
             if (node instanceof Button) {
                 Button button = (Button) node;
                 int columnIndex = GridPane.getColumnIndex(button);
                 int rowIndex = GridPane.getRowIndex(button);
 
-                setting_personnage player = personnage[columnIndex - 1];
+                SettingPersonnage player = personnage[columnIndex - 1];
                 KeyCode key = null;
 
                 switch (rowIndex) {

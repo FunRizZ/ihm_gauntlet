@@ -8,7 +8,7 @@ import javafx.scene.input.KeyCode;
 /**
  * Class for the settings characters
  */
-public class setting_personnage {
+public class SettingPersonnage {
     private Map<String, KeyCode> keySettings = new HashMap<>();
 
     /**
@@ -21,7 +21,7 @@ public class setting_personnage {
      * @param Bomb lauch a bomb
      * @param Resurec resurection
      */
-    public setting_personnage(KeyCode UP, KeyCode DOWN, KeyCode LEFT, KeyCode RIGHT, KeyCode Attack, KeyCode Bomb, KeyCode Resurec) {
+    public SettingPersonnage(KeyCode UP, KeyCode DOWN, KeyCode LEFT, KeyCode RIGHT, KeyCode Attack, KeyCode Bomb, KeyCode Resurec) {
         keySettings.put("UP", UP);
         keySettings.put("DOWN", DOWN);
         keySettings.put("LEFT", LEFT);
@@ -61,5 +61,8 @@ public class setting_personnage {
             }
         }
         return null;
+    }
+    public boolean contain(KeyCode key){
+        return keySettings.containsValue(key);
     }
 }

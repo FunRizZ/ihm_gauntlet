@@ -1,8 +1,10 @@
 package apps;
 
 import apps.setting.JsonSetting;
+import javafx.event.Event;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
 /**
@@ -38,7 +40,6 @@ public abstract class MainScene {
         this.sceneTitle = sceneTitle;
 
         scene = new Scene(gameMenu, this.width, this.height);
-
         stage.setTitle(this.sceneTitle);
         stage.setScene(scene);
         setScene(scene);

@@ -7,7 +7,7 @@ import model.location.Location;
 
 import java.util.List;
 
-import apps.setting.setting_personnage;
+import apps.setting.SettingPersonnage;
 import model.item.Item;
 import model.location.decorObject.Carcass;
 import model.location.decorObject.DecorObjet;
@@ -24,15 +24,15 @@ public class Hero extends WhoFight {
     public final static int DEFAULT_RANGE = 100;
 
     private Location location;
-    private setting_personnage setting;
+    private SettingPersonnage setting;
 
-    public Hero(Location location, setting_personnage setting,int x, int y){
+    public Hero(Location location, SettingPersonnage setting, int x, int y){
         super(DEFAULT_HP, DEFAULT_ARMOR, DEFAULT_DAMAGE,level,DEFAULT_RANGE, x, y);
         this.location = location;
         this.setting = setting;
     }
 
-    public Hero(Location location, setting_personnage setting,int x, int y, int hp, int armor, int damage, int range){
+    public Hero(Location location, SettingPersonnage setting, int x, int y, int hp, int armor, int damage, int range){
         super(hp, armor, damage,level,range, x, y);
         this.location = location;
         this.setting = setting;

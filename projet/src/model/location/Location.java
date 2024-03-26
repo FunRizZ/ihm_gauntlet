@@ -262,6 +262,38 @@ public class Location {
         return this.removeLookable( obj);
     }
 
+    public boolean move(Character character ){
+        int x = character.getPosX();
+        int y = character.getPosY();
+        switch (character.direction){
+            case TOP -> {
+                if (this.BOARD[x][y+1] != null){return false;}
+                removeCharacter(character);
+                character.setPosY(y+1);
+                addCharacter(character);
+            }
+            case BOTTOM -> {
+                if (this.BOARD[x][y-1] != null){return false;}
+                removeCharacter(character);
+                character.setPosY(y-1);
+                addCharacter(character);
+            }
+            case LEFT -> {
+                if (this.BOARD[x-1][y] != null){return false;}
+                removeCharacter(character);
+                character.setPosX(x-1);
+                addCharacter(character);
+            }
+            case RIGHT -> {
+                if (this.BOARD[x+1][y] != null){return false;}
+                removeCharacter(character);
+                character.setPosX(x+1);
+                addCharacter(character);
+            }
+        }
+        return true;
+    }
+
     @Override
     public String toString() {
         String description = "You are in the " + this.NAME + " \n\n";

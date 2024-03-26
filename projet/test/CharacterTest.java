@@ -9,7 +9,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import apps.setting.setting_personnage;
+import apps.setting.SettingPersonnage;
 import model.character.*;
 
 import model.location.LocationName;
@@ -37,7 +37,7 @@ public class CharacterTest {
         sp.add(spawn1);
         Location l = new Location(sizeX, sizeY, LocationName.GARDEN,sp);
         l.resetBoard();
-        setting_personnage setting = new setting_personnage(null, null, null, null, null, null, null);
+        SettingPersonnage setting = new SettingPersonnage(null, null, null, null, null, null, null);
 
         h = new Hero(l,setting,5,5);
         characters = new ArrayList<WhoFight>();

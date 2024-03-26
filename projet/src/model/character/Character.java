@@ -15,9 +15,11 @@ public abstract class Character extends Lookable implements IsMe{
     /**
      * creates a character with items
      */
+    public Direction direction;
     public Character(List<Item> items, int x, int y){
         super(x,y);
         this.items = items;
+        this.direction = Direction.TOP;
     }
     /**
      * creates a character with no items
@@ -75,7 +77,6 @@ public abstract class Character extends Lookable implements IsMe{
         }
         System.out.println(dest);
     }
-
     @Override
     public ImageView getSpray() {
         Image spray = (new Image(Character.class.getResource("/sprites/ghost.png").toExternalForm()));
