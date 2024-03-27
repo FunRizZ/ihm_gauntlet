@@ -8,13 +8,9 @@ import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.input.KeyCode;
 import javafx.scene.layout.HBox;
-import javafx.scene.text.Font;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.stage.WindowEvent;
@@ -34,7 +30,6 @@ import javafx.scene.layout.StackPane;
 import javafx.util.Duration;
 import model.location.decorObject.*;
 
-import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -632,7 +627,7 @@ public class MapCreatorController{
             }
         });
         submit.setOnMouseClicked(event -> {
-            setSize(Integer.parseInt(height.getText()), Integer.parseInt(width.getText()));
+            setSizeExit(Integer.parseInt(height.getText()), Integer.parseInt(width.getText()));
             LocationName locationName = LocationName.values()[this.maps.size()];
             System.out.println(heightMap);
             System.out.println(widthMap);
@@ -653,7 +648,7 @@ public class MapCreatorController{
         return newLoc;
     }
 
-    public void setSize(int x1,int x2){
+    public void setSizeExit(int x1, int x2){
         heightMap = x1;
         widthMap = x2;
     }
