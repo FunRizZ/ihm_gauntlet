@@ -47,7 +47,9 @@ public class MapCreatorController{
     private EntitiesEnum object_select;
     private final Game GAME;
     private double zoom;
-    static int[] dimension = new int[2];
+    static Location newLoc;
+    static int heightMap;
+    static int widthMap;
     public List<Pair<Location, Button>> maps;
     @FXML
     Button saveButton;
@@ -353,11 +355,7 @@ public class MapCreatorController{
                 return new Door(x,y);
             }
             case EXIT -> {
-                LocationName locationName = LocationName.values()[this.maps.size()];
-                int[] loc = addExit();
-                Location newLoc = GAME.createLocation(locationName, loc[0], loc[1]);
-                this.creatExitButton(newLoc);
-                return new Exit(newLoc,x,y);
+                return new Exit(addExit(x,y),x,y);
             }
             case TREASURE -> {
                 return new TreasureView(x,y);
@@ -571,24 +569,22 @@ public class MapCreatorController{
     }
 
     //TODO Fix cette fonction de mort
-    public int[] addExit(){
+    public Location addExit(int x, int y){
         //Creating a GridPane container
         GridPane grid = new GridPane();
         grid.setPadding(new Insets(10, 10, 10, 10));
         grid.setVgap(5);
         grid.setHgap(5);
 
-        //Defining the Name text field
         final TextField height = new TextField();
-        height.setPromptText("Enter your first name.");
+        height.setPromptText("Enter the height");
         height.setPrefColumnCount(10);
         height.getText();
         GridPane.setConstraints(height, 0, 0);
         grid.getChildren().add(height);
 
-        //Defining the Last Name text field
         final TextField width = new TextField();
-        width.setPromptText("Enter your last name.");
+        width.setPromptText("Enter the width");
         GridPane.setConstraints(width, 0, 1);
         grid.getChildren().add(width);
 
@@ -604,42 +600,45 @@ public class MapCreatorController{
 
 
         Scene enterSize = new Scene(grid, 300, 300);
-        Stage stage = new Stage();
-        stage.setScene(enterSize);
-        stage.initStyle(StageStyle.TRANSPARENT);
+        Stage stageNew = new Stage();
+        stageNew.setScene(enterSize);
+        stageNew.initStyle(StageStyle.TRANSPARENT);
 
         //Center the window
         double centerXPosition = MainScene.stage.getX() + MainScene.stage.getWidth() / 2d;
         double centerYPosition = MainScene.stage.getY() + MainScene.stage.getHeight() / 2d;
 
         // Place the stage in the center of the Parent stage
-        stage.setOnShown(evt -> {
-            stage.setX(centerXPosition - stage.getWidth() / 2d);
-            stage.setY(centerYPosition - stage.getHeight() / 2d);
+        stageNew.setOnShown(evt -> {
+            stageNew.setX(centerXPosition - stageNew.getWidth() / 2d);
+            stageNew.setY(centerYPosition - stageNew.getHeight() / 2d);
         });
 
-        stage.show();
+        stageNew.show();
 
         //Deactivate the main window
         MainScene.scene.getRoot().setDisable(true);
         // Add an event to activate the main window when the new window closes
-        stage.setOnHiding((EventHandler<WindowEvent>) new EventHandler<WindowEvent>() {
+        stageNew.setOnHiding((EventHandler<WindowEvent>) new EventHandler<WindowEvent>() {
             public void handle(WindowEvent we) {
                 MainScene.scene.getRoot().setDisable(false);
             }
         });
         //forces window to regain focus when lost
-        stage.focusedProperty().addListener((observable, oldValue, newValue) -> {
+        stageNew.focusedProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue) {
                 // The window has lost focus, so we ask the window to regain focus
-                Platform.runLater(stage::requestFocus);
+                Platform.runLater(stageNew::requestFocus);
             }
         });
         submit.setOnMouseClicked(event -> {
-            System.out.println("a");
-            dimension[0] = Integer.parseInt(height.getText());
-            dimension[1] = Integer.parseInt(width.getText());
-            stage.close();
+            setSize(Integer.parseInt(height.getText()), Integer.parseInt(width.getText()));
+            LocationName locationName = LocationName.values()[this.maps.size()];
+            System.out.println(heightMap);
+            System.out.println(widthMap);
+            newLoc = GAME.createLocation(locationName, heightMap, widthMap);
+            this.creatExitButton(newLoc);
+            stageNew.close();
         });
 
         //Setting an action for the Clear button
@@ -651,7 +650,11 @@ public class MapCreatorController{
                 width.clear();
             }
         });
-        System.out.println("a");
-        return dimension;
+        return newLoc;
+    }
+
+    public void setSize(int x1,int x2){
+        heightMap = x1;
+        widthMap = x2;
     }
 }
