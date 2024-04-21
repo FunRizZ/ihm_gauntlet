@@ -4,6 +4,7 @@ import apps.game.GameScene;
 import apps.mainMenu.MainMenuScene;
 import apps.setting.JsonSetting;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
@@ -28,6 +29,10 @@ public class SelectHeroController extends BorderPane {
     StackPane Valkyrie;
     @FXML
     StackPane Wizard;
+    @FXML
+    Button proceed;
+    @FXML
+    Button quit;
 
     public SelectHeroController(){
         GAME = Game.GAME;

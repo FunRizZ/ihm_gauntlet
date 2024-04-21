@@ -5,8 +5,14 @@
     -fx-border-color: blue;
 }
 .label{
-    -fx-background-color: #8B0000;
+    -fx-background-color: black;
+    -fx-opacity: 0.70;
     -fx-text-fill: #96b946;
+
+    -fx-background-radius: 5 5 5 5;
+    -fx-border-radius: 5 5 5 5;
+    -fx-border-style: solid;
+    -fx-border-width: 10;
 }
 .scroll-pane {
     -fx-background-color: black;
@@ -14,7 +20,7 @@
 .scroll-pane > .corner {
     -fx-background-color: black;
 }
-.button {
+#proceed, #quit{
     -fx-background-color: black;
     -fx-text-fill: yellow;
     -fx-font-size: 16px;
