@@ -331,7 +331,7 @@ public class Location {
      */
     public String toFile(){
         //path of the file
-        String path = "./save/locations/"+this.NAME.name()+".json";
+        String path = "./projet/save/locations/"+this.NAME.name()+".json";
 
         List<DecorObjet> decorObjects = getDecorObjects();
         List<Character> characters = getCharacters();

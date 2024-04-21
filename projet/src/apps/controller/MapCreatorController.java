@@ -43,8 +43,8 @@ public class MapCreatorController{
     private final Game GAME;
     private double zoom;
     static Location newLoc;
-    static int heightMap;
-    static int widthMap;
+    public static int heightMap;
+    public static int widthMap;
     public List<Pair<Location, Button>> maps;
     @FXML
     Button saveButton;
@@ -516,7 +516,7 @@ public class MapCreatorController{
      */
     @FXML
     public void load(){
-        if(GAME.Load("./save/locations/GARDEN.json")){
+        if(GAME.Load("./projet/save/locations/GARDEN.json")){
             this.resetMap();
             for (Pair<Location, Button> p : this.maps) { /* supprime tous les bouttons */
                 ((HBox) Tab2.getContent()).getChildren().remove(p.getValue());
