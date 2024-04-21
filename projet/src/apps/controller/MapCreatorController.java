@@ -563,8 +563,11 @@ public class MapCreatorController{
         }
     }
 
-    //TODO Fix cette fonction de mort
-    public Location addExit(int x, int y){
+    /**
+     *A method that ask the user to give Height and Width for a new exit
+     * @return the Location item used in the Exit constructor in the switch.
+     */
+    public Location addExit(){
         //Creating a GridPane container
         GridPane grid = new GridPane();
         grid.setPadding(new Insets(10, 10, 10, 10));
@@ -648,6 +651,11 @@ public class MapCreatorController{
         return newLoc;
     }
 
+    /**
+     * A method that set the size on the right variable for creating new exit.
+     * @param x1
+     * @param x2
+     */
     public void setSizeExit(int x1, int x2){
         heightMap = x1;
         widthMap = x2;
