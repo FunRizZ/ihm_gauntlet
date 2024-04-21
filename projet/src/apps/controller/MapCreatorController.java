@@ -350,7 +350,7 @@ public class MapCreatorController{
                 return new Door(x,y);
             }
             case EXIT -> {
-                return new Exit(addExit(x,y),x,y);
+                return new Exit(addExit(),x,y);
             }
             case TREASURE -> {
                 return new TreasureView(x,y);
