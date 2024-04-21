@@ -572,14 +572,14 @@ public class MapCreatorController{
         grid.setHgap(5);
 
         final TextField height = new TextField();
-        height.setPromptText("Enter the height");
+        height.setPromptText("Enter the height (5 min)");
         height.setPrefColumnCount(10);
         height.getText();
         GridPane.setConstraints(height, 0, 0);
         grid.getChildren().add(height);
 
         final TextField width = new TextField();
-        width.setPromptText("Enter the width");
+        width.setPromptText("Enter the width (2 min)");
         GridPane.setConstraints(width, 0, 1);
         grid.getChildren().add(width);
 
@@ -594,7 +594,7 @@ public class MapCreatorController{
         grid.getChildren().add(clear);
 
 
-        Scene enterSize = new Scene(grid, 300, 300);
+        Scene enterSize = new Scene(grid, 300, 150);
         Stage stageNew = new Stage();
         stageNew.setScene(enterSize);
         stageNew.initStyle(StageStyle.TRANSPARENT);
