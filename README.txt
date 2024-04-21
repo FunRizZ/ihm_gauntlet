@@ -20,4 +20,4 @@ Functionalities :
     - You can save your map
     - You can load a map
     - Multi-location in a single map
-    - All the features of the game available (WiP)
+    - All the features of the game available
