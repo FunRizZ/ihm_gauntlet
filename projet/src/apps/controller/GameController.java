@@ -109,9 +109,7 @@ public class GameController extends Pane {
         ScheduledExecutorService executor = Executors.newSingleThreadScheduledExecutor();
         executor.scheduleAtFixedRate(() -> {
             // Action à effectuer toutes les demi-secondes
-            Platform.runLater(() -> {
-                resetInterface();
-            });
+            Platform.runLater(this::resetInterface);
         }, 0, 500, TimeUnit.MILLISECONDS);
     }
     @FXML
