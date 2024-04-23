@@ -271,7 +271,7 @@ public class Location {
         return this.removeLookable( obj);
     }
 
-    public boolean move(Character character ){
+    public boolean move(Character character){
         int x = character.getPosX();
         int y = character.getPosY();
         try {

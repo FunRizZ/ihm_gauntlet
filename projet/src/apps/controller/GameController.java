@@ -1,5 +1,6 @@
 package apps.controller;
 
+import apps.MainScene;
 import apps.game.pause.PauseScene;
 import apps.setting.JsonSetting;
 import apps.setting.SettingPersonnage;
@@ -14,6 +15,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
+import javafx.stage.WindowEvent;
 import model.character.Direction;
 import model.character.hero.Hero;
 import model.game_pack.Game;
@@ -26,6 +28,7 @@ public class GameController extends Pane {
     public final Game GAME;
     public final SettingPersonnage[] SETTINGS;
     public final long timeSt;
+    public static ScheduledExecutorService service;
     @FXML
     GridPane map;
     @FXML
@@ -70,6 +73,7 @@ public class GameController extends Pane {
                         }else{
                             System.out.println("impossible move");
                         }
+                        break;
                     }
                     case "DOWN": {
                         Hero hero = GAME.HEROS.get(i);
@@ -79,6 +83,7 @@ public class GameController extends Pane {
                         }else{
                             System.out.println("impossible move");
                         }
+                        break;
                     }
                     case "LEFT": {
                         Hero hero = GAME.HEROS.get(i);
@@ -88,6 +93,7 @@ public class GameController extends Pane {
                         }else{
                             System.out.println("impossible move");
                         }
+                        break;
                     }
                     case "RIGHT": {
                         Hero hero = GAME.HEROS.get(i);
@@ -97,6 +103,7 @@ public class GameController extends Pane {
                         }else{
                             System.out.println("impossible move");
                         }
+                        break;
                     }
                 }
             }
@@ -106,11 +113,20 @@ public class GameController extends Pane {
         this.GAME = Game.GAME;
         this.SETTINGS = JsonSetting.getSetting();
         this.timeSt = System.nanoTime();
-        ScheduledExecutorService executor = Executors.newSingleThreadScheduledExecutor();
-        executor.scheduleAtFixedRate(() -> {
+        service = Executors.newSingleThreadScheduledExecutor();
+        service.scheduleAtFixedRate(() -> {
             // Action à effectuer toutes les demi-secondes
-            Platform.runLater(this::resetInterface);
+            Platform.runLater(() -> {
+                this.resetInterface();
+                //System.out.println("Action exécutée toutes les demi-secondes");
+            });
         }, 0, 500, TimeUnit.MILLISECONDS);
+        MainScene.stage.setOnCloseRequest((WindowEvent event) -> {
+            // Arrêter le ScheduledExecutorService lorsque la fenêtre se ferme
+            if (!service.isShutdown()) {
+                service.shutdown();
+            }
+        });
     }
     @FXML
     public void initialize(){

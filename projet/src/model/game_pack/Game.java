@@ -90,6 +90,7 @@ public class Game {
     public void addHero(Hero h){
         if(this.NB_HERO == 1 && this.defaultHero){
             this.defaultHero = false;
+            this.location.removeCharacter(this.HEROS.getFirst());
             this.HEROS.removeFirst();
             this.NB_HERO--;
             this.location = h.getLocation();
