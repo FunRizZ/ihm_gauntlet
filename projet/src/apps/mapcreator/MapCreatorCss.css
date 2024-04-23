@@ -33,3 +33,8 @@
 .label {
     -fx-text-fill: #96b946;
 }
+
+.button:focused {
+    -fx-background-color: pink;
+    -fx-text-fill: grey;
+}
