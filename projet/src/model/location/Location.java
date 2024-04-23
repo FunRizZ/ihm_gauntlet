@@ -11,6 +11,8 @@ import com.google.gson.*;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import model.character.Character;
+import model.character.WhoFight;
+import model.character.monster.Spawner;
 import model.game_pack.Lookable;
 import model.location.decorObject.DecorObjet;
 import model.location.decorObject.Spawn;
@@ -90,18 +92,25 @@ public class Location {
             JsonArray decorObjects = jsonObject.getAsJsonArray("decorObjects");
             JsonArray characters = jsonObject.getAsJsonArray("characters");
             JsonArray exits = jsonObject.getAsJsonArray("exits");
+
             for(int i = 0; i< characters.size(); i++) {
                 JsonObject jsonCharacters = characters.get(i).getAsJsonObject();
                 Class<?> objClass = Class.forName(gson.fromJson(jsonCharacters.get("name"), String.class));
                 Integer x = gson.fromJson(jsonCharacters.get("x"), Integer.class);
                 Integer y = gson.fromJson(jsonCharacters.get("y"), Integer.class);
+                Integer level = gson.fromJson(jsonCharacters.get("level"), Integer.class);
 
                 if (objClass.getSimpleName().equals("Hero")){
                     DecorObjet obj = new Spawn(x,y);
                     this.addDecorObjet(obj);
                     this.SPAWNS.add((Spawn) obj);
                 }else {
-                    Character character = (Character) objClass.getConstructors()[0].newInstance(x, y);
+                    Character character;
+                    if (level == -1 ){
+                        character = (Character) objClass.getConstructors()[0].newInstance(x, y);
+                    }else {
+                        character = (Character) objClass.getConstructors()[0].newInstance(x, y, level);
+                    }
                     this.addLookable(character);
                 }
             }
@@ -268,7 +277,7 @@ public class Location {
         try {
             switch (character.direction) {
                 case TOP -> {
-                    if (this.BOARD[x][y - 1] != null) {
+                    if (this.BOARD[x][y - 1] != null && !(this.BOARD[x][y - 1] instanceof Spawn)) {
                         return false;
                     }
                     removeCharacter(character);
@@ -276,7 +285,7 @@ public class Location {
                     addCharacter(character);
                 }
                 case BOTTOM -> {
-                    if (this.BOARD[x][y + 1] != null) {
+                    if (this.BOARD[x][y + 1] != null && !(this.BOARD[x][y + 1] instanceof Spawn)) {
                         return false;
                     }
                     removeCharacter(character);
@@ -284,7 +293,7 @@ public class Location {
                     addCharacter(character);
                 }
                 case LEFT -> {
-                    if (this.BOARD[x - 1][y] != null) {
+                    if (this.BOARD[x - 1][y] != null && !(this.BOARD[x - 1][y] instanceof Spawn)) {
                         return false;
                     }
                     removeCharacter(character);
@@ -292,7 +301,7 @@ public class Location {
                     addCharacter(character);
                 }
                 case RIGHT -> {
-                    if (this.BOARD[x + 1][y] != null) {
+                    if (this.BOARD[x + 1][y] != null && !(this.BOARD[x + 1][y] instanceof Spawn)) {
                         return false;
                     }
                     removeCharacter(character);
@@ -344,7 +353,7 @@ public class Location {
      */
     public String toFile(){
         //path of the file
-        String path = "./projet/save/locations/"+this.NAME.name()+".json";
+        String path = "./save/locations/"+this.NAME.name()+".json";
 
         List<DecorObjet> decorObjects = getDecorObjects();
         List<Character> characters = getCharacters();
@@ -375,6 +384,11 @@ public class Location {
                 writer.name("name").value(chr.getClass().getName());
                 writer.name("x").value(chr.getPosX());
                 writer.name("y").value(chr.getPosY());
+                if(chr instanceof WhoFight && !(chr instanceof Spawner)){
+                    writer.name("level").value(((WhoFight) chr).level);
+                }else{
+                    writer.name("level").value(-1);
+                }
                 writer.endObject();
             }
             writer.endArray();

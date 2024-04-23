@@ -212,11 +212,11 @@ public class MapCreatorController{
         Img1063.getChildren().add(new Spawner_Grunt3(-1,-1).getSpray());
         Img1063.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = SPAWNER_GRUNT3);
 
-        Img1071.getChildren().add((new Spawner_Ghost1(-1,-1,1)).getSpray());
+        Img1071.getChildren().add((new Spawner_Ghost1(-1,-1)).getSpray());
         Img1071.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = SPAWNER_GHOST1);
-        Img1072.getChildren().add((new Spawner_Ghost2(-1,-1,2)).getSpray());
+        Img1072.getChildren().add((new Spawner_Ghost2(-1,-1)).getSpray());
         Img1072.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = SPAWNER_GHOST2);
-        Img1073.getChildren().add((new Spawner_Ghost3(-1,-1,3)).getSpray());
+        Img1073.getChildren().add((new Spawner_Ghost3(-1,-1)).getSpray());
         Img1073.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.object_select = SPAWNER_GHOST3);
 
         Img1081.getChildren().add((new Spawner_Daemon1(-1,-1)).getSpray());
@@ -380,13 +380,13 @@ public class MapCreatorController{
                 return new Spawner_Grunt3(x,y);
             }
             case SPAWNER_GHOST1 -> {
-                return new Spawner_Ghost1(x,y,1);
+                return new Spawner_Ghost1(x,y);
             }
             case SPAWNER_GHOST2 -> {
-                return new Spawner_Ghost2(x,y,2);
+                return new Spawner_Ghost2(x,y);
             }
             case SPAWNER_GHOST3 -> {
-                return new Spawner_Ghost3(x,y,3);
+                return new Spawner_Ghost3(x,y);
             }
             case SPAWNER_DAEMON1 -> {
                 return new Spawner_Daemon1(x,y);
@@ -516,7 +516,7 @@ public class MapCreatorController{
      */
     @FXML
     public void load(){
-        if(GAME.Load("./projet/save/locations/GARDEN.json")){
+        if(GAME.Load("./save/locations/GARDEN.json")){
             this.resetMap();
             for (Pair<Location, Button> p : this.maps) { /* supprime tous les bouttons */
                 ((HBox) Tab2.getContent()).getChildren().remove(p.getValue());

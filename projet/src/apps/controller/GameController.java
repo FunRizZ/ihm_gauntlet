@@ -3,6 +3,8 @@ package apps.controller;
 import apps.game.pause.PauseScene;
 import apps.setting.JsonSetting;
 import apps.setting.SettingPersonnage;
+import javafx.application.Platform;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -16,9 +18,14 @@ import model.character.Direction;
 import model.character.hero.Hero;
 import model.game_pack.Game;
 
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
+
 public class GameController extends Pane {
     public final Game GAME;
     public final SettingPersonnage[] SETTINGS;
+    public final long timeSt;
     @FXML
     GridPane map;
     @FXML
@@ -27,6 +34,22 @@ public class GameController extends Pane {
     Label nameLocation;
     @FXML
     Label time;
+    @FXML
+    Label joueur1hp;
+    @FXML
+    Label joueur1nbKey;
+    @FXML
+    Label joueur2hp;
+    @FXML
+    Label joueur2nbKey;
+    @FXML
+    Label joueur3hp;
+    @FXML
+    Label joueur3nbKey;
+    @FXML
+    Label joueur4hp;
+    @FXML
+    Label joueur4nbKey;
 
     public void keyPressedAction(KeyEvent event){
         KeyCode key = event.getCode();
@@ -82,10 +105,19 @@ public class GameController extends Pane {
     public GameController(){
         this.GAME = Game.GAME;
         this.SETTINGS = JsonSetting.getSetting();
+        this.timeSt = System.nanoTime();
+        ScheduledExecutorService executor = Executors.newSingleThreadScheduledExecutor();
+        executor.scheduleAtFixedRate(() -> {
+            // Action à effectuer toutes les demi-secondes
+            Platform.runLater(() -> {
+                resetInterface();
+            });
+        }, 0, 500, TimeUnit.MILLISECONDS);
     }
     @FXML
     public void initialize(){
-        this.resetMap();
+        nameLocation.textProperty().bind(new SimpleStringProperty(GAME.getMainHero().getLocation().NAME.name()));
+        this.resetInterface();
     }
     public void reset(int x, int y){
         Image fondImage = new Image(MapCreatorController.class.getResource("/sprites/floor.png").toExternalForm());
@@ -104,6 +136,34 @@ public class GameController extends Pane {
             for (int y = 0; y < GAME.getMainHero().getLocation().SIZE_Y; y++){
                 reset(x,y);
             }
+        }
+    }
+    public void resetInterface(){
+        resetMap();
+        time.setText(String.valueOf((System.nanoTime() - timeSt) / 1000000000));
+
+        joueur1hp.setText(String.valueOf(GAME.HEROS.getFirst().getHp()));
+        joueur1nbKey.setText(String.valueOf(GAME.HEROS.getFirst().getNbKeys()));
+        try {
+            joueur2hp.setText(String.valueOf(GAME.HEROS.get(1).getHp()));
+            joueur2nbKey.setText(String.valueOf(GAME.HEROS.get(1).getNbKeys()));
+        }catch (IndexOutOfBoundsException e){
+            joueur2hp.setText("xxx");
+            joueur2nbKey.setText("xxx");
+        }
+        try {
+            joueur3hp.setText(String.valueOf(GAME.HEROS.get(2).getHp()));
+            joueur3nbKey.setText(String.valueOf(GAME.HEROS.get(2).getNbKeys()));
+        }catch (IndexOutOfBoundsException e){
+            joueur3hp.setText("xxx");
+            joueur3nbKey.setText("xxx");
+        }
+        try {
+            joueur4hp.setText(String.valueOf(GAME.HEROS.get(3).getHp()));
+            joueur4nbKey.setText(String.valueOf(GAME.HEROS.get(3).getNbKeys()));
+        }catch (IndexOutOfBoundsException e){
+            joueur4hp.setText("xxx");
+            joueur4nbKey.setText("xxx");
         }
     }
 }

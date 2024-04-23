@@ -7,8 +7,8 @@ import model.location.decorObject.Wall;
 
 public class Spawner_Ghost3 extends Spawner {
 
-    public Spawner_Ghost3(int x, int y, int level) {
-        super(new Ghost(-1,-1,3).getHp()*2, new Ghost(-1,-1,3).getArmor()*2, new Ghost(-1,-1,3), x, y,level);
+    public Spawner_Ghost3(int x, int y) {
+        super(new Ghost(-1,-1,3).getHp()*2, new Ghost(-1,-1,3).getArmor()*2, new Ghost(-1,-1,3), x, y,2);
     }
 
     @Override

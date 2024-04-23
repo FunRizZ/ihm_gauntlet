@@ -21,7 +21,7 @@ public abstract class WhoFight extends Character {
     private Shield shield;
 
     private int range;
-    private int level;
+    public final int level;
 
     public WhoFight(int hp, int armor_start, int damage_start, Weapon weapon, Armor armor, Shield shield, int range, int level, List<Item> items, int x, int y){
         super(items, x, y);

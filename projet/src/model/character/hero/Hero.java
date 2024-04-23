@@ -2,6 +2,7 @@ package model.character.hero;
 
 
 import model.character.WhoFight;
+import model.item.key;
 import model.location.Exit;
 import model.location.Location;
 
@@ -56,7 +57,7 @@ public class Hero extends WhoFight {
         	System.out.println("HERO kill the "+ enemy);
         	List<Item> items = enemy.getItems();
         	if (items != null) {
-        		DecorObjet obj = new Carcass(items.get(0), enemy.getPosX(), enemy.getPosY());
+        		DecorObjet obj = new Carcass(items.getFirst(), enemy.getPosX(), enemy.getPosY());
         		this.location.addDecorObjet(obj);
         	}
         	else {
@@ -89,7 +90,16 @@ public class Hero extends WhoFight {
     public String toString() {
     	return "HERO";
     }
-
+    public int getNbKeys(){
+        int nbKeys = 0;
+        if (this.getItems() == null){ return 0;}
+        for ( Item item: this.getItems()){
+            if (item instanceof key){
+                nbKeys++;
+            }
+        }
+        return nbKeys;
+    }
     @Override
     public ImageView getSpray(){
         Image spray = (new Image(Hero.class.getResource("/sprites/elf.png").toExternalForm()));

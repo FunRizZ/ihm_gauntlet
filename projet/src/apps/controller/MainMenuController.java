@@ -61,7 +61,8 @@ public class MainMenuController {
     @FXML
     public void loadGame(ActionEvent event){
         GameScene game = new GameScene();
-        Game.GAME.Load("./save/locations/GARDEN.json");
+        boolean load = Game.GAME.Load("./save/locations/GARDEN.json");
+        System.out.println(load);
         game.load();
     }
 

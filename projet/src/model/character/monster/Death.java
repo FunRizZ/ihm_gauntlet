@@ -15,9 +15,11 @@ public class Death extends WhoFight {
     public final static int DEFAULT_HP = 1000;
     public final static int DEFAULT_ARMOR = 150;
     public final static int DEFAULT_DAMAGE = 200;
-
+    public Death(int x, int y, int level){
+        super(DEFAULT_HP, DEFAULT_ARMOR, DEFAULT_DAMAGE,3,level,createItem(), x, y);
+    }
     public Death(int x, int y){
-        super(DEFAULT_HP, DEFAULT_ARMOR, DEFAULT_DAMAGE,3,1,createItem(), x, y);
+        this(x,y,1);
     }
     private static List<Item> createItem(){
         List<Item> lst = new ArrayList<>();

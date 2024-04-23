@@ -9,7 +9,7 @@
          fx:controller="apps.controller.GameController"
          stylesheets="/apps/game/GameCss.css"
         onKeyPressed="#keyPressedAction">
-    <Button> </Button>
+    <Button prefHeight="1" prefWidth="1"> </Button>
     <StackPane>
         <ScrollPane vbarPolicy="NEVER" hbarPolicy="NEVER">
             <GridPane fx:id="map"/>
@@ -53,6 +53,38 @@
                     <HBox>
                         <Label text="HP: " />
                         <Label fx:id="joueur2hp" text="XXX" />
+                    </HBox>
+                    <HBox>
+                        <Label text="Keys: " />
+                        <Label fx:id="joueur2nbKey" text="XXX" />
+                    </HBox>
+                </VBox>
+                <Region HBox.hgrow="ALWAYS" />
+                <VBox>
+                    <HBox>
+                        <Label text="%player3" style="-fx-font-size: 40;"/>
+                    </HBox>
+                    <HBox>
+                        <Label text="HP: " />
+                        <Label fx:id="joueur3hp" text="XXX" />
+                    </HBox>
+                    <HBox>
+                        <Label text="Keys: " />
+                        <Label fx:id="joueur3nbKey" text="XXX" />
+                    </HBox>
+                </VBox>
+                <Region HBox.hgrow="ALWAYS" />
+                <VBox>
+                    <HBox>
+                        <Label text="%player4" style="-fx-font-size: 40;"/>
+                    </HBox>
+                    <HBox>
+                        <Label text="HP: " />
+                        <Label fx:id="joueur4hp" text="XXX" />
+                    </HBox>
+                    <HBox>
+                        <Label text="Keys: " />
+                        <Label fx:id="joueur4nbKey" text="XXX" />
                     </HBox>
                 </VBox>
             </HBox>
