@@ -19,7 +19,7 @@ public abstract class Character extends Lookable implements IsMe{
     public Character(List<Item> items, int x, int y){
         super(x,y);
         this.items = items;
-        this.direction = Direction.TOP;
+        this.direction = Direction.BOTTOM;
     }
     /**
      * creates a character with no items

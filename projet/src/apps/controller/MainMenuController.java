@@ -1,5 +1,7 @@
 package apps.controller;
 
+import apps.game.GameLoad;
+import apps.game.GameScene;
 import apps.game.selectHero.SelectHeroScene;
 import apps.mapcreator.MapCreatorScene;
 import apps.scoreboard.ScoreboardScene;
@@ -8,6 +10,7 @@ import apps.setting.SettingCreatorScene;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import model.game_pack.Game;
 
 /**
  * Class Controller for the Game Menu
@@ -54,6 +57,12 @@ public class MainMenuController {
     public void newGame(ActionEvent event){
         SelectHeroScene heroChoice = new SelectHeroScene();
         heroChoice.load();
+    }
+    @FXML
+    public void loadGame(ActionEvent event){
+        GameScene game = new GameScene();
+        Game.GAME.Load("./save/locations/GARDEN.json");
+        game.load();
     }
 
     @FXML

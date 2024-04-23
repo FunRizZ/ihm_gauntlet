@@ -94,7 +94,12 @@ public class Hero extends WhoFight {
     public ImageView getSpray(){
         Image spray = (new Image(Hero.class.getResource("/sprites/elf.png").toExternalForm()));
         ImageView view = new ImageView(spray);
-        view.setViewport(new Rectangle2D(0, 0, 80, 80));
+        switch (this.direction){
+            case TOP -> view.setViewport(new Rectangle2D(0, 0, 80, 80));
+            case LEFT -> view.setViewport(new Rectangle2D(5*80, 80, 80, 80));
+            case RIGHT -> view.setViewport(new Rectangle2D(80, 80, 80, 80));
+            default -> view.setViewport(new Rectangle2D(320, 0, 80, 80));
+        }
         return view;
     }
     public String getKeyString(KeyCode Key) {

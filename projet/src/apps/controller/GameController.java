@@ -12,6 +12,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
+import model.character.Direction;
 import model.character.hero.Hero;
 import model.game_pack.Game;
 
@@ -40,10 +41,40 @@ public class GameController extends Pane {
                 switch (setting_personnage.getKeyString(key)) {
                     case "UP": {
                         Hero hero = GAME.HEROS.get(i);
-                        hero.getLocation().move(hero);
-                        this.resetMap();
+                        hero.direction = Direction.TOP;
+                        if(hero.getLocation().move(hero)){
+                            this.resetMap();
+                        }else{
+                            System.out.println("impossible move");
+                        }
                     }
-
+                    case "DOWN": {
+                        Hero hero = GAME.HEROS.get(i);
+                        hero.direction = Direction.BOTTOM;
+                        if(hero.getLocation().move(hero)){
+                            this.resetMap();
+                        }else{
+                            System.out.println("impossible move");
+                        }
+                    }
+                    case "LEFT": {
+                        Hero hero = GAME.HEROS.get(i);
+                        hero.direction = Direction.LEFT;
+                        if(hero.getLocation().move(hero)){
+                            this.resetMap();
+                        }else{
+                            System.out.println("impossible move");
+                        }
+                    }
+                    case "RIGHT": {
+                        Hero hero = GAME.HEROS.get(i);
+                        hero.direction = Direction.RIGHT;
+                        if(hero.getLocation().move(hero)){
+                            this.resetMap();
+                        }else{
+                            System.out.println("impossible move");
+                        }
+                    }
                 }
             }
         }
