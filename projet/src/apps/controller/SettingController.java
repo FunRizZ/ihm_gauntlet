@@ -43,7 +43,7 @@ public class SettingController{
     settingScene settingScene = JsonSetting.getSettingsScene();
 
     //language is the Resource Bundle of the different languages, use in the FXML LOADER to change languages in scenes
-    public static ResourceBundle language = ResourceBundle.getBundle("language/texts", new Locale(JsonSetting.getSettingsScene().getLangue()));
+    public static ResourceBundle language = ResourceBundle.getBundle("language/texts", Locale.forLanguageTag(JsonSetting.getSettingsScene().getLangue()));    
     
     @FXML
     private GridPane Grid;
@@ -95,13 +95,13 @@ public class SettingController{
             String selectedValue = Langue.getValue();
 
             if(Objects.equals(selectedValue, "fr")){
-                language = ResourceBundle.getBundle("language/texts", new Locale("fr"));
+                language = ResourceBundle.getBundle("language/texts", Locale.forLanguageTag("fr"));
             }
             else if(Objects.equals(selectedValue, "es")){
-                language = ResourceBundle.getBundle("language/texts", new Locale("es"));
+                language = ResourceBundle.getBundle("language/texts", Locale.forLanguageTag("es"));
             }
             else {
-                language = ResourceBundle.getBundle("language/texts", new Locale("en"));
+                language = ResourceBundle.getBundle("language/texts", Locale.forLanguageTag("en"));
             }
 
             settingScene.setLangue(selectedValue);
@@ -304,7 +304,7 @@ public class SettingController{
     @FXML
     public void reinit_setting() {
         JsonSetting.reinitialize_setting_personnage();
-        language = ResourceBundle.getBundle("language/texts", new Locale("fr"));
+        language = ResourceBundle.getBundle("language/texts", Locale.forLanguageTag("fr"));
         MainScene.stage.setWidth(JsonSetting.getSettingsScene().getWidth());
         MainScene.stage.setHeight(JsonSetting.getSettingsScene().getHeight());
         SettingCreatorScene Setting = new SettingCreatorScene();

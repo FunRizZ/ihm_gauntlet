@@ -1,44 +1,60 @@
 package apps.game.pause.soundSetting;
 
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
+import javax.sound.sampled.*;
+import java.io.IOException;
+import java.net.URL;
 
 public class SoundManager {
-    private static MediaPlayer mediaPlayer;
+    private static Clip clip;
 
     public SoundManager() {
-        setMusicFile("/apps/game/pause/soundSetting/music.wav");
+    }
+
+    public void initialize() {
+        setMusicFile("music.wav");
     }
 
     public void setMusicFile(String musicFile) {
-        if (mediaPlayer != null) {
-            mediaPlayer.stop();
+        if (clip != null && clip.isRunning()) {
+            clip.stop();
         }
         try {
-            Media wavFile = new Media(getClass().getResource(musicFile).toExternalForm());
-            mediaPlayer = new MediaPlayer(wavFile);
-        } catch (NullPointerException e) {
+            URL url = getClass().getResource(musicFile);
+            AudioInputStream audioIn = AudioSystem.getAudioInputStream(url);
+            clip = AudioSystem.getClip();
+            clip.open(audioIn);
+        } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
             e.printStackTrace();
         }
     }
 
     public static void play() {
-        mediaPlayer.play();
+        if (clip != null) {
+            clip.start();
+        }
     }
 
     public static void pause() {
-        mediaPlayer.pause();
+        if (clip != null) {
+            clip.stop();
+        }
     }
 
     public static void stop() {
-        mediaPlayer.stop();
+        if (clip != null) {
+            clip.stop();
+        }
     }
 
     public static boolean isPlaying() {
-        return mediaPlayer.getStatus() == MediaPlayer.Status.PLAYING;
+        return clip != null && clip.isRunning();
     }
 
-    public static void setVolume(double volume) {
-        mediaPlayer.setVolume(volume);
+    public static void setVolume(float volume) {
+        if (clip != null) {
+            FloatControl volumeControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+            float dB = (volume == 0.0f) ? -80.0f : (float) (20.0 * Math.log10(volume));
+            volumeControl.setValue(dB);
+        }
     }
 }

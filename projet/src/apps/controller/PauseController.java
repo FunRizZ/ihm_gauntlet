@@ -1,6 +1,7 @@
 package apps.controller;
 
 import apps.game.pause.PauseScene;
+import apps.game.pause.soundSetting.SoundManager;
 import apps.game.pause.soundSetting.SoundSettingScene;
 import apps.mainMenu.MainMenuScene;
 import javafx.application.Platform;
@@ -41,6 +42,7 @@ public class PauseController {
         PauseScene.pauseStage.close();
         MainMenuScene GameMenu = new MainMenuScene();
         GameMenu.changeScene(GameMenu.GAME_MENU, GameMenu.SCENE_TITLE);
+        SoundManager.stop();
     }
 
     /**
