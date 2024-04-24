@@ -48,24 +48,27 @@ public class Hero extends WhoFight {
     }
 
     @Override
-    public void fight(WhoFight enemy){
-    	System.out.println("HERO hit with " + this.getDamage() + " damage");
-        enemy.reduceHp(this.getDamage());
-        System.out.println("HERO hit the " + enemy);
-        System.out.println(enemy + " have : "+ enemy.getHp() +" hp");
-        if (enemy.isDead()) {
-        	System.out.println("HERO kill the "+ enemy);
-        	List<Item> items = enemy.getItems();
-        	if (items != null) {
-        		DecorObjet obj = new Carcass(items.getFirst(), enemy.getPosX(), enemy.getPosY());
-        		this.location.addDecorObjet(obj);
-        	}
-        	else {
-        		DecorObjet obj = new Carcass(enemy.getPosX(), enemy.getPosY());
-        		this.location.addDecorObjet(obj);
-        	}
-        this.location.removeCharacter(enemy);	
+    public boolean fight(WhoFight enemy){
+        if(this.getDistance(enemy) < this.getRange()) {
+            System.out.println("HERO hit with " + this.getDamage() + " damage");
+            enemy.reduceHp(this.getDamage());
+            System.out.println("HERO hit the " + enemy);
+            System.out.println(enemy + " have : " + enemy.getHp() + " hp");
+            if (enemy.isDead()) {
+                System.out.println("HERO kill the " + enemy);
+                List<Item> items = enemy.getItems();
+                if (items != null) {
+                    DecorObjet obj = new Carcass(items.getFirst(), enemy.getPosX(), enemy.getPosY());
+                    this.location.addDecorObjet(obj);
+                } else {
+                    DecorObjet obj = new Carcass(enemy.getPosX(), enemy.getPosY());
+                    this.location.addDecorObjet(obj);
+                }
+                this.location.removeCharacter(enemy);
+            }
+            return true;
         }
+        return false;
     }
 
     public boolean goLocation(Location location) {

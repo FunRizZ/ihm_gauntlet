@@ -65,10 +65,16 @@ public class MainMenuController {
         System.out.println(load);
         game.load();
     }
+    public static void handlequitToDesktop(){
+        System.out.println("You leave the game. Goodbye!");
+        if (GameController.service != null && !GameController.service.isShutdown()) {
+            GameController.service.shutdown();
+        }
+        Platform.exit();
+    }
 
     @FXML
     public void handleQuit(ActionEvent event) {
-        System.out.println("You leave the game. Goodbye!");
-        Platform.exit();
+        handlequitToDesktop();
     }
 }

@@ -48,6 +48,6 @@ public class PauseController {
      */
     @FXML
     protected void handleQuitToDesktop() {
-        Platform.exit();
+        MainMenuController.handlequitToDesktop();
     }
 }

@@ -2,9 +2,14 @@ package model.game_pack;
 import java.util.ArrayList;
 
 import java.util.List;
+import java.util.Random;
 
 import apps.setting.JsonSetting;
+import model.character.Character;
+import model.character.Direction;
+import model.character.WhoFight;
 import model.character.hero.Hero;
+import model.character.monster.Spawner;
 import model.location.Location;
 import model.location.LocationName;
 import model.location.decorObject.Spawn;
@@ -46,11 +51,30 @@ public class Game {
     public Hero getMainHero(){
         return this.HEROS.getFirst();
     }
-
+    public Hero getTheClosestHero(Lookable other){
+        int distanceMin = Integer.MAX_VALUE;
+        Hero closestHero = null;
+        for (Hero hero : this.HEROS){
+            if (hero.getDistance(other) < distanceMin){
+                distanceMin = (int) hero.getDistance(other);
+                closestHero = hero;
+            }
+        }
+        return closestHero;
+    }
     /**
-     * all the characters fight againt the HERO. The HERO don't attacks himself
+     * all the characters fight againt the HERO or move. The HERO don't attacks himself
      */
     public void attackHero(){
+        for (Character character : this.getMainHero().getLocation().getCharacters()){
+            Hero hero = getTheClosestHero(character);
+            if (character instanceof WhoFight && !(character instanceof Hero)){
+                if (!((WhoFight) character).fight(hero) && !(character instanceof Spawner)){
+                    character.direction = Direction.values()[new Random().nextInt(4)];
+                    hero.getLocation().move(character);
+                }
+            }
+        }
     }
     public void changeLocation(Location location){
         this.location = location;

@@ -445,8 +445,7 @@ public class MapCreatorController{
      */
     @FXML
     public void handleQuit() {
-        System.out.println("You leave the game. Goodbye!");
-        Platform.exit();
+        MainMenuController.handlequitToDesktop();
     }
 
     /**

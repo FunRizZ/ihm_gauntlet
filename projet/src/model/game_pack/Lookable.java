@@ -4,10 +4,10 @@ import javafx.scene.image.ImageView;
 
 public abstract class Lookable {
     private int x;
-    private int Y;
+    private int y;
     public Lookable(int x, int y){
         this.x = x;
-        this.Y = y;
+        this.y = y;
     }
     public abstract void look();
 
@@ -15,10 +15,13 @@ public abstract class Lookable {
         return x;
     }
     public int getPosY() {
-        return Y;
+        return y;
     }
     public void setPosX(int x){this.x = x;}
-    public void setPosY(int y){this.Y = y;}
+    public void setPosY(int y){this.y = y;}
+    public double getDistance(Lookable other){
+        return Math.sqrt(Math.pow((this.x - other.x),2) + Math.pow((this.y - other.y),2));
+    }
     /**
      * @return the path of the spray
      */

@@ -28,9 +28,9 @@ public class Wizard extends Hero {
         Image spray = (new Image(Hero.class.getResource("/sprites/wizard.png").toExternalForm()));
         ImageView view = new ImageView(spray);
         switch (this.direction){
-            case TOP -> view.setViewport(new Rectangle2D(0, 0, 80, 80));
+            case TOP -> view.setViewport(new Rectangle2D(0, 80, 80, 80));
             case LEFT -> view.setViewport(new Rectangle2D(5*80, 80, 80, 80));
-            case RIGHT -> view.setViewport(new Rectangle2D(80, 80, 80, 80));
+            case RIGHT -> view.setViewport(new Rectangle2D(2*80, 80, 80, 80));
             default -> view.setViewport(new Rectangle2D(320, 0, 80, 80));
         }
         return view;

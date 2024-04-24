@@ -57,12 +57,17 @@ public abstract class WhoFight extends Character {
     public boolean isDead(){
         return this.hp <= 0;
     }
+
     /**
      * reduces the hp of the enemy in function of the damage
      * @param enemy
      */
-    public void fight(WhoFight enemy) {
-    	enemy.reduceHp(this.getDamage());
+    public boolean fight(WhoFight enemy) {
+        if (this.getDistance(enemy) < range){
+            enemy.reduceHp(this.getDamage());
+            return true;
+        }
+        return false;
     }
 
     /**
