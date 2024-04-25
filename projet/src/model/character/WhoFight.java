@@ -60,7 +60,6 @@ public abstract class WhoFight extends Character {
 
     /**
      * reduces the hp of the enemy in function of the damage
-     * @param enemy
      */
     public boolean fight(WhoFight enemy) {
         if (this.getDistance(enemy) < range){
@@ -97,19 +96,25 @@ public abstract class WhoFight extends Character {
     }
     public void setArmor(Armor armor) {
         try{this.armor_total -= this.armor.getArmor();}
-        catch(NullPointerException e){}
+        catch(NullPointerException e){
+            System.err.println(e.getMessage());
+        }
     	this.armor_total += armor.getArmor();
     	this.armor = armor;
     }
     public void setShield(Shield shield) {
         try{this.armor_total -= this.shield.getProtection();}
-        catch(NullPointerException e){}
+        catch(NullPointerException e){
+            System.err.println(e.getMessage());
+        }
     	this.armor_total += shield.getProtection();
     	this.shield = shield;
     }
     public void setWeapon(Weapon weapon) {
         try{this.damage -= this.weapon.getDamage();}
-        catch(NullPointerException e){}
+        catch(NullPointerException e){
+            System.err.println(e.getMessage());
+        }
     	this.damage += weapon.getDamage();
     	this.weapon = weapon;
     }
@@ -119,7 +124,7 @@ public abstract class WhoFight extends Character {
     	dest += "hp : " + this.getHp() + "\n\t";
     	dest += "armor : " + this.getArmor() + "\n\t";
     	dest += "damage : " + this.getDamage() + "\n";
-    	dest += "the "+ this.toString() + " have equip :\n\t";
+    	dest += "the "+ this + " have equip :\n\t";
     	if (this.armor != null) {
     		dest += this.armor + "\n\t";
     	}

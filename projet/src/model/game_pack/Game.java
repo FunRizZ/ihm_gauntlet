@@ -9,6 +9,7 @@ import model.character.Character;
 import model.character.Direction;
 import model.character.WhoFight;
 import model.character.hero.Hero;
+import model.character.hero.Warrior;
 import model.character.monster.Spawner;
 import model.location.Location;
 import model.location.LocationName;
@@ -51,23 +52,31 @@ public class Game {
     public Hero getMainHero(){
         return this.HEROS.getFirst();
     }
+
+    /**
+     * @paramz other the piece who you want to compare
+     * @return the closest hero alive or null
+     */
     public Hero getTheClosestHero(Lookable other){
-        int distanceMin = Integer.MAX_VALUE;
+        double distanceMin = Double.MAX_VALUE;
         Hero closestHero = null;
         for (Hero hero : this.HEROS){
-            if (hero.getDistance(other) < distanceMin){
-                distanceMin = (int) hero.getDistance(other);
+            if (hero.getDistance(other) < distanceMin && !hero.isDead()){
+                distanceMin =  hero.getDistance(other);
                 closestHero = hero;
             }
         }
         return closestHero;
     }
     /**
-     * all the characters fight againt the HERO or move. The HERO don't attacks himself
+     * all the characters fight againt the HERO or move. The HERO don't attack himself
+     * @return true if some hero are alive else false
      */
-    public void attackHero(){
+    public boolean attackHero(){
         for (Character character : this.getMainHero().getLocation().getCharacters()){
             Hero hero = getTheClosestHero(character);
+
+            if (hero == null){ return false;}
             if (character instanceof WhoFight && !(character instanceof Hero)){
                 if (!((WhoFight) character).fight(hero) && !(character instanceof Spawner)){
                     character.direction = Direction.values()[new Random().nextInt(4)];
@@ -75,6 +84,7 @@ public class Game {
                 }
             }
         }
+        return true;
     }
     public void changeLocation(Location location){
         this.location = location;
@@ -91,7 +101,7 @@ public class Game {
             this.location = new Location(path);
             location.loadJson(path);
         }catch (Exception e){
-            System.out.println(e);
+            System.err.println(e.getMessage());
             return false;
         }
         changeLocation(this.location);
@@ -105,7 +115,7 @@ public class Game {
         for (int i = 0; i< this.NB_HERO; i++){
             int spawnX = this.location.SPAWNS.get(i).getPosX();
             int spawnY = this.location.SPAWNS.get(i).getPosY();
-            Hero hero =  new Hero(this.location,JsonSetting.getSetting(0),spawnX,spawnY);
+            Hero hero =  new Warrior(this.location,JsonSetting.getSetting(0),spawnX,spawnY);
 
             this.HEROS.add(hero);
             this.location.addCharacter(hero);

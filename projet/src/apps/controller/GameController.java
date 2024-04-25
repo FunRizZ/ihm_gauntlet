@@ -118,7 +118,11 @@ public class GameController extends Pane {
             // Action à effectuer toutes les demi-secondes
             Platform.runLater(() -> {
                 this.resetInterface();
-                GAME.attackHero();
+                if (!GAME.attackHero()){
+                    System.out.println("game lose");
+                    this.resetInterface();
+                    service.shutdown();
+                }
                 //System.out.println("Action exécutée toutes les demi-secondes");
             });
         }, 0, 500, TimeUnit.MILLISECONDS);

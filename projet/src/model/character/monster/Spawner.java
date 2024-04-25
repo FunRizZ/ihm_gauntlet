@@ -9,12 +9,10 @@ import java.util.Random;
 
 public abstract class Spawner extends WhoFight {
     public final WhoFight MOB;
-    public final Location LOCATION;
 
     public Spawner(int hp, int armor_start, WhoFight mob, int x, int y, int level) {
         super(hp, armor_start, 0,3,level, x, y);
         this.MOB = mob;
-        this.LOCATION = Game.GAME.getMainHero().getLocation();
     }
     @Override
     public boolean fight(WhoFight enemy){
@@ -27,12 +25,11 @@ public abstract class Spawner extends WhoFight {
                 int x = (new Random()).nextInt(distanceX * 2) - distanceX;
                 int y = (new Random()).nextInt(distanceY * 2) - distanceY;
                 try {
-                    monster = (Character) this.MOB.getClass().getConstructors()[0].newInstance(this.getPosX() + x, this.getPosY() + y,level);
+                    monster = (Character) this.MOB.getClass().getConstructors()[0].newInstance(this.getPosX() + x, this.getPosY() + y, this.level);
                 } catch (Exception e) {
                     System.err.println("error on fight (Spawner)");
                 }
-            }
-            while (this.LOCATION.addCharacter(monster));
+            } while (Game.GAME.getMainHero().getLocation().addCharacter(monster));
             return true;
         }
         return false;
