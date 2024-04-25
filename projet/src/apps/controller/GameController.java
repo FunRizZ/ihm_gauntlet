@@ -2,6 +2,7 @@ package apps.controller;
 
 import apps.MainScene;
 import apps.game.pause.PauseScene;
+import apps.game.pause.soundSetting.SoundManager;
 import apps.setting.JsonSetting;
 import apps.setting.SettingPersonnage;
 import javafx.application.Platform;
@@ -114,6 +115,9 @@ public class GameController extends Pane {
         this.SETTINGS = JsonSetting.getSetting();
         this.timeSt = System.nanoTime();
         service = Executors.newSingleThreadScheduledExecutor();
+        SoundManager soundManager = new SoundManager();
+        soundManager.initialize();
+        SoundManager.play();
         service.scheduleAtFixedRate(() -> {
             // Action à effectuer toutes les demi-secondes
             Platform.runLater(() -> {

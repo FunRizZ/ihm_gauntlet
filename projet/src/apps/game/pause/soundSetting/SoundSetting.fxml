@@ -13,7 +13,6 @@
             <children>
                 <Label text="%volume" />
                 <Slider fx:id="volumeSlider" min="0" max="100" value="50" />
-                <Button text="%toggleSound" fx:id="toggleSoundButton" onAction="#handleToggleSound"/>
                 <Button text="%toggleMusic" fx:id="toggleMusicButton" onAction="#handleToggleMusic"/>
                 <Button text="%back" fx:id="backButton" onAction="#handleBack"/>
             </children>

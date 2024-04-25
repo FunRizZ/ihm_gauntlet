@@ -14,7 +14,7 @@ public class SoundSettingController {
     public void initialize(){
         volumeSlider.valueProperty().addListener((observable, oldValue, newValue) -> {
             double volume = newValue.doubleValue() / 100.0; // Assuming the slider range is 0-100
-            SoundManager.setVolume(volume);
+            SoundManager.setVolume((float)volume);
         });
     }
 
@@ -28,14 +28,6 @@ public class SoundSettingController {
         } else {
             SoundManager.play();
         }
-    }
-
-
-    /**
-     * Toggles the sound on/off
-     */
-    @FXML
-    protected void handleToggleSound() {
     }
 
     /**
