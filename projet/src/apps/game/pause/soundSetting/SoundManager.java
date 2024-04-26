@@ -6,6 +6,7 @@ import java.net.URL;
 
 public class SoundManager {
     private static Clip clip;
+    public static float volume = 0.5f;
 
     public SoundManager() {
     }
@@ -23,6 +24,7 @@ public class SoundManager {
             AudioInputStream audioIn = AudioSystem.getAudioInputStream(url);
             clip = AudioSystem.getClip();
             clip.open(audioIn);
+            setVolume(volume);
         } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
             e.printStackTrace();
         }
@@ -50,8 +52,9 @@ public class SoundManager {
         return clip != null && clip.isRunning();
     }
 
-    public static void setVolume(float volume) {
+    public static void setVolume(float new_volume) {
         if (clip != null) {
+            volume = new_volume;
             FloatControl volumeControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
             float dB = (volume == 0.0f) ? -80.0f : (float) (20.0 * Math.log10(volume));
             volumeControl.setValue(dB);

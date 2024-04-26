@@ -36,6 +36,7 @@ public class GameController extends Pane {
     public final long timeSt;
     private Node[][] gridPaneArray = null;
     public static ScheduledExecutorService service;
+    public static boolean isPaused = false;
     @FXML
     GridPane map;
     @FXML
@@ -65,6 +66,7 @@ public class GameController extends Pane {
         KeyCode key = event.getCode();
         System.out.println(key);
         if (key == KeyCode.ESCAPE){
+            isPaused = !isPaused;
             PauseScene box = new PauseScene();
             box.loadNewScene();
         }
@@ -112,30 +114,33 @@ public class GameController extends Pane {
         soundManager.initialize();
         SoundManager.play();
         service.scheduleAtFixedRate(() -> {
+            System.out.println(isPaused);
+            if (!isPaused) {
             // Action à effectuer toutes les demi-secondes
-            Platform.runLater(() -> {
-                this.resetInterface();
-                Set<Point> cells = new HashSet<>();
-                GAME.getMainHero().getLocation().getCharacters().forEach(character -> {
-                    if (character instanceof WhoFight && !(character instanceof Hero)){
-                        cells.add(new Point(character.getPosX(), character.getPosY()));
-                    }
-                });
-                if (!GAME.attackHero()){
-                    System.out.println("game lose");
+                Platform.runLater(() -> {
                     this.resetInterface();
-                    service.shutdown();
-                }
-                GAME.getMainHero().getLocation().getCharacters().forEach(character -> {
-                    if (character instanceof WhoFight && !(character instanceof Hero)){
-                        cells.add(new Point(character.getPosX(), character.getPosY()));
+                    Set<Point> cells = new HashSet<>();
+                    GAME.getMainHero().getLocation().getCharacters().forEach(character -> {
+                        if (character instanceof WhoFight && !(character instanceof Hero)){
+                            cells.add(new Point(character.getPosX(), character.getPosY()));
+                        }
+                    });
+                    if (!GAME.attackHero()){
+                        System.out.println("game lose");
+                        this.resetInterface();
+                        service.shutdown();
                     }
+                    GAME.getMainHero().getLocation().getCharacters().forEach(character -> {
+                        if (character instanceof WhoFight && !(character instanceof Hero)){
+                            cells.add(new Point(character.getPosX(), character.getPosY()));
+                        }
+                    });
+                    cells.forEach(cell -> {
+                        this.resetCell(cell.x, cell.y);
+                    });
+                    //System.out.println("Action exécutée toutes les demi-secondes");
                 });
-                cells.forEach(cell -> {
-                    this.resetCell(cell.x, cell.y);
-                });
-                //System.out.println("Action exécutée toutes les demi-secondes");
-            });
+            }
         }, 0, 500, TimeUnit.MILLISECONDS);
         MainScene.stage.setOnCloseRequest((WindowEvent event) -> {
             // Arrêter le ScheduledExecutorService lorsque la fenêtre se ferme
