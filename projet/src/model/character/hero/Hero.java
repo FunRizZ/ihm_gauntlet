@@ -58,7 +58,7 @@ public abstract class Hero extends WhoFight {
                 System.out.println("HERO kill the " + enemy);
                 List<Item> items = enemy.getItems();
                 if (items != null) {
-                    DecorObjet obj = new Carcass(items.getFirst(), enemy.getPosX(), enemy.getPosY());
+                    DecorObjet obj = new Carcass(items.get(0), enemy.getPosX(), enemy.getPosY());
                     this.location.addDecorObjet(obj);
                 } else {
                     DecorObjet obj = new Carcass(enemy.getPosX(), enemy.getPosY());

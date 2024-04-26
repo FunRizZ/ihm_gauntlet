@@ -304,7 +304,7 @@ public class MapCreatorController{
             saveButton.setDisable(true);
         });
         ((HBox)Tab2.getContent()).getChildren().add(b);
-        maps.addLast( new Pair<>(location, b));
+        maps.add( new Pair<>(location, b));
         return b;
     }
 
@@ -553,7 +553,7 @@ public class MapCreatorController{
     @FXML
     public void Back(){
         if (this.maps.size() > 1){
-            GAME.changeLocation(this.maps.getFirst().getKey());
+            GAME.changeLocation(this.maps.get(0).getKey());
             this.resetMap();
             saveButton.setDisable(false);
             for (Pair<Location, Button> p : this.maps) {

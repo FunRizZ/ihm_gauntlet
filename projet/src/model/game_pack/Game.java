@@ -50,7 +50,7 @@ public class Game {
     }
 
     public Hero getMainHero(){
-        return this.HEROS.getFirst();
+        return this.HEROS.get(0);
     }
 
     /**
@@ -81,6 +81,7 @@ public class Game {
                 if (!((WhoFight) character).fight(hero) && !(character instanceof Spawner)){
                     character.direction = Direction.values()[new Random().nextInt(4)];
                     hero.getLocation().move(character);
+                    ((WhoFight)character).reset_attack_speed();
                 }
             }
         }
@@ -124,8 +125,8 @@ public class Game {
     public void addHero(Hero h){
         if(this.NB_HERO == 1 && this.defaultHero){
             this.defaultHero = false;
-            this.location.removeCharacter(this.HEROS.getFirst());
-            this.HEROS.removeFirst();
+            this.location.removeCharacter(this.HEROS.get(0));
+            this.HEROS.remove(0);
             this.NB_HERO--;
             this.location = h.getLocation();
         }

@@ -1,4 +1,5 @@
 
+import model.character.hero.Warrior;
 import model.character.hero.Hero;
 import model.character.monster.Daemon;
 import model.character.monster.Grunt;
@@ -39,7 +40,7 @@ public class CharacterTest {
         l.resetBoard();
         SettingPersonnage setting = new SettingPersonnage(null, null, null, null, null, null, null);
 
-        h = new Hero(l,setting,5,5);
+        h = new Warrior(l,setting,5,5);
         characters = new ArrayList<WhoFight>();
         characters.add(new Knight(1,1));
         //characters.add(new Daemon(2,2));

@@ -10,6 +10,7 @@ import model.item.Weapon;
 public abstract class WhoFight extends Character {
     private static final int MAX_HP = 15000;
     private int hp;
+    private int attack_speed = 0;
     /**
      * some of shield, armor and start_armor
      */
@@ -63,10 +64,21 @@ public abstract class WhoFight extends Character {
      */
     public boolean fight(WhoFight enemy) {
         if (this.getDistance(enemy) < range){
-            enemy.reduceHp(this.getDamage());
+            attack_speed++;
+            if (attack_speed == 10){
+                attack_speed = 0;
+                enemy.reduceHp(this.getDamage());
+            }
             return true;
         }
         return false;
+    }
+
+    /**
+     * reset the attack speed of the character
+     */
+    public void reset_attack_speed(){
+        this.attack_speed = 0;
     }
 
     /**

@@ -43,6 +43,7 @@ public class PauseController {
         MainMenuScene GameMenu = new MainMenuScene();
         GameMenu.changeScene(GameMenu.GAME_MENU, GameMenu.SCENE_TITLE);
         SoundManager.stop();
+        GameController.service.shutdown();
     }
 
     /**
