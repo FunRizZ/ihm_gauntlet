@@ -18,11 +18,14 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.WindowEvent;
+import model.character.Character;
 import model.character.Direction;
 import model.character.WhoFight;
 import model.character.hero.Hero;
 import model.game_pack.Game;
+import model.game_pack.Lookable;
 
+import java.util.List;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -77,28 +80,70 @@ public class GameController extends Pane {
                 switch (setting_personnage.getKeyString(key)) {
                     case "UP": {
                         hero.direction = Direction.TOP;
+                        if(hero.getLocation().move(hero)){
+                            cells.add(new Point(hero.getPosX(), hero.getPosY()));
+                            cells.forEach(cell -> {
+                                this.resetCell(cell.x, cell.y);
+                            });
+                        } else {
+                            System.out.println("impossible move");
+                        }
                         break;
                     }
                     case "DOWN": {
                         hero.direction = Direction.BOTTOM;
+                        if(hero.getLocation().move(hero)){
+                            cells.add(new Point(hero.getPosX(), hero.getPosY()));
+                            cells.forEach(cell -> {
+                                this.resetCell(cell.x, cell.y);
+                            });
+                        } else {
+                            System.out.println("impossible move");
+                        }
                         break;
                     }
                     case "LEFT": {
                         hero.direction = Direction.LEFT;
+                        if(hero.getLocation().move(hero)){
+                            cells.add(new Point(hero.getPosX(), hero.getPosY()));
+                            cells.forEach(cell -> {
+                                this.resetCell(cell.x, cell.y);
+                            });
+                        } else {
+                            System.out.println("impossible move");
+                        }
                         break;
                     }
                     case "RIGHT": {
                         hero.direction = Direction.RIGHT;
+                        if(hero.getLocation().move(hero)){
+                            cells.add(new Point(hero.getPosX(), hero.getPosY()));
+                            cells.forEach(cell -> {
+                                this.resetCell(cell.x, cell.y);
+                            });
+                        } else {
+                            System.out.println("impossible move");
+                        }
                         break;
                     }
-                }
-                if(hero.getLocation().move(hero)){
-                    cells.add(new Point(hero.getPosX(), hero.getPosY()));
-                    cells.forEach(cell -> {
-                        this.resetCell(cell.x, cell.y);
-                    });
-                } else {
-                    System.out.println("impossible move");
+                    case "Attack":{
+                        List<Character> l = GAME.getMainHero().getLocation().getCharacters();
+                        try {
+                            WhoFight enemy = GAME.getTheClosest(l, hero);
+                            if(hero.fight(enemy)){
+                                cells.add(new Point(hero.getPosX(), hero.getPosY()));
+                                cells.add(new Point(enemy.getPosX(), enemy.getPosY()));
+                                cells.forEach(cell -> {
+                                    this.resetCell(cell.x, cell.y);
+                                });
+                            } else {
+                                System.out.println("impossible move");
+                            }
+                        }catch (Exception e){
+                            System.out.println("attack impossible");
+                        }
+                        break;
+                    }
                 }
             }
         }

@@ -54,7 +54,7 @@ public class Game {
     }
 
     /**
-     * @paramz other the piece who you want to compare
+     * @param other the piece who you want to compare
      * @return the closest hero alive or null
      */
     public Hero getTheClosestHero(Lookable other){
@@ -67,6 +67,23 @@ public class Game {
             }
         }
         return closestHero;
+    }
+    /**
+     * @param other the piece who you want to compare
+     * @return the closest alive and not a hero or null
+     */
+    public WhoFight getTheClosest(List<Character> list, Lookable other){
+        double distanceMin = Double.MAX_VALUE;
+        WhoFight closest = null;
+        for (Character character : list) {
+            if (character instanceof WhoFight && !(character instanceof Hero)) {
+                if (character.getDistance(other) < distanceMin && !((WhoFight) character).isDead()) {
+                    distanceMin = character.getDistance(other);
+                    closest = (WhoFight) character;
+                }
+            }
+        }
+        return closest;
     }
     /**
      * all the characters fight againt the HERO or move. The HERO don't attack himself
@@ -101,6 +118,7 @@ public class Game {
         try {
             this.location = new Location(path);
             location.loadJson(path);
+            changeLocation(this.location);
         }catch (Exception e){
             System.err.println(e.getMessage());
             return false;
@@ -126,12 +144,13 @@ public class Game {
         if(this.NB_HERO == 1 && this.defaultHero){
             this.defaultHero = false;
             this.location.removeCharacter(this.HEROS.get(0));
-            this.HEROS.remove(0);
+            this.HEROS.removeFirst();
             this.NB_HERO--;
             this.location = h.getLocation();
         }
         this.NB_HERO++;
         this.HEROS.add(h);
         this.location.addCharacter(h);
+        h.setLocation(this.location);
     }
 }

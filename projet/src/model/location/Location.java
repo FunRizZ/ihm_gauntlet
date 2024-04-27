@@ -100,7 +100,7 @@ public class Location {
                 Integer y = gson.fromJson(jsonCharacters.get("y"), Integer.class);
                 Integer level = gson.fromJson(jsonCharacters.get("level"), Integer.class);
 
-                if (objClass.getSimpleName().equals("Hero")){
+                if (objClass.getName().split("\\.")[2].equals("hero")){
                     DecorObjet obj = new Spawn(x,y);
                     this.addDecorObjet(obj);
                     this.SPAWNS.add((Spawn) obj);

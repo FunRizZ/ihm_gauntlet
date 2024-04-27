@@ -22,7 +22,7 @@ public abstract class Hero extends WhoFight {
     public final static int DEFAULT_ARMOR = 50;
     public final static int DEFAULT_DAMAGE = 200;
     public final static int level = 0;
-    public final static int DEFAULT_RANGE = 100;
+    public final static int DEFAULT_RANGE = 10;
 
     private Location location;
     private SettingPersonnage setting;
@@ -34,7 +34,7 @@ public abstract class Hero extends WhoFight {
     }
 
     public Hero(Location location, SettingPersonnage setting, int x, int y, int hp, int armor, int damage, int range){
-        super(hp, armor, damage,level,range, x, y);
+        super(hp, armor, damage,range,level, x, y);
         this.location = location;
         this.setting = setting;
     }
@@ -56,15 +56,12 @@ public abstract class Hero extends WhoFight {
             System.out.println(enemy + " have : " + enemy.getHp() + " hp");
             if (enemy.isDead()) {
                 System.out.println("HERO kill the " + enemy);
+                this.location.removeCharacter(enemy);
                 List<Item> items = enemy.getItems();
                 if (items != null) {
-                    DecorObjet obj = new Carcass(items.get(0), enemy.getPosX(), enemy.getPosY());
-                    this.location.addDecorObjet(obj);
-                } else {
-                    DecorObjet obj = new Carcass(enemy.getPosX(), enemy.getPosY());
+                    DecorObjet obj = new Carcass(items.getFirst(), enemy.getPosX(), enemy.getPosY());
                     this.location.addDecorObjet(obj);
                 }
-                this.location.removeCharacter(enemy);
             }
             return true;
         }

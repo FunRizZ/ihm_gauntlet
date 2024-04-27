@@ -2,6 +2,9 @@ package model.character;
 
 import java.util.List;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
+import javafx.util.Duration;
 import model.item.Armor;
 import model.item.Item;
 import model.item.Shield;
@@ -10,7 +13,7 @@ import model.item.Weapon;
 public abstract class WhoFight extends Character {
     private static final int MAX_HP = 15000;
     private int hp;
-    private int attack_speed = 0;
+    protected int attack_speed = 0;
     /**
      * some of shield, armor and start_armor
      */
@@ -67,6 +70,7 @@ public abstract class WhoFight extends Character {
             attack_speed++;
             if (attack_speed == 10){
                 attack_speed = 0;
+                Timeline animation = new Timeline( new KeyFrame( Duration.millis(20), e -> { }));
                 enemy.reduceHp(this.getDamage());
             }
             return true;

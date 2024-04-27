@@ -20,17 +20,21 @@ public abstract class Spawner extends WhoFight {
         int distanceY = Math.abs(this.getPosY() - enemy.getPosY())+1;
         System.out.println(distanceX +" "+ distanceY+ " disnance "+ this.getDistance(enemy));
         if (this.getDistance(enemy) <= this.getRange()) {
-            Character monster = null;
-            do {
-                int x = (new Random()).nextInt(distanceX * 2) - distanceX;
-                int y = (new Random()).nextInt(distanceY * 2) - distanceY;
-                try {
-                    monster = (Character) this.MOB.getClass().getConstructors()[0].newInstance(this.getPosX() + x, this.getPosY() + y, this.level);
-                } catch (Exception e) {
-                    System.err.println("error on fight (Spawner)");
-                }
-            } while (Game.GAME.getMainHero().getLocation().addCharacter(monster));
-            return true;
+            this.attack_speed++;
+            if (this.attack_speed == 10) {
+                this.reset_attack_speed();
+                Character monster = null;
+                do {
+                    int x = (new Random()).nextInt(distanceX * 2) - distanceX;
+                    int y = (new Random()).nextInt(distanceY * 2) - distanceY;
+                    try {
+                        monster = (Character) this.MOB.getClass().getConstructors()[0].newInstance(this.getPosX() + x, this.getPosY() + y, this.level);
+                    } catch (Exception e) {
+                        System.err.println("error on fight (Spawner)");
+                    }
+                } while (Game.GAME.getMainHero().getLocation().addCharacter(monster));
+                return true;
+            }
         }
         return false;
     }
