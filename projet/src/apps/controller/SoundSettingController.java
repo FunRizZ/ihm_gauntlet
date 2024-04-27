@@ -12,6 +12,7 @@ public class SoundSettingController {
 
     @FXML
     public void initialize(){
+        volumeSlider.setValue(SoundManager.volume * 100.0);
         volumeSlider.valueProperty().addListener((observable, oldValue, newValue) -> {
             double volume = newValue.doubleValue() / 100.0; // Assuming the slider range is 0-100
             SoundManager.setVolume((float)volume);

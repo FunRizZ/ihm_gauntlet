@@ -1,5 +1,6 @@
 package apps.game.pause;
 
+import apps.controller.GameController;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
@@ -22,6 +23,7 @@ public class PauseScene{
 
             pauseStage.getScene().addEventHandler(KeyEvent.KEY_PRESSED, (KeyEvent event) -> {
                 if (event.getCode() == KeyCode.ESCAPE) {
+                    GameController.isPaused = false;
                     pauseStage.close();
                 }
             });
@@ -33,7 +35,7 @@ public class PauseScene{
     }
 
     public void loadNewScene() {
-        Scene pauseScene = new Scene(MENU, 300, 200);
+        Scene pauseScene = new Scene(MENU, 300, 300);
         pauseStage = new Stage();
         pauseStage.initModality(javafx.stage.Modality.APPLICATION_MODAL);
         pauseStage.setScene(pauseScene);
@@ -41,6 +43,7 @@ public class PauseScene{
 
         pauseScene.addEventHandler(KeyEvent.KEY_PRESSED, (KeyEvent event) -> {
             if (event.getCode() == KeyCode.ESCAPE) {
+                GameController.isPaused = false;
                 pauseStage.close();
             }
         });
