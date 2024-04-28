@@ -24,11 +24,19 @@ public class SelectHeroController extends BorderPane {
     @FXML
     StackPane Elf;
     @FXML
+    Button ElfButton;
+    @FXML
     StackPane Warrior;
+    @FXML
+    Button WarriorButton;
     @FXML
     StackPane Valkyrie;
     @FXML
+    Button ValkyrieButton;
+    @FXML
     StackPane Wizard;
+    @FXML
+    Button WizardButton;
     @FXML
     Button proceed;
     @FXML
@@ -42,26 +50,43 @@ public class SelectHeroController extends BorderPane {
         //buttons.prefWidthProperty().bind(this.prefWidthProperty());
 
         Elf.getChildren().add(new Elf(GAME.getMainHero().getLocation(), null, 0, 1).getSpray());
-        Elf.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> GAME.addHero(new Elf(GAME.getMainHero().getLocation(),
-                                                                                    JsonSetting.getSetting(GAME.NB_HERO -1),
-                                                                                    GAME.getMainHero().getLocation().SPAWNS.get(GAME.NB_HERO -1).getPosX(),
-                                                                                    GAME.getMainHero().getLocation().SPAWNS.get(GAME.NB_HERO -1).getPosY())));
+        Elf.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> ElfHandle());
         Warrior.getChildren().add(new Warrior(GAME.getMainHero().getLocation(), null, 0, 1).getSpray());
-        Warrior.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> GAME.addHero(new Warrior(GAME.getMainHero().getLocation(),
-                                                                                        JsonSetting.getSetting(GAME.NB_HERO -1),
-                                                                                        GAME.getMainHero().getLocation().SPAWNS.get(GAME.NB_HERO -1).getPosX(),
-                                                                                        GAME.getMainHero().getLocation().SPAWNS.get(GAME.NB_HERO -1).getPosY())));
+        Warrior.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> WarriorHandle());
         Valkyrie.getChildren().add(new Valkyrie(GAME.getMainHero().getLocation(), null, 0, 1).getSpray());
-        Valkyrie.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> GAME.addHero(new Valkyrie(GAME.getMainHero().getLocation(),
-                                                                                        JsonSetting.getSetting(GAME.NB_HERO -1),
-                                                                                        GAME.getMainHero().getLocation().SPAWNS.get(GAME.NB_HERO -1).getPosX(),
-                                                                                        GAME.getMainHero().getLocation().SPAWNS.get(GAME.NB_HERO -1).getPosY())));
+        Valkyrie.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> ValkyrieHandle());
         Wizard.getChildren().add(new Wizard(GAME.getMainHero().getLocation(), null, 0, 1).getSpray());
-        Wizard.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> GAME.addHero(new Wizard(GAME.getMainHero().getLocation(),
-                                                                                        JsonSetting.getSetting(GAME.NB_HERO -1),
-                                                                                        GAME.getMainHero().getLocation().SPAWNS.get(GAME.NB_HERO -1).getPosX(),
-                                                                                        GAME.getMainHero().getLocation().SPAWNS.get(GAME.NB_HERO -1).getPosY())));
+        Wizard.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> WizardHandle());
     }
+    public void ElfHandle(){
+        GAME.addHero(new Elf(GAME.getMainHero().getLocation(),
+                JsonSetting.getSetting(GAME.NB_HERO -1),
+                GAME.getMainHero().getLocation().SPAWNS.get(GAME.NB_HERO -1).getPosX(),
+                GAME.getMainHero().getLocation().SPAWNS.get(GAME.NB_HERO -1).getPosY()));
+        ElfButton.setDisable(true);
+    }
+    public void WarriorHandle(){
+        GAME.addHero(new Warrior(GAME.getMainHero().getLocation(),
+                JsonSetting.getSetting(GAME.NB_HERO -1),
+                GAME.getMainHero().getLocation().SPAWNS.get(GAME.NB_HERO -1).getPosX(),
+                GAME.getMainHero().getLocation().SPAWNS.get(GAME.NB_HERO -1).getPosY()));
+        WarriorButton.setDisable(true);
+    }
+    public void ValkyrieHandle(){
+        GAME.addHero(new Valkyrie(GAME.getMainHero().getLocation(),
+                JsonSetting.getSetting(GAME.NB_HERO -1),
+                GAME.getMainHero().getLocation().SPAWNS.get(GAME.NB_HERO -1).getPosX(),
+                GAME.getMainHero().getLocation().SPAWNS.get(GAME.NB_HERO -1).getPosY()));
+        ValkyrieButton.setDisable(true);
+    }
+    public void WizardHandle(){
+        GAME.addHero(new Wizard(GAME.getMainHero().getLocation(),
+                JsonSetting.getSetting(GAME.NB_HERO -1),
+                GAME.getMainHero().getLocation().SPAWNS.get(GAME.NB_HERO -1).getPosX(),
+                GAME.getMainHero().getLocation().SPAWNS.get(GAME.NB_HERO -1).getPosY()));
+        WizardButton.setDisable(true);
+    }
+
     /**
      * Change the actual scene to the Main Menu scene
      */
