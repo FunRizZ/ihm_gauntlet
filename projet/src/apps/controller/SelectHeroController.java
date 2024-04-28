@@ -58,6 +58,7 @@ public class SelectHeroController extends BorderPane {
         Wizard.getChildren().add(new Wizard(GAME.getMainHero().getLocation(), null, 0, 1).getSpray());
         Wizard.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> WizardHandle());
     }
+    @FXML
     public void ElfHandle(){
         GAME.addHero(new Elf(GAME.getMainHero().getLocation(),
                 JsonSetting.getSetting(GAME.NB_HERO -1),
@@ -65,6 +66,7 @@ public class SelectHeroController extends BorderPane {
                 GAME.getMainHero().getLocation().SPAWNS.get(GAME.NB_HERO -1).getPosY()));
         ElfButton.setDisable(true);
     }
+    @FXML
     public void WarriorHandle(){
         GAME.addHero(new Warrior(GAME.getMainHero().getLocation(),
                 JsonSetting.getSetting(GAME.NB_HERO -1),
@@ -72,6 +74,7 @@ public class SelectHeroController extends BorderPane {
                 GAME.getMainHero().getLocation().SPAWNS.get(GAME.NB_HERO -1).getPosY()));
         WarriorButton.setDisable(true);
     }
+    @FXML
     public void ValkyrieHandle(){
         GAME.addHero(new Valkyrie(GAME.getMainHero().getLocation(),
                 JsonSetting.getSetting(GAME.NB_HERO -1),
@@ -79,6 +82,7 @@ public class SelectHeroController extends BorderPane {
                 GAME.getMainHero().getLocation().SPAWNS.get(GAME.NB_HERO -1).getPosY()));
         ValkyrieButton.setDisable(true);
     }
+    @FXML
     public void WizardHandle(){
         GAME.addHero(new Wizard(GAME.getMainHero().getLocation(),
                 JsonSetting.getSetting(GAME.NB_HERO -1),
