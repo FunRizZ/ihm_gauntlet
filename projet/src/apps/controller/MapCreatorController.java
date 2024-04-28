@@ -11,6 +11,7 @@ import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.stage.WindowEvent;
@@ -32,6 +33,10 @@ import model.location.decorObject.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicReference;
 
 import static apps.controller.EntitiesEnum.*;
 
@@ -42,7 +47,7 @@ public class MapCreatorController{
     private EntitiesEnum object_select;
     private final Game GAME;
     private double zoom;
-    static Location newLoc;
+    private static Location newLoc;
     public static int heightMap;
     public static int widthMap;
     public List<Pair<Location, Button>> maps;
@@ -350,7 +355,7 @@ public class MapCreatorController{
                 return new Door(x,y);
             }
             case EXIT -> {
-                return new Exit(addExit(),x,y);
+                return new Exit(addExit(), x, y);
             }
             case TREASURE -> {
                 return new TreasureView(x,y);
@@ -611,28 +616,25 @@ public class MapCreatorController{
             stageNew.setY(centerYPosition - stageNew.getHeight() / 2d);
         });
 
-        stageNew.show();
-
         //Deactivate the main window
-        MainScene.scene.getRoot().setDisable(true);
+//        MainScene.scene.getRoot().setDisable(true);
         // Add an event to activate the main window when the new window closes
-        stageNew.setOnHiding((EventHandler<WindowEvent>) new EventHandler<WindowEvent>() {
-            public void handle(WindowEvent we) {
-                MainScene.scene.getRoot().setDisable(false);
-            }
-        });
-        //forces window to regain focus when lost
-        stageNew.focusedProperty().addListener((observable, oldValue, newValue) -> {
-            if (!newValue) {
-                // The window has lost focus, so we ask the window to regain focus
-                Platform.runLater(stageNew::requestFocus);
-            }
-        });
+//        stageNew.setOnHiding((EventHandler<WindowEvent>) new EventHandler<WindowEvent>() {
+//            public void handle(WindowEvent we) {
+//                MainScene.scene.getRoot().setDisable(false);
+//            }
+//        });
+//        //forces window to regain focus when lost
+////        stageNew.focusedProperty().addListener((observable, oldValue, newValue) -> {
+////            if (!newValue) {
+////                // The window has lost focus, so we ask the window to regain focus
+////                Platform.runLater(stageNew::requestFocus);
+////            }
+////        });
         submit.setOnMouseClicked(event -> {
             setSizeExit(Integer.parseInt(height.getText()), Integer.parseInt(width.getText()));
             LocationName locationName = LocationName.values()[this.maps.size()];
-            System.out.println(heightMap);
-            System.out.println(widthMap);
+            System.out.println(locationName.toString() + " "+ heightMap+" "+ widthMap);
             newLoc = GAME.createLocation(locationName, heightMap, widthMap);
             this.creatExitButton(newLoc);
             stageNew.close();
@@ -647,6 +649,11 @@ public class MapCreatorController{
                 width.clear();
             }
         });
+
+        stageNew.initOwner(MainScene.stage);
+        stageNew.initModality(Modality.APPLICATION_MODAL);
+        stageNew.showAndWait();
+
         return newLoc;
     }
 
