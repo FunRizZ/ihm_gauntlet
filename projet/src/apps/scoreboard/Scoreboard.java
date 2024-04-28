@@ -9,33 +9,51 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
-//TODO Faire la doc (Ambroise)
 
 /**
- * Class for the Scoreboard
+ * Class representing the Scoreboard
  */
 public class Scoreboard {
     /**
-     * Class score
+     * Class representing a Score
      */
     public static class Score {
         String player;
         int score;
         LocalDate date;
 
+        /**
+         * Constructor for Score
+         * @param player The name of the player
+         * @param score The score achieved by the player
+         * @param date The date when the score was achieved
+         */
         public Score(String player, int score, LocalDate date) {
             this.player = player;
             this.score = score;
             this.date = date;
         }
+
+        /**
+         * Getter for player
+         * @return The name of the player
+         */
         public String getPlayer() {
             return player;
         }
-    
+
+        /**
+         * Getter for score
+         * @return The score achieved by the player
+         */
         public Integer getScore() {
             return score;
         }
-    
+
+        /**
+         * Getter for date
+         * @return The date when the score was achieved
+         */
         public LocalDate getDate() {
             return date;
         }
@@ -43,16 +61,26 @@ public class Scoreboard {
 
     private static List<Score> scores = new ArrayList<>();
 
+    /**
+     * Method to add a score to the scoreboard
+     * @param player The name of the player
+     * @param score The score achieved by the player
+     * @param date The date when the score was achieved
+     */
     public static void addScore(String player, int score, LocalDate date) {
         if (scores.isEmpty()) {
             loadScoresFromFile();
         }
         scores.add(new Score(player, score, date));
-        // Trier les scores en ordre décroissant
+        // Sort scores in descending order
         scores.sort(Comparator.comparing(Score::getScore).reversed());
         saveScoresToFile();
     }
 
+    /**
+     * Getter for scores
+     * @return The list of scores
+     */
     public static List<Score> getScores() {
         if (scores.isEmpty()) {
             loadScoresFromFile();
@@ -60,6 +88,9 @@ public class Scoreboard {
         return scores;
     }
 
+    /**
+     * Method to save scores to a file
+     */
     private static void saveScoresToFile() {
         try (JsonWriter writer = new JsonWriter(new FileWriter("./save/Score.json"))) {
             writer.beginArray();
@@ -76,6 +107,9 @@ public class Scoreboard {
         }
     }
 
+    /**
+     * Method to load scores from a file
+     */
     private static void loadScoresFromFile() {
         try (JsonReader reader = new JsonReader(new FileReader("./save/Score.json"))) {
             reader.beginArray();
