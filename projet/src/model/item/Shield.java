@@ -15,6 +15,6 @@ public abstract class Shield extends Item{
 	public void use(Hero h) {
 		System.out.println("The hero equips " + this + "\n");
 		h.setShield(this);
-		h.remove(this);
+		h.removeItem(this);
 	}
 }

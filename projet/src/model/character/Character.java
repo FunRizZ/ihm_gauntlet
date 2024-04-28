@@ -46,7 +46,7 @@ public abstract class Character extends Lookable implements IsMe{
         }
         this.items.add(item);
     }
-    public void remove(Item item) {
+    public void removeItem(Item item) {
     	if (this.items == null) {return;}
     	this.items.remove(item);
     }

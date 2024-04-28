@@ -1,8 +1,6 @@
 
 import model.character.hero.Warrior;
 import model.character.hero.Hero;
-import model.character.monster.Daemon;
-import model.character.monster.Grunt;
 import model.character.other.Guard;
 import model.character.other.Knight;
 import model.location.decorObject.Spawn;
@@ -86,7 +84,7 @@ public class CharacterTest {
         c1.addItem(t);
         
         int size_before_remove = c1.getItems().size();
-        c1.remove(t);
+        c1.removeItem(t);
         int size_after_remove = c1.getItems().size();
 
         assertEquals(size_before_remove-1, size_after_remove);

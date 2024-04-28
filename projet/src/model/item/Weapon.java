@@ -15,6 +15,6 @@ public abstract class Weapon extends Item{
 	public void use(Hero h) {
 		System.out.println("The hero equips " + this + "\n");
 		h.setWeapon(this);
-		h.remove(this);
+		h.removeItem(this);
 	}
 }

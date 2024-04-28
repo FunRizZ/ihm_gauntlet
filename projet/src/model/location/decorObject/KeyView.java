@@ -29,7 +29,8 @@ public class KeyView extends DecorObjet implements Useable {
 	}
 	@Override
 	public void use(Hero h) {
-		this.item.use(h);
+		h.addItem(item);
+		item = null;
 		h.getLocation().removeDecorObjet(this);
 	}
 }

@@ -25,10 +25,12 @@ import model.character.hero.Hero;
 import model.game_pack.Game;
 import model.game_pack.Lookable;
 import model.game_pack.Useable;
+import model.location.Exit;
 
 import java.util.List;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 import java.util.Set;
 import java.util.HashSet;
@@ -151,13 +153,26 @@ public class GameController extends Pane {
                     }
                     case "Interact":{
                         List<Lookable> l = GAME.getMainHero().getLocation().getUseable();
-                        System.out.println("ici");
                         try{
                             Useable useable = GAME.getTheClosestUsable(l, hero);
                             useable.use(hero);
+                            if ( useable instanceof Exit){
+                                initializeGridPaneArray();
+                                resetMap();
+                                resetInterface();
+                                Platform.runLater(this::resetMap);
+                            }else {
+                                cells.add(new Point(hero.getPosX(), hero.getPosY()));
+                                cells.add(new Point(((Lookable) useable).getPosX(), ((Lookable) useable).getPosY()));
+                                cells.forEach(cell -> {
+                                    this.resetCell(cell.x, cell.y);
+                                });
+                            }
+                            resetInterface();
                         }catch (Exception e){
                             System.out.println("interaction impossible");
                         }
+                        break;
                     }
                 }
             }
@@ -185,9 +200,7 @@ public class GameController extends Pane {
         this.resetInterface();
         this.initializeGridPaneArray();
         this.resetMap();
-        Platform.runLater(() -> {
-            this.resetMap();
-        });
+        Platform.runLater(this::resetMap);
         service.scheduleAtFixedRate(() -> {
             if (!isPaused) {
             // Action à effectuer toutes les demi-secondes
@@ -221,7 +234,7 @@ public class GameController extends Pane {
     private void initializeGridPaneArray()
     {
         
-       this.gridPaneArray = new Node[GAME.SIZE_MAP_X][GAME.SIZE_MAP_y];
+       this.gridPaneArray = new Node[GAME.getMainHero().getLocation().SIZE_X][GAME.getMainHero().getLocation().SIZE_Y];
        for(Node node : map.getChildren())
        {
           this.gridPaneArray[GridPane.getRowIndex(node)][GridPane.getColumnIndex(node)] = node;
@@ -260,9 +273,12 @@ public class GameController extends Pane {
         map.getChildren().remove(n);
         reset(x, y);
     }
-
-    public void resetInterface(){
+    @FXML
+    public void resetTime(){
         time.setText(String.valueOf(((System.nanoTime() - timeSt) + pausedTime) / 1000000000));
+    }
+    public void resetInterface(){
+        this.resetTime();
 
         joueur1hp.setText(String.valueOf(GAME.HEROS.get(0).getHp()));
         joueur1nbKey.setText(String.valueOf(GAME.HEROS.get(0).getNbKeys()));

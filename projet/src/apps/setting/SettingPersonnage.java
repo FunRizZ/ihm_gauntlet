@@ -19,7 +19,7 @@ public class SettingPersonnage {
      * @param RIGHT go right
      * @param Attack attack
      * @param Bomb lauch a bomb
-     * @param Interact resurection
+     * @param Interact interaction
      */
     public SettingPersonnage(KeyCode UP, KeyCode DOWN, KeyCode LEFT, KeyCode RIGHT, KeyCode Attack, KeyCode Bomb, KeyCode Interact) {
         keySettings.put("UP", UP);

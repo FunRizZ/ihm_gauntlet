@@ -5,6 +5,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import model.character.hero.Hero;
 import model.game_pack.Useable;
+import model.item.Item;
+import model.item.key;
 
 public class Door extends DecorObjet implements Useable {
     public static int orientation = 0;
@@ -35,7 +37,8 @@ public class Door extends DecorObjet implements Useable {
     @Override
     public void use(Hero h) {
         if(h.getNbKeys() > 0){
-            h.getKeys().removeFirst();
+            Item key = h.getKeys().getFirst();
+            h.removeItem(key);
             h.getLocation().removeDecorObjet(this);
         }
     }

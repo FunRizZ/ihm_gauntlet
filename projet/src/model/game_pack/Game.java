@@ -87,7 +87,7 @@ public class Game {
     }
     /**
      * @param other the piece who you want to compare
-     * @return the closest alive and not a hero or null
+     * @return the closest at 1 range
      */
     public Useable getTheClosestUsable(List<Lookable> list, Lookable other){
         double distanceMin = Double.MAX_VALUE;
@@ -99,6 +99,9 @@ public class Game {
                     closest = (Useable) useable;
                 }
             }
+        }
+        if (distanceMin > 1.9){
+            return null;
         }
         return closest;
     }

@@ -70,7 +70,6 @@ public abstract class WhoFight extends Character {
             attack_speed++;
             if (attack_speed == 10){
                 attack_speed = 0;
-                Timeline animation = new Timeline( new KeyFrame( Duration.millis(20), e -> { }));
                 enemy.reduceHp(this.getDamage());
             }
             return true;
@@ -90,7 +89,7 @@ public abstract class WhoFight extends Character {
      * @param damage is the damage of the character who attack
      */
     public void reduceHp(int damage){
-        this.hp +=  -damage + this.armor_total;
+        this.hp -=  damage - this.armor_total;
     }
     public int getDamage() {
         return this.damage;

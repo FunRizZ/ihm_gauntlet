@@ -18,7 +18,7 @@ public abstract class Spawner extends WhoFight {
     public boolean fight(WhoFight enemy){
         int distanceX = Math.abs(this.getPosX() - enemy.getPosX())+1;
         int distanceY = Math.abs(this.getPosY() - enemy.getPosY())+1;
-        System.out.println(distanceX +" "+ distanceY+ " disnance "+ this.getDistance(enemy));
+        //System.out.println(distanceX +" "+ distanceY+ " disnance "+ this.getDistance(enemy));
         if (this.getDistance(enemy) <= this.getRange()) {
             this.attack_speed++;
             if (this.attack_speed == 10) {

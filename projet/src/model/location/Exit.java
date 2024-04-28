@@ -41,6 +41,7 @@ public class Exit extends Lookable implements Useable {
     public void use(Hero h) {
         if(h.goLocation(EXIT_LOCATION)){
             Game.GAME.changeLocation(EXIT_LOCATION);
+            System.out.println(Game.GAME.getMainHero().getLocation());
         }
     }
 }
