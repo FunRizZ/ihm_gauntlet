@@ -174,6 +174,9 @@ public class GameController extends Pane {
         this.resetInterface();
         this.initializeGridPaneArray();
         this.resetMap();
+        Platform.runLater(() -> {
+            this.resetMap();
+        });
         service.scheduleAtFixedRate(() -> {
             if (!isPaused) {
             // Action à effectuer toutes les demi-secondes
