@@ -36,10 +36,11 @@ import java.awt.Point;
 public class GameController extends Pane {
     public final Game GAME;
     public final SettingPersonnage[] SETTINGS;
-    public final long timeSt;
+    public static long timeSt;
     private Node[][] gridPaneArray = null;
     public static ScheduledExecutorService service;
     public static boolean isPaused = false;
+    private long pausedTime = 0;
     @FXML
     GridPane map;
     @FXML
@@ -69,9 +70,10 @@ public class GameController extends Pane {
         KeyCode key = event.getCode();
         System.out.println(key);
         if (key == KeyCode.ESCAPE){
-            isPaused = !isPaused;
+            isPaused = true;
             PauseScene box = new PauseScene();
             box.loadNewScene();
+            pausedTime += System.nanoTime() - timeSt;
         }
         for (int i = 0; i < GAME.NB_HERO; i++) {
             SettingPersonnage setting_personnage = JsonSetting.getSetting(i);
@@ -153,13 +155,26 @@ public class GameController extends Pane {
     public GameController(){
         this.GAME = Game.GAME;
         this.SETTINGS = JsonSetting.getSetting();
-        this.timeSt = System.nanoTime();
+        timeSt = System.nanoTime();
         service = Executors.newSingleThreadScheduledExecutor();
         SoundManager soundManager = new SoundManager();
         soundManager.initialize();
         SoundManager.play();
+        MainScene.stage.setOnCloseRequest((WindowEvent event) -> {
+            // Arrêter le ScheduledExecutorService lorsque la fenêtre se ferme
+            if (!service.isShutdown()) {
+                service.shutdown();
+            }
+        });
+    }
+
+    @FXML
+    public void initialize(){
+        nameLocation.textProperty().bind(new SimpleStringProperty(GAME.getMainHero().getLocation().NAME.name()));
+        this.resetInterface();
+        this.initializeGridPaneArray();
+        this.resetMap();
         service.scheduleAtFixedRate(() -> {
-            System.out.println(isPaused);
             if (!isPaused) {
             // Action à effectuer toutes les demi-secondes
                 Platform.runLater(() -> {
@@ -187,20 +202,6 @@ public class GameController extends Pane {
                 });
             }
         }, 0, 500, TimeUnit.MILLISECONDS);
-        MainScene.stage.setOnCloseRequest((WindowEvent event) -> {
-            // Arrêter le ScheduledExecutorService lorsque la fenêtre se ferme
-            if (!service.isShutdown()) {
-                service.shutdown();
-            }
-        });
-    }
-
-    @FXML
-    public void initialize(){
-        nameLocation.textProperty().bind(new SimpleStringProperty(GAME.getMainHero().getLocation().NAME.name()));
-        this.resetInterface();
-        this.initializeGridPaneArray();
-        this.resetMap();
     }
 
     private void initializeGridPaneArray()
@@ -247,7 +248,7 @@ public class GameController extends Pane {
     }
 
     public void resetInterface(){
-        time.setText(String.valueOf((System.nanoTime() - timeSt) / 1000000000));
+        time.setText(String.valueOf(((System.nanoTime() - timeSt) + pausedTime) / 1000000000));
 
         joueur1hp.setText(String.valueOf(GAME.HEROS.get(0).getHp()));
         joueur1nbKey.setText(String.valueOf(GAME.HEROS.get(0).getNbKeys()));

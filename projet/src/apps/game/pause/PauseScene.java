@@ -24,6 +24,7 @@ public class PauseScene{
             pauseStage.getScene().addEventHandler(KeyEvent.KEY_PRESSED, (KeyEvent event) -> {
                 if (event.getCode() == KeyCode.ESCAPE) {
                     GameController.isPaused = false;
+                    GameController.timeSt = System.nanoTime();
                     pauseStage.close();
                 }
             });
@@ -44,6 +45,7 @@ public class PauseScene{
         pauseScene.addEventHandler(KeyEvent.KEY_PRESSED, (KeyEvent event) -> {
             if (event.getCode() == KeyCode.ESCAPE) {
                 GameController.isPaused = false;
+                GameController.timeSt = System.nanoTime();
                 pauseStage.close();
             }
         });
