@@ -6,6 +6,7 @@ import model.item.key;
 import model.location.Exit;
 import model.location.Location;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import apps.setting.SettingPersonnage;
@@ -99,6 +100,16 @@ public abstract class Hero extends WhoFight {
             }
         }
         return nbKeys;
+    }
+    public List<Item> getKeys(){
+        List<Item> keys = new ArrayList<>();
+        if (this.getItems() == null){ return null;}
+        for ( Item item: this.getItems()){
+            if (item instanceof key){
+                keys.add(item);
+            }
+        }
+        return keys;
     }
     public String getKeyString(KeyCode Key) {
         return setting.getKeyString(Key);

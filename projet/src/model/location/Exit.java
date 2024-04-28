@@ -1,10 +1,13 @@
 package model.location;
 
+import model.character.hero.Hero;
+import model.game_pack.Game;
 import model.game_pack.Lookable;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import model.game_pack.Useable;
 
-public class Exit extends Lookable {
+public class Exit extends Lookable implements Useable {
     public final Location EXIT_LOCATION;
 
     public Exit(Location exit, int x, int y){
@@ -33,5 +36,11 @@ public class Exit extends Lookable {
     public ImageView getSpray() {
         Image spray = new Image(Exit.class.getResource("/sprites/exit.png").toExternalForm());
         return new ImageView(spray);
+    }
+    @Override
+    public void use(Hero h) {
+        if(h.goLocation(EXIT_LOCATION)){
+            Game.GAME.changeLocation(EXIT_LOCATION);
+        }
     }
 }

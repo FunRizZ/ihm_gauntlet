@@ -14,6 +14,7 @@ import model.character.Character;
 import model.character.WhoFight;
 import model.character.monster.Spawner;
 import model.game_pack.Lookable;
+import model.game_pack.Useable;
 import model.location.decorObject.DecorObjet;
 import model.location.decorObject.Spawn;
 
@@ -101,9 +102,9 @@ public class Location {
                 Integer level = gson.fromJson(jsonCharacters.get("level"), Integer.class);
 
                 if (objClass.getName().split("\\.")[2].equals("hero")){
-                    DecorObjet obj = new Spawn(x,y);
+                    Spawn obj = new Spawn(x,y);
                     this.addDecorObjet(obj);
-                    this.SPAWNS.add((Spawn) obj);
+                    this.SPAWNS.add( obj);
                 }else {
                     Character character;
                     if (level == -1 ){
@@ -204,6 +205,17 @@ public class Location {
             }
         }
         return decorObjects;
+    }
+    public List<Lookable> getUseable() {
+        List<Lookable> lookables = new ArrayList<>();
+        for (int x = 0; x < SIZE_X; x++) {
+            for (int y = 0; y < SIZE_Y; y++) {
+                if (this.BOARD[x][y] instanceof Useable) {
+                    lookables.add( this.BOARD[x][y]);
+                }
+            }
+        }
+        return lookables;
     }
 
 

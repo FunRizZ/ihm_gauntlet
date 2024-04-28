@@ -3,8 +3,10 @@ package model.location.decorObject;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import model.character.hero.Hero;
+import model.game_pack.Useable;
 
-public class Door extends DecorObjet{
+public class Door extends DecorObjet implements Useable {
     public static int orientation = 0;
     public Door(int x, int y) {
         super(x, y);
@@ -29,5 +31,12 @@ public class Door extends DecorObjet{
         orientation++;
         orientation = orientation%15;
         return view;
+    }
+    @Override
+    public void use(Hero h) {
+        if(h.getNbKeys() > 0){
+            h.getKeys().removeFirst();
+            h.getLocation().removeDecorObjet(this);
+        }
     }
 }

@@ -1,13 +1,12 @@
 package model.location.decorObject;
 
+import model.character.hero.Hero;
+import model.game_pack.Useable;
 import model.item.Item;
 
-public class Carcass extends DecorObjet {
+public class Carcass extends DecorObjet implements Useable {
 	public Carcass(Item i, int x, int y) {
 		super(i, x, y);
-	}
-	public Carcass(int x, int y) {
-		this(null, x, y);
 	}
 	@Override
     public String getDescription() {
@@ -17,4 +16,10 @@ public class Carcass extends DecorObjet {
     public String toString() {
     	return "Carcass";
     }
+	@Override
+	public void use(Hero h) {
+		this.item.use(h);
+		h.getLocation().removeDecorObjet(this);
+
+	}
 }

@@ -24,6 +24,7 @@ import model.character.WhoFight;
 import model.character.hero.Hero;
 import model.game_pack.Game;
 import model.game_pack.Lookable;
+import model.game_pack.Useable;
 
 import java.util.List;
 import java.util.concurrent.Executors;
@@ -147,6 +148,16 @@ public class GameController extends Pane {
                             System.out.println("attack impossible");
                         }
                         break;
+                    }
+                    case "Interact":{
+                        List<Lookable> l = GAME.getMainHero().getLocation().getUseable();
+                        System.out.println("ici");
+                        try{
+                            Useable useable = GAME.getTheClosestUsable(l, hero);
+                            useable.use(hero);
+                        }catch (Exception e){
+                            System.out.println("interaction impossible");
+                        }
                     }
                 }
             }
