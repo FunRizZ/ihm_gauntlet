@@ -298,7 +298,17 @@ public class MapCreatorController{
             }
         }
     }
-    //TODO : Nath fait la doc stp xD
+    /**
+     * Creates a button that allows the player to switch to a different location.
+     *
+     * @param location The location to which the player can switch when the button is clicked.
+     * @return The created button.
+     *
+     * This method creates a new button with the text "switch to " followed by the name of the location.
+     * When the button is clicked, it prints the current location of the main hero and the location to which the hero will move,
+     * changes the map to the new location, and disables the button and the save button.
+     * The button is added to the second tab and to the list of maps with its associated location.
+     */
     public Button creatExitButton(Location location){
         Button b = new Button("switch to "+ location.NAME.name());
         b.setOnAction( e -> {

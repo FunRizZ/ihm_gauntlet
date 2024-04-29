@@ -12,17 +12,25 @@ import java.util.List;
 //TODO Faire la doc (Ambroise)
 
 /**
- * Class for the Scoreboard
+ * The Scoreboard class manages the game scores.
+ * It provides methods to add a score, get all scores, and save/load scores from a file.
  */
 public class Scoreboard {
     /**
-     * Class score
+     * The Score class represents a score in the game.
+     * It includes the player's name, the score, and the date when the score was achieved.
      */
     public static class Score {
         String player;
         int score;
         LocalDate date;
-
+        /**
+         * Constructs a new Score.
+         *
+         * @param player The name of the player.
+         * @param score The score achieved by the player.
+         * @param date The date when the score was achieved.
+         */
         public Score(String player, int score, LocalDate date) {
             this.player = player;
             this.score = score;
@@ -42,7 +50,13 @@ public class Scoreboard {
     }
 
     private static List<Score> scores = new ArrayList<>();
-
+    /**
+     * Adds a new score to the scoreboard.
+     *
+     * @param player The name of the player.
+     * @param score The score achieved by the player.
+     * @param date The date when the score was achieved.
+     */
     public static void addScore(String player, int score, LocalDate date) {
         if (scores.isEmpty()) {
             loadScoresFromFile();
@@ -52,14 +66,20 @@ public class Scoreboard {
         scores.sort(Comparator.comparing(Score::getScore).reversed());
         saveScoresToFile();
     }
-
+    /**
+     * Returns all scores in the scoreboard.
+     *
+     * @return A list of all scores.
+     */
     public static List<Score> getScores() {
         if (scores.isEmpty()) {
             loadScoresFromFile();
         }
         return scores;
     }
-
+    /**
+     * Saves all scores to a file.
+     */
     private static void saveScoresToFile() {
         try (JsonWriter writer = new JsonWriter(new FileWriter("./save/Score.json"))) {
             writer.beginArray();
@@ -75,7 +95,9 @@ public class Scoreboard {
             e.printStackTrace();
         }
     }
-
+    /**
+     * Loads all scores from a file.
+     */
     private static void loadScoresFromFile() {
         try (JsonReader reader = new JsonReader(new FileReader("./save/Score.json"))) {
             reader.beginArray();

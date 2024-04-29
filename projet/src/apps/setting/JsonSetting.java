@@ -11,12 +11,17 @@ import java.io.FileReader;
 import java.io.IOException;
 
 /**
- * Json Class, uses for save
+ * The JsonSetting class manages the game settings.
+ * It provides methods to save and load settings from a JSON file.
  */
 public class JsonSetting {
     private static SettingPersonnage personnages[];
     private static settingScene settingsScene;  
 
+    /**
+     * Loads the settings from a JSON file.
+     * If the file cannot be read, the settings are reinitialized.
+     */
     private static void setup_setting() {
         try {
             JsonReader reader = new JsonReader(new FileReader("./save/setting.json"));
@@ -29,7 +34,10 @@ public class JsonSetting {
             reinitialize_setting_personnage();
         }
     }
-
+        /**
+     * Reinitializes the settings for each character and the scene.
+     * The new settings are saved to a JSON file.
+     */
         public static void reinitialize_setting_personnage() {
             Gson gson = new Gson();
             SettingPersonnage person1 = new SettingPersonnage(KeyCode.UP, KeyCode.DOWN, KeyCode.LEFT, KeyCode.RIGHT, KeyCode.SPACE, KeyCode.ENTER, KeyCode.F);
@@ -52,7 +60,12 @@ public class JsonSetting {
                 e.printStackTrace();
             }
         }
-    
+    /**
+     * Returns the settings for each character.
+     * If the settings have not been loaded yet, they are loaded from the JSON file.
+     *
+     * @return An array of SettingPersonnage objects representing the settings for each character.
+     */
     public static SettingPersonnage[] getSetting() {
         if (personnages == null) {
             setup_setting();
@@ -62,6 +75,13 @@ public class JsonSetting {
             return personnages;
         }
     }
+    /**
+     * Returns the settings for a specific character.
+     * If the settings have not been loaded yet, they are loaded from the JSON file.
+     *
+     * @param i The index of the character.
+     * @return A SettingPersonnage object representing the settings for the character.
+     */
     public static SettingPersonnage getSetting(int i) {
         if (personnages == null) {
             setup_setting();
@@ -71,7 +91,9 @@ public class JsonSetting {
         return personnages[i];
         }
     }
-    
+     /**
+     * Saves the current settings to a JSON file.
+     */
     public static void save_control() {
         Gson gson = new Gson();
         try {
@@ -86,7 +108,12 @@ public class JsonSetting {
             e.printStackTrace();
         }
     }
-
+    /**
+     * Returns the settings for the scene.
+     * If the settings have not been loaded yet, they are loaded from the JSON file.
+     *
+     * @return A settingScene object representing the settings for the scene.
+     */
     public static settingScene getSettingsScene() {
         if (settingsScene == null) {
             setup_setting();
