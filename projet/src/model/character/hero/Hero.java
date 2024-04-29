@@ -60,7 +60,7 @@ public abstract class Hero extends WhoFight {
                 this.location.removeCharacter(enemy);
                 List<Item> items = enemy.getItems();
                 if (items != null) {
-                    DecorObjet obj = new Carcass(items.getFirst(), enemy.getPosX(), enemy.getPosY());
+                    DecorObjet obj = new Carcass(items.get(0), enemy.getPosX(), enemy.getPosY());
                     this.location.addDecorObjet(obj);
                 }
             }

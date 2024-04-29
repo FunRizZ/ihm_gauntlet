@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<fx:root type="javafx.scene.layout.BorderPane"
+         xmlns="http://javafx.com/javafx/8"
+         xmlns:fx="http://javafx.com/fxml/1"
+         fx:controller="apps.controller.AddScoreController"
+         stylesheets="/apps/game/addScore/AddScoreCss.css">
+    <center>
+        <VBox alignment="CENTER" spacing="10">
+            <children>
+                <Label text="Score: " fx:id="scoreLabel"/>
+                <TextField fx:id="pseudoField" promptText="Entrez votre pseudo ici"/>
+                <Button text="Enregistrer le score" fx:id="saveScoreButton" onAction="#handleSaveScore"/>
+            </children>
+        </VBox>
+    </center>
+</fx:root>

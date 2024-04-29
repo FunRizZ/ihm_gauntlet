@@ -229,7 +229,7 @@ public class SettingController{
                                 break;
                                 
                             case 7:
-                                players[columnIndex-1].setKey("Resurec", lastKeyCode[0]);
+                                players[columnIndex-1].setKey("Interact", lastKeyCode[0]);
                                 break;
                         }
                     }                        
@@ -276,7 +276,7 @@ public class SettingController{
                         key = player.getKey("Bomb");
                         break;
                     case 7:
-                        key = player.getKey("Resurec");
+                        key = player.getKey("Interact");
                         break;
                 }
 

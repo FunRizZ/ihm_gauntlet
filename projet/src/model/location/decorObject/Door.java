@@ -37,7 +37,7 @@ public class Door extends DecorObjet implements Useable {
     @Override
     public void use(Hero h) {
         if(h.getNbKeys() > 0){
-            Item key = h.getKeys().getFirst();
+            Item key = h.getKeys().get(0);
             h.removeItem(key);
             h.getLocation().removeDecorObjet(this);
         }

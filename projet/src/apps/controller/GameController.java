@@ -1,6 +1,7 @@
 package apps.controller;
 
 import apps.MainScene;
+import apps.game.addScore.AddScoreScene;
 import apps.game.pause.PauseScene;
 import apps.game.pause.soundSetting.SoundManager;
 import apps.setting.JsonSetting;
@@ -44,6 +45,7 @@ public class GameController extends Pane {
     public static ScheduledExecutorService service;
     public static boolean isPaused = false;
     private long pausedTime = 0;
+    public static int Score = 0;
     @FXML
     GridPane map;
     @FXML
@@ -138,6 +140,7 @@ public class GameController extends Pane {
                         try {
                             WhoFight enemy = GAME.getTheClosest(l, hero);
                             if(hero.fight(enemy)){
+                                Score += 10;
                                 cells.add(new Point(hero.getPosX(), hero.getPosY()));
                                 cells.add(new Point(enemy.getPosX(), enemy.getPosY()));
                                 cells.forEach(cell -> {
@@ -156,6 +159,7 @@ public class GameController extends Pane {
                         try{
                             Useable useable = GAME.getTheClosestUsable(l, hero);
                             useable.use(hero);
+                            Score += 5;
                             if ( useable instanceof Exit){
                                 initializeGridPaneArray();
                                 resetMap();
@@ -214,8 +218,14 @@ public class GameController extends Pane {
                     });
                     if (!GAME.attackHero()){
                         System.out.println("game lose");
+                        long timer = (((System.nanoTime() - timeSt) + pausedTime) / 1000000000);
+                        System.out.println("Score : " + Score);
+                        Score += (int) (100 / timer);
+                        System.out.println("Score : " + Score);
                         this.resetInterface();
                         service.shutdown();
+                        AddScoreScene box = new AddScoreScene();
+                        box.load();
                     }
                     GAME.getMainHero().getLocation().getCharacters().forEach(character -> {
                         if (character instanceof WhoFight && !(character instanceof Hero)){

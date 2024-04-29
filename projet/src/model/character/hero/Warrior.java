@@ -13,7 +13,7 @@ public class Warrior extends Hero {
 
     //TODO Ajouter les stats de vitesse et de range d'attaque
     public Warrior(Location location, SettingPersonnage setting, int x, int y) {
-        super(location, setting, x, y,900,250,400, DEFAULT_RANGE);
+        super(location, setting, x, y,900,175,400, DEFAULT_RANGE);
     }
 
     @Override
