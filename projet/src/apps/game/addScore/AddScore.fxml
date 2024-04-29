@@ -11,9 +11,9 @@
     <center>
         <VBox alignment="CENTER" spacing="10">
             <children>
-                <Label text="Score: " fx:id="scoreLabel"/>
-                <TextField fx:id="pseudoField" promptText="Entrez votre pseudo ici"/>
-                <Button text="Enregistrer le score" fx:id="saveScoreButton" onAction="#handleSaveScore"/>
+                <Label text="%Score" fx:id="scoreLabel"/>
+                <TextField fx:id="pseudoField" promptText="%needSpeudo"/>
+                <Button text="Enregistrer le score" fx:id="%saveScore" onAction="#handleSaveScore"/>
             </children>
         </VBox>
     </center>

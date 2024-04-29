@@ -29,6 +29,7 @@ public class AddScoreController {
     @FXML
     public void initialize(){
         int x = GameController.Score;
-        scoreLabel.setText("Score: "+x);
+        String texte = scoreLabel.getText();
+        scoreLabel.setText(texte+x);
     }
 }
