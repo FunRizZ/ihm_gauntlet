@@ -13,7 +13,7 @@
             <children>
                 <Label text="%Score" fx:id="scoreLabel"/>
                 <TextField fx:id="pseudoField" promptText="%needSpeudo"/>
-                <Button text="Enregistrer le score" fx:id="%saveScore" onAction="#handleSaveScore"/>
+                <Button text="%saveScore" fx:id="saveScoreButton" onAction="#handleSaveScore"/>
             </children>
         </VBox>
     </center>

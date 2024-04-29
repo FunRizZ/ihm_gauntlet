@@ -222,9 +222,7 @@ public class GameController extends Pane {
                     if (!GAME.attackHero()){
                         System.out.println("game lose");
                         long timer = (((System.nanoTime() - timeSt) + pausedTime) / 1000000000);
-                        System.out.println("Score : " + Score);
                         Score += (int) (100 / timer);
-                        System.out.println("Score : " + Score);
                         this.resetInterface();
                         service.shutdown();
                         AddScoreScene box = new AddScoreScene();

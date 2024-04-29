@@ -65,7 +65,7 @@ public abstract class WhoFight extends Character {
     public boolean fight(WhoFight enemy) {
         if (this.getDistance(enemy) < range){
             attack_speed++;
-            if (attack_speed == 10){
+            if (attack_speed == 6){
                 attack_speed = 0;
                 enemy.reduceHp(this.getDamage());
             }
