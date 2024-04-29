@@ -9,9 +9,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 public class Warrior extends Hero {
-    public final static int DEFAULT_RANGE = 3;
+    public final static int DEFAULT_RANGE = 2;
 
-    //TODO Ajouter les stats de vitesse et de range d'attaque
     public Warrior(Location location, SettingPersonnage setting, int x, int y) {
         super(location, setting, x, y,900,175,400, DEFAULT_RANGE);
     }
@@ -35,5 +34,12 @@ public class Warrior extends Hero {
             default -> view.setViewport(new Rectangle2D(320, 0, 80, 80));
         }
         return view;
+    }
+    @Override
+    public void changeAttackSpeed(){
+        if (attack_speed > 0){
+            attack_speed -= 34;
+            System.out.println("HERO attack speed : " + attack_speed);
+        }
     }
 }

@@ -9,9 +9,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 public class Valkyrie extends Hero {
-    public final static int DEFAULT_RANGE = 5;
+    public final static int DEFAULT_RANGE = 3;
 
-    //TODO Ajouter les stats de vitesse et de range d'attaque
     public Valkyrie(Location location, SettingPersonnage setting, int x, int y) {
         super(location, setting, x, y,700,150,200, DEFAULT_RANGE);
     }
@@ -20,6 +19,7 @@ public class Valkyrie extends Hero {
     public String getDescription() {
         return "The Hero is in "+ getLocation().NAME + ". He is in travel to found the long-lost treasure hidden in this castel.";
     }
+
     public String toString() {
         return "HERO";
     }
@@ -35,5 +35,12 @@ public class Valkyrie extends Hero {
             default -> view.setViewport(new Rectangle2D(320, 0, 80, 80));
         }
         return view;
+    }
+    @Override
+    public void changeAttackSpeed(){
+        if (attack_speed > 0){
+            attack_speed -= 25;
+            System.out.println("HERO attack speed : " + attack_speed);
+        }
     }
 }

@@ -24,6 +24,8 @@ public abstract class Hero extends WhoFight {
     public final static int DEFAULT_DAMAGE = 200;
     public final static int level = 0;
     public final static int DEFAULT_RANGE = 10;
+    public final static int DEFAULT_ATTACK_SPEED = 100;
+    public static int attack_speed = DEFAULT_ATTACK_SPEED;
 
     private Location location;
     private SettingPersonnage setting;
@@ -50,21 +52,24 @@ public abstract class Hero extends WhoFight {
 
     @Override
     public boolean fight(WhoFight enemy){
-        if(this.getDistance(enemy) < this.getRange()) {
-            System.out.println("HERO hit with " + this.getDamage() + " damage");
-            enemy.reduceHp(this.getDamage());
-            System.out.println("HERO hit the " + enemy);
-            System.out.println(enemy + " have : " + enemy.getHp() + " hp");
-            if (enemy.isDead()) {
-                System.out.println("HERO kill the " + enemy);
-                this.location.removeCharacter(enemy);
-                List<Item> items = enemy.getItems();
-                if (items != null) {
-                    DecorObjet obj = new Carcass(items.get(0), enemy.getPosX(), enemy.getPosY());
-                    this.location.addDecorObjet(obj);
+        if (attack_speed <= 0){
+            if(this.getDistance(enemy) < this.getRange()) {
+                attack_speed = DEFAULT_ATTACK_SPEED;
+                System.out.println("HERO hit with " + this.getDamage() + " damage");
+                enemy.reduceHp(this.getDamage());
+                System.out.println("HERO hit the " + enemy);
+                System.out.println(enemy + " have : " + enemy.getHp() + " hp");
+                if (enemy.isDead()) {
+                    System.out.println("HERO kill the " + enemy);
+                    this.location.removeCharacter(enemy);
+                    List<Item> items = enemy.getItems();
+                    if (items != null) {
+                        DecorObjet obj = new Carcass(items.get(0), enemy.getPosX(), enemy.getPosY());
+                        this.location.addDecorObjet(obj);
+                    }
                 }
+                return true;
             }
-            return true;
         }
         return false;
     }
@@ -113,5 +118,12 @@ public abstract class Hero extends WhoFight {
     }
     public String getKeyString(KeyCode Key) {
         return setting.getKeyString(Key);
+    }
+
+    public void changeAttackSpeed(){
+        if (attack_speed > 0){
+            attack_speed -= 100;
+            System.out.println("HERO attack speed : " + attack_speed);
+        }
     }
 }

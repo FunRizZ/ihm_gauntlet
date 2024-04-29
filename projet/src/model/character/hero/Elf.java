@@ -9,10 +9,10 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 public class Elf extends Hero {
+    public final static int DEFAULT_RANGE = 4;
 
-    //TODO Ajouter les stats de vitesse et de range d'attaque
     public Elf(Location location, SettingPersonnage setting, int x, int y) {
-        super(location, setting, x, y,500,50,200,100);
+        super(location, setting, x, y,500,50,200, DEFAULT_RANGE);
     }
 
     @Override
@@ -34,5 +34,12 @@ public class Elf extends Hero {
             default -> view.setViewport(new Rectangle2D(320, 0, 80, 80));
         }
         return view;
+    }
+    @Override
+    public void changeAttackSpeed(){
+        if (attack_speed > 0){
+            attack_speed -= 20;
+            System.out.println("HERO attack speed : " + attack_speed);
+        }
     }
 }

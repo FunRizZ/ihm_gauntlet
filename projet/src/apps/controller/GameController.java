@@ -212,6 +212,10 @@ public class GameController extends Pane {
                     this.resetInterface();
                     Set<Point> cells = new HashSet<>();
                     GAME.getMainHero().getLocation().getCharacters().forEach(character -> {
+                        if (character instanceof Hero)
+                            {
+                                ((Hero) character).changeAttackSpeed();
+                            }
                         if (character instanceof WhoFight && !(character instanceof Hero)){
                             cells.add(new Point(character.getPosX(), character.getPosY()));
                         }
