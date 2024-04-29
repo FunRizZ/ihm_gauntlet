@@ -9,7 +9,6 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
-//TODO Faire la doc (Ambroise)
 
 /**
  * The Scoreboard class manages the game scores.

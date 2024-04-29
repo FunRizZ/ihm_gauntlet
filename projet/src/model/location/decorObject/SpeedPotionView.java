@@ -6,7 +6,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import model.character.hero.Hero;
 import model.game_pack.Useable;
-import model.item.PoisonPotion;
 import model.item.SpeedPotion;
 
 public class SpeedPotionView extends DecorObjet implements Useable {

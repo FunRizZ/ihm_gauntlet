@@ -1,6 +1,5 @@
 package apps.controller;
 
-import apps.game.GameLoad;
 import apps.game.GameScene;
 import apps.game.selectHero.SelectHeroScene;
 import apps.mapcreator.MapCreatorScene;

@@ -4,7 +4,6 @@ import apps.game.pause.PauseScene;
 import apps.game.pause.soundSetting.SoundManager;
 import apps.game.pause.soundSetting.SoundSettingScene;
 import apps.mainMenu.MainMenuScene;
-import javafx.application.Platform;
 import javafx.fxml.FXML;
 
 public class PauseController {

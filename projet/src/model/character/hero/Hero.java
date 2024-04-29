@@ -13,9 +13,6 @@ import apps.setting.SettingPersonnage;
 import model.item.Item;
 import model.location.decorObject.Carcass;
 import model.location.decorObject.DecorObjet;
-import javafx.geometry.Rectangle2D;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 
 public abstract class Hero extends WhoFight {

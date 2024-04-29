@@ -2,9 +2,7 @@ package apps.game;
 
 import apps.controller.SettingController;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
 
 public class GameLoad extends Pane {
     private final FXMLLoader fxmlLoader;

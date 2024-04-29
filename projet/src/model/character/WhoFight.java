@@ -2,9 +2,6 @@ package model.character;
 
 import java.util.List;
 
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
-import javafx.util.Duration;
 import model.item.Armor;
 import model.item.Item;
 import model.item.Shield;

@@ -4,7 +4,6 @@ import apps.MainScene;
 import apps.mainMenu.MainMenuScene;
 import apps.mapcreator.MapCreatorLoad;
 import apps.setting.SettingCreatorScene;
-import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -14,7 +13,6 @@ import javafx.scene.layout.HBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import javafx.stage.WindowEvent;
 import javafx.util.Pair;
 import model.character.monster.*;
 import model.game_pack.Game;
@@ -33,10 +31,6 @@ import model.location.decorObject.*;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.atomic.AtomicReference;
 
 import static apps.controller.EntitiesEnum.*;
 

@@ -1,10 +1,7 @@
 package apps;
 
-import apps.game.pause.PauseScene;
 import apps.mainMenu.MainMenuScene;
 import javafx.application.Application;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
 /**

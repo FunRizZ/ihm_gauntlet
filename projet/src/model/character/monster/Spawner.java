@@ -3,7 +3,6 @@ package model.character.monster;
 import model.character.Character;
 import model.character.WhoFight;
 import model.game_pack.Game;
-import model.location.Location;
 
 import java.util.Random;
 

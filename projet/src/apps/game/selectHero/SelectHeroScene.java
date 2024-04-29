@@ -1,7 +1,6 @@
 package apps.game.selectHero;
 
 import apps.MainScene;
-import apps.game.selectHero.SelectHeroLoad;
 
 /**
  * Set the Select Hero Scene

@@ -1,13 +1,6 @@
 package apps.game;
 
 import apps.MainScene;
-import apps.controller.GameController;
-import apps.game.pause.PauseScene;
-import apps.setting.JsonSetting;
-import apps.setting.SettingPersonnage;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
-import model.character.hero.Hero;
 import model.game_pack.Game;
 
 public class GameScene extends MainScene {

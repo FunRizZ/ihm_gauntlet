@@ -1,10 +1,8 @@
 package apps;
 
 import apps.setting.JsonSetting;
-import javafx.event.Event;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
 /**

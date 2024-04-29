@@ -1,7 +1,6 @@
 package apps.mapcreator;
 
 import apps.controller.SettingController;
-import javafx.scene.input.KeyEvent;
 import model.game_pack.Game;
 import javafx.fxml.FXMLLoader;
 

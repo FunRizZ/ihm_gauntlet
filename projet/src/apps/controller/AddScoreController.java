@@ -1,7 +1,6 @@
 package apps.controller;
 
 import apps.game.addScore.AddScoreScene;
-import apps.game.pause.PauseScene;
 import apps.game.pause.soundSetting.SoundManager;
 import apps.mainMenu.MainMenuScene;
 import apps.scoreboard.Scoreboard;
