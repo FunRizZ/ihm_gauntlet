@@ -57,13 +57,6 @@ public class MainMenuController {
         SelectHeroScene heroChoice = new SelectHeroScene();
         heroChoice.load();
     }
-    @FXML
-    public void loadGame(ActionEvent event){
-        GameScene game = new GameScene();
-        boolean load = Game.GAME.Load("./save/locations/GARDEN.json");
-        System.out.println(load);
-        game.load();
-    }
     public static void handlequitToDesktop(){
         System.out.println("You leave the game. Goodbye!");
         if (GameController.service != null && !GameController.service.isShutdown()) {
