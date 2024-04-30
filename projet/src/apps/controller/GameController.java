@@ -83,6 +83,10 @@ public class GameController extends Pane {
             SettingPersonnage setting_personnage = JsonSetting.getSetting(i);
             if (setting_personnage.contain(key)) {
                 Hero hero = GAME.HEROS.get(i);
+                if (hero.isDead()){
+                    System.out.println("hero is dead");
+                    break;
+                }
                 Set<Point> cells = new HashSet<>();
                 cells.add(new Point(hero.getPosX(), hero.getPosY()));
                 switch (setting_personnage.getKeyString(key)) {

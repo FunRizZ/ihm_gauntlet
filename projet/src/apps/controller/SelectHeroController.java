@@ -110,6 +110,8 @@ public class SelectHeroController extends BorderPane {
         }
 
         GameScene game = new GameScene();
+        boolean load = Game.GAME.Load("./save/locations/GARDEN.json");
+        System.out.println(load);
         game.load();
     }
 }

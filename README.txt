@@ -13,8 +13,6 @@ Languages available : French, English and Spanish
 
 Functionalities :
 - Gauntlet : The whole game (WiP)
-    - You can save your progression (WiP)
-    - You can load a save (WiP)
     - 1-4 players in local
 - Map Creator : A map creator for the game. You decide of your experience of Gauntlet IHM
     - You can save your map
