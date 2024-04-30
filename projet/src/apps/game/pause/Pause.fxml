@@ -11,8 +11,6 @@
     <center>
         <VBox alignment="CENTER" spacing="10">
             <children>
-                <Button text="%save" fx:id="saveButton" onAction="#handleSave"/>
-                <Button text="%loadGame" fx:id="loadButton" onAction="#handleLoad"/>
                 <Button text="%soundSettings" fx:id="soundButton" onAction="#handleSettingSound"/>
                 <Button text="%quitMainMenu" fx:id="quitToMainMenuButton" onAction="#handleQuitToMainMenu"/>
                 <Button text="%quitDesktop" fx:id="quitToDesktopButton" onAction="#handleQuitToDesktop"/>

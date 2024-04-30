@@ -9,22 +9,6 @@ import javafx.fxml.FXML;
 public class PauseController {
 
     /**
-     * Save the game
-     */
-    @FXML
-    protected void handleSave() {
-        // Ajoutez ici le code pour sauvegarder le jeu
-    }
-
-    /**
-     * Load the game
-     */
-    @FXML
-    protected void handleLoad() {
-        // Ajoutez ici le code pour charger le jeu
-    }
-
-    /**
      * open Setting the sound
      */
     @FXML
