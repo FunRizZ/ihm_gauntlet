@@ -188,7 +188,6 @@ public class GameController extends Pane {
         service = Executors.newSingleThreadScheduledExecutor();
         SoundManager soundManager = new SoundManager();
         soundManager.initialize();
-        SoundManager.play();
         MainScene.stage.setOnCloseRequest((WindowEvent event) -> {
             // Arrêter le ScheduledExecutorService lorsque la fenêtre se ferme
             if (!service.isShutdown()) {

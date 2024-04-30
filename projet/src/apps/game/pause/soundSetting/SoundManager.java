@@ -13,6 +13,7 @@ public class SoundManager {
 
     public void initialize() {
         setMusicFile("music.wav");
+        SoundManager.play();
     }
 
     public void setMusicFile(String musicFile) {

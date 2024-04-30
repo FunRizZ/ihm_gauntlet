@@ -40,7 +40,6 @@ public class Valkyrie extends Hero {
     public void changeAttackSpeed(){
         if (attack_speed > 0){
             attack_speed -= 25;
-            System.out.println("HERO attack speed : " + attack_speed);
         }
     }
 }

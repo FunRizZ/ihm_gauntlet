@@ -120,7 +120,6 @@ public abstract class Hero extends WhoFight {
     public void changeAttackSpeed(){
         if (attack_speed > 0){
             attack_speed -= 100;
-            System.out.println("HERO attack speed : " + attack_speed);
         }
     }
 }

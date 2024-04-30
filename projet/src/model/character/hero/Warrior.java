@@ -39,7 +39,6 @@ public class Warrior extends Hero {
     public void changeAttackSpeed(){
         if (attack_speed > 0){
             attack_speed -= 34;
-            System.out.println("HERO attack speed : " + attack_speed);
         }
     }
 }
