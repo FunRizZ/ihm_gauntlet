@@ -40,11 +40,11 @@ public class JsonSetting {
      */
         public static void reinitialize_setting_personnage() {
             Gson gson = new Gson();
-            SettingPersonnage person1 = new SettingPersonnage(KeyCode.UP, KeyCode.DOWN, KeyCode.LEFT, KeyCode.RIGHT, KeyCode.SPACE, KeyCode.ENTER, KeyCode.F);
-            SettingPersonnage person2 = new SettingPersonnage(KeyCode.Z, KeyCode.S, KeyCode.Q, KeyCode.D, KeyCode.A, KeyCode.W, KeyCode.E);
-            SettingPersonnage person3 = new SettingPersonnage(KeyCode.Y, KeyCode.H, KeyCode.G, KeyCode.J, KeyCode.T, KeyCode.B, KeyCode.U);
-            SettingPersonnage perso4 = new SettingPersonnage(KeyCode.O, KeyCode.L, KeyCode.K, KeyCode.N, KeyCode.I, KeyCode.N, KeyCode.P);
-            SettingPersonnage[] pers = {person1, person2, person3, perso4};
+            SettingPersonnage perso1 = new SettingPersonnage(KeyCode.W, KeyCode.S, KeyCode.A, KeyCode.D, KeyCode.Q, KeyCode.E, KeyCode.R);
+            SettingPersonnage perso2 = new SettingPersonnage(KeyCode.I, KeyCode.K, KeyCode.J, KeyCode.L, KeyCode.U, KeyCode.O, KeyCode.P);
+            SettingPersonnage perso3 = new SettingPersonnage(KeyCode.T, KeyCode.G, KeyCode.F, KeyCode.H, KeyCode.R, KeyCode.Y, KeyCode.Z);
+            SettingPersonnage perso4 = new SettingPersonnage(KeyCode.Z, KeyCode.X, KeyCode.C, KeyCode.V, KeyCode.B, KeyCode.N, KeyCode.M);
+            SettingPersonnage[] pers = {perso1, perso2, perso3, perso4};
             settingScene setti = new settingScene();
             personnages = pers;
             settingsScene = setti;
