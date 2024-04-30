@@ -48,6 +48,10 @@ public class PauseScene{
                 pauseStage.close();
             }
         });
+        pauseStage.setOnHidden(e -> {
+            GameController.isPaused = false;
+            GameController.timeSt = System.nanoTime();
+        });
 
         pauseStage.show();
     }
